@@ -1,0 +1,42 @@
+.stepper {
+  display: flex;
+  width: 100%;
+
+  &-item {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+    background-color: $color-gray-light;
+    flex-grow: 1;
+    cursor: pointer;
+
+    &-number {
+      display: inline-block;
+      font-size: $font-size-8;
+      color: $color-white;
+      background-color: $color-gray;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      text-align: center;
+    }
+
+    &-label {
+      display: inline-block;
+      font-size: 1.4rem;
+      margin-left: 2rem;
+    }
+  }
+
+  &-item-active.stepper-item {
+    background-color: $color-blue;
+
+    .stepper-item-number {
+      background-color: $color-white;
+      color: $color-blue;
+    }
+
+    .stepper-item-label {
+      color: $color-white;
+    }
+  }
+}

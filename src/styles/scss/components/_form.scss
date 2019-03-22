@@ -1,0 +1,90 @@
+.button {
+  color: $color-white;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  &-green {
+    background-color: $color-card-green-medium;
+
+    &:hover {
+      background-color: $color-card-green-dark;
+    }
+  }
+}
+
+.input-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  .input-label {
+    font-size: $font-size-3;
+    justify-self: flex-end;
+    align-self: center;
+  }
+
+}
+
+.input {
+  outline: none;
+  border-radius: .2rem;
+  padding: .5rem;
+  font-size: $font-size-3;
+  border: .1rem solid rgba($color-gray, 1);
+  height: 3.2rem;
+  margin: 1rem;
+
+  &:focus {
+    border: .1rem solid $color-blue
+  }
+
+  &-width-1 {
+    width: 25rem;
+  }
+}
+
+.select {
+  &-container {
+    width: 100%;
+    font-size: $font-size-3;
+    position: relative;
+
+    &-width-1 {
+      width: 25rem;
+    }
+  }
+
+  &-header {
+    width: 100%;
+    cursor: pointer;
+    background-color: #4F8EDC;
+    margin: 0;
+
+    &-title {
+
+    }
+  }
+
+  &-list {
+    position: absolute;
+    top: 3.2rem;
+    left: 0;
+    background-color: $color-gray-light;
+    width: 100%;
+    border: .1rem solid rgba($color-gray, .5);
+    border-top: none;
+    border-radius: .2rem;
+
+    &-item {
+      padding: .5rem;
+      border-top: .1rem solid rgba($color-gray, .5);
+
+      &:hover {
+        background-color: $color-gray;
+        cursor: pointer;
+      }
+    }
+  }
+}

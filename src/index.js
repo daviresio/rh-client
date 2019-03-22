@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/css/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+Object.prototype.isEmpty = function() {
+    for(let key in this) {
+        if(this.hasOwnProperty(key)) {
+            return false
+        } else {
+            return true;
+        }
+    }
+};
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

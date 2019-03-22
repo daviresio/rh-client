@@ -1,0 +1,30 @@
+.tab-painel {
+
+  .tabs {
+
+  }
+
+}
+
+.tab {
+  &-item {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    color: $color-blue;
+    cursor: pointer;
+    &:hover {
+      border-bottom: .2rem solid $color-gray;
+    }
+
+  }
+
+  &-active {
+    border-bottom: .2rem solid $color-blue;
+  }
+
+}
+
+.tab-content {
+  margin-top: 2rem;
+}
