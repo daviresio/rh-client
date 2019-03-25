@@ -1,10 +1,14 @@
 import React from 'react';
-
+import {connect} from "react-redux";
+import {colaboradorChangeTab} from "../store/actions/colaboradorActions";
 const TabItem = props => {
-    const {title} = props;
+    const {title, number, colaboradorChangeTab, tab} = props;
     return (
-        <div className={'tab-item tab-active'}>{title}</div>
+        <div onClick={()=>colaboradorChangeTab(number)} className={tab === number ? 'tab-item tab-active' : 'tab-item'}>{title}</div>
     );
 };
 
-export default TabItem;
+const mapStateToProps = ({colaborador}) => ({tab: colaborador.tab})
+const mapDispatchToProps = dispatch =>({colaboradorChangeTab: n => dispatch(colaboradorChangeTab(n))})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabItem);

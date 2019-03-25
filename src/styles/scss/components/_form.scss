@@ -5,11 +5,24 @@
   font-size: 1.2rem;
   cursor: pointer;
 
+  &-full {
+    width: 100%;
+    text-align: center;
+  }
+
   &-green {
     background-color: $color-card-green-medium;
 
     &:hover {
       background-color: $color-card-green-dark;
+    }
+  }
+
+  &-black {
+    background-color: $color-black-medium;
+
+    &:hover {
+      background-color: $color-black-dark;
     }
   }
 }
@@ -46,7 +59,9 @@
 }
 
 .select {
+
   &-container {
+    margin: 1rem;
     width: 100%;
     font-size: $font-size-3;
     position: relative;
@@ -59,7 +74,7 @@
   &-header {
     width: 100%;
     cursor: pointer;
-    background-color: #4F8EDC;
+    background-color: $color-white;
     margin: 0;
 
     &-title {
@@ -71,18 +86,19 @@
     position: absolute;
     top: 3.2rem;
     left: 0;
-    background-color: $color-gray-light;
+    background-color: $color-white;
     width: 100%;
     border: .1rem solid rgba($color-gray, .5);
     border-top: none;
     border-radius: .2rem;
+    z-index: 1;
 
     &-item {
       padding: .5rem;
       border-top: .1rem solid rgba($color-gray, .5);
 
       &:hover {
-        background-color: $color-gray;
+        background-color: rgba($color-gray-light, .5);
         cursor: pointer;
       }
     }

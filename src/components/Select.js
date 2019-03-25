@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ClickOutside from "./ClickOutside";
 
 class Select extends Component {
 
@@ -6,8 +7,7 @@ class Select extends Component {
         super(props);
         this.state = {
             listOpen: false,
-            title: this.props.title,
-            selected: {},
+            selected: null,
             values: [
                 {
                     id: 1,
@@ -18,23 +18,26 @@ class Select extends Component {
                     nome: 'webdesigner'
                 }
             ]
-        }
+        };
         this.selectItem = this.selectItem.bind(this);
     }
 
-    selectItem = e => {
-        this.setState({...this.state, selected: e, listOpen: false})
-    }
+    selectItem = i => this.setState({...this.state, selected: this.state.values[i], listOpen: false})
 
     render() {
-        const itens = this.state.values.map(o => <li key={o.id} onClick={o=> this.selectItem(o)} className={'select-list-item'}>{o.nome}</li>)
+        const itens = this.state.values.map((o, i) => <li key={o.id} onClick={() => this.selectItem(i)}
+                                                          className={'select-list-item'}>{o.nome}</li>)
         return (
-            <div className={'select-container select-container-width-1'}>
-                <div className={'input select-header'} onClick={() => this.setState({...this.state, listOpen: ! this.state.listOpen})}>
-                    <div className={'select-header-title'}>{Object.isEmpty(this.state.selected) ? this.props.title : this.state.selected}</div>
+            <ClickOutside clickOutside={() => this.setState({...this.state, listOpen: false})}>
+                <div className={'select-container select-container-width-1'}>
+                    <div className={'input select-header'}
+                         onClick={() => this.setState({...this.state, listOpen: !this.state.listOpen})}>
+                        <div
+                            className={'select-header-title'}>{this.state.selected === null ? 'Selecione' : this.state.selected.nome}</div>
+                    </div>
+                    {(this.state.listOpen) && <ul className={'select-list'}>{itens}</ul>}
                 </div>
-                {(this.state.listOpen) && <ul className={'select-list'}>{itens}</ul>}
-            </div>
+            </ClickOutside>
         );
     }
 }

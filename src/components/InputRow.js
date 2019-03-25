@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Input = props => {
+const InputRow = props => {
     const {label, value} = props
     return (
         <div className={'input-container'}>
@@ -10,4 +10,4 @@ const Input = props => {
     );
 };
 
-export default Input;
+export default InputRow;

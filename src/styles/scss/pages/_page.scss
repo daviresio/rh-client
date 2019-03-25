@@ -25,3 +25,13 @@
 .novo-colaborador {
   width: 100%;
 }
+
+.gestao-colaboradores {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  grid-gap: 2rem;
+
+  & .button {
+    margin-top: 2rem;
+  }
+}

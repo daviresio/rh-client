@@ -1,9 +1,14 @@
 .tab-painel {
-
+  background-color: $color-white;
+  width: 100%;
   .tabs {
 
   }
 
+}
+
+.title-tab {
+  margin: 2rem;
 }
 
 .tab {
@@ -27,4 +32,5 @@
 
 .tab-content {
   margin-top: 2rem;
+  width: 100%;
 }

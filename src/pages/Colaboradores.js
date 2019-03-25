@@ -1,20 +1,22 @@
 import React from 'react';
-import Page from "./Page";
 import TabPainel from "../components/TabPainel";
 import TabItem from "../components/TabItem";
 import TabContent from "../components/TabContent";
 import GestaoColaboradores from "./colaboradores/GestaoColaboradores";
+import PageEmpty from "./PageEmpty";
+import {connect} from "react-redux";
+import RelatoriosColaboradores from "./colaboradores/RelatoriosColaboradores";
 
-const Colaboradores = () => {
+const Colaboradores = ({tab}) => {
     return (
-        <Page title={'Colaboradores'}>
-            <TabPainel>
-                <TabItem title={'Gestao de colaboradores'}/>
-                <TabItem title={'Relatorios'}/>
+        <PageEmpty>
+            <TabPainel title={'Colaboradores'}>
+                <TabItem number={0} title={'Gestao de colaboradores'}/>
+                <TabItem number={1} title={'Relatorios'}/>
             </TabPainel>
-            <TabContent content={<GestaoColaboradores/>}/>
-        </Page>
+            <TabContent content={tab === 0 ? <GestaoColaboradores/> : <RelatoriosColaboradores/>}/>
+        </PageEmpty>
     );
 };
-
-export default Colaboradores;
+const mapStateToProps = ({colaborador}) => ({tab: colaborador.tab})
+export default connect(mapStateToProps, null)(Colaboradores);

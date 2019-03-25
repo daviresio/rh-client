@@ -107,6 +107,45 @@ a {
   align-items: center;
 }
 
+.card-borda {
+  width: 100%;
+  border: 0.1rem solid rgba(204, 204, 204, 0.6);
+  border-top: none;
+  margin-top: 2rem;
+}
+.card-borda-header {
+  height: 4rem;
+  width: 100%;
+  background-color: #4F8EDC;
+  color: #FFF;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.card-borda-header > i {
+  cursor: pointer;
+}
+.card-borda-header-red {
+  background-color: #E54042;
+}
+.card-borda-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFF;
+}
+
+.tab-painel {
+  background-color: #FFF;
+  width: 100%;
+}
+.title-tab {
+  margin: 2rem;
+}
+
 .tab-item {
   display: inline-block;
   padding: 1rem 2rem;
@@ -123,6 +162,7 @@ a {
 
 .tab-content {
   margin-top: 2rem;
+  width: 100%;
 }
 
 .button {
@@ -132,11 +172,21 @@ a {
   font-size: 1.2rem;
   cursor: pointer;
 }
+.button-full {
+  width: 100%;
+  text-align: center;
+}
 .button-green {
   background-color: #78BA38;
 }
 .button-green:hover {
   background-color: #6CA632;
+}
+.button-black {
+  background-color: #505359;
+}
+.button-black:hover {
+  background-color: #3A3C40;
 }
 
 .input-container {
@@ -167,6 +217,7 @@ a {
 }
 
 .select-container {
+  margin: 1rem;
   width: 100%;
   font-size: 1.3rem;
   position: relative;
@@ -177,25 +228,26 @@ a {
 .select-header {
   width: 100%;
   cursor: pointer;
-  background-color: #4F8EDC;
+  background-color: #FFF;
   margin: 0;
 }
 .select-list {
   position: absolute;
   top: 3.2rem;
   left: 0;
-  background-color: #EDEEF0;
+  background-color: #FFF;
   width: 100%;
   border: 0.1rem solid rgba(204, 204, 204, 0.5);
   border-top: none;
   border-radius: 0.2rem;
+  z-index: 1;
 }
 .select-list-item {
   padding: 0.5rem;
   border-top: 0.1rem solid rgba(204, 204, 204, 0.5);
 }
 .select-list-item:hover {
-  background-color: #CCCCCC;
+  background-color: rgba(237, 238, 240, 0.5);
   cursor: pointer;
 }
 
@@ -236,6 +288,53 @@ a {
   color: #FFF;
 }
 
+.table {
+  width: 100%;
+  font-size: 1.3rem;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+.table tr {
+  border: 0.1rem solid #EDEEF0;
+}
+.table td, .table th {
+  padding: 1rem;
+  border: none;
+  text-align: left;
+}
+.table th {
+  text-transform: capitalize;
+}
+.table-head {
+  min-width: 100%;
+  background-color: #FFF;
+}
+.table-body tr {
+  cursor: pointer;
+}
+.table-body tr:nth-child(odd) {
+  background-color: rgba(237, 238, 240, 0.3);
+}
+.table-body tr:nth-child(even) {
+  background-color: #FFF;
+}
+
+.table-container {
+  width: 100%;
+}
+.table-container-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+}
+.table-container-header div:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+.table-container-body {
+  width: 100%;
+}
 .navbar {
   width: 20rem;
   height: 100vh;
@@ -270,6 +369,15 @@ a {
 
 .novo-colaborador {
   width: 100%;
+}
+
+.gestao-colaboradores {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  grid-gap: 2rem;
+}
+.gestao-colaboradores .button {
+  margin-top: 2rem;
 }
 
 /*# sourceMappingURL=index.css.map */

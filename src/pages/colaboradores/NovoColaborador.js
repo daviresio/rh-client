@@ -4,10 +4,16 @@ import StepperItem from "../../components/StepperItem";
 import PageEmpty from "../PageEmpty";
 import StepperContent from "../../components/StepperContent";
 import CardSimples from "../../components/CardSimples";
-import Input from "../../components/Input";
-import Select from "../../components/Select";
+import InputRow from "../../components/InputRow";
+import SelectRow from "../../components/SelectRow";
+import {Field, reduxForm} from "redux-form";
 
-const NovoColaborador = props => {
+const Teste = props => <input />
+
+let NovoColaborador = props => {
+
+    const {handleSubmit} = props;
+
     return (
         <PageEmpty>
             <Stepper>
@@ -20,9 +26,17 @@ const NovoColaborador = props => {
             <StepperContent>
                 <div className={'title-2'}>Informacoes Basicas</div>
                 <CardSimples>
-                    <Input label={'Nome completo'}/>
-                    <Input label={'Email'}/>
-                    <Select title={'Selecione'}/>
+                    <form onSubmit={handleSubmit}>
+                        <Field component={<InputRow label={'Nome completo'}/>} />
+                        <Field component={<InputRow label={'Email'}/>} />
+                        <Field component={<SelectRow label={'Cargo'}/>} />
+                        <Field component={<SelectRow label={'Departamento'}/>} />
+                        <Field component={<SelectRow label={'Centro de custo'}/>} />
+                        <Field component={<SelectRow label={'Supervisor'}/>} />
+                        <Field component={<InputRow label={'Matricula'}/>} />
+                        <Field component={<SelectRow label={'Primeiro emprego'}/>} />
+                        <Field component={<InputRow label={'Data do exame admissional'}/>} />
+                    </form>
                 </CardSimples>
             </StepperContent>
 
@@ -31,4 +45,8 @@ const NovoColaborador = props => {
     );
 };
 
+NovoColaborador = reduxForm({form: 'colaborador'})(NovoColaborador);
+
 export default NovoColaborador;
+
+
