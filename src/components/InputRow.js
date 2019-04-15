@@ -1,11 +1,11 @@
 import React from 'react';
 
-const InputRow = props => {
-    const {label, value} = props
+const InputRow = ({input, label, detail, actionLabel, action}) => {
     return (
         <div className={'input-container'}>
             <label className={'input-label'}>{label}</label>
-            <input type={'text'} value={value} className={'input input-width-1'}/>
+            <input {...input} className={'input'}/>
+            <div className={'input-detail'}>{detail} <span onClick={action} className={'input-detail-action'}>{actionLabel}</span></div>
         </div>
     );
 };

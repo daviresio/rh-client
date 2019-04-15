@@ -10,7 +10,7 @@ const GestaoColaboradores = ({navigate}) => {
     return (
         <React.Fragment>
             <Buttom click={() => navigate('/colaboradores/novo')} color={'green'} label={'Adicionar Colaborador'}/>
-            <div className={'gestao-colaboradores'}>
+            <div className={'gestao-colaboradores page-divided'}>
                 <div>
                     <CardBorda icon={'users'} title={`Ativos(1)`} config={true}>
                         <TableContainer>
@@ -29,7 +29,7 @@ const GestaoColaboradores = ({navigate}) => {
                 </div>
                 <div>
                     <CardBorda icon={'spinner'} title={'Em admissao / Inclusao pendentes (1)'}>
-
+                        {'falta implementar'}
                     </CardBorda>
 
                     <CardBorda color={'red'} icon={'power-off'} title={'Desligamentos pendentes (1)'}>

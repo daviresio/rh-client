@@ -97,11 +97,11 @@ a {
 }
 
 .card-simples {
-  width: 100%;
+  background-color: #FFF;
   border: 0.1rem solid rgba(204, 204, 204, 0.6);
   border-top: 0.2rem solid #4F8EDC;
   margin-top: 3rem;
-  padding: 2rem 0;
+  padding: 2rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,12 +192,22 @@ a {
 .input-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.5fr 2fr 1.5fr;
 }
 .input-container .input-label {
   font-size: 1.3rem;
   justify-self: flex-end;
   align-self: center;
+  margin-bottom: 0.5rem;
+}
+.input-container .input-detail {
+  margin-top: 1rem;
+  text-align: justify;
+  font-size: 1.1rem;
+}
+.input-container .input-detail-action {
+  color: #4F8EDC;
+  cursor: pointer;
 }
 
 .input {
@@ -207,7 +217,7 @@ a {
   font-size: 1.3rem;
   border: 0.1rem solid #cccccc;
   height: 3.2rem;
-  margin: 1rem;
+  margin: 1.5rem 1rem;
 }
 .input:focus {
   border: 0.1rem solid #4F8EDC;
@@ -218,7 +228,6 @@ a {
 
 .select-container {
   margin: 1rem;
-  width: 100%;
   font-size: 1.3rem;
   position: relative;
 }
@@ -226,10 +235,12 @@ a {
   width: 25rem;
 }
 .select-header {
-  width: 100%;
   cursor: pointer;
   background-color: #FFF;
   margin: 0;
+}
+.select-header-title {
+  min-width: 4rem;
 }
 .select-list {
   position: absolute;
@@ -335,6 +346,62 @@ a {
 .table-container-body {
   width: 100%;
 }
+.photo-container {
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 2rem;
+}
+.photo-box {
+  width: 100%;
+  height: 100%;
+  border: 0.1rem solid rgba(204, 204, 204, 0.6);
+  padding: 0.2rem;
+  text-align: center;
+}
+.photo-icon {
+  color: #CCCCCC;
+  font-size: 3.3rem;
+  display: inline-block;
+  margin-top: 2.5rem;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  background-color: #FFF;
+  width: 80rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-header {
+  height: 5rem;
+  border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+.modal-body {
+  padding: 2rem;
+}
+.modal-footer {
+  height: 7rem;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-end;
+}
+
 .navbar {
   width: 20rem;
   height: 100vh;
@@ -371,11 +438,13 @@ a {
   width: 100%;
 }
 
-.gestao-colaboradores {
+.page-divided {
+  width: 100%;
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   grid-gap: 2rem;
 }
+
 .gestao-colaboradores .button {
   margin-top: 2rem;
 }

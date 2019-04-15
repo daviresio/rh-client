@@ -30,12 +30,24 @@
 .input-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.5fr 2fr 1.5fr;
 
   .input-label {
     font-size: $font-size-3;
     justify-self: flex-end;
     align-self: center;
+    margin-bottom: .5rem;
+  }
+
+  .input-detail {
+    margin-top: 1rem;
+    text-align: justify;
+    font-size: $font-size-1;
+    &-action {
+      color: $color-blue;
+      cursor: pointer;
+    }
+
   }
 
 }
@@ -47,7 +59,7 @@
   font-size: $font-size-3;
   border: .1rem solid rgba($color-gray, 1);
   height: 3.2rem;
-  margin: 1rem;
+  margin: 1.5rem 1rem;
 
   &:focus {
     border: .1rem solid $color-blue
@@ -62,7 +74,6 @@
 
   &-container {
     margin: 1rem;
-    width: 100%;
     font-size: $font-size-3;
     position: relative;
 
@@ -72,13 +83,12 @@
   }
 
   &-header {
-    width: 100%;
     cursor: pointer;
     background-color: $color-white;
     margin: 0;
 
     &-title {
-
+      min-width: 4rem;
     }
   }
 

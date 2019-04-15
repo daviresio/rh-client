@@ -3,7 +3,7 @@ import Navbar from "../layout/Navbar";
 import Home from "../pages/Home";
 import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
 import Colaboradores from "../pages/Colaboradores";
-import NovoColaborador from "../pages/colaboradores/NovoColaborador";
+import NovoColaborador from "../pages/colaboradores/CadastroColaborador";
 import {ConnectedRouter} from "connected-react-router";
 import history from './history'
 

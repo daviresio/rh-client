@@ -26,11 +26,14 @@
   width: 100%;
 }
 
-.gestao-colaboradores {
+.page-divided {
+  width: 100%;
   display: grid;
   grid-template-columns: 2.5fr 1fr;
   grid-gap: 2rem;
+}
 
+.gestao-colaboradores {
   & .button {
     margin-top: 2rem;
   }

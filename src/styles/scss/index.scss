@@ -1,11 +1,14 @@
 @import "abstract/variables";
 @import "abstract/base";
+@import "abstract/mixins";
 
 @import "components/card";
 @import "components/tabs";
 @import "components/form";
 @import "components/stepper";
 @import "components/table";
+@import "components/photo";
+@import "components/modal";
 
 @import "layout/navbar";
 @import "layout/toolbar";

@@ -1,45 +1,23 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import ClickOutside from "./ClickOutside";
 
-class Select extends Component {
+const Select = ({options = [], value, selecionou, inputLabel}) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            listOpen: false,
-            selected: null,
-            values: [
-                {
-                    id: 1,
-                    nome: 'programador'
-                },
-                {
-                    id: 2,
-                    nome: 'webdesigner'
-                }
-            ]
-        };
-        this.selectItem = this.selectItem.bind(this);
-    }
-
-    selectItem = i => this.setState({...this.state, selected: this.state.values[i], listOpen: false})
-
-    render() {
-        const itens = this.state.values.map((o, i) => <li key={o.id} onClick={() => this.selectItem(i)}
-                                                          className={'select-list-item'}>{o.nome}</li>)
+        const [listOpen, setListVisibility] = useState(false);
+        const selectItem = o => {
+            setListVisibility(false)
+            selecionou(o)
+        }
+        const itens = options.map(o => <li key={o.id} onClick={() => selectItem(o)} className={'select-list-item'}>{o[inputLabel]}</li>)
         return (
-            <ClickOutside clickOutside={() => this.setState({...this.state, listOpen: false})}>
-                <div className={'select-container select-container-width-1'}>
-                    <div className={'input select-header'}
-                         onClick={() => this.setState({...this.state, listOpen: !this.state.listOpen})}>
-                        <div
-                            className={'select-header-title'}>{this.state.selected === null ? 'Selecione' : this.state.selected.nome}</div>
+            <ClickOutside clickOutside={() => setListVisibility(false)}>
+                <div className={'select-container'}>
+                    <div className={'input select-header'} onClick={() => setListVisibility(!listOpen)}>
+                        <div className={'select-header-title'}>{value === '' || value == null ? 'Selecione' : value[inputLabel]}</div>
                     </div>
-                    {(this.state.listOpen) && <ul className={'select-list'}>{itens}</ul>}
+                    {(listOpen) && <ul className={'select-list'}>{itens}</ul>}
                 </div>
             </ClickOutside>
         );
-    }
 }
-
 export default Select;
