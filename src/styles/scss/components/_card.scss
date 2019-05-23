@@ -30,45 +30,45 @@
 
   &-black {
     &-title {
-      background-color: $color-card-black-light;
+      background-color: $color-black-light;
     }
     &-body {
-      background-color: $color-card-black-medium;
+      background-color: $color-black-medium;
     }
     &-button {
-      background-color: $color-card-black-medium;
+      background-color: $color-black-medium;
       &:hover {
-        background-color: $color-card-black-dark;
+        background-color: $color-black-dark;
       }
     }
   }
 
   &-green {
     &-title {
-      background-color: $color-card-green-light;
+      background-color: $color-green-light;
     }
     &-body {
-      background-color: $color-card-green-medium;
+      background-color: $color-green;
     }
     &-button {
-      background-color: $color-card-green-medium;
+      background-color: $color-green;
       &:hover {
-        background-color: $color-card-green-dark;
+        background-color: $color-green-dark;
       }
     }
   }
 
   &-orange {
     &-title {
-      background-color: $color-card-orange-light;
+      background-color: $color-orange-light;
     }
     &-body {
-      background-color: $color-card-orange-medium;
+      background-color: $color-orange;
     }
     &-button {
-      background-color: $color-card-orange-medium;
+      background-color: $color-orange;
       &:hover {
-        background-color: $color-card-orange-dark;
+        background-color: $color-orange-dark;
       }
     }
   }
@@ -111,6 +111,12 @@
     &-red {
       background-color: $color-red;
     }
+    &-green {
+      background-color: $color-green;
+    }
+    &-orange {
+      background-color: $color-orange;
+    }
 
   }
 
@@ -121,4 +127,161 @@
     align-items: center;
     background-color: $color-white;
   }
+}
+
+.card-tab {
+
+  &-header {
+    display: flex;
+  }
+
+  &-title {
+    padding: .8rem 1.2rem;
+    cursor: pointer;
+  }
+
+  &-active {
+    background-color: $color-white;
+    color: $color-black;
+    cursor: default;
+  }
+}
+
+
+.card-lateral {
+  width: 100%;
+  padding: 1rem 2rem;
+  @include borda-light;
+  border-left: .2rem solid $color-blue-light;
+  color: $color-black;
+  background-color: $color-white;
+  cursor: pointer;
+  transition: all .5s;
+  font-size: $font-size-2;
+  display: grid;
+  grid-template-columns: 2fr 12fr 1fr;
+
+  .title {
+    font-size: $font-size-6;
+  }
+
+  .text {
+    margin: 1rem 0;
+  }
+
+  .fas {
+    font-size: $font-size-10;
+    color: $color-blue;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    color: $color-white;
+  }
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-blue-light;
+    transition: all .5s;
+  }
+
+  &:hover .fas {
+    color: $color-white;
+  }
+}
+
+.simple-panel {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  cursor: pointer;
+  text-align: center;
+
+  &-blue {
+    background-color: $color-blue;
+
+    &:hover {
+      background-color: rgba($color-blue, .9);
+    }
+  }
+
+  &-orange {
+    background-color: $color-orange;
+
+    &:hover {
+      background-color: rgba($color-orange, .9);
+    }
+  }
+
+  &-green {
+    background-color: $color-green;
+
+    &:hover {
+      background-color: rgba($color-green, .9);
+    }
+  }
+
+  .qtd {
+    font-size: $font-size-big-1;
+  }
+
+  .text {
+    font-size: $font-size-2;
+  }
+}
+
+
+.card-lateral-simple {
+  width: 100%;
+  padding: 0 2rem .5rem;
+  @include borda-light;
+  border-left: .2rem solid $color-blue-light;
+  color: $color-black;
+  background-color: $color-white;
+  transition: all .5s;
+  font-size: $font-size-2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .body {
+    cursor: pointer;
+  }
+
+  .text {
+    font-size: $font-size-10;
+  }
+
+  .text {
+    margin: .5rem 0;
+  }
+
+  .icones {
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-2;
+
+    i {
+      margin-right: .5rem;
+      font-size: $font-size-3;
+    }
+
+    &-edit {
+      color: $color-blue;
+      cursor: pointer;
+    }
+
+    &-delete {
+      color: $color-red;
+      margin-left: 2rem;
+      cursor: pointer;
+    }
+
+  }
+
 }

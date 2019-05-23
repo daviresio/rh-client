@@ -1,0 +1,9 @@
+.toolbar {
+  width: calc(100vw - #{$navbar-width});
+  transform: translateX($navbar-width);
+  height: $toolbar-height;
+  position: fixed;
+  z-index: 1;
+
+  background-color: red;
+}

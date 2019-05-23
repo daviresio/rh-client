@@ -16,7 +16,7 @@ let CadastroColaboradorStep1 = props => {
                             <UploadPhoto label={'Foto do perfil'}/>
                             <Field component={InputRow} name={'nome'} label={'Nome completo'} value={''}/>
                             <Field component={InputRow} name={'email'} label={'Email'} value={''}/>
-                            <Field component={SelectRow} name={'cargo'} label={'Cargo'} value={''} options={props.defaultValues.cargos} selecionou={(e) => {props.changeDropdownValue({target: 'cargo', value: e})}}
+                            <Field component={SelectRow} name={'cargo'} label={'Cargo'} value={''} options={props.defaultValues.cargos} selecionou={e => {props.changeDropdownValue({target: 'cargo', value: e})}}
                                    detail={'Escolha o cargo do colaborador. Caso queira adicionar um cargo à lista ao lado, '}
                                    actionLabel={'Clique aqui'}/>
                             <Field component={SelectRow} name={'departamento'} label={'Departamento'} value={''} options={props.defaultValues.departamentos}

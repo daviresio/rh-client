@@ -10,11 +10,19 @@
     text-align: center;
   }
 
-  &-green {
-    background-color: $color-card-green-medium;
+  &-blue {
+    background-color: $color-blue;
 
     &:hover {
-      background-color: $color-card-green-dark;
+      background-color: $color-blue-dark;
+    }
+  }
+
+  &-green {
+    background-color: $color-green;
+
+    &:hover {
+      background-color: $color-green-dark;
     }
   }
 

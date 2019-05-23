@@ -1,0 +1,31 @@
+.message {
+  margin: 2rem;
+
+  i {
+    margin-right: 1rem;
+  }
+
+  &-blue {
+    background-color: rgba($color-blue-light, .2);
+    border: .1rem solid rgba($color-blue-light, .6);
+    color: $color-blue;
+    padding: 1.5rem;
+    font-size: $font-size-3;
+  }
+
+  &-orange {
+    background-color: rgba($color-orange-light, .2);
+    border: .1rem solid rgba($color-orange-light, .6);
+    color: $color-orange;
+    padding: 1.5rem;
+    font-size: $font-size-3;
+  }
+
+  &-green {
+    background-color: rgba($color-green-light, .2);
+    border: .1rem solid rgba($color-green-light, .6);
+    color: $color-green;
+    padding: 1.5rem;
+    font-size: $font-size-3;
+  }
+}

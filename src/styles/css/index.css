@@ -130,12 +130,145 @@ a {
 .card-borda-header-red {
   background-color: #E54042;
 }
+.card-borda-header-green {
+  background-color: #78BA38;
+}
+.card-borda-header-orange {
+  background-color: #ED9619;
+}
 .card-borda-body {
   padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #FFF;
+}
+
+.card-tab-header {
+  display: flex;
+}
+.card-tab-title {
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+}
+.card-tab-active {
+  background-color: #FFF;
+  color: #000;
+  cursor: default;
+}
+
+.card-lateral {
+  width: 100%;
+  padding: 1rem 2rem;
+  border: 0.1rem solid rgba(204, 204, 204, 0.6);
+  border-left: 0.2rem solid #16acdc;
+  color: #000;
+  background-color: #FFF;
+  cursor: pointer;
+  transition: all 0.5s;
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: 2fr 12fr 1fr;
+}
+.card-lateral .title {
+  font-size: 1.6rem;
+}
+.card-lateral .text {
+  margin: 1rem 0;
+}
+.card-lateral .fas {
+  font-size: 2rem;
+  color: #4F8EDC;
+  display: flex;
+  align-items: center;
+}
+.card-lateral .icon {
+  color: #FFF;
+}
+.card-lateral:hover {
+  color: #FFF;
+  background-color: #16acdc;
+  transition: all 0.5s;
+}
+.card-lateral:hover .fas {
+  color: #FFF;
+}
+
+.simple-panel {
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  cursor: pointer;
+  text-align: center;
+}
+.simple-panel-blue {
+  background-color: #4F8EDC;
+}
+.simple-panel-blue:hover {
+  background-color: rgba(79, 142, 220, 0.9);
+}
+.simple-panel-orange {
+  background-color: #ED9619;
+}
+.simple-panel-orange:hover {
+  background-color: rgba(237, 150, 25, 0.9);
+}
+.simple-panel-green {
+  background-color: #78BA38;
+}
+.simple-panel-green:hover {
+  background-color: rgba(120, 186, 56, 0.9);
+}
+.simple-panel .qtd {
+  font-size: 3.3rem;
+}
+.simple-panel .text {
+  font-size: 1.2rem;
+}
+
+.card-lateral-simple {
+  width: 100%;
+  padding: 0 2rem 0.5rem;
+  border: 0.1rem solid rgba(204, 204, 204, 0.6);
+  border-left: 0.2rem solid #16acdc;
+  color: #000;
+  background-color: #FFF;
+  transition: all 0.5s;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-lateral-simple .body {
+  cursor: pointer;
+}
+.card-lateral-simple .text {
+  font-size: 2rem;
+}
+.card-lateral-simple .text {
+  margin: 0.5rem 0;
+}
+.card-lateral-simple .icones {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+.card-lateral-simple .icones i {
+  margin-right: 0.5rem;
+  font-size: 1.3rem;
+}
+.card-lateral-simple .icones-edit {
+  color: #4F8EDC;
+  cursor: pointer;
+}
+.card-lateral-simple .icones-delete {
+  color: #E54042;
+  margin-left: 2rem;
+  cursor: pointer;
 }
 
 .tab-painel {
@@ -176,6 +309,12 @@ a {
   width: 100%;
   text-align: center;
 }
+.button-blue {
+  background-color: #4F8EDC;
+}
+.button-blue:hover {
+  background-color: #2f76dc;
+}
 .button-green {
   background-color: #78BA38;
 }
@@ -183,10 +322,10 @@ a {
   background-color: #6CA632;
 }
 .button-black {
-  background-color: #505359;
+  background-color: #556B8D;
 }
 .button-black:hover {
-  background-color: #3A3C40;
+  background-color: #222F3D;
 }
 
 .input-container {
@@ -402,8 +541,36 @@ a {
   justify-content: flex-end;
 }
 
+.message {
+  margin: 2rem;
+}
+.message i {
+  margin-right: 1rem;
+}
+.message-blue {
+  background-color: rgba(22, 172, 220, 0.2);
+  border: 0.1rem solid rgba(22, 172, 220, 0.6);
+  color: #4F8EDC;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+}
+.message-orange {
+  background-color: rgba(240, 166, 61, 0.2);
+  border: 0.1rem solid rgba(240, 166, 61, 0.6);
+  color: #ED9619;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+}
+.message-green {
+  background-color: rgba(131, 198, 57, 0.2);
+  border: 0.1rem solid rgba(131, 198, 57, 0.6);
+  color: #78BA38;
+  padding: 1.5rem;
+  font-size: 1.3rem;
+}
+
 .navbar {
-  width: 20rem;
+  width: 25rem;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -411,9 +578,18 @@ a {
   background-color: #9363F1;
 }
 
+.toolbar {
+  width: calc(100vw - 25rem);
+  transform: translateX(25rem);
+  height: 7rem;
+  position: fixed;
+  z-index: 1;
+  background-color: red;
+}
+
 .page {
-  width: calc(100vw - 20rem);
-  transform: translateX(20rem);
+  width: calc(100vw - 25rem);
+  transform: translateX(25rem) translateY(7rem);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -447,6 +623,65 @@ a {
 
 .gestao-colaboradores .button {
   margin-top: 2rem;
+}
+
+.relatorios {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.ferias .painel {
+  background-color: #FFF;
+}
+.ferias .resumos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
+.folha-configuracao {
+  font-size: 1.3rem;
+}
+.folha-configuracao .negrito {
+  font-weight: 700;
+}
+.folha-configuracao .fpas {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.folha-configuracao .outros {
+  width: 100%;
+}
+.folha-configuracao .outros div {
+  margin-bottom: 0.6rem;
+}
+.folha-configuracao .title-second-content {
+  display: flex;
+  justify-content: space-between;
+}
+.folha-configuracao .title-second-content .title {
+  font-size: 2rem;
+  font-weight: lighter;
+}
+.folha-configuracao .title-second-content .edit {
+  color: #4F8EDC;
+  cursor: pointer;
+}
+.folha-configuracao .title-second-content .edit i {
+  margin-right: 0.2rem;
+}
+.folha-configuracao-card {
+  width: 100%;
+}
+.folha-configuracao-card .title {
+  font-size: 2rem;
+  font-weight: 300;
+}
+.folha-configuracao-card .text {
+  margin: 1rem 0;
 }
 
 /*# sourceMappingURL=index.css.map */

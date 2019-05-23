@@ -1,6 +1,6 @@
 .page {
   width: calc(100vw - #{$navbar-width});
-  transform: translateX($navbar-width);
+  transform: translateX($navbar-width) translateY($toolbar-height);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -36,5 +36,82 @@
 .gestao-colaboradores {
   & .button {
     margin-top: 2rem;
+  }
+}
+
+.relatorios {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+
+.ferias {
+
+  .painel {
+    background-color: $color-white;
+  }
+
+  .resumos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+  }
+}
+
+
+.folha {
+
+  &-configuracao {
+    font-size: $font-size-3;
+
+    .negrito {
+      font-weight: $font-weigth-bold;
+    }
+
+    .fpas {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .outros {
+      width: 100%;
+      div {
+        margin-bottom: .6rem;
+      }
+    }
+
+    .title-second-content {
+      display: flex;
+      justify-content: space-between;
+
+      .title {
+        font-size: $font-size-10;
+        font-weight: lighter;
+      }
+
+      .edit {
+        color: $color-blue;
+        cursor: pointer;
+        i{
+          margin-right: .2rem;
+        }
+      }
+    }
+
+    &-card {
+      width: 100%;
+
+      .title {
+        font-size: $font-size-10;
+        font-weight: $font-weigth-light;
+      }
+
+      .text {
+        margin: 1rem 0;
+      }
+    }
+
   }
 }
