@@ -1,0 +1,228 @@
+.configuracao {
+  &-informacoes-basicas {
+
+    .edit-logo {
+      display: flex;
+      align-items: center;
+
+      .logo-image {
+        height: 6rem;
+        width: 20rem;
+        background-color: $color-black;
+      }
+
+      .logo-button {
+        display: flex;
+        flex-direction: column;
+        margin-left: 2rem;
+        margin-top: 2rem;
+
+        .info {
+          color: rgba($color-black, .8);
+        }
+      }
+
+    }
+
+    .title {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-light;
+      margin: 1rem 0;
+    }
+
+    .group {
+      width: 100%;
+
+      .subgroup {
+        display: grid;
+        grid-template-columns: 1fr 10rem;
+        align-items: center;
+      }
+    }
+
+    .sindicatos-list:not(:last-child) {
+      margin-bottom: 4rem;
+    }
+
+    .item {
+      width: 100%;
+      display: grid;
+      grid-gap: 2.5rem;
+      grid-template-columns: 20rem 1fr;
+      font-size: $font-size-2;
+      margin: 1rem 0;
+
+      .propriedade {
+        text-align: right;
+      }
+
+    }
+
+    .tornar-colaborador {
+      .title {
+        font-size: $font-size-4;
+        margin-top: 3rem;
+      }
+    }
+
+
+  }
+
+  &-informacoes-adicionais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+
+    .item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      border-bottom: .1rem solid $color-gray-light;
+      font-size: $font-size-2;
+      margin-bottom: 1rem;
+
+      .options {
+
+        span {
+          color: $color-blue;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+
+      }
+    }
+  }
+
+  &-permissoes {
+
+    &-title {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-light;
+    }
+
+    &-gestores {
+      width: 100%;
+      font-size: $font-size-2;
+
+      .subtitle {
+        font-size: $font-size-4;
+        margin: 1rem 0;
+      }
+
+      .negrito {
+        font-weight: $font-weigth-bold;
+        margin-right: .5rem;
+      }
+
+    }
+
+    &-funcionarios {
+      width: 100%;
+      font-size: $font-size-2;
+
+      .subtitle {
+        font-size: $font-size-4;
+        margin: 1rem 0;
+      }
+
+      .negrito {
+        font-weight: $font-weigth-bold;
+        margin-right: .5rem;
+      }
+
+    }
+
+  }
+
+  &-integracao {
+
+    &-title {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-light;
+    }
+
+  }
+
+  &-contador {
+
+    &-title {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-light;
+      margin-bottom: 2rem;
+    }
+
+  }
+
+  &-documentos {
+
+  }
+
+  &-ferias {
+
+  }
+
+  &-admissao {
+
+    &-title {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-light;
+      margin: 1rem 0;
+    }
+
+    &-subtitle {
+      font-size: $font-size-4;
+      font-weight: $font-weigth-light;
+    }
+
+    .text-email {
+      margin-bottom: 1rem;
+      font-size: $font-size-2;
+    }
+
+    .negrito {
+      font-size: $font-size-2;
+    }
+
+    .clique-aqui {
+      color: $color-blue;
+      cursor: pointer;
+    }
+
+    &-item {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      font-size: $font-size-2;
+
+      .acoes {
+        display: flex;
+
+        .margin {
+          margin-left: 1rem;
+        }
+      }
+
+    }
+
+  }
+
+  &-alterar-senha {
+    .required-message {
+      color: $color-red;
+    }
+
+    .body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+  }
+
+}

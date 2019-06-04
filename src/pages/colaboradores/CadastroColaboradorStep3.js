@@ -1,14 +1,14 @@
 import React from 'react';
-import CardSimples from "../../components/CardSimples";
+import CardSimples from "../../components/card/CardSimples";
 import {Field, reduxForm} from "redux-form";
-import InputRow from "../../components/InputRow";
-import SelectRow from "../../components/SelectRow";
+import InputRow from "../../components/form/InputRow";
+import SelectRow from "../../components/form/SelectRow";
 
 let CadastroColaboradorStep3 = ({handleSubmit}) => {
     return (
         <div className={'page-divided'}>
             <form onSubmit={handleSubmit}>
-                <div className={'title-2'}>Documentos</div>
+                <div className={'title-big'}>Documentos</div>
                 <CardSimples>
                     <Field component={InputRow} name={'cpf'} label={'CPF'} value={''}/>
                     <Field component={InputRow} name={'rg'} label={'RG'} value={''}/>
@@ -30,12 +30,12 @@ let CadastroColaboradorStep3 = ({handleSubmit}) => {
                     <Field component={SelectRow} name={'estrangeiro'} label={'E estrangeiro?'} value={''}/>
                 </CardSimples>
 
-                <div className={'title-2'}>Copia de documentos</div>
+                <div className={'title-big'}>Copia de documentos</div>
                 <CardSimples>
                     <Field component={SelectRow} name={'tipoDocumento'} label={'Tipo'} value={''}/>
                 </CardSimples>
 
-                <div className={'title-2'}>Dados Bancarios</div>
+                <div className={'title-big'}>Dados Bancarios</div>
                 <CardSimples>
                     <Field component={SelectRow} name={'banco'} label={'Banco'} value={''}/>
                     <Field component={InputRow} name={'agencia'} label={'Agencia'} value={''}/>

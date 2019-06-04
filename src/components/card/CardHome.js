@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
-import {changeRoute} from '../store/actions/routerActions'
+import {changeRoute} from '../../store/actions/routerActions'
 
 const CardHome = ({title, qtd, message, button, route, color, navigate}) =>
     <div className={'card-home'}>

@@ -22,6 +22,43 @@
   grid-template-rows: 15rem;
 }
 
+.colaboradores {
+  .jornada-semanal {
+    width: 100%;
+
+    .opcoes {
+      margin: 2rem 0;
+    }
+
+    .horario-personalizado {
+      background-color: rgba($color-blue-light, .2);
+      border: .1rem solid rgba($color-blue-light, .6);
+      padding: 2rem;
+      color: $color-blue-dark;
+      margin: 2rem 0;
+      width: 100%;
+
+      .inputs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+      }
+
+      .botoes {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+
+  }
+
+  .botoes-footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+  }
+}
+
 .novo-colaborador {
   width: 100%;
 }
@@ -77,6 +114,7 @@
 
     .outros {
       width: 100%;
+
       div {
         margin-bottom: .6rem;
       }
@@ -94,8 +132,14 @@
       .edit {
         color: $color-blue;
         cursor: pointer;
-        i{
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        i {
           margin-right: .2rem;
+          color: $color-green;
         }
       }
     }
@@ -114,4 +158,127 @@
     }
 
   }
+}
+
+.gerar-relatorio-subtitle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-size: $font-size-10;
+    font-weight: $font-weigth-light;
+  }
+}
+
+.page-relatorios {
+  width: 100%;
+  margin-bottom: 3rem;
+
+  .gerar-relatorio {
+    margin: 2rem;
+
+    i {
+      font-size: $font-size-10;
+      color: $color-green;
+      margin-right: 1rem;
+    }
+
+    span {
+      font-size: $font-size-2;
+      color: $color-blue;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.holerite-modal-subtitle {
+  text-align: center;
+  font-size: $font-size-4;
+  margin: 1rem;
+}
+
+
+
+
+.notificacoes {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 2rem;
+  font-size: $font-size-2;
+  background-color: $color-white;
+
+  ul {
+    height: 100%;
+  }
+
+  li {
+    padding: 1rem 2rem;
+    display: block;
+    border-radius: .2rem;
+    color: $color-blue;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-gray-light;
+    }
+  }
+
+  .active {
+    background-color: $color-gray-light;
+  }
+
+  .body {
+    height: 100%;
+
+    .title {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-light;
+      margin-bottom: 2rem;
+    }
+
+    .item {
+      display: grid;
+      grid-template-columns: 1fr 5fr;
+      margin-bottom: 2.5rem;
+
+      p {
+        margin-top: 1rem;
+      }
+
+      .link {
+        color: $color-blue;
+        text-decoration: underline;
+      }
+
+      .botao {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 2rem;
+      }
+
+    }
+  }
+}
+
+.comunicacao {
+
+  .mural {
+
+    .filtro {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .body {
+
+    }
+
+  }
+
 }

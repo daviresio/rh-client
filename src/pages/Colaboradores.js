@@ -3,20 +3,39 @@ import TabPainel from "../components/TabPainel";
 import TabItem from "../components/TabItem";
 import TabContent from "../components/TabContent";
 import GestaoColaboradores from "./colaboradores/GestaoColaboradores";
-import PageEmpty from "./PageEmpty";
+import PageEmpty from "../layout/PageEmpty";
 import {connect} from "react-redux";
 import RelatoriosColaboradores from "./colaboradores/RelatoriosColaboradores";
+import {colaboradorChangeTab} from "../store/actions/colaboradorActions";
+import {Redirect, Route, Switch} from "react-router";
+import {changeRoute} from "../store/actions/routerActions";
 
-const Colaboradores = ({tab}) => {
+const Colaboradores = props => {
+    const {changeRoute} = props
+    const path = '/colaboradores/'
+    const currentPath = props.router.location.pathname
+
     return (
         <PageEmpty>
             <TabPainel title={'Colaboradores'}>
-                <TabItem number={0} title={'Gestao de colaboradores'}/>
-                <TabItem number={1} title={'Relatorios'}/>
+                <TabItem selectTab={() => changeRoute('gestao')} selected={currentPath === path + 'gestao'}
+                         title={'Gestao de colaboradores'}/>
+                <TabItem selectTab={() => changeRoute('relatorios')}
+                         selected={currentPath === path + 'relatorios'} title={'Relatorios'}/>
             </TabPainel>
-            <TabContent content={tab === 0 ? <GestaoColaboradores/> : <RelatoriosColaboradores/>}/>
+            <TabContent>
+                <Switch>
+                    <Route path={path + 'gestao'} component={GestaoColaboradores}/>
+                    <Route path={path + 'relatorios'} component={RelatoriosColaboradores}/>
+                    <Redirect exact={true} from={path} to={path + 'gestao'}/>
+                </Switch>
+            </TabContent>
         </PageEmpty>
     );
 };
-const mapStateToProps = ({colaborador}) => ({tab: colaborador.tab})
-export default connect(mapStateToProps, null)(Colaboradores);
+const mapStateToProps = state => state
+const mapDispatchToProps = dispatch => ({
+    changeTab: tab => dispatch(colaboradorChangeTab(tab)),
+    changeRoute: route => dispatch(changeRoute(route))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Colaboradores);

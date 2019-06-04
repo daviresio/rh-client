@@ -4,5 +4,53 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: $color-navbar;
+  background-image: linear-gradient(to bottom, $color-navbar-light, $color-navbar);
+  padding: 2rem;
+  font-size: 1.4rem;
+  color: rgba($color-white,.8);
+  box-shadow: 6px 0 8px -8px rgba(0,0,0,0.75);
+
+  .logo {
+    font-size: 3rem;
+    color: $color-white;
+    display: block;
+    text-align: center;
+    margin: 6rem 0;
+  }
+
+  .lista {
+
+    .item {
+      cursor: pointer;
+      padding: 1rem;
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      border-radius: .4rem;
+      span {
+
+      }
+
+      i {
+        margin-right: 1rem;
+        font-size: 2rem;
+      }
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    .active {
+      background-color: rgba($color-white,.2);
+      color: $color-white;
+    }
+  }
+
+  .separador {
+    display: block;
+    height: 0;
+    border-bottom: .1rem solid rgba($color-black, .1);
+    margin: 2rem 0;
+  }
 }

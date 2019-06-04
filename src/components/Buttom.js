@@ -1,9 +1,10 @@
 import React from 'react';
 
-const Buttom = props => {
-    const full = props.full ? 'button-full' : ''
+const Buttom = ({full, icon, style, onClick, color, className, label, type = 'button'}) => {
+    const fullSize = full ? 'button-full' : ''
+    const minWdth = icon ? 'button-icon' : 'button-min-width'
     return (
-        <a onClick={props.click} className={`button button-${props.color} ${full}`}>{props.label}</a>
+        <button onClick={onClick} style={style} type={type} className={`button button-${color} ${fullSize}  ${minWdth} ${className}`}>{label}</button>
     );
 };
 

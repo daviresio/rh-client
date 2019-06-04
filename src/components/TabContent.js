@@ -4,7 +4,7 @@ import Buttom from "./Buttom";
 const TabContent = props => {
     return (
         <div className={'tab-content'}>
-            {props.content}
+            {props.children}
         </div>
     );
 };

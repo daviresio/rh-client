@@ -1,53 +1,54 @@
 import React from 'react';
-import CardSimples from "../../components/CardSimples";
+import CardSimples from "../../components/card/CardSimples";
 import {Field, reduxForm} from "redux-form";
-import InputRow from "../../components/InputRow";
-import SelectRow from "../../components/SelectRow";
+import InputRow from "../../components/form/InputRow";
+import SelectRow from "../../components/form/SelectRow";
+import {localidades} from "../../config/localidades";
 
 let CadastroColaboradorStep2 = ({handleSubmit}) => {
     return (
             <div className={'page-divided'}>
                 <form onSubmit={handleSubmit}>
-                        <div className={'title-2'}>Informacoes Pessoais</div>
+                        <div className={'title-big'}>Informacoes Pessoais</div>
                         <CardSimples>
-                            <Field component={InputRow} name={'dataNascimento'} label={'Data de nascimento'} value={''}/>
-                            <Field component={SelectRow} name={'nacionalidade'} label={'Nacionalidade'} value={''} />
-                            <Field component={SelectRow} name={'corRaca'} label={'Cor/Raca'} value={''} />
-                            <Field component={SelectRow} name={'naturalEstado'} label={'Natural do estado'} value={''} />
-                            <Field component={SelectRow} name={'naturalCidade'} label={'Natural da cidade'} value={''} />
-                            <Field component={SelectRow} name={'sexo'} label={'Sexo'} value={''} />
-                            <Field component={SelectRow} name={'estadoCivil'} label={'Estado civil'} value={''} />
-                            <Field component={InputRow} name={'nomeMae'} label={'Nome da mae'} value={''} />
-                            <Field component={InputRow} name={'nomePai'} label={'Nome do pai'} value={''} />
+                            <Field component={InputRow} name={'dataNascimento'} label={'Data de nascimento'}/>
+                            <Field component={SelectRow} name={'nacionalidade'} label={'Nacionalidade'} />
+                            <Field component={SelectRow} name={'corRaca'} label={'Cor/Raca'} />
+                            <Field component={SelectRow} name={'naturalEstado'} label={'Natural do estado'} />
+                            <Field component={SelectRow} name={'naturalCidade'} label={'Natural da cidade'} />
+                            <Field component={SelectRow} name={'sexo'} label={'Sexo'} />
+                            <Field component={SelectRow} name={'estadoCivil'} label={'Estado civil'} />
+                            <Field component={InputRow} name={'nomeMae'} label={'Nome da mae'} />
+                            <Field component={InputRow} name={'nomePai'} label={'Nome do pai'} />
                         </CardSimples>
 
-                        <div className={'title-2'}>Contatos e Endereco</div>
+                        <div className={'title-big'}>Contatos e Endereco</div>
                         <CardSimples>
-                            <Field component={InputRow} name={'telefone'} label={'Telefone'} value={''}/>
-                            <Field component={InputRow} name={'celular'} label={'Celular'} value={''} />
-                            <Field component={InputRow} name={'cep'} label={'Cep'} value={''} />
-                            <Field component={InputRow} name={'endereco'} label={'Endereco'} value={''} />
-                            <Field component={InputRow} name={'numero'} label={'Numero'} value={''} />
-                            <Field component={InputRow} name={'complemento'} label={'Complemento'} value={''} />
-                            <Field component={InputRow} name={'bairro'} label={'Bairro'} value={''} />
-                            <Field component={SelectRow} name={'estado'} label={'Cidade'} value={''} />
-                            <Field component={SelectRow} name={'cidade'} label={'Estado'} value={''} />
+                            <Field component={InputRow} name={'telefone'} label={'Telefone'}/>
+                            <Field component={InputRow} name={'celular'} label={'Celular'} />
+                            <Field component={InputRow} name={'cep'} label={'Cep'} />
+                            <Field component={InputRow} name={'endereco'} label={'Endereco'} />
+                            <Field component={InputRow} name={'numero'} label={'Numero'} />
+                            <Field component={InputRow} name={'complemento'} label={'Complemento'} />
+                            <Field component={InputRow} name={'bairro'} label={'Bairro'} />
+                            <Field component={SelectRow} name={'estado'} label={'Estado'} />
+                            <Field component={SelectRow} name={'cidade'} label={'Cidade'} />
                         </CardSimples>
 
-                        <div className={'title-2'}>Formacao Academica</div>
+                        <div className={'title-big'}>Formacao Academica</div>
                         <CardSimples>
-                            <Field component={SelectRow} name={'escolaridade'} label={'Escolaridade'} value={''} />
-                            <Field component={InputRow} name={'curso'} label={'Curso'} value={''}/>
-                            <Field component={InputRow} name={'instituicao'} label={'Instituicao'} value={''} />
-                            <Field component={InputRow} name={'Ano de conclusao'} label={'Ano de conclusao'} value={''} />
+                            <Field component={InputRow} name={'escolaridade'} label={'Escolaridade'} />
+                            <Field component={InputRow} name={'curso'} label={'Curso'}/>
+                            <Field component={InputRow} name={'instituicao'} label={'Instituicao'} />
+                            <Field component={InputRow} name={'Ano de conclusao'} label={'Ano de conclusao'} />
                         </CardSimples>
 
-                        <div className={'title-2'}>Informacoes de emergencia</div>
+                        <div className={'title-big'}>Informacoes de emergencia</div>
                         <CardSimples>
                             {'Nao implementado ainda'}
                         </CardSimples>
 
-                        <div className={'title-2'}>Dependentes</div>
+                        <div className={'title-big'}>Dependentes</div>
                         <CardSimples>
                             {'Nao implementado ainda'}
                         </CardSimples>

@@ -1,0 +1,63 @@
+.divided {
+  width: 100%;
+  height: 0;
+  border-bottom: .1rem solid rgba($color-black, .2);
+  margin: 2rem auto;
+}
+
+.edit {
+  margin-bottom: .5rem;
+  color: $color-blue;
+
+  i {
+    color: $color-green;
+    margin-right: .5rem;
+  }
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.remove {
+  color: $color-blue;
+
+  i {
+    color: $color-red;
+    margin-right: .5rem;
+  }
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+}
+
+.configuracoes {
+  color: $color-blue;
+
+  i {
+    margin-right: .5rem;
+  }
+
+  span {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+}
+
+.required {
+  color: $color-red;
+}

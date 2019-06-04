@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Select from "./Select";
+import Select from "./form/Select";
 import {paginationOptions} from "../util/staticValues";
 
 const TableContainer = props => {

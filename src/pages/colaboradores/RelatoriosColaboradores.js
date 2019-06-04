@@ -1,6 +1,6 @@
 import React from 'react';
-import CardBorda from "../../components/CardBorda";
-import CardLateral from "../../components/CardLateral";
+import CardBorda from "../../components/card/CardBorda";
+import CardLateral from "../../components/card/CardLateral";
 
 const RelatoriosColaboradores = () => {
     return (

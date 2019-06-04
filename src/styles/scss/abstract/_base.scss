@@ -34,3 +34,38 @@ a {
   font-weight: $font-weigth-light;
   margin-top: 2rem;
 }
+
+.negrito {
+  font-weight: $font-weigth-bold;
+}
+
+.link {
+  color: $color-blue;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: $font-size-10;
+  font-weight: $font-weigth-light;
+}
+
+.title-2 {
+  font-size: $font-size-8;
+}
+
+.title-big {
+  font-size: 2.3rem;
+  font-weight: $font-weigth-light;
+}
+
+.subtitle {
+  font-size: $font-size-4;
+}
+
+.font-normal {
+  font-size: $font-size-2;
+}

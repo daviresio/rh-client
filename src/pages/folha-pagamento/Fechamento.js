@@ -1,8 +1,8 @@
 import React from 'react';
-import CardSimples from "../../components/CardSimples";
-import Select from "../../components/Select";
-import CardLateral from "../../components/CardLateral";
-import CardLateralSimple from "../../components/CardLateralSimple";
+import CardSimples from "../../components/card/CardSimples";
+import Select from "../../components/form/Select";
+import CardLateral from "../../components/card/CardLateral";
+import CardLateralSimple from "../../components/card/CardLateralSimple";
 
 const Fechamento = () => {
     return (

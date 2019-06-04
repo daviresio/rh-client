@@ -1,9 +1,9 @@
 import React from 'react';
 import Buttom from "../../components/Buttom";
-import CardBorda from "../../components/CardBorda";
+import CardBorda from "../../components/card/CardBorda";
 import Table from "../../components/Table";
 import TableContainer from "../../components/TableContainer";
-import CardSimples from "../../components/CardSimples";
+import CardSimples from "../../components/card/CardSimples";
 import TabCard from "../../components/TabCard";
 
 const ConfiguracaoFolha = () => {
@@ -16,16 +16,7 @@ const ConfiguracaoFolha = () => {
                 </div>
                 <CardBorda title={'Eventos'}>
                     <TableContainer>
-                        <Table data={[{
-                            nome: 'davi Resio Moreira',
-                            cargo: 'programador',
-                            departamento: 'ti'
-                        },
-                            {
-                                nome: 'princesa bruna sergio da silva',
-                                cargo: 'designer',
-                                departamento: 'web'
-                            }]}/>
+                        <Table header={['Cod', 'Evento']} />
                     </TableContainer>
                 </CardBorda>
             </div>

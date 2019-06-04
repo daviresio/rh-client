@@ -1,5 +1,5 @@
 import React from 'react';
-import CardSimples from "../../components/CardSimples";
+import CardSimples from "../../components/card/CardSimples";
 import {reduxForm} from "redux-form";
 
 let CadastroColaboradorStep4 = ({handleSubmit}) => {

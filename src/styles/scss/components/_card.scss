@@ -76,6 +76,7 @@
 
 
 .card-simples {
+  width: 100%;
   background-color: $color-white;
   @include borda-light;
   border-top: .2rem solid $color-blue;
@@ -84,12 +85,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  &-start {
+    align-items: flex-start;
+  }
 }
 
 
 .card-borda {
   width: 100%;
-  border: .1rem solid rgba($color-gray, .6);
   border-top: none;
   margin-top: 2rem;
 
@@ -126,6 +130,24 @@
     flex-direction: column;
     align-items: center;
     background-color: $color-white;
+    border: .1rem solid rgba($color-gray, .6);
+    border-top: none;
+
+    &-start {
+      align-items: flex-start;
+    }
+  }
+}
+
+.card-expanded {
+  @include borda-light;
+  cursor: pointer;
+  transition: all .5s;
+
+  .closed {
+    height: 0;
+    overflow: hidden;
+    transition: all .5s;
   }
 }
 
@@ -170,7 +192,7 @@
   }
 
   .fas {
-    font-size: $font-size-10;
+    font-size: 4rem;
     color: $color-blue;
     display: flex;
     align-items: center;
@@ -201,6 +223,7 @@
   color: $color-white;
   cursor: pointer;
   text-align: center;
+  padding: 2rem;
 
   &-blue {
     background-color: $color-blue;

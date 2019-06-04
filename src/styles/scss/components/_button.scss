@@ -1,0 +1,64 @@
+.button {
+  color: $color-white;
+  display: inline-block;
+  padding: 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-align: center;
+  border-radius: .2rem;
+  border: none;
+  outline: none;
+
+  &-full {
+    width: 100%;
+  }
+
+  &-min-width {
+    min-width: 10rem;
+  }
+
+  &-icon {
+    min-width: 5rem;
+  }
+
+  &-blue {
+    background-color: $color-blue;
+
+    &:hover {
+      background-color: $color-blue-dark;
+    }
+  }
+
+  &-green {
+    background-color: $color-green;
+
+    &:hover {
+      background-color: $color-green-dark;
+    }
+  }
+
+  &-black {
+    background-color: $color-black-medium;
+
+    &:hover {
+      background-color: $color-black-dark;
+    }
+  }
+
+  &-red {
+    background-color: $color-red;
+
+    &:hover {
+      background-color: $color-red-dark;
+    }
+  }
+
+  &-gray {
+    background-color: $color-gray-light;
+    color: $color-black;
+
+    &:hover {
+      background-color: $color-gray;
+    }
+  }
+}

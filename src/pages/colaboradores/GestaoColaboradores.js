@@ -1,6 +1,6 @@
 import React from 'react';
 import Buttom from "../../components/Buttom";
-import CardBorda from "../../components/CardBorda";
+import CardBorda from "../../components/card/CardBorda";
 import TableContainer from "../../components/TableContainer";
 import Table from "../../components/Table";
 import {changeRoute} from "../../store/actions/routerActions";
@@ -9,7 +9,7 @@ import {connect} from "react-redux";
 const GestaoColaboradores = ({navigate}) => {
     return (
         <React.Fragment>
-            <Buttom click={() => navigate('/colaboradores/novo')} color={'green'} label={'Adicionar Colaborador'}/>
+            <Buttom onClick={() => navigate('/colaboradores/novo')} color={'green'} label={'Adicionar Colaborador'}/>
             <div className={'gestao-colaboradores page-divided'}>
                 <div>
                     <CardBorda icon={'users'} title={`Ativos(1)`} config={true}>

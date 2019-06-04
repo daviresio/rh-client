@@ -4,6 +4,198 @@
   height: $toolbar-height;
   position: fixed;
   z-index: 1;
+  background-color: $color-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  box-shadow: 0 5px 8px -8px rgba(0, 0, 0, 0.75);
 
-  background-color: red;
+
+  .rota {
+
+    i {
+      margin-right: 1.8rem;
+      font-size: 2.6rem;
+      color: $color-navbar;
+    }
+
+    span {
+      font-size: $font-size-10;
+      font-weight: $font-weigth-bold;
+    }
+  }
+
+  .opcoes {
+    display: flex;
+    align-items: center;
+
+    .empresa {
+      @include borda-light;
+      border-bottom: none;
+      border-top: none;
+      width: 25rem;
+      margin: 2rem 2rem 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: $font-size-2;
+      padding: 1rem;
+      cursor: pointer;
+      position: relative;
+
+      &-selecionada {
+
+        i {
+          color: rgba($color-black, .6);
+          font-size: $font-size-4;
+          margin-right: .5rem;
+        }
+      }
+
+      &-pesquisa {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.75);
+        border-radius: .5rem;
+        background-color: $color-white;
+
+        &-visible {
+          top: 6.5rem;
+          opacity: 1;
+          transition: all .2s;
+        }
+
+        &-hidden {
+          top: 6rem;
+          opacity: 0;
+          pointer-events: none;
+          transition: all .2s;
+        }
+
+        .item {
+          padding: 1rem 2rem;
+
+          &:hover {
+            background-color: rgba($color-gray-light, .4);
+          }
+        }
+
+        .adicionar {
+          i {
+            margin-right: 1rem;
+            color: $color-green;
+          }
+
+          border-bottom: solid .1rem rgba($color-gray-light, .8);
+        }
+
+        &:before {
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 1rem;
+          width: 0;
+          height: 0;
+          border-left: .8rem solid transparent;
+          border-right: .8rem solid transparent;
+          border-bottom: .8rem solid $color-white;
+          position: absolute;
+          top: -.8rem;
+          right: 3rem;
+        }
+      }
+    }
+
+  }
+
+  .usuario {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    background-color: rgba($color-gray, .6);
+    text-align: center;
+    box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    position: relative;
+
+    .nome {
+      font-size: 2.6rem;
+      color: $color-white;
+      margin-top: .2rem;
+    }
+
+    .opcoes {
+      position: absolute;
+      top: 7rem;
+      left: -15rem;
+      width: 20rem;
+      box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.75);
+      border-radius: .5rem;
+      background-color: $color-white;
+      display: flex;
+      flex-direction: column;
+
+      &-visible {
+        top: 7rem;
+        opacity: 1;
+        transition: all .2s;
+      }
+
+      &-hidden {
+        top: 6rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .2s;
+      }
+
+      &:before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 1rem;
+        width: 0;
+        height: 0;
+        border-left: .8rem solid transparent;
+        border-right: .8rem solid transparent;
+        border-bottom: .8rem solid $color-white;
+        position: absolute;
+        top: -.8rem;
+        right: 1rem;
+      }
+
+      .item{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1rem;
+        color: rgba($color-black, .7);
+
+        i {
+          font-size: $font-size-4;
+          margin-right: 1rem;
+        }
+
+        span {
+          font-size: $font-size-2;
+        }
+
+        &:hover {
+          background-color: rgba($color-gray-light, .4);
+        }
+
+      }
+
+      .item:not(:last-child) {
+        border-bottom: solid .1rem rgba($color-gray-light, .8);
+      }
+
+      .item:last-child {
+        color: $color-red;
+      }
+
+    }
+  }
+
 }

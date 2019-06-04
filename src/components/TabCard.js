@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const TabCard = ({tabTitle, color, children, content}) => {
+const TabCard = ({tabTitle, color, content, start}) => {
 
     const [tabActive, changeTab] = useState(0)
 
@@ -12,7 +12,7 @@ const TabCard = ({tabTitle, color, children, content}) => {
                     <div key={v} onClick={()=> changeTab(i)} className={`card-tab-title ${tabActive === i ? 'card-tab-active' : ''}`}>{v}</div>)}</div>
             </div>
 
-            <div className={'card-borda-body'}>
+            <div className={start ? 'card-borda-body card-borda-body-start' : 'card-borda-body'}>
                 {content[tabActive]}
             </div>
 
