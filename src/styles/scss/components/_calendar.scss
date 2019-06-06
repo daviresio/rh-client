@@ -1,0 +1,71 @@
+.calendar {
+  position: relative;
+  width: 100%;
+  font-size: $font-size-2;
+
+  .linha {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-left: .1rem solid rgba($color-gray, .6);
+
+    &:first-child {
+      border-top: .1rem solid rgba($color-gray, .6);
+    }
+
+    &:last-child {
+      border-bottom: .1rem solid rgba($color-gray, .6);
+    }
+
+    .other-month {
+      color: $color-gray;
+    }
+
+    .dia {
+      border-top: .1rem solid rgba($color-gray, .6);
+      border-right: .1rem solid rgba($color-gray, .6);
+      min-height: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: .5rem;
+
+
+      &-header {
+        display: flex;
+        justify-content: center;
+        font-weight: $font-weigth-bold;
+        font-size: $font-size-3;
+      }
+
+    }
+
+    .active {
+      background-color: $color-yellow-light;
+    }
+  }
+
+  &-header {
+    width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+
+    .data-actions {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+
+      .title {
+        margin: 0 1rem;
+      }
+    }
+
+    .botoes-calendar {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+}

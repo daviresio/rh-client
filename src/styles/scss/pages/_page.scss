@@ -20,6 +20,24 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 15rem;
+
+}
+
+.home-center {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-gap: 2rem;
+
+  .content {
+    min-height: 25rem;
+  }
+
+  .footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .colaboradores {

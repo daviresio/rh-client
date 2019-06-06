@@ -18,6 +18,7 @@ import Configuracao from "../pages/Configuracao";
 import Notificacoes from "../pages/Notificacoes";
 import AlterarSenha from "../pages/configuracao/AlterarSenha";
 import Financeiro from "../pages/Financeiro";
+import VizualizarColaborador from "../pages/colaboradores/VizualizarColaborador";
 
 export default () =>
     (
@@ -29,6 +30,7 @@ export default () =>
                     <Route path={'/'} exact={true} component={Home}/>
                     <Route path={'/colaboradores/cadastro'} component={NovoColaborador}/>
                     <Route path={'/colaboradores'} component={Colaboradores}/>
+                    <Route path={'/colaboradores/:id'} component={VizualizarColaborador}/>
                     <Route path={'/ferias'} exact={true} component={Ferias}/>
                     <Route path={'/beneficios'} exact={true} component={Beneficios}/>
                     <Route path={'/folha'} component={FolhaPagamento}/>

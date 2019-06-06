@@ -174,6 +174,9 @@ a {
 .card-borda-header-orange {
   background-color: #ED9619;
 }
+.card-borda-header-dark {
+  background-color: #7A869C;
+}
 .card-borda-body {
   padding: 2rem;
   display: flex;
@@ -781,7 +784,7 @@ a {
   font-size: 1.2rem;
   cursor: pointer;
   text-align: center;
-  border-radius: 0.2rem;
+  border-radius: 0.1rem;
   border: none;
   outline: none;
 }
@@ -913,6 +916,64 @@ a {
   color: #FFF;
   background-color: #4F8EDC;
   cursor: pointer;
+}
+
+.calendar {
+  position: relative;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.calendar .linha {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-left: 0.1rem solid rgba(204, 204, 204, 0.6);
+}
+.calendar .linha:first-child {
+  border-top: 0.1rem solid rgba(204, 204, 204, 0.6);
+}
+.calendar .linha:last-child {
+  border-bottom: 0.1rem solid rgba(204, 204, 204, 0.6);
+}
+.calendar .linha .other-month {
+  color: #CCCCCC;
+}
+.calendar .linha .dia {
+  border-top: 0.1rem solid rgba(204, 204, 204, 0.6);
+  border-right: 0.1rem solid rgba(204, 204, 204, 0.6);
+  min-height: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.5rem;
+}
+.calendar .linha .dia-header {
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.calendar .linha .active {
+  background-color: #FCF8E3;
+}
+.calendar-header {
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.calendar-header .data-actions {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+.calendar-header .data-actions .title {
+  margin: 0 1rem;
+}
+.calendar-header .botoes-calendar {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .navbar {
@@ -1147,6 +1208,21 @@ a {
   grid-gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 15rem;
+}
+
+.home-center {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  grid-gap: 2rem;
+}
+.home-center .content {
+  min-height: 25rem;
+}
+.home-center .footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .colaboradores .jornada-semanal {
