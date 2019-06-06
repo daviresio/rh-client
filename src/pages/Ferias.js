@@ -35,6 +35,7 @@ const Ferias = () => {
                     </div>
                     <CardBorda title={`Saldo de ferias`}>
                         <Table header={['Nome', 'Início do aquisitivo', 'Fim do aquisitivo', 'Fim do concessivo', 'Saldo proporcional', 'Saldo disponível']}
+                               keys={['nome', 'inicioDoAquisitivo', 'fimDoAquisitivo', 'fimDoConcessivo', 'saldoProporcional', 'saldoDisponivel']}
                         data={[{
                             nome: 'Jonas Fake ',
                             inicioDoAquisitivo: '27/02/2019',

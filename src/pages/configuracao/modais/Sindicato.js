@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('sindicato', false)),
     save: value => dispatch(save('sindicatos', value, {modal: 'sindicato'})),
-    update: value => dispatch(update('sindicatos', value, {modal: 'sindicato'})),
+    update: value => dispatch(update('sindicatos', value, {modal: 'sindicato', list: true})),
 })
 
 Sindicato = reduxForm({form: 'sindicato', enableReinitialize: true})(Sindicato)

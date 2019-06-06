@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from "./Select";
 
-const SelectRow = ({input, label, detail, actionLabel, action, options, inputLabel = 'nome', valueLabel = 'id', required}) => {
+const SelectRow = ({input, label, detail, actionLabel, action, options, inputLabel, valueLabel, required}) => {
     const requiredLabel = required ? <span className={'required'}>{' *'}</span> : null
     return (
         <div className={'input-container'}>

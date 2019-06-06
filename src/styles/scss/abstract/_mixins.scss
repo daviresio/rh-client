@@ -1,4 +1,7 @@
-
 @mixin borda-light {
   border: .1rem solid rgba($color-gray, .6);
+}
+
+@mixin box-shadow-light {
+  box-shadow: 0 0 .7rem -.3rem rgba(0,0,0,0.75);
 }

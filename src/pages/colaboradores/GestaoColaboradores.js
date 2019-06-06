@@ -1,29 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
 import TableContainer from "../../components/TableContainer";
 import Table from "../../components/Table";
 import {changeRoute} from "../../store/actions/routerActions";
 import {connect} from "react-redux";
+import {loadList} from "../../store/actions/serverActions";
 
-const GestaoColaboradores = ({navigate}) => {
+const GestaoColaboradores = ({navigate, loadData, ...props}) => {
+
+    const {colaboradores} = props.serverValues
+
+    useEffect(()=> {
+        loadData('colaboradores')
+    }, [])
+
     return (
         <React.Fragment>
-            <Buttom onClick={() => navigate('/colaboradores/novo')} color={'green'} label={'Adicionar Colaborador'}/>
+            <Buttom onClick={() => navigate('/colaboradores/cadastro')} color={'green'} label={'Adicionar Colaborador'}/>
             <div className={'gestao-colaboradores page-divided'}>
                 <div>
                     <CardBorda icon={'users'} title={`Ativos(1)`} config={true}>
                         <TableContainer>
-                            <Table data={[{
-                                nome: 'davi Resio Moreira',
-                                cargo: 'programador',
-                                departamento: 'ti'
-                            },
-                                {
-                                    nome: 'princesa bruna sergio da silva',
-                                    cargo: 'designer',
-                                    departamento: 'web'
-                                }]}/>
+                            <Table header={['nome', 'cargo', 'departamento']} data={colaboradores} keys={['nome', 'cargo.nome', 'departamento.nome']}/>
                         </TableContainer>
                     </CardBorda>
                 </div>
@@ -44,5 +43,12 @@ const GestaoColaboradores = ({navigate}) => {
     );
 };
 
-const mapDispatchToProps = dispatch => ({navigate: route => dispatch(changeRoute(route))})
-export default connect(null, mapDispatchToProps)(GestaoColaboradores)
+const mapStateToProps = state => ({
+    serverValues: state.serverValues
+})
+
+const mapDispatchToProps = dispatch => ({
+    navigate: route => dispatch(changeRoute(route)),
+    loadData: entity => dispatch(loadList(entity)),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(GestaoColaboradores)

@@ -358,6 +358,7 @@ a {
   display: grid;
   grid-template-columns: 1.5fr 2fr 1.5fr;
   align-items: center;
+  grid-gap: 1.2rem;
 }
 .input-container .input-label {
   font-size: 1.3rem;
@@ -395,6 +396,9 @@ a {
 }
 .input-padding {
   padding: 1.5rem 1rem;
+}
+.input-margin {
+  margin: 1.5rem 1rem;
 }
 .input:focus {
   border: 0.1rem solid #4F8EDC;
@@ -444,6 +448,8 @@ a {
   border-top: none;
   border-radius: 0.2rem;
   z-index: 1;
+  max-height: 16.6rem;
+  overflow-y: auto;
 }
 .select-list-item {
   padding: 0.5rem;
@@ -688,7 +694,7 @@ a {
 
 .message {
   margin: 2rem;
-  width: 100%;
+  width: 96%;
 }
 .message i {
   margin-right: 1rem;
@@ -818,6 +824,95 @@ a {
 }
 .button-gray:hover {
   background-color: #CCCCCC;
+}
+
+.datepicker {
+  position: relative;
+  width: 100%;
+}
+.datepicker .tooltip {
+  width: 0;
+  height: 0;
+  border: 1.1rem solid transparent;
+  border-bottom: 1.1rem solid #4F8EDC;
+  position: absolute;
+  left: 2rem;
+  top: 3.8rem;
+  z-index: 2;
+}
+.datepicker .container {
+  background-color: #FFF;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 0 0.7rem -0.3rem rgba(0, 0, 0, 0.75);
+  position: absolute;
+  top: 6rem;
+  left: 0;
+  z-index: 1;
+}
+.datepicker .container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4F8EDC;
+  color: #FFF;
+}
+.datepicker .container .header i {
+  font-size: 1.8rem;
+  margin: 0 1rem;
+  cursor: pointer;
+}
+.datepicker .container .header .mes {
+  text-align: center;
+  font-size: 2rem;
+  padding: 0.5rem 0;
+}
+.datepicker .container .body-container {
+  font-size: 1.2rem;
+}
+.datepicker .container .body-container .header {
+  background-color: #4F8EDC;
+  color: #FFF;
+}
+.datepicker .container .body-container .linha {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.datepicker .container .body-container .linha .dia-header {
+  padding: 0.5rem;
+}
+.datepicker .container .body-container .linha .dia {
+  padding: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+.datepicker .container .body-container .linha .other-month {
+  color: #CCCCCC;
+  cursor: default;
+}
+.datepicker .container .body-container .linha .active {
+  background-color: #4F8EDC;
+  color: #FFF;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.datepicker-input-container {
+  position: relative;
+}
+.datepicker-input-container .icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  background-color: #4F8EDC;
+  cursor: pointer;
 }
 
 .navbar {
@@ -1077,7 +1172,8 @@ a {
   display: flex;
   justify-content: flex-end;
 }
-.colaboradores .botoes-footer {
+
+.botoes-footer {
   display: flex;
   justify-content: space-between;
   margin: 2rem 0;

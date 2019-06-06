@@ -30,7 +30,7 @@ const mapStateToProps = ({modal}) => ({
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('departamento', false)),
     save: value => dispatch(save('departamentos', value, {modal: 'departamento'})),
-    update: value => dispatch(update('departamentos', value, {modal: 'departamento'})),
+    update: value => dispatch(update('departamentos', value, {modal: 'departamento', list: true})),
 })
 
 Departamento = reduxForm({form: 'departamento', enableReinitialize: true})(Departamento)

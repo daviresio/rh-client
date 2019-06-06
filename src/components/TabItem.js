@@ -1,8 +1,8 @@
 import React from 'react';
 const TabItem = props => {
-    const {title, selected, selectTab} = props;
+    const {title, selected, onClick} = props;
     return (
-        <div onClick={selectTab} className={selected ? 'tab-item tab-active' : 'tab-item'}>{title}</div>
+        <div onClick={onClick} className={selected ? 'tab-item tab-active' : 'tab-item'}>{title}</div>
     );
 };
 

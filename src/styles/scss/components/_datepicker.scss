@@ -1,0 +1,104 @@
+.datepicker {
+  position: relative;
+  width: 100%;
+
+  .tooltip {
+    width: 0;
+    height: 0;
+    border: 1.1rem solid transparent;
+    border-bottom: 1.1rem solid $color-blue;
+    position: absolute;
+    left: 2rem;
+    top: 3.8rem;
+    z-index: 2;
+  }
+
+  .container {
+    background-color: $color-white;
+    border-radius: .5rem;
+    overflow: hidden;
+    @include box-shadow-light;
+    position: absolute;
+    top: 6rem;
+    left: 0;
+    z-index: 1;
+
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: $color-blue;
+      color: $color-white;
+
+      i {
+        font-size: $font-size-8;
+        margin: 0 1rem;
+        cursor: pointer;
+      }
+
+      .mes {
+        text-align: center;
+        font-size: $font-size-10;
+        padding: .5rem 0;
+      }
+
+    }
+
+    .body-container {
+      font-size: $font-size-2;
+
+      .header {
+        background-color: $color-blue;
+        color: $color-white;
+      }
+
+      .linha {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+
+        .dia-header {
+          padding: .5rem;
+        }
+
+        .dia {
+          padding: .5rem;
+          cursor: pointer;
+          position: relative;
+          text-align: center;
+        }
+
+        .other-month {
+          color: $color-gray;
+          cursor: default;
+        }
+
+        .active {
+          background-color: $color-blue;
+          color: $color-white;
+          padding: .5rem;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+.datepicker-input-container {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+    background-color: $color-blue;
+    cursor: pointer;
+  }
+
+}

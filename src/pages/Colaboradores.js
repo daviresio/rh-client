@@ -18,9 +18,9 @@ const Colaboradores = props => {
     return (
         <PageEmpty>
             <TabPainel title={'Colaboradores'}>
-                <TabItem selectTab={() => changeRoute('gestao')} selected={currentPath === path + 'gestao'}
+                <TabItem onClick={() => changeRoute(path + 'gestao')} selected={currentPath === path + 'gestao'}
                          title={'Gestao de colaboradores'}/>
-                <TabItem selectTab={() => changeRoute('relatorios')}
+                <TabItem onClick={() => changeRoute(path + 'relatorios')}
                          selected={currentPath === path + 'relatorios'} title={'Relatorios'}/>
             </TabPainel>
             <TabContent>

@@ -24,14 +24,14 @@ const Configuracao = props => {
     return (
         <PageEmpty>
             <TabPainel title={'Nome da empresa'}>
-                <TabItem selectTab={()=> changeRoute(path + 'informacoes-basicas')} selected={path + 'informacoes-basicas' === currentPath} title={'Informacoes basicas'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'informacoes-adicionais')} selected={path + 'informacoes-adicionais' === currentPath} title={'Cargos, departamento e centro de custo'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'permissoes')} selected={path + 'permissoes' === currentPath} title={'Permissoes'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'integracoes')} selected={path + 'integracoes' === currentPath} title={'Integracoes'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'contabilidade')} selected={path + 'contabilidade' === currentPath} title={'Contabilidade'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'documentos-minutas')} selected={path + 'documentos-minutas' === currentPath} title={'Documentos e minutas'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'ferias')} selected={path + 'ferias' === currentPath} title={'Ferias'}/>
-                <TabItem selectTab={()=> changeRoute(path + 'admissao-desligamento')} selected={path + 'admissao-desligamento' === currentPath} title={'Admissao/Desligamento'}/>
+                <TabItem onClick={()=> changeRoute(path + 'informacoes-basicas')} selected={path + 'informacoes-basicas' === currentPath} title={'Informacoes basicas'}/>
+                <TabItem onClick={()=> changeRoute(path + 'informacoes-adicionais')} selected={path + 'informacoes-adicionais' === currentPath} title={'Cargos, departamento e centro de custo'}/>
+                <TabItem onClick={()=> changeRoute(path + 'permissoes')} selected={path + 'permissoes' === currentPath} title={'Permissoes'}/>
+                <TabItem onClick={()=> changeRoute(path + 'integracoes')} selected={path + 'integracoes' === currentPath} title={'Integracoes'}/>
+                <TabItem onClick={()=> changeRoute(path + 'contabilidade')} selected={path + 'contabilidade' === currentPath} title={'Contabilidade'}/>
+                <TabItem onClick={()=> changeRoute(path + 'documentos-minutas')} selected={path + 'documentos-minutas' === currentPath} title={'Documentos e minutas'}/>
+                <TabItem onClick={()=> changeRoute(path + 'ferias')} selected={path + 'ferias' === currentPath} title={'Ferias'}/>
+                <TabItem onClick={()=> changeRoute(path + 'admissao-desligamento')} selected={path + 'admissao-desligamento' === currentPath} title={'Admissao/Desligamento'}/>
             </TabPainel>
             <TabContent>
                 <Switch>

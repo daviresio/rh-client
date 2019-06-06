@@ -27,7 +27,7 @@ export default () =>
                 <Navbar/>
                 <Switch>
                     <Route path={'/'} exact={true} component={Home}/>
-                    <Route path={'/colaboradores/novo'} exact={true} component={NovoColaborador}/>
+                    <Route path={'/colaboradores/cadastro'} component={NovoColaborador}/>
                     <Route path={'/colaboradores'} component={Colaboradores}/>
                     <Route path={'/ferias'} exact={true} component={Ferias}/>
                     <Route path={'/beneficios'} exact={true} component={Beneficios}/>
