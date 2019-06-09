@@ -5,9 +5,9 @@ import Edit from "../../components/util/Edit";
 import Delete from "../../components/util/Delete";
 import {connect} from "react-redux";
 import {changeModalVisible} from "../../store/actions/modalActions";
-import Cargo from "./modais/Cargo";
-import Departamento from "./modais/Departamento";
-import CentroDeCusto from "./modais/CentroDeCusto";
+import Cargo from "../../modais/Cargo";
+import Departamento from "../../modais/Departamento";
+import CentroDeCusto from "../../modais/CentroDeCusto";
 import {loadList, remove} from "../../store/actions/serverActions";
 
 const InformacoesAdicionais = props => {

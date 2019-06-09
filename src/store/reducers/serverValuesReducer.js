@@ -8,7 +8,6 @@ const INITIAL_STATE = {
     sindicatos: [],
     loading: [],
     colaborador: {},
-
 }
 
 export const serverValues = (state = INITIAL_STATE, action) => {

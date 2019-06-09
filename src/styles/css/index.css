@@ -151,6 +151,13 @@ a {
   border-top: none;
   margin-top: 2rem;
 }
+.card-borda .icon-action {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.card-borda .icon-action:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
 .card-borda-header {
   height: 4rem;
   width: 100%;
@@ -161,6 +168,9 @@ a {
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
+}
+.card-borda-header .fas {
+  margin-right: 1rem;
 }
 .card-borda-header > i {
   cursor: pointer;
@@ -368,6 +378,7 @@ a {
   justify-self: flex-end;
   align-self: center;
   margin-bottom: 0.5rem;
+  text-align: right;
 }
 .input-container .input-detail {
   margin-top: 1rem;
@@ -940,7 +951,7 @@ a {
 .calendar .linha .dia {
   border-top: 0.1rem solid rgba(204, 204, 204, 0.6);
   border-right: 0.1rem solid rgba(204, 204, 204, 0.6);
-  min-height: 5rem;
+  min-height: 6rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -952,6 +963,9 @@ a {
   font-weight: 700;
   font-size: 1.3rem;
 }
+.calendar .linha .dia-header:last-child {
+  border-right: 0.1rem solid rgba(204, 204, 204, 0.6);
+}
 .calendar .linha .active {
   background-color: #FCF8E3;
 }
@@ -959,6 +973,7 @@ a {
   width: 100%;
   margin-bottom: 2rem;
   position: relative;
+  padding-bottom: 4rem;
 }
 .calendar-header .data-actions {
   position: absolute;
@@ -1572,6 +1587,109 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.visualizar-colaborador {
+  width: calc(100vw - 25rem);
+  transform: translateX(25rem) translateY(7rem);
+  padding: 3rem;
+}
+.visualizar-colaborador .title-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.visualizar-colaborador .editar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.visualizar-colaborador .principal .header {
+  display: flex;
+  justify-content: space-between;
+}
+.visualizar-colaborador .informacoes-principais {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  grid-gap: 4rem;
+}
+.visualizar-colaborador .informacoes-principais .foto {
+  font-size: 1.2rem;
+  color: #4F8EDC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.visualizar-colaborador .informacoes-principais .foto .exportar {
+  cursor: pointer;
+}
+.visualizar-colaborador .informacoes-principais .foto .exportar:hover {
+  text-decoration: underline;
+}
+.visualizar-colaborador .informacoes-principais .dados {
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+.visualizar-colaborador .informacoes-principais .dados .nome {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #16acdc;
+  line-height: 1rem;
+  margin-bottom: 2rem;
+}
+.visualizar-colaborador .informacoes-principais .dados > div {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.visualizar-colaborador .informacoes-principais .dados > div i {
+  margin-right: 1rem;
+}
+.visualizar-colaborador .informacoes-principais .dados > div span:last-child {
+  margin-left: 1rem;
+}
+.visualizar-colaborador .corpo {
+  width: 100%;
+  font-size: 1.2rem;
+}
+.visualizar-colaborador .corpo .title {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #16acdc;
+  margin: 1rem 0;
+}
+.visualizar-colaborador .corpo .conteudo {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  grid-gap: 2rem;
+  margin-bottom: 1rem;
+}
+.visualizar-colaborador .corpo .conteudo .campo {
+  display: flex;
+  justify-content: flex-end;
+  color: rgba(0, 0, 0, 0.4);
+}
+.visualizar-colaborador .corpo .conteudo .valor {
+  color: rgba(0, 0, 0, 0.8);
+}
+.visualizar-colaborador .margin-btn {
+  margin-top: 2rem;
+}
+.visualizar-colaborador .secundario .conteudo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  grid-gap: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+.visualizar-colaborador .secundario .conteudo .campo {
+  display: flex;
+  justify-content: flex-end;
+  color: rgba(0, 0, 0, 0.4);
+  text-align: right;
+}
+.visualizar-colaborador .secundario .conteudo .valor {
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /*# sourceMappingURL=index.css.map */

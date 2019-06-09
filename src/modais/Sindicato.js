@@ -1,10 +1,10 @@
 import React from 'react';
-import Modal from "../../../components/Modal";
+import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
-import InputRow from "../../../components/form/InputRow";
-import Buttom from "../../../components/Buttom";
-import {changeModalVisible} from "../../../store/actions/modalActions";
-import {save, update} from "../../../store/actions/serverActions";
+import InputRow from "../components/form/InputRow";
+import Buttom from "../components/Buttom";
+import {changeModalVisible} from "../store/actions/modalActions";
+import {save, update} from "../store/actions/serverActions";
 import {connect} from "react-redux";
 
 let Sindicato = props => {

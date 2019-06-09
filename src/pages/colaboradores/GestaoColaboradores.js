@@ -20,7 +20,7 @@ const GestaoColaboradores = ({navigate, loadData, ...props}) => {
             <Buttom onClick={() => navigate('/colaboradores/cadastro')} color={'green'} label={'Adicionar Colaborador'}/>
             <div className={'gestao-colaboradores page-divided'}>
                 <div>
-                    <CardBorda icon={'users'} title={`Ativos(1)`} config={true}>
+                    <CardBorda icon={'users'} title={`Ativos(1)`} iconAction={'config'}>
                         <TableContainer>
                             <Table header={['nome', 'cargo', 'departamento']} data={colaboradores} keys={['nome', 'cargo.nome', 'departamento.nome']}/>
                         </TableContainer>

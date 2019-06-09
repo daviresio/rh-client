@@ -16,6 +16,22 @@ const INITIAL_STATE = {
     sindicato: {
         visible: false,
         value: null,
+    },
+    salario: {
+        visible: false,
+        value: null
+    },
+    banco: {
+        visible: false,
+        value: null
+    },
+    documento: {
+        visible: false,
+        value: null
+    },
+    holerite: {
+        visible: false,
+        value: null
     }
 }
 

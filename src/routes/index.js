@@ -28,9 +28,9 @@ export default () =>
                 <Navbar/>
                 <Switch>
                     <Route path={'/'} exact={true} component={Home}/>
+                    <Route path={'/colaboradores/visualizar/:id'} component={VizualizarColaborador}/>
                     <Route path={'/colaboradores/cadastro'} component={NovoColaborador}/>
                     <Route path={'/colaboradores'} component={Colaboradores}/>
-                    <Route path={'/colaboradores/:id'} component={VizualizarColaborador}/>
                     <Route path={'/ferias'} exact={true} component={Ferias}/>
                     <Route path={'/beneficios'} exact={true} component={Beneficios}/>
                     <Route path={'/folha'} component={FolhaPagamento}/>

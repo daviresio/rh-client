@@ -1,9 +1,10 @@
 import React from 'react';
 
 const UploadPhoto = ({label}) => {
+    const showLabel = <div className={'input-label'}>{label}</div>
     return (
         <div className={'input-container'}>
-            <div className={'input-label'}>{label}</div>
+            {showLabel}
         <div className={'photo-container'}>
             <div className={'photo-box'}>
                 <i className={'fas fa-camera photo-icon'} />

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import CardSimples from "../../components/card/CardSimples";
 import Buttom from "../../components/Buttom";
 import Divided from "../../components/util/Divided";
-import Sindicato from "./modais/Sindicato";
+import Sindicato from "../../modais/Sindicato";
 import {connect} from "react-redux";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import {loadList, remove} from "../../store/actions/serverActions";

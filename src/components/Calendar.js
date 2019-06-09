@@ -129,16 +129,19 @@ class Calendar extends Component {
 
                 <div className={'calendar-header'}>
                     <div className={'data-actions'}>
-                        <Buttom color={'gray'} icon label={<i className="fas fa-angle-left" />}/>
+                        <Buttom color={'gray'} icon label={<i className="fas fa-angle-left" />} onClick={this.previous.bind(this)}/>
                         <span className={'title'}>{`${this.state.months[this.state.dateController.getMonth()]} - ${this.state.dateController.getFullYear()}`}</span>
-                        <Buttom color={'gray'} icon label={<i className="fas fa-angle-right" />}/>
+                        <Buttom color={'gray'} icon label={<i className="fas fa-angle-right" />} onClick={this.next.bind(this)}/>
                     </div>
 
                 <div className={'botoes-calendar'}>
+                    {/*
                     <Buttom color={'gray'} label={'Dia'} icon/>
                     <Buttom color={'blue'} label={'Mes'} icon/>
                     <Buttom color={'gray'} label={'Ano'} icon/>
+                    */}
                 </div>
+
                 </div>
 
 

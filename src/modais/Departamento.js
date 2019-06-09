@@ -1,11 +1,11 @@
-import Modal from "../../../components/Modal";
+import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
-import InputRow from "../../../components/form/InputRow";
+import InputRow from "../components/form/InputRow";
 import {connect} from "react-redux";
-import {changeModalVisible} from "../../../store/actions/modalActions";
+import {changeModalVisible} from "../store/actions/modalActions";
 import React from "react";
-import {save, update} from "../../../store/actions/serverActions";
-import Buttom from "../../../components/Buttom";
+import {save, update} from "../store/actions/serverActions";
+import Buttom from "../components/Buttom";
 
 let Departamento = props => {
     const {closeModal, visible, handleSubmit, save, update} = props
