@@ -18,13 +18,15 @@ const CadastroColaborador = props => {
     const currentPath = props.router.location.pathname
     const [id, setId] = useState('')
 
+    const mudarRota = rota => id ? changeRoute(`${path}${rota}/${id}`) : null
+
     return (
                 <PageEmpty>
                     <Stepper>
-                        <StepperItem number={1} onClick={()=> changeRoute(`${path}informacoes-basicas/${id}`)} selected={currentPath.includes('informacoes-basicas')} label={'Informacoes basicas'}/>
-                        <StepperItem number={2} onClick={()=> changeRoute(`${path}dados-pessoais/${id}`)} selected={currentPath.includes('dados-pessoais')} label={'Dados pessoais'}/>
-                        <StepperItem number={3} onClick={()=> changeRoute(`${path}documentos/${id}`)} selected={currentPath.includes('documentos')} label={'Documentos'}/>
-                        <StepperItem number={4} onClick={()=> changeRoute(`${path}beneficios/${id}`)} selected={currentPath.includes('beneficios')} label={'Beneficios'}/>
+                        <StepperItem number={1} onClick={()=> mudarRota('informacoes-basicas')} selected={currentPath.includes('informacoes-basicas')} label={'Informacoes basicas'}/>
+                        <StepperItem number={2} onClick={()=> mudarRota('dados-pessoais')} selected={currentPath.includes('dados-pessoais')} label={'Dados pessoais'}/>
+                        <StepperItem number={3} onClick={()=> mudarRota('documentos')} selected={currentPath.includes('documentos')} label={'Documentos'}/>
+                        <StepperItem number={4} onClick={()=> mudarRota('beneficios')} selected={currentPath.includes('beneficios')} label={'Beneficios'}/>
                     </Stepper>
 
                     <StepperContent>
@@ -39,7 +41,6 @@ const CadastroColaborador = props => {
                     </StepperContent>
 
                 </PageEmpty>
-
         );
 }
 

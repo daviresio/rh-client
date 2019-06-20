@@ -19,6 +19,11 @@ import Notificacoes from "../pages/Notificacoes";
 import AlterarSenha from "../pages/configuracao/AlterarSenha";
 import Financeiro from "../pages/Financeiro";
 import VizualizarColaborador from "../pages/colaboradores/VizualizarColaborador";
+import CadastroFinalizado from "../pages/colaboradores/CadastroFinalizado";
+import FolhaLancamento from "../pages/folha-pagamento/FolhaLancamento";
+import BeneficioCadastro from "../pages/beneficio/BeneficioCadastro";
+import BeneficioDetalhe from "../pages/beneficio/BeneficioDetalhe";
+import Dissidio from "../pages/colaboradores/disidio/Dissidio";
 
 export default () =>
     (
@@ -29,10 +34,16 @@ export default () =>
                 <Switch>
                     <Route path={'/'} exact={true} component={Home}/>
                     <Route path={'/colaboradores/visualizar/:id'} component={VizualizarColaborador}/>
+                    <Route path={'/colaboradores/cadastro-finalizado/:id'} component={CadastroFinalizado}/>
                     <Route path={'/colaboradores/cadastro'} component={NovoColaborador}/>
+                    <Route path={'/colaboradores/dissidio'} component={Dissidio}/>
                     <Route path={'/colaboradores'} component={Colaboradores}/>
                     <Route path={'/ferias'} exact={true} component={Ferias}/>
-                    <Route path={'/beneficios'} exact={true} component={Beneficios}/>
+                    <Route path={'/beneficios/detalhe/:id'} component={BeneficioDetalhe}/>
+                    <Route path={'/beneficios/cadastro/:id'} component={BeneficioCadastro}/>
+                    <Route path={'/beneficios/cadastro'} component={BeneficioCadastro}/>
+                    <Route path={'/beneficios'} component={Beneficios}/>
+                    <Route path={'/folha/lancamento'} component={FolhaLancamento}/>
                     <Route path={'/folha'} component={FolhaPagamento}/>
                     <Route path={'/comunicacao'} component={Comunicacao}/>
                     <Route path={'/ponto'} exact={true} component={Ponto}/>

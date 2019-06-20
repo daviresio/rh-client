@@ -46,11 +46,9 @@ class Calendar extends Component {
     }
 
     handleClick = e => {
-        //if (!this.calendar.current.contains(e.target) && !this.state.focus)
-          //  setTimeout(() => this.setState({visible: false}), 300)
+
     }
 
-    //adicionaZero = value => value.toString().length > 1 ? value : '0' + value
 
     showCalendar = () => {
         const month = this.state.dateController.getMonth()

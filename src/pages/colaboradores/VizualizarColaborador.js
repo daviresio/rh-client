@@ -12,7 +12,12 @@ import {changeModalVisible} from "../../store/actions/modalActions";
 import Salario from "../../modais/Salario";
 import Banco from "../../modais/Banco";
 import Documento from "../../modais/Documento";
-import Holerite from "../../modais/Holerite";
+import HoleriteModal from "../../modais/HoleriteModal";
+import SolicitarFerias from "../../modais/SolicitarFerias";
+import ConfiguracaoFolha from "../../modais/ConfiguracaoFolha";
+import ValoresRecorrentes from "../../modais/ValoresRecorrentes";
+import TermosEContratos from "../../modais/TermosEContratos";
+import FaltasEAfastamentos from "../../modais/FaltasEAfastamentos";
 
 const VizualizarColaborador = ({serverValues, match, search, openModal, modal, ...props}) => {
     const value = serverValues.colaborador
@@ -27,7 +32,12 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, .
             <Salario visible={modal.salario.visible}/>
             <Banco visible={modal.banco.visible}/>
             <Documento visible={modal.documento.visible}/>
-            <Holerite visible={modal.holerite.visible}/>
+            <HoleriteModal visible={modal.holerite.visible}/>
+            <SolicitarFerias visible={modal.solicitarFerias.visible} />
+            <ConfiguracaoFolha visible={modal.configuracaoFolha.visible} />
+            <ValoresRecorrentes visible={modal.valoresRecorrentes.visible} />
+            <TermosEContratos visible={modal.termosEContratos.visible} />
+            <FaltasEAfastamentos visible={modal.faltasEAfastamentos.visible} />
             <div className={'page-divided visualizar-colaborador'}>
                 <div className={'principal'}>
                     <div className={'header'}>
@@ -319,7 +329,7 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, .
                             <div className={'valor'}>{banco ? banco.conta : emptyValue}</div>
                         </div>
                     </CardBorda>
-                    <CardBorda icon={'plane-departure'} title={'Ferias'} iconAction={'solicitar-ferias'}>
+                    <CardBorda icon={'plane-departure'} title={'Ferias'} iconAction={'solicitar-ferias'} onClick={() => openModal('solicitarFerias')}>
                         <div className={'conteudo'}>
                             <div className={'campo'}>Saldo de ferias</div>
                             <div className={'valor'}>{''}</div>
@@ -333,7 +343,7 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, .
                             <div className={'valor'}>{''}</div>
                         </div>
                     </CardBorda>
-                    <CardBorda icon={'info'} title={'Configuracoes de folha'} iconAction={'edit'}>
+                    <CardBorda icon={'info'} title={'Configuracoes de folha'} iconAction={'edit'} onClick={() => openModal('configuracaoFolha')}>
                         <div className={'conteudo'}>
                             <div className={'campo'}>Incluir no fechamento</div>
                             <div className={'valor'}>{''}</div>
@@ -343,22 +353,22 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, .
                             <div className={'valor'}>{''}</div>
                         </div>
                     </CardBorda>
-                    <CardBorda icon={'sync'} title={'Valores recorrentes'} iconAction={'adicionar'}>
+                    <CardBorda icon={'sync'} title={'Valores recorrentes'} iconAction={'adicionar'} onClick={() => openModal('valoresRecorrentes')}>
 
                     </CardBorda>
                     <CardBorda icon={'sticky-note'} title={'Documentos'} iconAction={'adicionar'}
                                onClick={() => openModal('documento')}>
-
+                        {'Nenhum documento vinculado'}
                     </CardBorda>
                     <CardBorda icon={'sticky-note'} title={'Holerites'} iconAction={'adicionar'}
                                onClick={() => openModal('holerite')}>
 
                     </CardBorda>
-                    <CardBorda icon={'sticky-note'} title={'Termos e contratos'} iconAction={'adicionar'}>
-
+                    <CardBorda icon={'sticky-note'} title={'Termos e contratos'} iconAction={'adicionar'} onClick={() => openModal('termosEContratos')}>
+                        {'Nenhum termo ou contrato vinculado'}
                     </CardBorda>
-                    <CardBorda icon={'exclamation-triangle'} title={'Faltas e afastamentos'} iconAction={'adicionar'}>
-
+                    <CardBorda icon={'exclamation-triangle'} title={'Faltas e afastamentos'} iconAction={'adicionar'} onClick={() => openModal('faltasEAfastamentos')}>
+                        {'Nenhuma falta ou afastamento encontrada'}
                     </CardBorda>
 
                     <Buttom color={'gray'} label={'Historico de alteracoes'} full className={'margin-btn'}/>

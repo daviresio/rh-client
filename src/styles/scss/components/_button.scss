@@ -53,6 +53,14 @@
     }
   }
 
+  &-orange {
+    background-color: $color-orange;
+
+    &:hover {
+      background-color: $color-orange-dark;
+    }
+  }
+
   &-gray {
     background-color: $color-gray-light;
     color: $color-black;

@@ -7,6 +7,7 @@ import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
 import InputRow from "../components/form/InputRow";
 import SelectRow from "../components/form/SelectRow";
+import DatePicker from "../components/form/DatePicker";
 
 let Salario = props => {
     const {closeModal, visible, handleSubmit, save, update, updateDropdown, serverValues} = props
@@ -18,8 +19,8 @@ let Salario = props => {
         <Modal border visible={visible} title={'Definir vinculo e salario'}>
             <form onSubmit={handleSubmit(submit)}>
                 <h2 className={'title'}>Período</h2>
-                <Field component={InputRow} name={'dataInicio'} label={'Valido a partir de'} required />
-                <Field component={InputRow} name={'dataFinal'} label={'Válido até: (se for a última alteração, deixar este campo em branco)'} />
+                <Field component={DatePicker} name={'dataInicio'} label={'Valido a partir de'} required />
+                <Field component={DatePicker} name={'dataFinal'} label={'Válido até: (se for a última alteração, deixar este campo em branco)'} />
                 <h2 className={'title'}>Período</h2>
                 <Field component={SelectRow} name={'cargo'} label={'Cargo'} options={cargos} />
                 <Field component={SelectRow} name={'departamento'} label={'Departamento'} options={departamentos} />

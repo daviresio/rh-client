@@ -1,47 +1,41 @@
 import React from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
-import TableContainer from "../../components/TableContainer";
 import Table from "../../components/Table";
-import Modal from "../../components/Modal";
 import Select from "../../components/form/Select";
-import {changeModalHolerite} from "../../store/actions/folhaActions";
 import {connect} from "react-redux";
+import LancamentoHoleriteModal from "../../modais/LancamentoHoleriteModal";
+import {changeModalVisible} from "../../store/actions/modalActions";
 
-const Holerites = ({changeModalVisibility, modalHoleriteVisilible}) => {
+const Holerites = ({modal, openModal}) => {
 
     return (
         <>
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Buttom click={changeModalVisibility} color={'green'} label={'Criar novo mes'}/>
+                <Buttom onClick={()=>openModal('lancamentoHolerite')} color={'green'} label={'Criar novo mes'}/>
             </div>
             <CardBorda title={`Holerites`}>
-                <TableContainer>
-                    <Table header={['Mes', 'Ano', 'Tipo', 'Acoes']}/>
-                </TableContainer>
+                <div className={'holerites-filtro'}>
+                    <h3>Filtrar por: </h3>
+                    <Select label={'Ano'}/>
+                    <Select label={'Mes'}/>
+                    <Select label={'Tipo'}/>
+                </div>
+                <Table header={['Mes', 'Ano', 'Tipo', 'Acoes']}/>
+
             </CardBorda>
 
-            <Modal visible={modalHoleriteVisilible} full={false} title={'Holerite'} footer={
-                <>
-                    <div style={{width: '10rem', marginRight: '2rem'}}>
-                        <Buttom click={changeModalVisibility} full label={'Cancelar'} color={'red'}/>
-                    </div>
-                    <div style={{width: '8rem'}}>
-                        <Buttom full label={'Criar'} color={'green'}/>
-                    </div>
-                </>
-            }>
-                <span
-                    className={'holerite-modal-subtitle'}>{'Selecione o mes e o ano de referencia dos holerites'}</span>
-                <Select/>
-                <Select/>
-                <Select/>
-            </Modal>
+            <LancamentoHoleriteModal visible={modal.lancamentoHolerite.visible} />
         </>
     );
 };
-const mapStateToProps = ({folhaPagamento}) => folhaPagamento
-const mapDispatchToProps = dispatch => ({
-    changeModalVisibility: () => dispatch(changeModalHolerite())
+const mapStateToProps = state => ({
+    folhaPagamento: state.folhaPagamento,
+    modal: state.modal,
 })
+
+const mapDispatchToProps = dispatch => ({
+    openModal: modal => dispatch(changeModalVisible(modal, true)),
+})
+
 export default connect(mapStateToProps, mapDispatchToProps)(Holerites);

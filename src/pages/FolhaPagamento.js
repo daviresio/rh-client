@@ -18,12 +18,12 @@ const FolhaPagamento = props => {
     return (
         <PageEmpty>
             <TabPainel title={'Folha de pagamento'}>
-                <TabItem selectTab={() => props.changeRoute('fechamento')}
-                         selected={currentPath === path + 'fechamento'} title={'Fechamento'}/>
-                <TabItem selectTab={() => props.changeRoute('holerites')}
-                         selected={currentPath === path + 'holerites'} title={'Holerites'}/>
-                <TabItem selectTab={() => props.changeRoute('configuracao')}
-                         selected={currentPath === path + 'configuracao'} title={'Configuracao da folha'}/>
+                <TabItem onClick={() => props.changeRoute('/folha/fechamento')}
+                         selected={currentPath.includes('fechamento')} title={'Fechamento'}/>
+                <TabItem onClick={() => props.changeRoute('/folha/holerites')}
+                         selected={currentPath.includes('holerites')} title={'Holerites'}/>
+                <TabItem onClick={() => props.changeRoute('/folha/configuracao')}
+                         selected={currentPath.includes('configuracao')} title={'Configuracao da folha'}/>
             </TabPainel>
             <TabContent>
                 <Switch>

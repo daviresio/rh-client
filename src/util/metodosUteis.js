@@ -3,3 +3,12 @@ export const isEmpty = e => {
         return e.hasOwnProperty(key);
     }
 };
+
+export const getValue = (path, obj) => {
+    try {
+        return path.split('.').reduce((value, el) => value[el], obj)
+    } catch (e) {
+        return ''
+    }
+}
+

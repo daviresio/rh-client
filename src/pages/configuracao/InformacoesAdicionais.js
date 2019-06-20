@@ -19,7 +19,7 @@ const InformacoesAdicionais = props => {
     useEffect(() => {
         loadData('departamentos')
         loadData('cargos')
-        loadData('centroDeCustos')
+        loadData('centrodecustos')
     }, [])
 
     const renderItem = (item, modal) => item.length ?

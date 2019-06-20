@@ -26,3 +26,12 @@
   }
 
 }
+
+.image-upload {
+  display: block;
+  max-width: 10rem;
+  max-height: 10rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}

@@ -61,3 +61,39 @@
 .required {
   color: $color-red;
 }
+
+
+.config-options {
+  position: relative;
+  cursor: pointer;
+
+  i {
+    font-size: $font-size-6;
+  }
+
+  ul {
+    color: $color-black;
+    font-size: $font-size-2;
+    position: absolute;
+    top: 2.5rem;
+    right: -.5rem;
+    background-color: $color-white;
+    width: 20rem;
+    border: .1rem solid rgba($color-gray, .5);
+    border-top: none;
+    border-radius: .2rem;
+    z-index: 1;
+    max-height: 16.6rem;
+
+    li {
+      padding: .6rem;
+      border-top: .1rem solid rgba($color-gray, .5);
+
+      &:hover {
+        background-color: rgba($color-gray-light, .5);
+        cursor: pointer;
+      }
+    }
+  }
+
+}

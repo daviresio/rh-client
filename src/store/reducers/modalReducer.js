@@ -32,7 +32,39 @@ const INITIAL_STATE = {
     holerite: {
         visible: false,
         value: null
-    }
+    },
+    solicitarFerias: {
+        visible: false,
+        value: null
+    },
+    configuracaoFolha: {
+        visible: false,
+        value: null
+    },
+    valoresRecorrentes: {
+        visible: false,
+        value: null
+    },
+    termosEContratos: {
+        visible: false,
+        value: null
+    },
+    faltasEAfastamentos: {
+        visible: false,
+        value: null
+    },
+    lancamentoHolerite: {
+        visible: false,
+        value: null
+    },
+    contato: {
+        visible: false,
+        value: null
+    },
+    dependente: {
+        visible: false,
+        value: null
+    },
 }
 
 export const modal = (state = INITIAL_STATE, action) => {

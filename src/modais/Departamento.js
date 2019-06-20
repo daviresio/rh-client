@@ -8,8 +8,8 @@ import {save, update} from "../store/actions/serverActions";
 import Buttom from "../components/Buttom";
 
 let Departamento = props => {
-    const {closeModal, visible, handleSubmit, save, update} = props
-    const submit = value => value.id ? update(value) : save(value)
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const submit = value => value.id ? update(value) : save(value, updateDropdown)
     return (
         <Modal border visible={visible} title={'Adicionar Departamento'}>
             <form onSubmit={handleSubmit(submit)}>
@@ -29,7 +29,7 @@ const mapStateToProps = ({modal}) => ({
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('departamento', false)),
-    save: value => dispatch(save('departamentos', value, {modal: 'departamento'})),
+    save: (value, updateDropdown) => dispatch(save('departamentos', value, {modal: 'departamento', updateDropdown})),
     update: value => dispatch(update('departamentos', value, {modal: 'departamento', list: true})),
 })
 

@@ -20,6 +20,9 @@ const CardBorda = props => {
             case 'config':
                 action = React.cloneElement(action, {}, <i className="fas fa-cogs" style={{fontSize: '1.6rem'}}/>)
                 break
+            default:
+                action = props.iconAction
+                break
         }
     }
     return (

@@ -4,10 +4,14 @@ const INITIAL_STATE = {
     colaboradores: [],
     cargos: [],
     departamentos: [],
-    centroDeCustos: [],
+    centrodecustos: [],
     sindicatos: [],
     loading: [],
     colaborador: {},
+    eventos: [],
+    evento: {},
+    beneficios: [],
+    beneficio: {},
 }
 
 export const serverValues = (state = INITIAL_STATE, action) => {
@@ -28,7 +32,9 @@ export const serverValues = (state = INITIAL_STATE, action) => {
         case DELETE_SUCESS:
             return {...state, [action.payload.target]: state[action.payload.target].filter(v => v.id !== action.payload.value)}
         case SEARCH_SUCESS:
-            return {...state, [action.payload.target]: action.payload.value}
+            return {...state, [action.payload.target]: Object.assign({}, action.payload.value)}
+        case 'DELETAR_COLABORADOR':
+            return {...state, colaborador: {}}
         default:
             return state;
     }

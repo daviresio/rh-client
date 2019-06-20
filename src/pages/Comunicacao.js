@@ -18,11 +18,11 @@ const Comunicacao = props => {
     return (
         <PageEmpty className={'comunicacao'}>
             <TabPainel title={'Comunicacao'}>
-                <TabItem selectTab={() => changeRoute(path + 'mural')} selected={currentPath === path + 'mural'}
+                <TabItem onClick={() => changeRoute(path + 'mural')} selected={currentPath.includes('mural')}
                          title={'Mural'}/>
-                <TabItem selectTab={() => changeRoute(path + 'lembretes')} selected={currentPath === path + 'lembretes'}
+                <TabItem onClick={() => changeRoute(path + 'lembretes')} selected={currentPath.includes('lembretes')}
                          title={'Alertas e lembretes'}/>
-                <TabItem selectTab={() => changeRoute(path + 'fale-com-rh')} selected={currentPath === path + 'fale-com-rh'}
+                <TabItem onClick={() => changeRoute(path + 'fale-com-rh')} selected={currentPath.includes('fale-com-rh')}
                          title={'Fale com o rh'}/>
             </TabPainel>
             <TabContent>

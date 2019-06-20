@@ -133,3 +133,23 @@
   }
 
 }
+
+.cadastro-finalizado {
+
+  i {
+    font-size: 5rem;
+    color: $color-blue-light;
+  }
+  .title {
+    color: $color-blue;
+  }
+  .text {
+    font-size: $font-size-2;
+  }
+
+  .botao {
+    width: 30rem;
+    margin: 1rem 0;
+  }
+
+}

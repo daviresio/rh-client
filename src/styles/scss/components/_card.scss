@@ -72,6 +72,36 @@
       }
     }
   }
+
+  &-blue {
+    &-title {
+      background-color: $color-blue-light;
+    }
+    &-body {
+      background-color: $color-blue;
+    }
+    &-button {
+      background-color: $color-blue;
+      &:hover {
+        background-color: $color-blue-dark;
+      }
+    }
+  }
+
+  &-red {
+    &-title {
+      background-color: $color-red-light;
+    }
+    &-body {
+      background-color: $color-red;
+    }
+    &-button {
+      background-color: $color-red;
+      &:hover {
+        background-color: $color-red-dark;
+      }
+    }
+  }
 }
 
 
@@ -325,4 +355,11 @@
 
   }
 
+}
+
+.botao-direita {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }

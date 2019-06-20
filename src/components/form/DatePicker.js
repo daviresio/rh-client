@@ -42,7 +42,7 @@ class DatePicker extends Component {
 
     handleClick = e => {
         if (!this.calendar.current.contains(e.target) && !this.state.focus)
-            setTimeout(() => this.setState({visible: false}), 300)
+          setTimeout(() => this.setState({visible: false}), 300)
     }
 
     adicionaZero = value => value.toString().length > 1 ? value : '0' + value
@@ -78,7 +78,7 @@ class DatePicker extends Component {
     changeDate = day => this.setState({value: new Date(this.state.dateController.getFullYear(), this.state.dateController.getMonth(), day)}, () => {
         this.props.input.value = this.state.value
         this.props.input.onChange(this.state.value)
-        setTimeout(() => this.setState({visible: false}), 200)
+        //setTimeout(() => this.setState({visible: false}), 200)
     })
 
     activeClass = day =>
@@ -118,13 +118,10 @@ class DatePicker extends Component {
 
     requiredLabel = this.props.required ? <span className={'required'}>{' *'}</span> : null
 
-    //updateFormateDate = v => this.setState({formateDate: v})
-
     render() {
-        const v = this.state.value ? `${this.adicionaZero(this.state.value.getDate())}/${this.adicionaZero(this.state.value.getMonth() + 1)}/${this.state.value.getFullYear()}` : ''
+   /*     const v = this.state.value ? `${this.adicionaZero(this.state.value.getDate())}/${this.adicionaZero(this.state.value.getMonth() + 1)}/${this.state.value.getFullYear()}` : ''
         if (this.state.formateDate !== v)
-            this.setState({formateDate: v})
-            //this.updateFormateDate(v)
+            this.setState({formateDate: v})*/
 
         return (
             <div ref={this.calendar} className={'datepicker'}>
@@ -133,7 +130,7 @@ class DatePicker extends Component {
                     <div className={'datepicker-input-container input-margin'}>
                         <input onFocus={() => this.setState({visible: true, focus: true})} onBlur={() => {
                             this.setState({focus: false}, () => {
-                                setTimeout(() => this.setState({visible: false}), 200)
+                                //setTimeout(() => this.setState({visible: false}), 200)
                             })
                         }} placeholder={'dd/mm/yyyy'}
                                readOnly={true} value={this.state.formateDate} className={'input'}/>
@@ -168,6 +165,7 @@ class DatePicker extends Component {
                         </>}
 
                     </div>
+                    {this.props.detail}
                 </div>
 
 

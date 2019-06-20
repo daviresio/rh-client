@@ -8,9 +8,6 @@ import Chart from "../components/Chart";
 import CardSimples from "../components/card/CardSimples";
 
 const Home = () => {
-
-
-
     return (
         <Page title={'Painel'}>
             <div className={'home-resumos'}>
@@ -27,7 +24,7 @@ const Home = () => {
                 <Chart />
                 </CardSimples>
 
-            <CardBorda title={'lembretes'} color={'dark'}>
+            <CardBorda title={'Lembretes'} color={'dark'}>
                 <div className={'content'}>
 
                 </div>

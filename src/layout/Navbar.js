@@ -2,10 +2,12 @@ import React from 'react';
 import {changeRoute} from "../store/actions/routerActions";
 import {connect} from "react-redux";
 
+import backgroundImage from '../assets/sidebar-bg.svg'
+
 const Navbar = ({changeRoute, pathname}) => {
-    
+
     const classeCss = path => pathname.includes(path) ? 'item active' : 'item'
-    
+
     return (
         <div className={'navbar'}>
             <div className={'logo'}>{'RH Inteligente'}</div>

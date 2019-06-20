@@ -25,7 +25,8 @@
   }
 
   &-body {
-    tr {
+
+    .cursor + tr {
       cursor: pointer;
     }
 
@@ -36,6 +37,11 @@
     tr:nth-child(even) {
       background-color: $color-white;
     }
+
+    .borda + th, td {
+      border: .1rem solid $color-gray-light;
+    }
+
   }
 
 }

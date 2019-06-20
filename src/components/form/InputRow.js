@@ -3,7 +3,6 @@ import React from 'react';
 const InputRow = ({label, detail, actionLabel, action, input, required, disabled}) => {
 
     const requiredLabel = required ? <span className={'required'}>{' *'}</span> : null
-
     return (
         <div className={'input-container'}>
             <label className={'input-label'}>{label}{requiredLabel}</label>

@@ -6,8 +6,9 @@ import Table from "../../components/Table";
 import {changeRoute} from "../../store/actions/routerActions";
 import {connect} from "react-redux";
 import {loadList} from "../../store/actions/serverActions";
+import ConfigOptions from "../../components/util/ConfigOptions";
 
-const GestaoColaboradores = ({navigate, loadData, ...props}) => {
+const GestaoColaboradores = ({changeRoute, loadData, ...props}) => {
 
     const {colaboradores} = props.serverValues
 
@@ -15,15 +16,19 @@ const GestaoColaboradores = ({navigate, loadData, ...props}) => {
         loadData('colaboradores')
     }, [])
 
+    const configOptions = <ConfigOptions options={[
+        {nome: 'Editar em massa', onClick: ()=> changeRoute('/')},
+        {nome: 'Atualizacao de dissidio', onClick: ()=>  changeRoute('/colaboradores/dissidio')},
+        {nome: 'Gerenciar acesso dos colaboradores', onClick: ()=>  changeRoute('/')},
+        ]} />
+
     return (
         <React.Fragment>
-            <Buttom onClick={() => navigate('/colaboradores/cadastro')} color={'green'} label={'Adicionar Colaborador'}/>
+            <Buttom onClick={() => changeRoute('/colaboradores/cadastro')} color={'green'} label={'Adicionar Colaborador'}/>
             <div className={'gestao-colaboradores page-divided'}>
                 <div>
-                    <CardBorda icon={'users'} title={`Ativos(1)`} iconAction={'config'}>
-                        <TableContainer>
+                    <CardBorda icon={'users'} title={`Ativos(1)`} iconAction={configOptions}>
                             <Table header={['nome', 'cargo', 'departamento']} data={colaboradores} keys={['nome', 'cargo.nome', 'departamento.nome']}/>
-                        </TableContainer>
                     </CardBorda>
                 </div>
                 <div>
@@ -48,7 +53,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    navigate: route => dispatch(changeRoute(route)),
+    changeRoute: route => dispatch(changeRoute(route)),
     loadData: entity => dispatch(loadList(entity)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(GestaoColaboradores)

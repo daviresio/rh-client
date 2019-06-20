@@ -6,6 +6,8 @@ import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import InputRow from "../components/form/InputRow";
 import Buttom from "../components/Buttom";
+import SelectRow from "../components/form/SelectRow";
+import DatePicker from "../components/form/DatePicker";
 
 let FaltasEAfastamentos = props => {
     const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
@@ -13,9 +15,12 @@ let FaltasEAfastamentos = props => {
     const submit = value => value.id ? update(value) : save(value, updateDropdown)
 
     return (
-        <Modal border visible={visible} title={'Adicionar cargo'}>
+        <Modal border visible={visible} title={'Faltas e afastamentos'}>
             <form onSubmit={handleSubmit(submit)}>
-
+                <Field component={SelectRow} name={'motivo'} label={'Motivo'} options={[]} />
+                <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={[]} />
+                <Field component={DatePicker} name={'dataInicial'} label={'De'} />
+                <Field component={DatePicker} name={'dataFinal'} label={'Ate'} />
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
                     <Buttom color={'green'} label={'Salvar'} type={'submit'}/>

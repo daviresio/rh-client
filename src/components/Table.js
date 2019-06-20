@@ -1,7 +1,7 @@
 import React from 'react';
 import Buttom from "./Buttom";
 
-const Table = ({data, header, addAndRemove, add, remove, keys}) => {
+const Table = ({data, header, addAndRemove, add, remove, keys, borda, cursor}) => {
 
     const renderHeader = () => {
         const render = header ? <tr>{header.map(o => <th key={o}>{o}</th>)}</tr> :
@@ -31,8 +31,9 @@ const Table = ({data, header, addAndRemove, add, remove, keys}) => {
             )
         return render
     }
+    
     return (
-        <table className={'table'}>
+        <table className={borda ? 'table borda' : 'table'}>
 
             <thead className={'table-head'}>
             {renderHeader()}
