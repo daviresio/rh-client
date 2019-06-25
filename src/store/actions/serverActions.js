@@ -19,13 +19,13 @@ import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
 import * as axios from "axios";
 
 
-export const loadList = entity => async dispatch => [
-    dispatch({type: LOADING, payload: {target: entity}}),
+export const loadList = (entity, target = entity) => async dispatch => [
+    dispatch({type: LOADING, payload: {target}}),
     await api.get(`/${entity}`).then(result => dispatch({
         type: LOADING_SUCESS,
-        payload: {target: entity, value: result.data}
+        payload: {target, value: result.data}
     }))
-        .catch(e => dispatch({type: LOADING_FALIED, payload: {target: entity}}))
+        .catch(e => dispatch({type: LOADING_FALIED, payload: {target}}))
 ]
 
 export const search = (entity, value, field) => async dispatch => [
@@ -102,6 +102,4 @@ export const uploadImage = (image, type, form, urlExistente) => async dispatch =
         body: blobData,
     })
     dispatch(change(form.form, form.campo, result.url))
-
-    dispatch({type: LOADING_FALIED})
 }

@@ -3,12 +3,10 @@ import CardSimples from "../../components/card/CardSimples";
 import {Field, reduxForm} from "redux-form";
 import InputRow from "../../components/form/InputRow";
 import SelectRow from "../../components/form/SelectRow";
-import {localidades} from "../../config/localidades";
 import {connect} from "react-redux";
 import {loadList, save, search, update} from "../../store/actions/serverActions";
 import Buttom from "../../components/Buttom";
 import Checklist from "./Checklist";
-import CentroDeCusto from "../../modais/CentroDeCusto";
 import Contato from "../../modais/Contato";
 import Dependente from "../../modais/Dependente";
 import Message from "../../components/util/Message";
@@ -18,7 +16,7 @@ import {tiposCorRaca, tiposEstadoCivil, tiposSexo} from "../../config/defaultVal
 import {getValue} from "../../util/metodosUteis";
 
 
-let CadastroColaboradorStep2 = ({handleSubmit, match, router, setId, search, update, modal, openModal, ...props}) => {
+let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, search, update, modal, openModal, dependentes, contatos, ...props}) => {
 
     const {contato, dependente} = modal
     const buttonSubmit = useRef(null)
@@ -29,6 +27,8 @@ let CadastroColaboradorStep2 = ({handleSubmit, match, router, setId, search, upd
         const id = match.params.id
         setId(id)
         search(id)
+        loadData('contatos')
+        loadData('dependentes')
     }, [])
 
     const submit = values => saveOnly ? update({...values, id: match.params.id}, {
@@ -40,10 +40,27 @@ let CadastroColaboradorStep2 = ({handleSubmit, match, router, setId, search, upd
             field: 'colaborador'
         })
 
+    const renderContato = () => contatos && contatos.length ?
+        <Message color={'orange'} icon={null} text={<div>
+            <div className={'title'} style={{color: '#000', marginBottom: '1rem'}}>Adicionar Contato
+            </div>
+            <Buttom color={'orange'} label={'Adicionar contato'} onClick={() => openModal('contato')}/>
+        </div>}/>
+        :
+        <div></div>
+
+    const renderDependente = () => dependentes && dependentes.length ?
+        <Message color={'orange'} icon={null} text={<div>
+            <div className={'title'} style={{color: '#000', marginBottom: '1rem'}}>Adicionar Dependente</div>
+            <Buttom color={'orange'} label={'Adicionar dependente'} onClick={() => openModal('dependente')}/>
+        </div>}/>
+        :
+        <div></div>
+
     return (
         <>
-            <Contato visible={contato.visible} updateDropdown={{form: 'contato', field: 'contato'}}/>
-            <Dependente visible={dependente.visible} updateDropdown={{form: 'dependente', field: 'dependente'}}/>
+            <Contato visible={contato.visible} />
+            <Dependente visible={dependente.visible} />
 
             <div className={'page-divided'}>
                 <form onSubmit={handleSubmit(submit)}>
@@ -84,18 +101,12 @@ let CadastroColaboradorStep2 = ({handleSubmit, match, router, setId, search, upd
 
                     <div className={'title-big'}>Informacoes de emergencia</div>
                     <CardSimples>
-                        <Message color={'orange'} icon={null} text={<span>
-                            Nenhum contato cadastrado, caso queira adicionar um contato de emergencia &nbsp;&nbsp;
-                            <span className={'link'} onClick={() => openModal('contato')}>clique aqui</span>
-                        </span>}/>
+                        {renderContato()}
                     </CardSimples>
 
                     <div className={'title-big'}>Dependentes</div>
                     <CardSimples>
-                        <Message color={'orange'} icon={null} text={<span>
-                            Nenhum dependente cadastrado, caso queira adicionar um dependente &nbsp;&nbsp;
-                            <span className={'link'} onClick={() => openModal('dependente')}>clique aqui</span>
-                        </span>}/>
+                        {renderDependente()}
                     </CardSimples>
                     <div className={'botoes-footer'}>
                         <Buttom color={'red'} label={'Excluir processo'}/>
@@ -151,7 +162,9 @@ const mapStateToProps = state => {
                 instituicao: getValue('escolaridade.instituicao', colaborador),
                 anoConclusao: getValue('escolaridade.anoConclusao', colaborador),
             }
-        }
+        },
+        contatos: state.serverValues.contatos,
+        dependentes: state.serverValues.dependentes,
     }
 }
 
@@ -159,6 +172,7 @@ const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
     openModal: modal => dispatch(changeModalVisible(modal, true)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
 })
 
 CadastroColaboradorStep2 = reduxForm({form: 'colaborador', enableReinitialize: true})(CadastroColaboradorStep2);

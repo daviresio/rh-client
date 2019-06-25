@@ -8,7 +8,7 @@ export const getValue = (path, obj) => {
     try {
         return path.split('.').reduce((value, el) => value[el], obj)
     } catch (e) {
-        return ''
+        return null
     }
 }
 

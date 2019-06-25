@@ -1,107 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js" line="231" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="18b0214e-12f5-4daf-aef0-2d28ba4c815c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/sidebar-bg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/util/ConfigOptions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modais/Contato.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modais/Dependente.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/beneficio/BeneficioDetalhe.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/CadastroFinalizado.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/Checklist.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/EditarEmMassa.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/GerenciarAcesso.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/disidio/Dissidio.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/disidio/DissidioStep1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/disidio/DissidioStep2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/disidio/DissidioStep3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/colaboradores/disidio/DissidioStep4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/comunicacao/LembretesCadastro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/comunicacao/LembretesLista.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/comunicacao/MuralCadastro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfiguracaoFolhaBody.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfigurarDSR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfigurarDecimoTerceiro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/EditarConfiguracoesGerais.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamento.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep1Body.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoAutomatico.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoHolerite.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoManual.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/pages/_beneficio.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/pages/_comunicacao.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/pages/_dissidio.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/pages/_folha.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/scss/pages/_holerites.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Table.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TableContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TableContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UploadPhoto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UploadPhoto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/CardBorda.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/CardBorda.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/card/CardSimples.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/card/CardSimples.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/form/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/DatePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/InputRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/InputRow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Select.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Select.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/defaultValues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/CentroDeCusto.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/CentroDeCusto.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/ConfiguracaoFolha.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/ConfiguracaoFolha.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Departamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Departamento.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/FaltasEAfastamentos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/FaltasEAfastamentos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Holerite.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/HoleriteModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Salario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Salario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/SolicitarFerias.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/SolicitarFerias.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/TermosEContratos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/TermosEContratos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/ValoresRecorrentes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/ValoresRecorrentes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Beneficios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Beneficios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Comunicacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Comunicacao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/FolhaPagamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FolhaPagamento.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaborador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaborador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Contato.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Contato.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Dependente.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Dependente.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/GestaoColaboradores.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/GestaoColaboradores.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/VizualizarColaborador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/VizualizarColaborador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/comunicacao/Lembretes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/comunicacao/Lembretes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/comunicacao/Mural.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/comunicacao/Mural.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/configuracao/InformacoesAdicionais.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/configuracao/InformacoesAdicionais.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/AdicionarEvento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/AdicionarEvento.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfiguracaoFolha.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfiguracaoFolha.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/Fechamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/Fechamento.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/Holerites.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/Holerites.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/serverActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/serverActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/modalReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/modalReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/css/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/css/index.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_button.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_card.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_photo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_photo.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_table.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_table.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_util.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_util.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/layout/_navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/layout/_navbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/pages/_colaborador.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/pages/_colaborador.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/pages/_page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/pages/_page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_message.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_message.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/metodosUteis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/metodosUteis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/staticValues.js" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -127,14 +44,14 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.76621926">
+    <splitter split-orientation="horizontal" split-proportion="0.6934071">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/store/actions/serverActions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="237">
-                  <caret line="83" column="7" lean-forward="true" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="7" />
+                <state relative-caret-position="405">
+                  <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
                   <folding>
                     <element signature="e#0#34#0" expanded="true" />
                   </folding>
@@ -142,11 +59,29 @@
               </provider>
             </entry>
           </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/form/DatePicker.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1785">
+                  <caret line="120" selection-start-line="120" selection-end-line="120" />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="5" selection-start-line="5" selection-end-line="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="155" column="81" selection-start-line="155" selection-start-column="81" selection-end-line="155" selection-end-column="81" />
+                <state relative-caret-position="1875">
+                  <caret line="147" column="47" lean-forward="true" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
                   <folding>
                     <element signature="e#0#57#0" expanded="true" />
                   </folding>
@@ -155,10 +90,34 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/util/metodosUteis.js">
+            <entry file="file://$PROJECT_DIR$/src/modais/Contato.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="13" selection-start-line="13" selection-end-line="13" />
+                <state relative-caret-position="225">
+                  <caret line="24" column="108" selection-start-line="24" selection-start-column="108" selection-end-line="24" selection-end-column="108" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/modais/Dependente.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                  <caret line="16" column="81" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="81" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/components/util/Message.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="30">
+                  <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -166,27 +125,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/config/defaultValues.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="7" selection-start-column="7" selection-end-column="7" />
+                <state relative-caret-position="1800">
+                  <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Dockerfile">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/docker-compose.yml">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/components/UploadPhoto.js">
+            <entry file="file://$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+                <state relative-caret-position="375">
+                  <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
                 </state>
               </provider>
             </entry>
@@ -195,6 +144,20 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/styles/scss/components/_message.scss">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="60">
+                  <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/styles/scss/abstract/_base.scss">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/styles/scss/pages/_comunicacao.scss">
               <provider selected="true" editor-type-id="text-editor">
@@ -204,7 +167,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/styles/scss/components/_photo.scss">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
@@ -227,17 +190,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>divided</find>
-      <find>nome</find>
-      <find>calendar</find>
-      <find>visible</find>
-      <find>{visible: false}</find>
-      <find>Cargo</find>
-      <find>Dependente</find>
-      <find>cargos</find>
-      <find>open</find>
-      <find>radio</find>
-      <find>-pro-5.0.0</find>
       <find>-pro-5.1.9</find>
       <find>-pro-5.9.0</find>
       <find>-pro-5.4.1</find>
@@ -257,6 +209,17 @@
       <find>detail</find>
       <find>multi</find>
       <find>image</find>
+      <find>tipoJ</find>
+      <find>tipoJornada</find>
+      <find>periodo</find>
+      <find>exper</find>
+      <find>vincu</find>
+      <find>vinculos</find>
+      <find>data</find>
+      <find>exame</find>
+      <find>falie</find>
+      <find>falied</find>
+      <find>onclick</find>
     </findStrings>
     <replaceStrings>
       <replace>{classeCss</replace>
@@ -272,6 +235,7 @@
       <replace>contatos</replace>
       <replace>dependentes</replace>
       <replace>/webfonts/fa-light-300.</replace>
+      <replace>jornadaTrabalho</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -280,9 +244,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/layout/Navbar.js" />
-        <option value="$PROJECT_DIR$/src/styles/css/all.css" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/styles/scss/layout/_navbar.scss" />
         <option value="$PROJECT_DIR$/src/pages/Home.js" />
         <option value="$PROJECT_DIR$/src/styles/scss/pages/_page.scss" />
@@ -298,13 +259,10 @@
         <option value="$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js" />
         <option value="$PROJECT_DIR$/src/components/form/InputRow.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" />
-        <option value="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js" />
         <option value="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep3.js" />
         <option value="$PROJECT_DIR$/src/styles/scss/components/_util.scss" />
         <option value="$PROJECT_DIR$/src/components/util/ConfigOptions.js" />
         <option value="$PROJECT_DIR$/src/pages/colaboradores/GestaoColaboradores.js" />
-        <option value="$PROJECT_DIR$/src/components/form/DatePicker.js" />
         <option value="$PROJECT_DIR$/src/pages/colaboradores/AtualizacaoDeDissidio.js" />
         <option value="$PROJECT_DIR$/src/pages/colaboradores/SelecionarDissidio.js" />
         <option value="$PROJECT_DIR$/src/pages/colaboradores/disidio/SelecionarDissidio.js" />
@@ -325,20 +283,24 @@
         <option value="$PROJECT_DIR$/src/pages/comunicacao/MuralCadastro.js" />
         <option value="$PROJECT_DIR$/src/styles/scss/pages/_comunicacao.scss" />
         <option value="$PROJECT_DIR$/src/styles/scss/components/_photo.scss" />
+        <option value="$PROJECT_DIR$/src/components/TableContainer.js" />
         <option value="$PROJECT_DIR$/src/components/UploadPhoto.js" />
         <option value="$PROJECT_DIR$/src/util/metodosUteis.js" />
+        <option value="$PROJECT_DIR$/src/components/form/DatePicker.js" />
+        <option value="$PROJECT_DIR$/src/styles/scss/components/_message.scss" />
         <option value="$PROJECT_DIR$/src/config/defaultValues.js" />
-        <option value="$PROJECT_DIR$/src/components/TableContainer.js" />
+        <option value="$PROJECT_DIR$/src/modais/Contato.js" />
+        <option value="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" />
+        <option value="$PROJECT_DIR$/src/modais/Dependente.js" />
         <option value="$PROJECT_DIR$/src/store/actions/serverActions.js" />
         <option value="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js" />
+        <option value="$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="390" />
-    <option name="y" value="39" />
-    <option name="width" value="1943" />
-    <option name="height" value="965" />
+    <option name="width" value="2059" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -365,7 +327,20 @@
               <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="rh-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="modais" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rh-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rh-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="colaboradores" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
@@ -384,7 +359,37 @@
               <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
               <item name="rh-client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rh-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rh-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rh-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
+              <item name="abstract" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rh-client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rh-client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+              <item name="scss" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -413,18 +418,18 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/styles" />
-      <recent name="$PROJECT_DIR$/src/styles/css" />
-      <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/src/store/actions" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/pages/colaboradores/disidio" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/pages/configuracao/modais" />
       <recent name="$PROJECT_DIR$/src/pages/configuracao" />
       <recent name="$PROJECT_DIR$/src/components/util" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/styles" />
+      <recent name="$PROJECT_DIR$/src/styles/css" />
+      <recent name="$PROJECT_DIR$/src/assets" />
+      <recent name="$PROJECT_DIR$/src/store/actions" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -630,7 +635,12 @@
       <workItem from="1560946533855" duration="602000" />
       <workItem from="1560959331391" duration="2857000" />
       <workItem from="1561000623711" duration="5476000" />
-      <workItem from="1561035537161" duration="918000" />
+      <workItem from="1561035537161" duration="17157000" />
+      <workItem from="1561135754957" duration="70000" />
+      <workItem from="1561155792037" duration="447000" />
+      <workItem from="1561215584825" duration="7305000" />
+      <workItem from="1561293114232" duration="1923000" />
+      <workItem from="1561320375590" duration="599000" />
     </task>
     <servers />
   </component>
@@ -646,13 +656,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="536137000" />
+    <option name="totallyTimeSpent" value="562720000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="2562" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13365155" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13961814" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -663,11 +672,11 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info active="true" anchor="bottom" id="Docker" order="7" visible="true" weight="0.21573034" />
+      <window_info anchor="bottom" id="Docker" order="7" weight="0.21573034" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32868022" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50020266" side_tool="true" weight="0.32279173" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4997973" weight="0.29060915" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4997973" visible="true" weight="0.28876406" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -701,89 +710,18 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js</url>
+          <line>229</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pages/folha-pagamento/EditarConfiguracoesGerais.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Table.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modais/Departamento.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modais/Cargo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="37" column="32" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modais/CentroDeCusto.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/redux-form/es/Field.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/form/InputRow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/scss/abstract/_variables.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/scss/pages/_page.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -816,13 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
           <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -868,13 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/form/DatePicker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="167" column="26" selection-start-line="167" selection-start-column="26" selection-end-line="167" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -956,30 +880,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="27" column="53" selection-start-line="27" selection-start-column="53" selection-end-line="27" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/scss/pages/_dissidio.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaborador.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="38" lean-forward="true" selection-start-line="13" selection-start-column="38" selection-end-line="13" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1028,32 +932,166 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/metodosUteis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/defaultValues.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="7" selection-start-column="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/UploadPhoto.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/comunicacao/Mural.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        <state relative-caret-position="15">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modais/Cargo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/redux-form/es/Field.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaborador.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="34" column="145" selection-start-line="34" selection-start-column="143" selection-end-line="34" selection-end-column="145" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/metodosUteis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/UploadPhoto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/Checklist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/actionsTypes.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/colaboradorActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/actions/serverActions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/form/DatePicker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1785">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1875">
+          <caret line="147" column="47" lean-forward="true" selection-start-line="147" selection-start-column="47" selection-end-line="147" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modais/Contato.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="24" column="108" selection-start-line="24" selection-start-column="108" selection-end-line="24" selection-end-column="108" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/modais/Dependente.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="16" column="81" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/util/Message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/defaultValues.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/components/_message.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/scss/abstract/_base.scss">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/scss/pages/_comunicacao.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -1066,33 +1104,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="23" lean-forward="true" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/comunicacao/Mural.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/store/actions/serverActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="83" column="7" lean-forward="true" selection-start-line="83" selection-start-column="7" selection-end-line="83" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/colaboradores/CadastroColaboradorStep1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="155" column="81" selection-start-line="155" selection-start-column="81" selection-end-line="155" selection-end-column="81" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

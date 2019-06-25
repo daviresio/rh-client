@@ -20,20 +20,21 @@ import * as defaultValues from "../../config/defaultValues";
 import DatePicker from "../../components/form/DatePicker";
 import Checklist from "./Checklist";
 import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
+import {getValue} from "../../util/metodosUteis";
 
 let CadastroColaboradorStep1 = props => {
 
     const [saveOnly, setSaveOnly] = useState(true)
     const [opcaoAvancada, setOpcaoAvancada] = useState(false)
     const [horarioPersonalizado, setHorarioPersonalizado] = useState(false)
-    const {tipoJornada, foto} = props.formValues
-    const {cargos, departamentos, centrodecustos, sindicatos} = props.serverValues
+    const {jornadaTrabalho, foto} = props.formValues
+    const {cargos, departamentos, centrodecustos, sindicatos, periodoExperiencias, jornadasTrabalho, vinculos, formaPagamentos} = props.serverValues
     const {cargo, departamento, centroDeCusto} = props.modal
-    const {loadData, openModal, handleSubmit, save, uploadImage} = props
+    const {loadData, openModal, handleSubmit, save, update, uploadImage} = props
 
     const buttonSubmit = useRef(null)
 
-    const showButtonOpcoes = () => tipoJornada === 2 ?
+    const showButtonOpcoes = () => jornadaTrabalho === 2 ?
         <>
             <Buttom color={!opcaoAvancada ? 'blue' : 'gray'} onClick={() => setOpcaoAvancada(false)}
                     label={'Opcao simplificada'}/>
@@ -41,11 +42,11 @@ let CadastroColaboradorStep1 = props => {
                     label={'Opcao avancada'}/>
         </> : null
 
-    const showButtonHorarioPersonalizado = () => (tipoJornada === 2 && opcaoAvancada) || tipoJornada === 4 ?
+    const showButtonHorarioPersonalizado = () => (jornadaTrabalho === 2 && opcaoAvancada) || jornadaTrabalho === 4 ?
         <Buttom color={'blue'} label={'Adicionar horario personalizado'}
                 onClick={() => setHorarioPersonalizado(true)}/> : null
 
-    const showLabelHorarioPersonalizado = () => (tipoJornada === 2 && opcaoAvancada) || tipoJornada === 4 ?
+    const showLabelHorarioPersonalizado = () => (jornadaTrabalho === 2 && opcaoAvancada) || jornadaTrabalho === 4 ?
         <p>* Antes de incluir um novo horário de trabalho, verifique se já não existe o mesmo cadastrado. </p> : null
 
     const showTableJornadaSemanalSimplificada = () =>
@@ -114,7 +115,7 @@ let CadastroColaboradorStep1 = props => {
             },
         ]}/>
 
-    const showHorarioPersonalizado = () => (tipoJornada === 2 || tipoJornada === 4) && horarioPersonalizado ?
+    const showHorarioPersonalizado = () => (jornadaTrabalho === 2 || jornadaTrabalho === 4) && horarioPersonalizado ?
         <div className={'horario-personalizado'}>
             <span> * Para jornadas que começam ou terminam à meia noite, deve-se lançár no formato 00:00. </span>
             <div className={'inputs'}>
@@ -134,11 +135,11 @@ let CadastroColaboradorStep1 = props => {
             </div>
         </div> : null
 
-    const showInputsJornada = () => tipoJornada !== 1 ?
+    const showInputsJornada = () => jornadaTrabalho !== 1 ?
         <>
             <Field name={'qtdMediaHorasSemanais'} label={'Qtde. média de horas semanais'} component={InputRow}
                    disabled/>
-            {tipoJornada !== "3" ?
+            {jornadaTrabalho !== "3" ?
                 <Field name={'descricaoJornada'} label={'Descrição da jornada'} required component={InputRow}
                        detail={'Este dado será utilizado em suas minutas de documento.'}/> : null}
         </> : null
@@ -170,10 +171,22 @@ let CadastroColaboradorStep1 = props => {
         loadData('departamentos')
         loadData('centrodecustos')
         loadData('sindicatos')
+        loadData('jornadas-trabalho', 'jornadasTrabalho')
+        loadData('periodo-experiencias', 'periodoExperiencias')
+        loadData('vinculos')
+        loadData('forma-pagamentos', 'formaPagamentos')
+
     }, [])
 
-    const submit = values => saveOnly ? save(values, {redirect: {route: '/colaboradores'}, field: 'colaborador'}) :
-        save(values, {redirect: {route: '/colaboradores/cadastro/dados-pessoais/', id: true}, field: 'colaborador'})
+    const submit = values => {
+            if(props.match.params.id) {
+                saveOnly ? update(values, {redirect: {route: '/colaboradores'}, field: 'colaborador'}) :
+                    update(values, {redirect: {route: '/colaboradores/cadastro/dados-pessoais/', id: true}, field: 'colaborador'})
+            } else {
+                saveOnly ? save(values, {redirect: {route: '/colaboradores'}, field: 'colaborador'}) :
+                    save(values, {redirect: {route: '/colaboradores/cadastro/dados-pessoais/', id: true}, field: 'colaborador'})
+            }
+    }
 
     return (
         <>
@@ -208,7 +221,7 @@ let CadastroColaboradorStep1 = props => {
                         <Field component={SelectRow} name={'jaPagouContribSindical'}
                                label={'Colaborador já pagou contribuição social no ano da admissão?'}
                                options={defaultValues.simNaoOptions}/>
-                        <Field component={DatePicker} name={'dataExame'} label={'Data do exame admissional'}
+                        <Field component={DatePicker} name={'dataExameAdmissional'} label={'Data do exame admissional'}
                         />
                     </CardSimples>
 
@@ -216,12 +229,12 @@ let CadastroColaboradorStep1 = props => {
                     <CardSimples>
                         <Field component={DatePicker} name={'dataAdmissao'} label={'Data de admissao'} required/>
                         <Field component={SelectRow} name={'vinculo'} label={'Vinculo'}
-                               options={defaultValues.vinculoColaborador}
+                               options={vinculos}
                                detail={'Qual é o vínculo deste colaborador com a sua empresa? Este dado impactará no fechamento de folha e cálculo de férias'}/>
                         <Field component={SelectRow} name={'sindicato'} label={'Sindicato'} options={sindicatos}
                                detail={'Qual é o sindicato que este colaborador será vinculado?'}/>
                         <Field component={SelectRow} name={'formaPagamento'} label={'Forma de pagamento'}
-                               options={defaultValues.formaPagamentoColaborador}
+                               options={formaPagamentos}
                         />
                         <Field component={InputRow} name={'salario'} label={'Salario'}/>
                     </CardSimples>
@@ -229,7 +242,7 @@ let CadastroColaboradorStep1 = props => {
                     <div className={'title-big'}>Periodo de experiencia</div>
                     <CardSimples>
                         <Field component={SelectRow} name={'periodoExperiencia'}
-                               label={'Tipo de periodo de experiencia'} options={defaultValues.tipoPeriodoExperiencia}/>
+                               label={'Tipo de periodo de experiencia'} options={periodoExperiencias}/>
                         {/*
                         <Field component={InputRow} name={'primeiroFim'} label={'Primeiro fim'} required detail={'Se houver apenas um período, preencha apenas primeiro período'} />
                         <Field component={InputRow} name={'segundooFim'} label={'Segundo fim'} detail={'Se houverem dois períodos, preencha aqui o período final de experiência'} />
@@ -240,19 +253,19 @@ let CadastroColaboradorStep1 = props => {
                     <CardSimples start>
                         <div className={'title-2'}>{'Tipo'}</div>
                         <Field component={RadioButton} type={'radio'} value={1} normalize={v => Number(v)}
-                               label={'Nenhuma'} name={"tipoJornada"}/>
+                               label={'Nenhuma'} name={"jornadaTrabalho"}/>
                         <Field component={RadioButton} type={'radio'} value={2} normalize={v => Number(v)}
                                label={'Jornada Semanal (segunda a domingo) com apenas um horário padrão por dia da semana e folga fixa'}
-                               name={"tipoJornada"}/>
+                               name={"jornadaTrabalho"}/>
                         <Field component={RadioButton} type={'radio'} value={3}
                                label={'Jornada 12 x 36 (12 horas de trabalho seguidas de 36 horas ininterruptas de descanso)'}
-                               name={"tipoJornada"} normalize={v => Number(v)}/>
+                               name={"jornadaTrabalho"} normalize={v => Number(v)}/>
                         <Field component={RadioButton} type={'radio'} value={4} normalize={v => Number(v)}
                                label={'Demais tipos de jornada (escala, turno de revezamento, permutas, horários rotativos, etc.)'}
-                               name={"tipoJornada"}/>
+                               name={"jornadaTrabalho"}/>
 
                         <div className={'jornada-semanal'}>
-                            {(tipoJornada !== 1 && tipoJornada !== 3) &&
+                            {(jornadaTrabalho !== 1 && jornadaTrabalho !== 3) &&
                             <>
                                 <div className={'opcoes'}>
                                     {showButtonOpcoes()}
@@ -266,8 +279,8 @@ let CadastroColaboradorStep1 = props => {
                                     {showButtonHorarioPersonalizado()}
                                 </div>
                                 {showHorarioPersonalizado()}
-                                {tipoJornada === 2 && !opcaoAvancada ? showTableJornadaSemanalSimplificada()
-                                    : (tipoJornada === 2 && opcaoAvancada) || tipoJornada === 4 ? showTableJornadaSemanalAvancada() : null}
+                                {jornadaTrabalho === 2 && !opcaoAvancada ? showTableJornadaSemanalSimplificada()
+                                    : (jornadaTrabalho === 2 && opcaoAvancada) || jornadaTrabalho === 4 ? showTableJornadaSemanalAvancada() : null}
                             </>
                             }
                             {showInputsJornada()}
@@ -310,7 +323,7 @@ let CadastroColaboradorStep1 = props => {
                         </div>
                     </div>
                 </form>
-                <Checklist/>
+                {props.match.params.id && <Checklist/>}
             </div>
         </>
     );
@@ -325,36 +338,36 @@ const mapStateToProps = state => {
 
     return {
         initialValues: {
+            id: colaborador.id,
             nome: colaborador.nome,
             email: colaborador.email,
-            cargo: colaborador.cargo,
-            departamento: colaborador.departamento,
-            centroDeCusto: colaborador.centroDeCusto,
+            cargo: getValue('cargo.id', colaborador),
+            departamento: getValue('departamento.id', colaborador),
+            centroDeCusto: getValue('centroDeCusto.id', colaborador),
             gestor: colaborador.gestor,
             matricula: colaborador.matricula,
             primeiroEmprego: colaborador.primeiroEmprego,
             jaPagouContribSindical: colaborador.jaPagouContribSindical,
-            dataExame: colaborador.dataExame,
+            dataExameAdmissional: colaborador.dataExameAdmissional,
             dataAdmissao: colaborador.dataAdmissao,
-            vinculo: colaborador.vinculo,
-            sindicato: colaborador.sindicato,
-            formaPagamento: colaborador.formaPagamento,
+            vinculo: getValue('vinculo.id', colaborador),
+            sindicato: getValue('sindicato.id', colaborador),
+            formaPagamento: getValue('formaPagamento.id', colaborador),
             salario: colaborador.salario,
-            periodoExperiencia: colaborador.periodoExperiencia || 1,
+            periodoExperiencia: getValue('periodoExperiencia.id', colaborador) || 1,
             primeiroFim: colaborador.primeiroFim,
             segundoFim: colaborador.segundoFim,
-            tipoJornada: colaborador.tipoJornada || 1,
+            jornadaTrabalho: getValue('jornadaTrabalho.id', colaborador) || 1,
             preenchimentoPeloColaborador: colaborador.preenchimentoPeloColaborador || false,
             foto: colaborador.foto || null,
-        }, formValues: selector(state, "tipoJornada", "nome", "periodoExperiencia", "cargo", "data", "foto"),
+        }, formValues: selector(state, "jornadaTrabalho", "nome", "periodoExperiencia", "foto", "dataAdmissao"),
         serverValues: state.serverValues,
         modal: state.modal,
-
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    loadData: entity => dispatch(loadList(entity)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
     openModal: modal => dispatch(changeModalVisible(modal, true)),
     save: (value, redirect) => dispatch(save('colaboradores', value, redirect)),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),

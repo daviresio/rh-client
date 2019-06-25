@@ -12,6 +12,18 @@ const INITIAL_STATE = {
     evento: {},
     beneficios: [],
     beneficio: {},
+    jornadasTrabalho: [],
+    jornadaTrabalho: {},
+    periodoExperiencias: [],
+    periodoExperiencia: {},
+    vinculos: [],
+    vinculo: {},
+    formaPagamentos: [],
+    formaPagamento: {},
+    dependentes: [],
+    dependente: {},
+    contatos: [],
+    contato: {},
 }
 
 export const serverValues = (state = INITIAL_STATE, action) => {

@@ -6,6 +6,10 @@ import Buttom from "../components/Buttom";
 import {changeModalVisible} from "../store/actions/modalActions";
 import {save, update} from "../store/actions/serverActions";
 import {connect} from "react-redux";
+import DatePicker from "../components/form/DatePicker";
+import SelectRow from "../components/form/SelectRow";
+import {simNaoOptions, tiposRelacaoDependente} from "../config/defaultValues";
+import Checkbox from "../components/form/Checkbox";
 
 let Dependente = props => {
     const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
@@ -15,10 +19,13 @@ let Dependente = props => {
     return (
         <Modal border visible={visible} title={'Adicionar dependente'}>
             <form onSubmit={handleSubmit(submit)}>
-                <Field component={InputRow} name={'nome'} label={'Dependente'} detail={'Exemplos: Estagiário, Analista, Coordenador, Gerente e Diretor'}/>
-                <Field component={InputRow} name={'cbo'} label={'Cbo'} detail={'Classificação Brasileira de Ocupações - CBO'} actionLabel={'Buscar por Título'}/>
-                <Field component={InputRow} name={'descricao'} label={'Descricao'}/>
-
+                <Field component={InputRow} name={'nome'} label={'Nome'} />
+                <Field component={DatePicker} name={'dataNascimento'} label={'Data de Nascimento'} />
+                <Field component={SelectRow} options={simNaoOptions} name={'estrangeiro'} label={'E estrangeiro?'}/>
+                <Field component={InputRow} name={'cpf'} label={'Cpf'}/>
+                <Field component={InputRow} name={'nomeMae'} label={'Nome da mae'}/>
+                <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={tiposRelacaoDependente}/>
+                <Field component={Checkbox} name={'incluirParaFinsDeImpostoRenda'} label={'Incluir para fins de imposto de renda'}/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
                     <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
@@ -26,7 +33,6 @@ let Dependente = props => {
             </form>
         </Modal>
     )
-
 }
 
 const mapStateToProps = state => ({

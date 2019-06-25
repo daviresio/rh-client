@@ -9,7 +9,7 @@ class DatePicker extends Component {
         this.state = {
             today: new Date(),
             dateController: new Date(),
-            value: props.input.value || '',
+            value: props.input.value,
             formateDate: '',
             visible: false,
             focus: false,
@@ -33,6 +33,9 @@ class DatePicker extends Component {
     calendar = React.createRef()
 
     componentDidMount() {
+        setTimeout(()=> {
+            if(this.props.input.value) this.setState({value: new Date(Date.parse(this.props.input.value))})
+        }, 1000)
         document.addEventListener('mousedown', this.handleClick)
     }
 
@@ -119,10 +122,9 @@ class DatePicker extends Component {
     requiredLabel = this.props.required ? <span className={'required'}>{' *'}</span> : null
 
     render() {
-   /*     const v = this.state.value ? `${this.adicionaZero(this.state.value.getDate())}/${this.adicionaZero(this.state.value.getMonth() + 1)}/${this.state.value.getFullYear()}` : ''
+        const v = this.state.value ? `${this.adicionaZero(this.state.value.getDate())}/${this.adicionaZero(this.state.value.getMonth() + 1)}/${this.state.value.getFullYear()}` : ''
         if (this.state.formateDate !== v)
-            this.setState({formateDate: v})*/
-
+            this.setState({formateDate: v})
         return (
             <div ref={this.calendar} className={'datepicker'}>
                 <div className={'input-container'}>
@@ -130,7 +132,7 @@ class DatePicker extends Component {
                     <div className={'datepicker-input-container input-margin'}>
                         <input onFocus={() => this.setState({visible: true, focus: true})} onBlur={() => {
                             this.setState({focus: false}, () => {
-                                //setTimeout(() => this.setState({visible: false}), 200)
+                                //setTimeout(() => this.setState({visible: false}), 400)
                             })
                         }} placeholder={'dd/mm/yyyy'}
                                readOnly={true} value={this.state.formateDate} className={'input'}/>

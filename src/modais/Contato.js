@@ -6,6 +6,8 @@ import Buttom from "../components/Buttom";
 import {changeModalVisible} from "../store/actions/modalActions";
 import {save, update} from "../store/actions/serverActions";
 import {connect} from "react-redux";
+import SelectRow from "../components/form/SelectRow";
+import {tiposRelacaoContato} from "../config/defaultValues";
 
 let Contato = props => {
     const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
@@ -15,10 +17,12 @@ let Contato = props => {
     return (
         <Modal border visible={visible} title={'Adicionar contato'}>
             <form onSubmit={handleSubmit(submit)}>
-                <Field component={InputRow} name={'nome'} label={'Contato'} detail={'Exemplos: Estagiário, Analista, Coordenador, Gerente e Diretor'}/>
-                <Field component={InputRow} name={'cbo'} label={'Cbo'} detail={'Classificação Brasileira de Ocupações - CBO'} actionLabel={'Buscar por Título'}/>
-                <Field component={InputRow} name={'descricao'} label={'Descricao'}/>
-
+                <Field component={InputRow} name={'nome'} label={'Nome'} required/>
+                <Field component={InputRow} name={'email'} label={'Email'}/>
+                <Field component={InputRow} name={'telefone'} label={'Telefone'}/>
+                <Field component={InputRow} name={'celular'} label={'Celular'}/>
+                <Field component={InputRow} name={'telefoneTrabalho'} label={'Telefone de trabalho'}/>
+                <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={tiposRelacaoContato} required/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
                     <Buttom color={'green'} label={'Salvar'} type={'submit'}/>

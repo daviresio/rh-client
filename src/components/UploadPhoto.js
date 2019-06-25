@@ -4,7 +4,7 @@ const UploadPhoto = ({label, onChange, image}) => {
 
     const showImage = image == null ? <i className={'fas fa-camera photo-icon'} />
     : <img src={image} alt="" className={'image-upload'}/>
-        console.log(image)
+
     const showLabel = <div className={'input-label'}>{label}</div>
     return (
         <div className={'input-container'}>
