@@ -14,7 +14,8 @@ let CadastroColaboradorStep4 = ({handleSubmit, match, router, setId, search, upd
         search(match.params.id)
     }, [])
 
-    const submit = values => update({...values, id: match.params.id}, {redirect: {route: `/colaboradores/cadastro-finalizado/${match.params.id}`}, field: 'colaborador'})
+    const submit = values => update({...values, id: match.params.id, cadastroConcluido: true, status: "ATIVO", ativo: true},
+        {redirect: {route: `/colaboradores/cadastro-finalizado/${match.params.id}`}, field: 'colaborador'})
 
     return (
         <div className={'page-divided'}>
@@ -28,7 +29,7 @@ let CadastroColaboradorStep4 = ({handleSubmit, match, router, setId, search, upd
                     <Buttom color={'blue'} label={'Salvar'} style={{marginRight: '2rem'}} type={'submit'}/>
                 </div>
             </form>
-            <Checklist/>
+            <Checklist id={match.params.id}/>
         </div>
     );
 };

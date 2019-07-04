@@ -1,13 +1,27 @@
-import {DELETE_SUCESS, LOADING, LOADING_FALIED, LOADING_SUCESS, SAVE_SUCESS, SEARCH_SUCESS, UPDATE_LIST_SUCESS, UPDATE_SUCESS} from "../actions/actionsTypes";
+import {
+    DELETE_SUCESS,
+    LOADING,
+    LOADING_FALIED,
+    LOADING_SUCESS,
+    OK_NO_UPDATE,
+    SAVE_SUCESS,
+    SEARCH_SUCESS,
+    UPDATE_LIST_SUCESS,
+    UPDATE_SUCESS
+} from "../actions/actionsTypes";
 
 const INITIAL_STATE = {
     colaboradores: [],
+    colaboradoresAtivos: [],
+    colaboradoresEmAdimissao: [],
+    colaboradoresEmDemissao: [],
+    colaborador: {},
+    qtdColaboradores: {},
     cargos: [],
     departamentos: [],
     centrodecustos: [],
     sindicatos: [],
     loading: [],
-    colaborador: {},
     eventos: [],
     evento: {},
     beneficios: [],
@@ -24,6 +38,17 @@ const INITIAL_STATE = {
     dependente: {},
     contatos: [],
     contato: {},
+    checkLists: [],
+    copiaDocumentos: [],
+    copiaDocumento: {},
+    bancos: [],
+    banco: {},
+    enderecos: [],
+    endereco: {},
+    escolaridades: [],
+    escolaridade: {},
+    dissidios: [],
+    dissidio: {},
 }
 
 export const serverValues = (state = INITIAL_STATE, action) => {
@@ -35,6 +60,7 @@ export const serverValues = (state = INITIAL_STATE, action) => {
         case LOADING_FALIED:
             return {...state, loading: state.loading.filter(v => v !== action.payload.target)}
         case SAVE_SUCESS:
+            console.log(action)
             return {...state, [action.payload.target]: state[action.payload.target].concat(action.payload.value)}
         case UPDATE_SUCESS:
             return {...state, [action.payload.target]: action.payload.value}
@@ -47,6 +73,8 @@ export const serverValues = (state = INITIAL_STATE, action) => {
             return {...state, [action.payload.target]: Object.assign({}, action.payload.value)}
         case 'DELETAR_COLABORADOR':
             return {...state, colaborador: {}}
+        case OK_NO_UPDATE:
+            return {...state}
         default:
             return state;
     }

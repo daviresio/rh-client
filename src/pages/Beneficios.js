@@ -1,19 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Page from "../layout/Page";
 import Buttom from "../components/Buttom";
 import CardSimples from "../components/card/CardSimples";
 import {connect} from "react-redux";
 import {changeRoute} from "../store/actions/routerActions";
+import {loadList} from "../store/actions/serverActions";
 
-const Beneficios = ({changeRoute}) => {
+const Beneficios = ({changeRoute, loadData, beneficios}) => {
 
-    const cardBeneficio = ({nome, tipo, operador, id}) =>
-        <CardSimples start className={'card-beneficio'} onClick={()=> changeRoute(`/beneficios/detalhe/${id}`)}>
+    useEffect(()=> {
+        loadData('beneficios')
+    }, [])
+
+    const cardBeneficio = ({nome, categoria, operador, id}) =>
+        <CardSimples start className={'card-beneficio'} onClick={()=> changeRoute(`/beneficios/detalhe/${id}`)} key={id}>
             <div className={'title'}>
                 {nome}
             </div>
             <div className={'tipo'}>
-                {tipo}
+                {categoria}
             </div>
             <div className={'operador'}>
                 Operador: &nbsp; {operador}
@@ -27,15 +32,21 @@ const Beneficios = ({changeRoute}) => {
                 <Buttom color={'green'} label={'Contratar beneficio'}/>
             </div>
             <div className={'beneficios-body'}>
-                {cardBeneficio({nome: 'Vale transporte', tipo: 'asistencia de transporte', operador: 'alelo', id: 1})}
-                {cardBeneficio({nome: 'Vale transporte', tipo: 'asistencia de transporte', operador: 'alelo', id: 2})}
-                {cardBeneficio({nome: 'Vale transporte', tipo: 'asistencia de transporte', operador: 'alelo', id: 3})}
+                {beneficios && beneficios.length > 0 && beneficios.map(v => cardBeneficio({...v}))}
             </div>
         </Page>
     );
 };
 
-export default connect(
-    state => ({router: state.router}),
-    dispatch => ({changeRoute: route => dispatch(changeRoute(route))}),
-)(Beneficios);
+const mapStateToProps = state => ({
+    router: state.router,
+    beneficios: state.serverValues.beneficios,
+})
+
+const mapDispatchToProps = dispatch => ({
+    changeRoute: route => dispatch(changeRoute(route)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Beneficios);

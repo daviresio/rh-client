@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import Page from "../layout/Page";
 import SimplePanel from "../components/SimplePanel";
 import Message from "../components/util/Message";
-import TableContainer from "../components/TableContainer";
-import Table from "../components/Table";
+import Table from "../components/table/Table";
 import CardBorda from "../components/card/CardBorda";
 import Buttom from "../components/Buttom";
 import Input from "../components/form/Input";
+import {changeRoute} from "../store/actions/routerActions";
+import {connect} from "react-redux";
 
-const Ferias = () => {
+const Ferias = ({changeRoute}) => {
 
     const [infoSelected, setInfoSelected] = useState(0)
 
@@ -64,12 +65,10 @@ const Ferias = () => {
                         <div style={{fontSize: '1.2rem'}}>Nenhum resultado encontrado</div>
                     </CardBorda>
                     <div style={{marginTop: '2rem'}}>
-                        <Buttom click={() => {
-                        }} color={'blue'} full label={'Cadastrar ferias coletivas'}/>
+                        <Buttom onClick={() => changeRoute('/ferias/cadastro-ferias-coletivas')} color={'blue'} full label={'Cadastrar ferias coletivas'}/>
                     </div>
                     <div style={{marginTop: '1rem'}}>
-                        <Buttom click={() => {
-                        }} color={'blue'} full label={'Gerenciar ferias por colaborador'}/>
+                        <Buttom onClick={() => changeRoute('/ferias/cadastro-ferias-individuais')} color={'blue'} full label={'Gerenciar ferias por colaborador'}/>
                     </div>
                 </div>
             </div>
@@ -78,4 +77,13 @@ const Ferias = () => {
     );
 };
 
-export default Ferias;
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+    changeRoute: route => dispatch(changeRoute(route)),
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Ferias);

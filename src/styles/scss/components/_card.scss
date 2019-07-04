@@ -363,3 +363,34 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.card-icon {
+  padding: 3rem;
+  @include box-shadow-light;
+  transition: all .5s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-white;
+
+  i {
+    font-size: 5rem;
+    color: $color-blue;
+  }
+
+  .title {
+    margin-top: 2rem;
+  }
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 1.5rem -.3rem rgba(0, 0, 0, 0.50);
+    transition: all .5s;
+
+    & > i {
+      color: $color-orange-light;
+    }
+  }
+}

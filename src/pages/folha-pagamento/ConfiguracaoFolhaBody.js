@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
-import TableContainer from "../../components/TableContainer";
-import Table from "../../components/Table";
+import Table from "../../components/table/Table";
 import TabCard from "../../components/TabCard";
 import CardSimples from "../../components/card/CardSimples";
 import {connect} from "react-redux";

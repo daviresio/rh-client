@@ -2,14 +2,14 @@ import React from 'react';
 
 const UploadPhoto = ({label, onChange, image}) => {
 
-    const showImage = image == null ? <i className={'fas fa-camera photo-icon'} />
+    const showImage = image == null ? <i className={'fas fa-camera photo-icon'}/>
     : <img src={image} alt="" className={'image-upload'}/>
 
     const showLabel = <div className={'input-label'}>{label}</div>
     return (
-        <div className={'input-container'}>
+        <div className={label ? 'input-container' : null}>
             {showLabel}
-        <div className={'photo-container'}>
+        <div className={image ? 'photo-container' : 'photo-container default-size'}>
             <div className={'photo-box'}>
                 {showImage}
             </div>

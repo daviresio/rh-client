@@ -81,42 +81,42 @@ export const periodoRecorrencia = [
 
 
 export const tiposCategoriaBeneficio = [
-    {nome: 'Assistencia a educacao', id: 1},
-    {nome: 'Clube de beneficios', id: 2},
-    {nome: 'Convenio farmacia', id: 3},
-    {nome: 'Estacionamento', id: 4},
-    {nome: 'Outros', id: 5},
-    {nome: 'Plano de saude', id: 6},
-    {nome: 'Plano odontologico', id: 7},
-    {nome: 'Previdencia', id: 8},
-    {nome: 'Seguro de vida', id: 9},
-    {nome: 'Vale alimentacao', id: 10},
-    {nome: 'Vale combustivel', id: 11},
-    {nome: 'Vale refeicao', id: 12},
-    {nome: 'Vale transporte', id: 13},
+    {nome: 'Assistencia a educacao', id: 'Assistencia a educacao'},
+    {nome: 'Clube de beneficios', id: 'Clube de beneficios'},
+    {nome: 'Convenio farmacia', id: 'Convenio farmacia'},
+    {nome: 'Estacionamento', id: 'Estacionamento'},
+    {nome: 'Outros', id: 'Outros'},
+    {nome: 'Plano de saude', id: 'Plano de saude'},
+    {nome: 'Plano odontologico', id: 'Plano odontologico'},
+    {nome: 'Previdencia', id: 'Previdencia'},
+    {nome: 'Seguro de vida', id: 'Seguro de vida'},
+    {nome: 'Vale alimentacao', id: 'Vale alimentacao'},
+    {nome: 'Vale combustivel', id: 'Vale combustivel'},
+    {nome: 'Vale refeicao', id: 'Vale refeicao'},
+    {nome: 'Vale transporte', id: 'Vale transporte'},
 ]
 
 
 export const tiposCorRaca = [
-    {nome: 'Indigena', id: 1},
-    {nome: 'Branca', id: 2},
-    {nome: 'Preta/Negra', id: 3},
-    {nome: 'Amarela', id: 4},
-    {nome: 'Parda', id: 5},
+    {nome: 'Indigena', id: 'Indigena'},
+    {nome: 'Branca', id: 'Branca'},
+    {nome: 'Preta/Negra', id: 'Preta/Negra'},
+    {nome: 'Amarela', id: 'Amarela'},
+    {nome: 'Parda', id: 'Parda'},
 ]
 
 export const tiposSexo = [
-    {nome: 'Masculino', id: 1},
-    {nome: 'Femenino', id: 2},
+    {nome: 'Masculino', id: 'Masculino'},
+    {nome: 'Femenino', id: 'Femenino'},
 ]
 
 export const tiposEstadoCivil = [
-    {nome: 'Solteiro(a)', id: 1},
-    {nome: 'Casado(a)', id: 2},
-    {nome: 'Divorciado(a)', id: 3},
-    {nome: 'Viuvo(a)', id: 4},
-    {nome: 'Separado(a)', id: 5},
-    {nome: 'Uniao estavel', id: 6},
+    {nome: 'Solteiro(a)', id: 'Solteiro(a)'},
+    {nome: 'Casado(a)', id: 'Casado(a)'},
+    {nome: 'Divorciado(a)', id: 'Divorciado(a)'},
+    {nome: 'Viuvo(a)', id: 'Viuvo(a)'},
+    {nome: 'Separado(a)', id: 'Separado(a)'},
+    {nome: 'Uniao estavel', id: 'Uniao estavel'},
 ]
 
 
@@ -152,5 +152,20 @@ export const tiposRelacaoDependente = [
     {nome: 'Companheiro sem filhos e/ou uniao estavel', id: 10},
     {nome: 'Agregado/outros', id: 11},
     {nome: 'Ex conjulgue que receba pensao ', id: 12},
+]
+
+export const tiposCalculoSaldoBeneficio = [
+    {
+        nome: 'Fixo mensal',
+        id: 1,
+    },
+    {
+        nome: 'Dias uteis do mes seguinte',
+        id: 2,
+    },
+    {
+        nome: 'Fixo',
+        id: 3,
+    },
 ]
 

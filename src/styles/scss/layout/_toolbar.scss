@@ -111,8 +111,8 @@
 
   .usuario {
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
+    min-width: 5rem;
+    min-height: 5rem;
     background-color: rgba($color-gray, .6);
     text-align: center;
     box-shadow: 0 0 30px -10px rgba(0, 0, 0, 0.75);

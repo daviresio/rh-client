@@ -16,7 +16,7 @@ const ClickOutside = ({children, clickOutside}) => {
     }, [])
 
     return (
-        <div ref={node}>
+        <div ref={node} style={{width: '100%'}}>
             {children}
         </div>
     );

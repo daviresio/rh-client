@@ -70,3 +70,18 @@
     }
   }
 }
+
+.button-adicionar {
+  padding: 2rem;
+  font-size: $font-size-3;
+  color: $color-blue;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-blue-light;
+  }
+
+  span {
+    margin-right: 2rem;
+  }
+}

@@ -2,20 +2,14 @@ import React from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
 import Select from "../../components/form/Select";
-import Table from "../../components/Table";
+import Table from "../../components/table/Table";
 import Input from "../../components/form/Input";
+import ColaboradorComFoto from "../../components/util/ColaboradorComFoto";
 
-const userImg = require('../../assets/user.png')
 
 const LancamentoManual = () => {
 
-    const renderColaborador = ({nome, foto, sexo}) =>
-        <div className={'colaborador-com-foto'}>
-            <div className={'image-container'}>
-                <img src={userImg}/>
-            </div>
-            <span>{nome}</span>
-        </div>
+
 
     const renderRowValue = () =>
         <div className={'linha-valor'}>
@@ -35,11 +29,11 @@ const LancamentoManual = () => {
                         <Buttom color={'blue'} label={'Campos de lancamento'}/>
                     </div>
                 </div>
-                <Table borda header={['Nome', 'Contribuicao sindical', 'Afastamentos', 'Ferias']}
+                <Table borda header={['Nome', 'Contribuicao sindical', 'Afastamentos', 'Ferias']} smallPadding
                        keys={['nome', 'contribuicaoSindical', 'afastamentos', 'ferias']}
                        data={[
                            {
-                               nome: renderColaborador({nome: 'Davi Resio', foto: null, sexo: 'MASCULINO'}),
+                               nome: <ColaboradorComFoto nome={'Davi Resio'} foto={null} />,
                                contribuicaoSindical: renderRowValue(),
                                afastamentos: renderRowValue(),
                                ferias: renderRowValue(),

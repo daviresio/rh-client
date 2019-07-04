@@ -1,7 +1,7 @@
 import React from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
-import Table from "../../components/Table";
+import Table from "../../components/table/Table";
 import Select from "../../components/form/Select";
 import {connect} from "react-redux";
 import LancamentoHoleriteModal from "../../modais/LancamentoHoleriteModal";
@@ -17,9 +17,9 @@ const Holerites = ({modal, openModal}) => {
             <CardBorda title={`Holerites`}>
                 <div className={'holerites-filtro'}>
                     <h3>Filtrar por: </h3>
-                    <Select label={'Ano'}/>
-                    <Select label={'Mes'}/>
-                    <Select label={'Tipo'}/>
+                    <Select correcaoList label={'Ano'}/>
+                    <Select correcaoList label={'Mes'}/>
+                    <Select correcaoList label={'Tipo'}/>
                 </div>
                 <Table header={['Mes', 'Ano', 'Tipo', 'Acoes']}/>
 

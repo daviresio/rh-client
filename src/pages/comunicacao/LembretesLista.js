@@ -3,7 +3,7 @@ import Buttom from "../../components/Buttom";
 import CardSimples from "../../components/card/CardSimples";
 import {connect} from "react-redux";
 import {changeRoute} from "../../store/actions/routerActions";
-import Table from "../../components/Table";
+import Table from "../../components/table/Table";
 
 const LembretesLista = ({changeRoute, router}) => {
 

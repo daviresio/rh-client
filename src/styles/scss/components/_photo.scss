@@ -1,7 +1,5 @@
 .photo {
   &-container {
-    width: 10rem;
-    height: 10rem;
     position: relative;
     overflow: hidden;
     align-self: center;
@@ -16,7 +14,10 @@
     padding: .2rem;
     text-align: center;
   }
-
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
 
   &-icon {
     color: $color-gray;
@@ -27,6 +28,11 @@
 
 }
 
+.default-size {
+  width: 10rem;
+  height: 10rem;
+}
+
 .image-upload {
   display: block;
   max-width: 10rem;
@@ -34,4 +40,13 @@
   width: auto;
   height: auto;
   object-fit: contain;
+}
+
+.upload-file {
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 2rem;
+  cursor: pointer;
 }

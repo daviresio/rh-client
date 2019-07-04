@@ -17,7 +17,7 @@ let LancamentoHoleriteModal = props => {
     return (
         <Modal border visible={visible} title={'Adicionar holerite'}>
             <form onSubmit={handleSubmit(submit)}>
-                <Field component={SelectRow} name={'ano'} label={'Ano'}/>
+                <Field component={SelectRow} name={'ano'} label={'Ano'} options={[{nome: '2019', id: '2019'}]}/>
                 <Field component={SelectRow} name={'mes'} label={'Mes'} options={meses}/>
                 <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tiposLancamentoHolerite}/>
 

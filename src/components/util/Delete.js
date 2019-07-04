@@ -4,7 +4,7 @@ const Delete = ({onClick}) => {
     return (
         <div onClick={onClick} className={'remove'}>
             <i className={`fas fa-times`}/>
-            <span>{'Excluir'}</span>
+            <span className={'excluir-label'}>{'Excluir'}</span>
         </div>
     );
 };

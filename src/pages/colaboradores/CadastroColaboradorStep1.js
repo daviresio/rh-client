@@ -9,12 +9,12 @@ import Message from "../../components/util/Message";
 import RadioButton from "../../components/form/RadioButton";
 import Buttom from "../../components/Buttom";
 import Input from "../../components/form/Input";
-import Table from "../../components/Table";
+import Table from "../../components/table/Table";
 import Select from "../../components/form/Select";
 import Cargo from "../../modais/Cargo";
 import Departamento from "../../modais/Departamento";
 import CentroDeCusto from "../../modais/CentroDeCusto";
-import {loadList, save, search, update, uploadImage} from "../../store/actions/serverActions";
+import {loadList, save, search, update, uploadFile} from "../../store/actions/serverActions";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import * as defaultValues from "../../config/defaultValues";
 import DatePicker from "../../components/form/DatePicker";
@@ -30,7 +30,7 @@ let CadastroColaboradorStep1 = props => {
     const {jornadaTrabalho, foto} = props.formValues
     const {cargos, departamentos, centrodecustos, sindicatos, periodoExperiencias, jornadasTrabalho, vinculos, formaPagamentos} = props.serverValues
     const {cargo, departamento, centroDeCusto} = props.modal
-    const {loadData, openModal, handleSubmit, save, update, uploadImage} = props
+    const {loadData, openModal, handleSubmit, save, update, uploadFile} = props
 
     const buttonSubmit = useRef(null)
 
@@ -154,7 +154,7 @@ let CadastroColaboradorStep1 = props => {
             if (e.target.result.length > MAX_IMAGE_SIZE) {
                 return alert('Imagem muito gramde, o tamanho maximo e de 2mb')
             }
-            uploadImage(e.target.result, type, {form: 'colaborador', campo: 'foto'}, foto)
+            uploadFile(e.target.result, type, {form: 'colaborador', campo: 'foto'}, foto)
         }
         reader.readAsDataURL(event.target.files[0])
     }
@@ -218,7 +218,7 @@ let CadastroColaboradorStep1 = props => {
                         <Field component={InputRow} name={'matricula'} label={'Matricula'}/>
                         <Field component={SelectRow} name={'primeiroEmprego'} label={'Primeiro emprego'}
                                options={defaultValues.simNaoOptions} required/>
-                        <Field component={SelectRow} name={'jaPagouContribSindical'}
+                        <Field component={SelectRow} name={'pagouContribSindicalAnoAdmissao'}
                                label={'Colaborador já pagou contribuição social no ano da admissão?'}
                                options={defaultValues.simNaoOptions}/>
                         <Field component={DatePicker} name={'dataExameAdmissional'} label={'Data do exame admissional'}
@@ -228,8 +228,7 @@ let CadastroColaboradorStep1 = props => {
                     <div className={'title-big'}>Salario</div>
                     <CardSimples>
                         <Field component={DatePicker} name={'dataAdmissao'} label={'Data de admissao'} required/>
-                        <Field component={SelectRow} name={'vinculo'} label={'Vinculo'}
-                               options={vinculos}
+                        <Field component={SelectRow} name={'vinculo'} label={'Vinculo'} options={vinculos}
                                detail={'Qual é o vínculo deste colaborador com a sua empresa? Este dado impactará no fechamento de folha e cálculo de férias'}/>
                         <Field component={SelectRow} name={'sindicato'} label={'Sindicato'} options={sindicatos}
                                detail={'Qual é o sindicato que este colaborador será vinculado?'}/>
@@ -323,7 +322,7 @@ let CadastroColaboradorStep1 = props => {
                         </div>
                     </div>
                 </form>
-                {props.match.params.id && <Checklist/>}
+                {props.match.params.id && <Checklist id={props.match.params.id}/>}
             </div>
         </>
     );
@@ -347,7 +346,7 @@ const mapStateToProps = state => {
             gestor: colaborador.gestor,
             matricula: colaborador.matricula,
             primeiroEmprego: colaborador.primeiroEmprego,
-            jaPagouContribSindical: colaborador.jaPagouContribSindical,
+            pagouContribSindicalAnoAdmissao: colaborador.pagouContribSindicalAnoAdmissao,
             dataExameAdmissional: colaborador.dataExameAdmissional,
             dataAdmissao: colaborador.dataAdmissao,
             vinculo: getValue('vinculo.id', colaborador),
@@ -372,7 +371,7 @@ const mapDispatchToProps = dispatch => ({
     save: (value, redirect) => dispatch(save('colaboradores', value, redirect)),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
-    uploadImage: (event, type, form, urlExistente) => dispatch(uploadImage(event, type, form, urlExistente)),
+    uploadFile: (event, type, form, urlExistente) => dispatch(uploadFile(event, type, form, urlExistente)),
 })
 
 

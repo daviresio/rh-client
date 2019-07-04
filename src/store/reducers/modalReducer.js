@@ -25,7 +25,7 @@ const INITIAL_STATE = {
         visible: false,
         value: null
     },
-    documento: {
+    copiaDocumento: {
         visible: false,
         value: null
     },
@@ -59,18 +59,40 @@ const INITIAL_STATE = {
     },
     contato: {
         visible: false,
-        value: null
+        value: null,
+        index: null,
     },
     dependente: {
         visible: false,
-        value: null
+        value: null,
+        index: null,
+    },
+    endereco: {
+        visible: false,
+        value: null,
+    },
+    escolaridade: {
+        visible: false,
+        value: null,
+    },
+    informacoesGeraisColaborador: {
+        visible: false,
+        value: null,
+    },
+    documentoColaborador: {
+        visible: false,
+        value: null,
+    },
+    dadosPrincipaisColaborador: {
+        visible: false,
+        value: null,
     },
 }
 
 export const modal = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CHANGE_MODAL_VISIBILITY:
-            return {...state, [action.payload.target]: {visible: action.payload.visible, value: action.payload.value}}
+            return {...state, [action.payload.target]: {visible: action.payload.visible, value: action.payload.value, index: action.payload.index}}
         default:
             return state
     }

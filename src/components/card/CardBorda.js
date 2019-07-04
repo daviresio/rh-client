@@ -9,7 +9,7 @@ const CardBorda = props => {
                 action = React.cloneElement(action, {},<><i className="fas fa-pen"/><span>Novo</span></>)
                 break
             case 'edit':
-                action = React.cloneElement(action, {}, <><i className="fas fa-pen"/><span>Novo</span></>)
+                action = React.cloneElement(action, {}, <><i className="fas fa-pen"/><span>Editar</span></>)
                 break
             case 'solicitar-ferias':
                 action = React.cloneElement(action, {}, <><i className="fas fa-comments"/><span>Solicitar ferias</span></>)

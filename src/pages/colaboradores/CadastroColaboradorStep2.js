@@ -1,10 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import CardSimples from "../../components/card/CardSimples";
-import {Field, reduxForm} from "redux-form";
+import {Field, formValueSelector, reduxForm} from "redux-form";
 import InputRow from "../../components/form/InputRow";
 import SelectRow from "../../components/form/SelectRow";
 import {connect} from "react-redux";
-import {loadList, save, search, update} from "../../store/actions/serverActions";
+import {loadList, removeEntytyFromForm, save, search, update} from "../../store/actions/serverActions";
 import Buttom from "../../components/Buttom";
 import Checklist from "./Checklist";
 import Contato from "../../modais/Contato";
@@ -13,11 +13,13 @@ import Message from "../../components/util/Message";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import DatePicker from "../../components/form/DatePicker";
 import {tiposCorRaca, tiposEstadoCivil, tiposSexo} from "../../config/defaultValues";
-import {getValue} from "../../util/metodosUteis";
+import {formateDate, getValue, parseDate} from "../../util/metodosUteis";
+import Edit from "../../components/util/Edit";
+import Delete from "../../components/util/Delete";
+import ButtomAdicionar from "../../components/ButtomAdicionar";
 
 
-let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, search, update, modal, openModal, dependentes, contatos, ...props}) => {
-
+let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, search, update, modal, openModal, formValues, removeEntytyFromForm, ...props}) => {
     const {contato, dependente} = modal
     const buttonSubmit = useRef(null)
     const [saveOnly, setSaveOnly] = useState(true)
@@ -40,27 +42,94 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
             field: 'colaborador'
         })
 
-    const renderContato = () => contatos && contatos.length ?
+    const renderContato = () => formValues.contatos && formValues.contatos.length ?
+        <>
+            {formValues.contatos.map((v, i) =>
+                <div className={'item-cadastro-colaborador'} key={v.id}>
+                    <div className={'dados'}>
+                        <div className={'item'}>
+                            <span className={'key'}>Nome: </span> <span className={'value'}>{v.nome}</span>
+                        </div>
+                        <div className={'item'}>
+                            <span className={'key'}>Email: </span> <span className={'value'}>{v.email}</span>
+                        </div>
+                        <div className={'item'}>
+                            <span className={'key'}>Telefone: </span> <span className={'value'}>{v.telefone}</span>
+                        </div>
+                        <div className={'item'}>
+                            <span className={'key'}>Celular: </span> <span className={'value'}>{v.celular}</span>
+                        </div>
+                        <div className={'item'}>
+                            <span className={'key'}>Telefone trabalho: </span> <span
+                            className={'value'}>{v.telefoneTrabalho}</span>
+                        </div>
+                        <div className={'item'}>
+                            <span className={'key'}>Relacao: </span> <span className={'value'}>{v.relacao}</span>
+                        </div>
+                    </div>
+                    <div className={'opcoes'}>
+                        <Edit onClick={() => openModal('contato', v)}/>
+                        <Delete onClick={() => removeEntytyFromForm('contatos', v.id, i)}/>
+                    </div>
+                </div>
+            )}
+            <ButtomAdicionar label={'Adicionar contato'} onClick={() => openModal('contato')} />
+        </> :
         <Message color={'orange'} icon={null} text={<div>
             <div className={'title'} style={{color: '#000', marginBottom: '1rem'}}>Adicionar Contato
             </div>
             <Buttom color={'orange'} label={'Adicionar contato'} onClick={() => openModal('contato')}/>
         </div>}/>
-        :
-        <div></div>
 
-    const renderDependente = () => dependentes && dependentes.length ?
+
+    const renderDependente = () => formValues.dependentes && formValues.dependentes.length ?
+        <>
+            {formValues.dependentes.map((v, i) =>
+            <div className={'item-cadastro-colaborador'} key={v.id}>
+                <div className={'dados'}>
+                    <div className={'item'}>
+                        <span className={'key'}>Nome: </span> <span className={'value'}>{v.nome}</span>
+                    </div>
+                    <div className={'item'}>
+                        <span className={'key'}>E estrangeiro?: </span> <span
+                        className={'value'}>{v.estrangeiro ? 'Sim' : 'Nao'}</span>
+                    </div>
+                    <div className={'item'}>
+                        <span className={'key'}>Data de Nascimento: </span> <span
+                        className={'value'}>{formateDate(parseDate(v.dataNascimento))}</span>
+                    </div>
+                    <div className={'item'}>
+                        <span className={'key'}>Cpf: </span> <span className={'value'}>{v.cpf}</span>
+                    </div>
+                    <div className={'item'}>
+                        <span className={'key'}>Nome da mae: </span> <span className={'value'}>{v.nomeMae}</span>
+                    </div>
+                    <div className={'item'}>
+                        <span className={'key'}>Relacao: </span> <span
+                        className={'value'}>{v.relacao}</span>
+                    </div>
+                    <div className={'item'}>
+                        <span className={'key'}>Incluir para fins de imposto de renda: </span> <span
+                        className={'value'}>{v.incluirParaFinsDeImpostoRenda ? 'Sim' : 'Nao'}</span>
+                    </div>
+                </div>
+                <div className={'opcoes'}>
+                    <Edit onClick={() => openModal('dependente', v)}/>
+                    <Delete onClick={() => removeEntytyFromForm('dependentes', v.id, i)}/>
+                </div>
+            </div>
+            )}
+            <ButtomAdicionar label={'Adicionar dependente'} onClick={() => openModal('dependente')} />
+        </> :
         <Message color={'orange'} icon={null} text={<div>
             <div className={'title'} style={{color: '#000', marginBottom: '1rem'}}>Adicionar Dependente</div>
             <Buttom color={'orange'} label={'Adicionar dependente'} onClick={() => openModal('dependente')}/>
         </div>}/>
-        :
-        <div></div>
 
     return (
         <>
-            <Contato visible={contato.visible} />
-            <Dependente visible={dependente.visible} />
+            <Contato visible={contato.visible} data={{colaborador: match.params.id}} updateForm={{parentRoute: 'colaborador', parent: match.params.id, form: 'colaborador', field: 'contatos'}}/>
+            <Dependente visible={dependente.visible} data={{colaborador: match.params.id}} updateForm={{parentRoute: 'colaborador', parent: match.params.id, form: 'colaborador', field: 'dependentes'}}/>
 
             <div className={'page-divided'}>
                 <form onSubmit={handleSubmit(submit)}>
@@ -122,7 +191,7 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
                         </div>
                     </div>
                 </form>
-                <Checklist/>
+                <Checklist id={match.params.id}/>
             </div>
         </>
     );
@@ -130,7 +199,8 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
 
 const mapStateToProps = state => {
 
-    let {colaborador} = state.serverValues
+    const {colaborador} = state.serverValues
+    const selector = formValueSelector('colaborador')
 
     return {
         router: state.router,
@@ -145,6 +215,8 @@ const mapStateToProps = state => {
             estadoCivil: colaborador.estadoCivil,
             nomeMae: colaborador.nomeMae,
             nomePai: colaborador.nomePai,
+            telefone: colaborador.telefone,
+            celular: colaborador.celular,
             endereco: {
                 id: getValue('endereco.id', colaborador),
                 cep: getValue('endereco.cep', colaborador),
@@ -161,18 +233,20 @@ const mapStateToProps = state => {
                 curso: getValue('escolaridade.curso', colaborador),
                 instituicao: getValue('escolaridade.instituicao', colaborador),
                 anoConclusao: getValue('escolaridade.anoConclusao', colaborador),
-            }
+            },
+            contatos: colaborador.contatos,
+            dependentes: colaborador.dependentes,
         },
-        contatos: state.serverValues.contatos,
-        dependentes: state.serverValues.dependentes,
+        formValues: selector(state, 'contatos', 'dependentes'),
     }
 }
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
-    openModal: modal => dispatch(changeModalVisible(modal, true)),
+    openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
+    removeEntytyFromForm: (entity, value, index) => dispatch(removeEntytyFromForm(entity, value, index)),
 })
 
 CadastroColaboradorStep2 = reduxForm({form: 'colaborador', enableReinitialize: true})(CadastroColaboradorStep2);

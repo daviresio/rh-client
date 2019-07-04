@@ -48,7 +48,7 @@
 
     .dados {
       font-size: $font-size-2;
-      color: rgba($color-black, .6);
+      color: rgba($color-black, .4);
 
       .nome {
         font-size: 3rem;
@@ -70,6 +70,10 @@
           margin-left: 1rem;
         }
 
+      }
+
+      &-valor {
+        color: $color-black;
       }
 
     }
@@ -140,9 +144,11 @@
     font-size: 5rem;
     color: $color-blue-light;
   }
+
   .title {
     color: $color-blue;
   }
+
   .text {
     font-size: $font-size-2;
   }
@@ -152,4 +158,89 @@
     margin: 1rem 0;
   }
 
+}
+
+.item-cadastro-colaborador {
+  font-size: $font-size-2;
+  display: grid;
+  grid-template-columns: 1fr 8rem;
+  width: 100%;
+  padding-bottom: 2rem;
+
+  .dados {
+    .item {
+      display: grid;
+      grid-template-columns: 25rem 1fr;
+
+      .key {
+        color: rgba($color-black, .6);
+        font-weight: $font-weigth-bold;
+      }
+
+      .value {
+
+      }
+    }
+  }
+
+  &:not(:first-child) {
+    border-top: .1rem solid rgba($color-gray, .6);
+    padding-top: 2rem;
+  }
+}
+
+.remove-border {
+  border: none !important;
+}
+
+.item-colaborador-documento {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: $font-size-2;
+
+}
+
+
+.copia-documento-item {
+  display: grid;
+  grid-template-columns: 8rem 1fr 5rem;
+  grid-gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: $font-size-2;
+
+  .campo {
+    display: flex;
+    justify-content: flex-end;
+    color: rgba($color-black, .4);
+  }
+
+  .link-download {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .valor {
+    color: rgba($color-black, .8);
+  }
+}
+
+.editar-em-massa-botoes {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 10rem;
+}
+
+.cards-gerenciar-acesso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5rem;
+  width: 100%;
+  margin-top: 5rem;
 }

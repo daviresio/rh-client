@@ -1,14 +1,5 @@
 import React from 'react';
-import Buttom from "../../components/Buttom";
-import CardBorda from "../../components/card/CardBorda";
-import Table from "../../components/Table";
-import TableContainer from "../../components/TableContainer";
-import CardSimples from "../../components/card/CardSimples";
-import TabCard from "../../components/TabCard";
 import {Route, Switch} from "react-router";
-import FolhaLancamentoStep1Body from "./FolhaLancamentoStep1Body";
-import LancamentoAutomatico from "./LancamentoAutomatico";
-import LancamentoManual from "./LancamentoManual";
 import {connect} from "react-redux";
 import {changeRoute} from "../../store/actions/routerActions";
 import ConfiguracaoFolhaBody from "./ConfiguracaoFolhaBody";

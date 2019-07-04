@@ -24,10 +24,9 @@
 }
 
 .remove {
-  color: $color-blue;
+  color: $color-red;
 
   i {
-    color: $color-red;
     margin-right: .5rem;
   }
 
@@ -96,4 +95,27 @@
     }
   }
 
+}
+
+
+.colaborador-com-foto {
+  display: flex;
+  align-items: center;
+
+  .image-container {
+    background-color: $color-white;
+    display: flex;
+    justify-content: center;
+    margin-right: 1rem;
+
+    img {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+  }
+
+  span {
+    margin-left: 2rem;
+    font-size: $font-size-4;
+  }
 }

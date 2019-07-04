@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Input from "./Input";
+import {adicionaZero, formateDate} from "../../util/metodosUteis";
 
 class DatePicker extends Component {
 
@@ -38,7 +39,6 @@ class DatePicker extends Component {
         }, 1000)
         document.addEventListener('mousedown', this.handleClick)
     }
-
     componentWillUnmount() {
         document.removeEventListener('mousedown', this.handleClick)
     }
@@ -47,8 +47,6 @@ class DatePicker extends Component {
         if (!this.calendar.current.contains(e.target) && !this.state.focus)
           setTimeout(() => this.setState({visible: false}), 300)
     }
-
-    adicionaZero = value => value.toString().length > 1 ? value : '0' + value
 
     showCalendar = () => {
         const month = this.state.dateController.getMonth()
@@ -90,8 +88,10 @@ class DatePicker extends Component {
 
     genetareCenterDaysCalendar = (monthDays, firstDay, lastDay) => {
         const days = []
-        const totalDays = monthDays - ((6 - firstDay) + (6 - lastDay))
+        let totalDays = monthDays - ((6 - firstDay) + (6 - lastDay))
+        if(firstDay === 6 && lastDay === 0) totalDays = totalDays + 7
         const arr = Array.apply(0, Array(totalDays)).map((_, i) => (8 - firstDay) + i)
+        console.log(lastDay)
         while (arr.length >= 7) {
             days.push(<div className={'linha'}>
                 {arr.splice(0, 7).map((v, i) =>
@@ -122,7 +122,7 @@ class DatePicker extends Component {
     requiredLabel = this.props.required ? <span className={'required'}>{' *'}</span> : null
 
     render() {
-        const v = this.state.value ? `${this.adicionaZero(this.state.value.getDate())}/${this.adicionaZero(this.state.value.getMonth() + 1)}/${this.state.value.getFullYear()}` : ''
+        const v = this.state.value ? formateDate(this.state.value) : ''
         if (this.state.formateDate !== v)
             this.setState({formateDate: v})
         return (

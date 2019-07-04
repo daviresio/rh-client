@@ -37,6 +37,10 @@
   }
 }
 
+.input-nopad {
+  padding: 0 1rem;
+}
+
 .input {
   width: 100%;
   outline: none;
@@ -58,9 +62,10 @@
     border: .1rem solid $color-blue
   }
 
-  &-width-1 {
-    width: 25rem;
-  }
+}
+
+.input-width-1 {
+  min-width: 20rem;
 }
 
 .select {
@@ -70,25 +75,22 @@
     font-size: $font-size-3;
     position: relative;
 
-    &-width-1 {
-      width: 25rem;
-    }
-
-
     input {
       pointer-events: none;
       display: none;
     }
   }
 
+  &-nopad {
+    margin: 0 1rem;
+  }
+
   &-header {
     cursor: pointer;
     background-color: $color-white;
-    margin: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     &-title {
       min-width: 4rem;
     }
@@ -127,8 +129,11 @@
       }
     }
   }
-}
 
+}
+.correcao-list.select-list{
+  top: 5.4rem;
+}
 .checkbox {
   cursor: pointer;
   font-size: $font-size-2;
