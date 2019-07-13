@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Edit = ({onClick, className}) => {
+const Edit = ({onClick, className, style}) => {
     return (
-        <div onClick={onClick} className={'edit ' + className}>
+        <div onClick={onClick} style={style} className={'edit ' + className}>
             <i className={`fas fa-edit`}/>
             <span>{'Editar'}</span>
         </div>

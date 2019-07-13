@@ -10,10 +10,12 @@ import Checkbox from "../../components/form/Checkbox";
 import RadioButton from "../../components/form/RadioButton";
 import {changeRoute} from "../../store/actions/routerActions";
 import {tipoProvento} from "../../config/defaultValues";
+import {save} from "../../store/actions/serverActions";
 
-let AdicionarEvento = ({router, handleSubmit, changeRoute}) => {
-    
+let AdicionarEvento = ({router, handleSubmit, changeRoute, save}) => {
+
     const submit = values => {
+        save(values, {redirect: {route: '/folha/configuracao'}})
     }
 
     return (
@@ -51,4 +53,13 @@ let AdicionarEvento = ({router, handleSubmit, changeRoute}) => {
 
 AdicionarEvento = reduxForm({form: "adicionarEvento"})(AdicionarEvento)
 
-export default connect(state => ({router: state.router}), dispatch => ({changeRoute: route => dispatch(changeRoute(route))}))(AdicionarEvento);
+const mapStateToProps = state => ({
+    router: state.router,
+})
+
+const mapDispatchToProps = dispatch => ({
+    changeRoute: route => dispatch(changeRoute(route)),
+    save: (value, redirect) => dispatch(save('eventos', value, redirect)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdicionarEvento);

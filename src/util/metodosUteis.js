@@ -32,6 +32,7 @@ export const downloadFile = async fileUrl => {
         document.body.appendChild(link);
         link.click();
     })
-
-
 }
+
+export const arrayToObj = arr =>
+    arr.length > 0 ? arr.reduce((obj, item) => Object.assign(obj, item)) : null

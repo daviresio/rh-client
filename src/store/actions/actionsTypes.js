@@ -36,3 +36,5 @@ export const DELETE_SUCESS = 'DELETE_SUCESS'
 export const DELETE_FALIED = 'DELETE_FALIED'
 
 export const OK_NO_UPDATE = 'OK_NO_UPDATE'
+
+export const CLEAR_LIST = 'CLEAR_LIST'

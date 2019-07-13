@@ -87,6 +87,18 @@ const INITIAL_STATE = {
         visible: false,
         value: null,
     },
+    periodoAquisitivoSaldoFerias: {
+        visible: false,
+        value: null,
+    },
+    contador: {
+        visible: false,
+        value: null,
+    },
+    feriado: {
+        visible: false,
+        value: null,
+    },
 }
 
 export const modal = (state = INITIAL_STATE, action) => {

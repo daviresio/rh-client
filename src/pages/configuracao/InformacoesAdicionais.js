@@ -22,7 +22,7 @@ const InformacoesAdicionais = props => {
         loadData('centrodecustos')
     }, [])
 
-    const renderItem = (item, modal) => item.length ?
+    const renderItem = (item, modal) => item && item.length ?
         item.map((x, i) =>
             <div key={x.id} className={'item'}>
                 <span className={'nome'}>{x.nome}</span>

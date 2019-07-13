@@ -169,3 +169,25 @@ export const tiposCalculoSaldoBeneficio = [
     },
 ]
 
+export const fechamentoFolhaMesAno = [
+    {
+        nome: '07/2019',
+        id: new Date(2019, 7, 0, 0, 0, 0),
+    },{
+        nome: '06/2019',
+        id: new Date(2019, 6, 0, 0, 0, 0),
+    },{
+        nome: '05/2019',
+        id: new Date(2019, 5, 0, 0, 0, 0),
+    },{
+        nome: '04/2019',
+        id: new Date(2019, 4, 0, 0, 0, 0),
+    },{
+        nome: '03/2019',
+        id: new Date(2019, 3, 0, 0, 0, 0),
+    },{
+        nome: '02/2019',
+        id: new Date(2019, 2, 0, 0, 0, 0),
+    },
+]
+

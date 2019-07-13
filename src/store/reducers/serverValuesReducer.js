@@ -1,4 +1,5 @@
 import {
+    CLEAR_LIST,
     DELETE_SUCESS,
     LOADING,
     LOADING_FALIED,
@@ -34,6 +35,8 @@ const INITIAL_STATE = {
     vinculo: {},
     formaPagamentos: [],
     formaPagamento: {},
+    fechamentoFolhas: [],
+    fechamentoFolha: {},
     dependentes: [],
     dependente: {},
     contatos: [],
@@ -49,6 +52,10 @@ const INITIAL_STATE = {
     escolaridade: {},
     dissidios: [],
     dissidio: {},
+    lembretes: [],
+    lembrete: {},
+    feriados: [],
+    feriado: {},
 }
 
 export const serverValues = (state = INITIAL_STATE, action) => {
@@ -73,6 +80,8 @@ export const serverValues = (state = INITIAL_STATE, action) => {
             return {...state, [action.payload.target]: Object.assign({}, action.payload.value)}
         case 'DELETAR_COLABORADOR':
             return {...state, colaborador: {}}
+        case CLEAR_LIST:
+            return {...state, [action.payload.target]: []}
         case OK_NO_UPDATE:
             return {...state}
         default:

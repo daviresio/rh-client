@@ -85,3 +85,30 @@
     margin-right: 2rem;
   }
 }
+
+.button-select-container {
+  position: relative;
+
+  .list-container {
+    position: absolute;
+    right: 0;
+    top: 4rem;
+    background-color: $color-white;
+    border-radius: 1rem;
+    @include borda-light;
+    padding-bottom: 1rem;
+    min-width: 150%;
+
+    ul {
+      padding: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: .1rem solid rgba($color-black, .1);
+
+      li:not(:first-child) {
+        margin-top: .5rem;
+      }
+
+    }
+  }
+
+}

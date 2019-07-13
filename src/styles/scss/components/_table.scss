@@ -129,3 +129,17 @@
     min-width: 12rem;
   }
 }
+
+.table-folha-totais {
+  height: 10rem;
+  background-color: $color-gray-light;
+
+  .label {
+    display: block;
+  }
+
+  .value {
+    display: block;
+    font-weight: $font-weigth-bold;
+  }
+}

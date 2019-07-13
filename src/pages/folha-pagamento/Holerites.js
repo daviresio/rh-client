@@ -6,8 +6,9 @@ import Select from "../../components/form/Select";
 import {connect} from "react-redux";
 import LancamentoHoleriteModal from "../../modais/LancamentoHoleriteModal";
 import {changeModalVisible} from "../../store/actions/modalActions";
+import {changeRoute} from "../../store/actions/routerActions";
 
-const Holerites = ({modal, openModal}) => {
+const Holerites = ({modal, openModal, changeRoute}) => {
 
     return (
         <>
@@ -36,6 +37,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(changeModalVisible(modal, true)),
+    changeRoute: route => dispatch(changeRoute(route)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Holerites);

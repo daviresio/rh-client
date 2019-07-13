@@ -8,11 +8,15 @@ import {save, update} from "../store/actions/serverActions";
 import {connect} from "react-redux";
 import SelectRow from "../components/form/SelectRow";
 import {meses, tiposLancamentoHolerite} from "../config/defaultValues";
+import {changeRoute} from "../store/actions/routerActions";
 
 let LancamentoHoleriteModal = props => {
     const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => {
+        //value.id ? update(value) : save(value, updateDropdown)
+        props.changeRoute('/folha/tipo-lancamento-holerite')
+    }
 
     return (
         <Modal border visible={visible} title={'Adicionar holerite'}>
@@ -39,6 +43,7 @@ const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('lancamentoHolerite', false)),
     save: (value, updateDropdown) => dispatch(save('lancamentoHolerite', value, {modal: 'lancamentoHolerite', updateDropdown})),
     update: value => dispatch(update('lancamentoHolerite', value, {modal: 'cargo', list: true})),
+    changeRoute: route => dispatch(changeRoute(route)),
 })
 
 LancamentoHoleriteModal = reduxForm({form: 'lancamentoHolerite', enableReinitialize: true})(LancamentoHoleriteModal)

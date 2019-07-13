@@ -1,5 +1,6 @@
 import api from '../../config/api'
 import {
+    CLEAR_LIST,
     DELETE_FALIED,
     DELETE_SUCESS,
     LOADING,
@@ -67,11 +68,13 @@ export const save = (entity, value, options) => async dispatch => {
 }
 
 export const update = (entity, value, options) => async dispatch => {
+    console.log(entity)
     console.log(value)
     console.log(options)
     await api.put(`/${entity}`, value).then(async result => {
 
         if (options && options.list) {
+            console.log('entrei')
             dispatch({type: UPDATE_LIST_SUCESS, payload: {target: entity, value: result.data}})
         } else {
             dispatch({type: UPDATE_SUCESS, payload: {target: options.field, value: result.data}})
@@ -160,3 +163,5 @@ export const uploadDocumento = (event, form) => dispatch =>{
     }
     reader.readAsDataURL(event.target.files[0])
 }
+
+export const clearList = target => ({type: CLEAR_LIST, payload: {target}})

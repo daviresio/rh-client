@@ -3,14 +3,12 @@ import CardBorda from "../../components/card/CardBorda";
 import {connect} from "react-redux";
 import Checkbox from "../../components/form/Checkbox";
 import Divided from "../../components/util/Divided";
-import {loadList, update} from "../../store/actions/serverActions";
+import {clearList, loadList, update} from "../../store/actions/serverActions";
 
-let Checklist = ({id, loadData, update, values, ...props}) => {
-
-    const submit = value => {
-    }
+let Checklist = ({id, loadData, update, values, clearList, ...props}) => {
 
     useEffect(() => {
+        clearList('checkLists')
         loadData(`checklists/colaborador/${id}`, 'checkLists')
     }, [])
 
@@ -40,6 +38,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     loadData: (entity, target) => dispatch(loadList(entity, target)),
     update: value => dispatch(update('checklists', value, {list: true})),
+    clearList: target => dispatch(clearList(target)),
 })
 
 

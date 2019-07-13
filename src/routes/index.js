@@ -31,6 +31,8 @@ import RecuperarSenha from "../pages/configuracao/RecuperarSenha";
 import CadastroFeriasColetivas from "../pages/ferias/CadastroFeriasColetivas";
 import GerenciarFeriasIndividuais from "../pages/ferias/GerenciarFeriasIndividuais";
 import EscolhaGerarHolerite from "../pages/folha-pagamento/EscolhaGerarHolerite";
+import LancamentoHoleriteAutomatico from "../pages/folha-pagamento/LancamentoHoleriteAutomatico";
+import LancamentoHoleriteModal from "../modais/LancamentoHoleriteModal";
 
 export default () =>
     (
@@ -56,8 +58,11 @@ export default () =>
                     <Route path={'/beneficios/cadastro/:id'} component={BeneficioCadastro}/>
                     <Route path={'/beneficios/cadastro'} component={BeneficioCadastro}/>
                     <Route path={'/beneficios'} component={Beneficios}/>
+                    <Route path={'/folha/lancamento/:id'} component={FolhaLancamento}/>
                     <Route path={'/folha/lancamento'} component={FolhaLancamento}/>
                     <Route path={'/folha/tipo-lancamento-holerite'} component={EscolhaGerarHolerite}/>
+                    <Route path={'/folha/holerite/importar'} component={LancamentoHoleriteAutomatico}/>
+                    <Route path={'/folha/holerite/manual'} component={LancamentoHoleriteModal}/>
                     <Route path={'/folha'} component={FolhaPagamento}/>
                     <Route path={'/comunicacao'} component={Comunicacao}/>
                     <Route path={'/ponto'} exact={true} component={Ponto}/>
