@@ -13,3 +13,7 @@ api.interceptors.request.use(async config => {
 
 
 export default api
+
+export const LOGIN_URL = 'http://localhost:8000/login'
+
+export const LANDING_PAGE_URL = 'http://localhost:8000/'

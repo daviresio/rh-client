@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {changeRoute} from "../store/actions/routerActions";
 import {connect} from "react-redux";
 import {login} from "../config/auth";
-import {carregarInformacoesUsuario} from "../store/actions/serverActions";
+import {carregarInformacoesUsuario} from "../store/actions/usuarioActions";
 
 const LogarUsuario = ({match, changeRoute, loadUser}) => {
 

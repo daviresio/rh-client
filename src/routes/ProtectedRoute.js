@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route} from "react-router";
-import {isAuthenticated} from "../config/auth";
+import {isAuthenticated, logoutAndRedirectToLogin} from "../config/auth";
 import {isEmpty} from "../util/metodosUteis";
 import {connect} from "react-redux";
-import {carregarInformacoesUsuario} from "../store/actions/serverActions";
+import {carregarInformacoesUsuario} from "../store/actions/usuarioActions";
 
 const ProtectedRoute = ({component: Component, usuario, loadUser, ...rest}) => (
     <Route {...rest} render={props => {
@@ -12,7 +12,7 @@ const ProtectedRoute = ({component: Component, usuario, loadUser, ...rest}) => (
                 loadUser()
             }
             return <Component {...props}/>
-        } else return window.location.replace('http://localhost:8000/login')
+        } else logoutAndRedirectToLogin()
     }}/>
 );
 

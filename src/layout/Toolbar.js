@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {changeEmpresaPesquisaVisibility, changeUsuarioOpcoesVisibility} from "../store/actions/toolbarActions";
 import ClickOutside from "../components/ClickOutside";
 import {changeRoute} from "../store/actions/routerActions";
+import {logout} from "../config/auth";
 
 const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, ...props}) => {
     const {empresaPesquisaVisible, usuarioOpcoesVisible} = toolbar;
@@ -80,7 +81,7 @@ const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, ...props}) => {
                             <div className={'item'} onClick={() => changeRoute('/notificacoes')}><i className="fas fa-bell"/> <span>{'Ajustes de notificacoes'}</span></div>
                             <div className={'item'} onClick={() => changeRoute('/financeiro')}><i className="fas fa-money-bill-wave"/> <span>{'Financeiro'}</span></div>
                             <div className={'item'}><i className="fas fa-question-circle"/> <span>{'Ajuda'}</span></div>
-                            <div className={'item'}><i className="fas fa-sign-out-alt"/> <span>{'Sair'}</span></div>
+                            <div className={'item'} onClick={logout}><i className="fas fa-sign-out-alt"/> <span>{'Sair'}</span></div>
                         </div>
                     </ClickOutside>
                 </div>

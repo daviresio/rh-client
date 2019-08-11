@@ -7,10 +7,9 @@ import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
 import InputRow from "../components/form/InputRow";
 
-let DadosCobranca = props => {
-    const {closeModal, visible, handleSubmit, update, reload, data} = props;
+let DadosCobranca = ({closeModal, visible, handleSubmit, update, reload}) => {
 
-    const submit = value => update({...value, ...data}, reload);
+    const submit = value => update(value, reload);
 
     return (
         <Modal border visible={visible} title={'Dados de cobranca'}>

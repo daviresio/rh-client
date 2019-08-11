@@ -188,8 +188,3 @@ export const uploadDocumento = (event, form) => dispatch => {
 };
 
 export const clearList = target => ({type: CLEAR_LIST, payload: {target}});
-
-export const carregarInformacoesUsuario = () => async dispatch => {
-    const result = await api.get('/usuarios/logged');
-    dispatch({type: LOAD_USER_LOGGED_DATA, payload: result.data})
-};

@@ -69,7 +69,6 @@ const InformacoesBasicas = props => {
 
     //TODO colocar o id real da empresa
     const modalOptions = {
-        data: {empresa: 1},
         reload: {entity: 'empresas', value: 1, field: 'empresa'}
     };
 
@@ -179,7 +178,7 @@ const mapStateToProps = state => ({
     serverValues: state.serverValues,
 });
 const mapDispatchToProps = dispatch => ({
-    openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
+    openModal: (modal, value, options) => dispatch(changeModalVisible(modal, true, value, options)),
     loadData: entity => dispatch(loadList(entity)),
     remove: (entity, value) => dispatch(remove(entity, value)),
     uploadFileUpdateWihoutFormAndReload: (image, type, options) => dispatch(uploadFileUpdateWihoutFormAndReload(image, type, options)),

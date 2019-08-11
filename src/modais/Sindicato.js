@@ -7,8 +7,7 @@ import {changeModalVisible} from "../store/actions/modalActions";
 import {save, update} from "../store/actions/serverActions";
 import {connect} from "react-redux";
 
-let Sindicato = props => {
-    const {closeModal, visible, handleSubmit, save, update} = props;
+let Sindicato = ({closeModal, visible, handleSubmit, save, update}) => {
 
     const submit = value => value.id ? update(value) : save(value);
 
