@@ -12,9 +12,9 @@ import Checkbox from "../components/form/Checkbox";
 import CenterContent from "../components/util/CenterContent";
 
 let PeriodoAquisitivoSaldoFerias = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Edite as informacoes de periodo aquisitivo e saldo de ferias'}>
@@ -38,17 +38,17 @@ let PeriodoAquisitivoSaldoFerias = props => {
     )
 };
 
-PeriodoAquisitivoSaldoFerias = reduxForm({form: 'periodoAquisitivoSaldoFerias', enableReinitialize: true})(PeriodoAquisitivoSaldoFerias)
+PeriodoAquisitivoSaldoFerias = reduxForm({form: 'periodoAquisitivoSaldoFerias', enableReinitialize: true})(PeriodoAquisitivoSaldoFerias);
 
 const mapStateToProps = state => ({
     initialValues: state.modal.periodoAquisitivoSaldoFerias.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('periodoAquisitivoSaldoFerias', false)),
     save: (value, updateDropdown) => dispatch(save('ferias', value, {modal: 'periodoAquisitivoSaldoFerias', updateDropdown})),
     update: value => dispatch(update('ferias', value, {modal: 'periodoAquisitivoSaldoFerias', list: true})),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(PeriodoAquisitivoSaldoFerias);

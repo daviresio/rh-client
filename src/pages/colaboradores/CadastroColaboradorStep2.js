@@ -4,7 +4,7 @@ import {Field, formValueSelector, reduxForm} from "redux-form";
 import InputRow from "../../components/form/InputRow";
 import SelectRow from "../../components/form/SelectRow";
 import {connect} from "react-redux";
-import {loadList, removeEntytyFromForm, save, search, update} from "../../store/actions/serverActions";
+import {loadList, removeEntytyFromForm, search, update} from "../../store/actions/serverActions";
 import Buttom from "../../components/Buttom";
 import Checklist from "./Checklist";
 import Contato from "../../modais/Contato";
@@ -20,18 +20,18 @@ import ButtomAdicionar from "../../components/ButtomAdicionar";
 
 
 let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, search, update, modal, openModal, formValues, removeEntytyFromForm, ...props}) => {
-    const {contato, dependente} = modal
-    const buttonSubmit = useRef(null)
-    const [saveOnly, setSaveOnly] = useState(true)
+    const {contato, dependente} = modal;
+    const buttonSubmit = useRef(null);
+    const [saveOnly, setSaveOnly] = useState(true);
 
     useEffect(() => {
-        props.dispatch({type: 'DELETAR_COLABORADOR'})
-        const id = match.params.id
-        setId(id)
-        search(id)
-        loadData('contatos')
+        props.dispatch({type: 'DELETAR_COLABORADOR'});
+        const id = match.params.id;
+        setId(id);
+        search(id);
+        loadData('contatos');
         loadData('dependentes')
-    }, [])
+    }, []);
 
     const submit = values => saveOnly ? update({...values, id: match.params.id}, {
             redirect: {route: '/colaboradores'},
@@ -40,7 +40,7 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
         update({...values, id: match.params.id}, {
             redirect: {route: '/colaboradores/cadastro/documentos/', id: true},
             field: 'colaborador'
-        })
+        });
 
     const renderContato = () => formValues.contatos && formValues.contatos.length ?
         <>
@@ -79,7 +79,7 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
             <div className={'title'} style={{color: '#000', marginBottom: '1rem'}}>Adicionar Contato
             </div>
             <Buttom color={'orange'} label={'Adicionar contato'} onClick={() => openModal('contato')}/>
-        </div>}/>
+        </div>}/>;
 
 
     const renderDependente = () => formValues.dependentes && formValues.dependentes.length ?
@@ -124,7 +124,7 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
         <Message color={'orange'} icon={null} text={<div>
             <div className={'title'} style={{color: '#000', marginBottom: '1rem'}}>Adicionar Dependente</div>
             <Buttom color={'orange'} label={'Adicionar dependente'} onClick={() => openModal('dependente')}/>
-        </div>}/>
+        </div>}/>;
 
     return (
         <>
@@ -184,7 +184,7 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
                                     ref={buttonSubmit}/>
                             <Buttom color={'green'} label={'Salvar e continuar'} onClick={() => {
                                 new Promise((resolve => {
-                                    setSaveOnly(false)
+                                    setSaveOnly(false);
                                     setTimeout(() => resolve(), 500)
                                 })).then(() => buttonSubmit.current.click())
                             }}/>
@@ -199,8 +199,8 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
 
 const mapStateToProps = state => {
 
-    const {colaborador} = state.serverValues
-    const selector = formValueSelector('colaborador')
+    const {colaborador} = state.serverValues;
+    const selector = formValueSelector('colaborador');
 
     return {
         router: state.router,
@@ -239,7 +239,7 @@ const mapStateToProps = state => {
         },
         formValues: selector(state, 'contatos', 'dependentes'),
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
@@ -247,7 +247,7 @@ const mapDispatchToProps = dispatch => ({
     openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
     removeEntytyFromForm: (entity, value, index) => dispatch(removeEntytyFromForm(entity, value, index)),
-})
+});
 
 CadastroColaboradorStep2 = reduxForm({form: 'colaborador', enableReinitialize: true})(CadastroColaboradorStep2);
 

@@ -12,9 +12,9 @@ import {simNaoOptions, tiposRelacaoDependente} from "../config/defaultValues";
 import Checkbox from "../components/form/Checkbox";
 
 let Dependente = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props
+    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload)
+    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload);
 
     return (
         <Modal border visible={visible} title={'Adicionar dependente'}>
@@ -33,18 +33,18 @@ let Dependente = props => {
             </form>
         </Modal>
     )
-}
+};
 
 const mapStateToProps = state => ({
     initialValues: state.modal.dependente.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('dependente', false)),
     save: (value, updateForm, reload) => dispatch(save('dependentes', value, {modal: 'dependente', updateForm, reload})),
     update: (value, updateForm, reload) => dispatch(update('dependentes', value, {modal: 'dependente', list: true, updateForm, reload})),
-})
+});
 
-Dependente = reduxForm({form: 'dependente', enableReinitialize: true})(Dependente)
+Dependente = reduxForm({form: 'dependente', enableReinitialize: true})(Dependente);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dependente)

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect} from 'react';
 import CardSimples from "../../components/card/CardSimples";
 import {reduxForm} from "redux-form";
 import Buttom from "../../components/Buttom";
@@ -9,13 +9,13 @@ import Checklist from "./Checklist";
 let CadastroColaboradorStep4 = ({handleSubmit, match, router, setId, search, update, ...props}) => {
 
     useEffect(() => {
-        props.dispatch({type: 'DELETAR_COLABORADOR'})
-        setId(match.params.id)
+        props.dispatch({type: 'DELETAR_COLABORADOR'});
+        setId(match.params.id);
         search(match.params.id)
-    }, [])
+    }, []);
 
     const submit = values => update({...values, id: match.params.id, cadastroConcluido: true, status: "ATIVO", ativo: true},
-        {redirect: {route: `/colaboradores/cadastro-finalizado/${match.params.id}`}, field: 'colaborador'})
+        {redirect: {route: `/colaboradores/cadastro-finalizado/${match.params.id}`}, field: 'colaborador'});
 
     return (
         <div className={'page-divided'}>
@@ -37,12 +37,12 @@ let CadastroColaboradorStep4 = ({handleSubmit, match, router, setId, search, upd
 const mapStateToProps = state => ({
     router: state.router,
     initialValues: {}
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect))
-})
+});
 
 CadastroColaboradorStep4 = reduxForm({form: 'colaborador', enableReinitialize: true})(CadastroColaboradorStep4);
 

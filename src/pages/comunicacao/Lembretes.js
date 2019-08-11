@@ -7,7 +7,7 @@ import LembretesCadastro from "./LembretesCadastro";
 
 const Lembretes = ({changeRoute, router}) => {
 
-    const path = '/comunicacao/lembretes/'
+    const path = '/comunicacao/lembretes/';
 
     return (
         <Switch>
@@ -15,7 +15,7 @@ const Lembretes = ({changeRoute, router}) => {
             <Route path={path + 'cadastro'} component={LembretesCadastro} />
         </Switch>
     )
-}
+};
 
 export default connect(state => ({router: state.router}),
     dispatch => ({changeRoute: route => dispatch(changeRoute(route))}))(Lembretes);

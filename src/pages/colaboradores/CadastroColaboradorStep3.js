@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import CardSimples from "../../components/card/CardSimples";
-import {formValueSelector, Field, reduxForm, arrayRemove, change} from "redux-form";
+import {arrayRemove, change, Field, formValueSelector, reduxForm} from "redux-form";
 import InputRow from "../../components/form/InputRow";
 import SelectRow from "../../components/form/SelectRow";
 import DatePicker from "../../components/form/DatePicker";
@@ -18,19 +18,19 @@ import {getEstados} from "../../config/localidades";
 
 let CadastroColaboradorStep3 = ({handleSubmit, match, router, setId, search, update, uploadFile, formValues, ...props}) => {
 
-    const buttonSubmit = useRef(null)
-    const [saveOnly, setSaveOnly] = useState(true)
-    const uploadDoc = useRef(null)
+    const buttonSubmit = useRef(null);
+    const [saveOnly, setSaveOnly] = useState(true);
+    const uploadDoc = useRef(null);
 
     useEffect(() => {
-        props.dispatch({type: 'DELETAR_COLABORADOR'})
-        setId(match.params.id)
+        props.dispatch({type: 'DELETAR_COLABORADOR'});
+        setId(match.params.id);
         search(match.params.id)
-    }, [])
+    }, []);
 
 
     const renderDocumentos = () => {
-        if (formValues === undefined || formValues.copiaDocumentos === undefined || !formValues.copiaDocumentos.length || formValues.copiaDocumentos.length === 0) return null
+        if (formValues === undefined || formValues.copiaDocumentos === undefined || !formValues.copiaDocumentos.length || formValues.copiaDocumentos.length === 0) return null;
         return <CardBorda title={'Documentos'}>
             {formValues.copiaDocumentos.map((v, i) =>
             <div className={'item-colaborador-documento'} key={i}>
@@ -40,10 +40,10 @@ let CadastroColaboradorStep3 = ({handleSubmit, match, router, setId, search, upd
             </div>
             )}
         </CardBorda>
-    }
+    };
 
     const submit = values => {
-        delete values.tipoDocumento
+        delete values.tipoDocumento;
         saveOnly ? update({...values, id: match.params.id}, {
                 redirect: {route: '/colaboradores'},
                 field: 'colaborador'
@@ -52,34 +52,34 @@ let CadastroColaboradorStep3 = ({handleSubmit, match, router, setId, search, upd
                 redirect: {route: '/colaboradores/cadastro/beneficios/', id: true},
                 field: 'colaborador'
             })
-    }
+    };
 
 
     const uploadDocumento = () => {
-        const type = uploadDoc.current.files[0].type
-        const reader = new FileReader()
+        const type = uploadDoc.current.files[0].type;
+        const reader = new FileReader();
         reader.onload = e => {
             if (e.target.result.length > MAX_IMAGE_SIZE) {
                 return alert('Imagem muito gramde, o tamanho maximo e de 2mb')
             }
-            uploadFile(e.target.result, type, {form: 'colaborador', field: 'copiaDocumentos', data: {nome: formValues.tipoDocumento}, subField: 'url', array: true})
-            uploadDoc.current.value = ''
+            uploadFile(e.target.result, type, {form: 'colaborador', field: 'copiaDocumentos', data: {nome: formValues.tipoDocumento}, subField: 'url', array: true});
+            uploadDoc.current.value = '';
             props.dispatch(change('colaborador', 'tipoDocumento', ''))
-        }
+        };
         reader.readAsDataURL(uploadDoc.current.files[0])
-    }
+    };
 
     const uploadComprovanteBanco = event => {
-        const type = event.target.files[0].type
-        const reader = new FileReader()
+        const type = event.target.files[0].type;
+        const reader = new FileReader();
         reader.onload = e => {
             if (e.target.result.length > MAX_IMAGE_SIZE) {
                 return alert('Imagem muito gramde, o tamanho maximo e de 2mb')
             }
             uploadFile(e.target.result, type, {form: 'colaborador', campo: 'banco.comprovante'})
-        }
+        };
         reader.readAsDataURL(event.target.files[0])
-    }
+    };
 
     return (
         <div className={'page-divided'}>
@@ -138,7 +138,7 @@ let CadastroColaboradorStep3 = ({handleSubmit, match, router, setId, search, upd
                         <Buttom color={'blue'} label={'Salvar'} style={{marginRight: '2rem'}} type={'submit'} ref={buttonSubmit}/>
                         <Buttom color={'green'} label={'Salvar e continuar'} onClick={() => {
                             new Promise((resolve => {
-                                setSaveOnly(false)
+                                setSaveOnly(false);
                                 setTimeout(() => resolve(), 500)
                             })).then(() => buttonSubmit.current.click())
                         }}/>
@@ -154,8 +154,8 @@ CadastroColaboradorStep3 = reduxForm({form: 'colaborador', enableReinitialize: t
 
 const mapStateToProps = state => {
 
-    const {colaborador} = state.serverValues
-    const selector = formValueSelector('colaborador')
+    const {colaborador} = state.serverValues;
+    const selector = formValueSelector('colaborador');
     return {
         router: state.router,
         initialValues: {
@@ -189,12 +189,12 @@ const mapStateToProps = state => {
         formValues: selector(state, 'copiaDocumentos', 'tipoDocumento', 'banco')
     }
 
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
     uploadFile: (event, type, form, urlExistente) => dispatch(uploadFile(event, type, form)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CadastroColaboradorStep3);

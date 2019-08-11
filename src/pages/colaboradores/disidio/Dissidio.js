@@ -13,8 +13,8 @@ import DissidioStep2 from "./DissidioStep2";
 
 const Dissidio = ({changeRoute, ...props}) => {
 
-    const path = '/colaboradores/dissidio/'
-    const currentPath = props.router.location.pathname
+    const path = '/colaboradores/dissidio/';
+    const currentPath = props.router.location.pathname;
 
     return (
         <PageEmpty>
@@ -42,8 +42,8 @@ const Dissidio = ({changeRoute, ...props}) => {
 const mapStateToProps = state => ({
     colaborador: state.colaborador,
     router: state.router,
-})
+});
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Dissidio);

@@ -1,5 +1,4 @@
 import React from 'react';
-import PageEmpty from "../layout/PageEmpty";
 
 const StepperItem = props => {
     const {label, number, selected, onClick} = props;

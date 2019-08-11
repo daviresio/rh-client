@@ -12,8 +12,8 @@ import {changeRoute} from "../../store/actions/routerActions";
 
 const FolhaLancamento = ({changeRoute, router, ...props}) => {
 
-    const path = '/folha/lancamento/'
-    const currentPath = router.location.pathname
+    const path = '/folha/lancamento/';
+    const currentPath = router.location.pathname;
 
     return (
         <PageEmpty>

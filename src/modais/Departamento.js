@@ -8,8 +8,8 @@ import {save, update} from "../store/actions/serverActions";
 import Buttom from "../components/Buttom";
 
 let Departamento = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
     return (
         <Modal border visible={visible} title={'Adicionar Departamento'}>
             <form onSubmit={handleSubmit(submit)}>
@@ -21,19 +21,19 @@ let Departamento = props => {
             </form>
         </Modal>
     )
-}
+};
 
 const mapStateToProps = ({modal}) => ({
     initialValues: modal.departamento.value
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('departamento', false)),
     save: (value, updateDropdown) => dispatch(save('departamentos', value, {modal: 'departamento', updateDropdown})),
     update: value => dispatch(update('departamentos', value, {modal: 'departamento', list: true})),
-})
+});
 
-Departamento = reduxForm({form: 'departamento', enableReinitialize: true})(Departamento)
+Departamento = reduxForm({form: 'departamento', enableReinitialize: true})(Departamento);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Departamento)
 

@@ -8,8 +8,8 @@ import {save, update} from "../store/actions/serverActions";
 import Buttom from "../components/Buttom";
 
 let CentroDeCusto = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
     return (
         <Modal border visible={visible} title={'Adicionar centro de custo'}>
             <form onSubmit={handleSubmit(submit)}>
@@ -22,19 +22,19 @@ let CentroDeCusto = props => {
         </Modal>
     )
 
-}
+};
 
 const mapStateToProps = ({modal}) => ({
     initialValues: modal.centroDeCusto.value
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('centroDeCusto', false)),
     save: (value, updateDropdown) => dispatch(save('centrodecustos', value, {modal: 'centroDeCusto', updateDropdown})),
     update: value => dispatch(update('centrodecustos', value, {modal: 'centroDeCusto', list: true})),
-})
+});
 
-CentroDeCusto = reduxForm({form: 'centroDeCusto', enableReinitialize: true})(CentroDeCusto)
+CentroDeCusto = reduxForm({form: 'centroDeCusto', enableReinitialize: true})(CentroDeCusto);
 
 export default connect(mapStateToProps, mapDispatchToProps)(CentroDeCusto)
 

@@ -10,7 +10,7 @@ import ConfigurarDsr from "./ConfigurarDSR";
 
 const ConfiguracaoFolha = ({changeRoute, router}) => {
 
-    const path = '/folha/configuracao/'
+    const path = '/folha/configuracao/';
 
     return (
         <Switch>

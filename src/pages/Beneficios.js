@@ -10,7 +10,7 @@ const Beneficios = ({changeRoute, loadData, beneficios}) => {
 
     useEffect(()=> {
         loadData('beneficios')
-    }, [])
+    }, []);
 
     const cardBeneficio = ({nome, categoria, operador, id}) =>
         <CardSimples start className={'card-beneficio'} onClick={()=> changeRoute(`/beneficios/detalhe/${id}`)} key={id}>
@@ -23,7 +23,7 @@ const Beneficios = ({changeRoute, loadData, beneficios}) => {
             <div className={'operador'}>
                 Operador: &nbsp; {operador}
             </div>
-        </CardSimples>
+        </CardSimples>;
 
     return (
         <Page title={'Beneficios da empresa'}>
@@ -41,12 +41,12 @@ const Beneficios = ({changeRoute, loadData, beneficios}) => {
 const mapStateToProps = state => ({
     router: state.router,
     beneficios: state.serverValues.beneficios,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Beneficios);

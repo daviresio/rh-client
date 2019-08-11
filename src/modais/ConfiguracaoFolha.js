@@ -9,9 +9,9 @@ import SelectRow from "../components/form/SelectRow";
 import {simNaoOptions} from "../config/defaultValues";
 
 let ConfiguracaoFolha = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Editar configuracoes de folha'}>
@@ -29,14 +29,14 @@ let ConfiguracaoFolha = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.configuracaoFolha.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('configuracaoFolha', false)),
     save: (value, updateDropdown) => dispatch(save('folha', value, {modal: 'configuracaoFolha', updateDropdown})),
     update: value => dispatch(update('folha', value, {modal: 'configuracaoFolha', list: true})),
-})
+});
 
-ConfiguracaoFolha = reduxForm({form: 'configuracaoFolha', enableReinitialize: true})(ConfiguracaoFolha)
+ConfiguracaoFolha = reduxForm({form: 'configuracaoFolha', enableReinitialize: true})(ConfiguracaoFolha);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConfiguracaoFolha);

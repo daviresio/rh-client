@@ -8,9 +8,9 @@ import {save, update} from "../store/actions/serverActions";
 import {connect} from "react-redux";
 
 let Sindicato = props => {
-    const {closeModal, visible, handleSubmit, save, update} = props
+    const {closeModal, visible, handleSubmit, save, update} = props;
 
-    const submit = value => value.id ? update(value) : save(value)
+    const submit = value => value.id ? update(value) : save(value);
 
     return (
         <Modal border visible={visible} title={'Adicionar sindicato'}>
@@ -27,18 +27,18 @@ let Sindicato = props => {
         </Modal>
     )
 
-}
+};
 
 const mapStateToProps = state => ({
     initialValues: state.modal.sindicato.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('sindicato', false)),
     save: value => dispatch(save('sindicatos', value, {modal: 'sindicato'})),
     update: value => dispatch(update('sindicatos', value, {modal: 'sindicato', list: true})),
-})
+});
 
-Sindicato = reduxForm({form: 'sindicato', enableReinitialize: true})(Sindicato)
+Sindicato = reduxForm({form: 'sindicato', enableReinitialize: true})(Sindicato);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sindicato)

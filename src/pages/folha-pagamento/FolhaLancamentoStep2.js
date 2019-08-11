@@ -3,7 +3,7 @@ import Buttom from "../../components/Buttom";
 import CardSimples from "../../components/card/CardSimples";
 import Input from "../../components/form/Input";
 
-const userImg = require('../../assets/user.png')
+const userImg = require('../../assets/user.png');
 
 const FolhaLancamentoStep2 = () => {
     return (
@@ -91,4 +91,4 @@ const renderItem = colaborador =>
             <img src={userImg} alt=""/>
         </div>
         <span className={'nome'}>{colaborador.nome}</span>
-    </div>
+    </div>;

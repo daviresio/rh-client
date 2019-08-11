@@ -1,29 +1,29 @@
-export const MAX_IMAGE_SIZE = 2000000
+export const MAX_IMAGE_SIZE = 2000000;
 
-export const simNaoOptions = [{nome: 'Sim', id: true}, {nome: 'Nao', id: false}]
+export const simNaoOptions = [{nome: 'Sim', id: true}, {nome: 'Nao', id: false}];
 
 export const tipoProvento = [
     {nome: 'Provento', id: 1},
     {nome: 'Desconto', id: 2},
     {nome: 'Informativo', id: 3},
     {nome: 'Exclusivo para a empresa', id: 4},
-]
+];
 
 export const calculoProporcionalidade = [
     {nome: 'Conforme dia do mes', id: 1},
     {nome: 'Sempre 30 dias', id: 2},
-]
+];
 
 export const tipoCalculoHorasExtras = [
     {nome: 'Mes corrente', id: 1},
     {nome: 'Mes anterior', id: 2},
     {nome: 'Dia de corte', id: 3},
-]
+];
 
 export const quantidadeParcelasDecimoTerceiro = [
     {nome: 'Uma parcela', id: 1},
     {nome: 'Duas parcelas', id: 2},
-]
+];
 
 export const meses = [
     {nome: 'Janeiro', id: 1},
@@ -38,7 +38,7 @@ export const meses = [
     {nome: 'Outubro', id: 10},
     {nome: 'Novembro', id: 11},
     {nome: 'Dezembro', id: 12},
-]
+];
 
 export const tiposLancamentoHolerite = [
     {nome: 'HoleriteModal', id: 1},
@@ -54,7 +54,7 @@ export const tiposLancamentoHolerite = [
     {nome: 'PLR', id: 11},
     {nome: 'Folha complementar', id: 12},
     {nome: 'recibos', id: 12},
-]
+];
 
 export const tiposLembretes = [
     {nome: 'Beneficios', id: 1},
@@ -70,14 +70,14 @@ export const tiposLembretes = [
     {nome: 'Exame', id: 11},
     {nome: 'Eventos', id: 12},
     {nome: 'Outros', id: 13},
-]
+];
 
 export const periodoRecorrencia = [
     {nome: 'Diariamente', id: 1},
     {nome: 'Semanalmente', id: 2},
     {nome: 'Mensalmente', id: 3},
     {nome: 'Anualmente', id: 4},
-]
+];
 
 
 export const tiposCategoriaBeneficio = [
@@ -94,7 +94,7 @@ export const tiposCategoriaBeneficio = [
     {nome: 'Vale combustivel', id: 'Vale combustivel'},
     {nome: 'Vale refeicao', id: 'Vale refeicao'},
     {nome: 'Vale transporte', id: 'Vale transporte'},
-]
+];
 
 
 export const tiposCorRaca = [
@@ -103,12 +103,12 @@ export const tiposCorRaca = [
     {nome: 'Preta/Negra', id: 'Preta/Negra'},
     {nome: 'Amarela', id: 'Amarela'},
     {nome: 'Parda', id: 'Parda'},
-]
+];
 
 export const tiposSexo = [
     {nome: 'Masculino', id: 'Masculino'},
     {nome: 'Femenino', id: 'Femenino'},
-]
+];
 
 export const tiposEstadoCivil = [
     {nome: 'Solteiro(a)', id: 'Solteiro(a)'},
@@ -117,7 +117,7 @@ export const tiposEstadoCivil = [
     {nome: 'Viuvo(a)', id: 'Viuvo(a)'},
     {nome: 'Separado(a)', id: 'Separado(a)'},
     {nome: 'Uniao estavel', id: 'Uniao estavel'},
-]
+];
 
 
 export const tiposRecado = [
@@ -127,7 +127,7 @@ export const tiposRecado = [
     {nome: 'Politicas', id: 4},
     {nome: 'Movimentacoes', id: 5},
     {nome: 'Confraternizacao', id: 6},
-]
+];
 
 export const tiposRelacaoContato = [
     {nome: 'Parente', id: 1},
@@ -136,7 +136,7 @@ export const tiposRelacaoContato = [
     {nome: 'Mae', id: 4},
     {nome: 'Irmao', id: 5},
     {nome: 'Conjugue', id: 6},
-]
+];
 
 
 export const tiposRelacaoDependente = [
@@ -152,7 +152,7 @@ export const tiposRelacaoDependente = [
     {nome: 'Companheiro sem filhos e/ou uniao estavel', id: 10},
     {nome: 'Agregado/outros', id: 11},
     {nome: 'Ex conjulgue que receba pensao ', id: 12},
-]
+];
 
 export const tiposCalculoSaldoBeneficio = [
     {
@@ -167,27 +167,27 @@ export const tiposCalculoSaldoBeneficio = [
         nome: 'Fixo',
         id: 3,
     },
-]
+];
 
 export const fechamentoFolhaMesAno = [
     {
         nome: '07/2019',
-        id: new Date(2019, 7, 0, 0, 0, 0),
+        id: new Date(2019, 6, 0, 0, 0, 0, 0).getTime(),
     },{
         nome: '06/2019',
-        id: new Date(2019, 6, 0, 0, 0, 0),
+        id: new Date(2019, 5, 0, 0, 0, 0, 0).getTime(),
     },{
         nome: '05/2019',
-        id: new Date(2019, 5, 0, 0, 0, 0),
+        id: new Date(2019, 4, 0, 0, 0, 0, 0).getTime(),
     },{
         nome: '04/2019',
-        id: new Date(2019, 4, 0, 0, 0, 0),
+        id: new Date(2019, 3, 0, 0, 0, 0, 0).getTime(),
     },{
         nome: '03/2019',
-        id: new Date(2019, 3, 0, 0, 0, 0),
+        id: new Date(2019, 2, 0, 0, 0, 0, 0).getTime(),
     },{
         nome: '02/2019',
-        id: new Date(2019, 2, 0, 0, 0, 0),
+        id: new Date(2019, 1, 0, 0, 0, 0, 0).getTime(),
     },
-]
+];
 

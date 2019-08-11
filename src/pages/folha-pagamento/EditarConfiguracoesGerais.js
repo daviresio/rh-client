@@ -12,7 +12,7 @@ let EditarConfiguracoesGerais = ({router, handleSubmit, changeRoute}) => {
 
     const submit = values => {
 
-    }
+    };
 
     return (
         <>
@@ -44,6 +44,6 @@ let EditarConfiguracoesGerais = ({router, handleSubmit, changeRoute}) => {
     );
 };
 
-EditarConfiguracoesGerais = reduxForm({form: "editarConfiguracoesGerais"})(EditarConfiguracoesGerais)
+EditarConfiguracoesGerais = reduxForm({form: "editarConfiguracoesGerais"})(EditarConfiguracoesGerais);
 
 export default connect(state => ({router: state.router}), dispatch => ({changeRoute: route => dispatch(changeRoute(route))}))(EditarConfiguracoesGerais);

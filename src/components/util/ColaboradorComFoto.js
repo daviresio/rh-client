@@ -1,6 +1,6 @@
 import React from 'react';
 
-const userImg = require('../../assets/user.png')
+const userImg = require('../../assets/user.png');
 
 const ColaboradorComFoto = ({nome, foto, style}) =>
     <div className={'colaborador-com-foto'} style={style}>
@@ -8,6 +8,6 @@ const ColaboradorComFoto = ({nome, foto, style}) =>
             {foto ? <img src={foto}/> : <img src={userImg}/>}
         </div>
         <span>{nome}</span>
-    </div>
+    </div>;
 
 export default ColaboradorComFoto;

@@ -23,13 +23,11 @@ const RecuperarSenha = ({changeRoute}) => {
     );
 };
 
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecuperarSenha);

@@ -14,7 +14,8 @@ import CenterContent from "../../components/util/CenterContent";
 
 let CadastroFeriasColetivas = ({changeRoute, handleSubmit}) => {
 
-    const submit = value => {}
+    const submit = value => {
+    };
 
     return (
         <Page title={'Criar ferias coletivas'}>
@@ -43,15 +44,13 @@ let CadastroFeriasColetivas = ({changeRoute, handleSubmit}) => {
     );
 };
 
-CadastroFeriasColetivas = reduxForm({form: 'feriasColetivas', enableReinitialize: true})(CadastroFeriasColetivas)
+CadastroFeriasColetivas = reduxForm({form: 'feriasColetivas', enableReinitialize: true})(CadastroFeriasColetivas);
 
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CadastroFeriasColetivas);

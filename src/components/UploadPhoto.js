@@ -3,9 +3,9 @@ import React from 'react';
 const UploadPhoto = ({label, onChange, image}) => {
 
     const showImage = image == null ? <i className={'fas fa-camera photo-icon'}/>
-    : <img src={image} alt="" className={'image-upload'}/>
+        : <img src={image} alt="" className={'image-upload'}/>;
 
-    const showLabel = <div className={'input-label'}>{label}</div>
+    const showLabel = <div className={'input-label'}>{label}</div>;
     return (
         <div className={label ? 'input-container' : null}>
             {showLabel}

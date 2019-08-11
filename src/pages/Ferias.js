@@ -11,12 +11,12 @@ import {connect} from "react-redux";
 
 const Ferias = ({changeRoute}) => {
 
-    const [infoSelected, setInfoSelected] = useState(0)
+    const [infoSelected, setInfoSelected] = useState(0);
 
     const showMessage = () =>
         infoSelected === 0 ? <Message text={'Nenhum colaborador está em férias'} color={'blue'}/>
             : infoSelected === 1 ? <Message text={'Nenhum colaborador com férias próximo a vencer'} color={'orange'}/>
-            : <Message text={'Nenhum colaborador sairá de férias nos próximos 30 dias'} color={'green'}/>
+            : <Message text={'Nenhum colaborador sairá de férias nos próximos 30 dias'} color={'green'}/>;
 
 
     return (
@@ -77,13 +77,11 @@ const Ferias = ({changeRoute}) => {
     );
 };
 
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Ferias);

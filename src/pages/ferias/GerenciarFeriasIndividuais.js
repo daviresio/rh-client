@@ -17,7 +17,7 @@ const GerenciarFeriasIndividuais = ({changeRoute, colaboradores, loadData, openM
     useEffect(()=> {
         loadData('colaboradores')
 
-    }, [])
+    }, []);
 
     return (
         <>
@@ -39,13 +39,13 @@ const GerenciarFeriasIndividuais = ({changeRoute, colaboradores, loadData, openM
 const mapStateToProps = state => ({
     colaboradores: state.serverValues.colaboradores,
     modal: state.modal,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
     openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(GerenciarFeriasIndividuais);

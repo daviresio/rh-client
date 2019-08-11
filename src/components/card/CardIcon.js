@@ -9,6 +9,6 @@ const CardIcon = ({icon, title, subtitle, onClick}) => {
             <div className={'subtitle'}>{subtitle}</div>
         </div>
     );
-}
+};
 
 export default CardIcon;

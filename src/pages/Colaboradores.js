@@ -6,14 +6,13 @@ import GestaoColaboradores from "./colaboradores/GestaoColaboradores";
 import PageEmpty from "../layout/PageEmpty";
 import {connect} from "react-redux";
 import RelatoriosColaboradores from "./colaboradores/RelatoriosColaboradores";
-import {colaboradorChangeTab} from "../store/actions/colaboradorActions";
 import {Redirect, Route, Switch} from "react-router";
 import {changeRoute} from "../store/actions/routerActions";
 
 const Colaboradores = props => {
-    const {changeRoute} = props
-    const path = '/colaboradores/'
-    const currentPath = props.router.location.pathname
+    const {changeRoute} = props;
+    const path = '/colaboradores/';
+    const currentPath = props.router.location.pathname;
 
     return (
         <PageEmpty>
@@ -33,9 +32,8 @@ const Colaboradores = props => {
         </PageEmpty>
     );
 };
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
-    changeTab: tab => dispatch(colaboradorChangeTab(tab)),
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Colaboradores);

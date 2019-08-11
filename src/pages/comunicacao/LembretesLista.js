@@ -8,11 +8,11 @@ import {loadList} from "../../store/actions/serverActions";
 
 const LembretesLista = ({changeRoute, router, loadData, lembretes}) => {
 
-    const path = '/comunicacao/lembretes/'
+    const path = '/comunicacao/lembretes/';
 
     useEffect(()=> {
         loadData('lembretes')
-    }, [])
+    }, []);
 
     return (
         <div className={'lembretes'}>
@@ -30,11 +30,11 @@ const LembretesLista = ({changeRoute, router, loadData, lembretes}) => {
 const mapStateToProps = state => ({
     router: state.router,
     lembretes: state.serverValues.lembretes
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LembretesLista);

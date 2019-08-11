@@ -13,9 +13,9 @@ let AlterarSenha = () => {
             <CardSimples start className={'configuracao-alterar-senha'}>
                 <span className={'required-message'}>Os campos com asterisco (*), são de preenchimento obrigatório.</span>
                 <div className={'body'}>
-                    <Field component={InputRow} label={'Senha atual'} required/>
-                    <Field component={InputRow} label={'Nova senha'} required/>
-                    <Field component={InputRow} label={'Repetir senha'} required/>
+                    <Field component={InputRow} label={'Senha atual'} name={'senhaAtual'} required/>
+                    <Field component={InputRow} label={'Nova senha'} name={'novaSenha'} required/>
+                    <Field component={InputRow} label={'Repetir senha'} name={'novaSenha2'} required/>
                     <AlignRight>
                         <Buttom label={'Alterar senha'} type={'submit'} color={'green'}/>
                     </AlignRight>
@@ -26,10 +26,10 @@ let AlterarSenha = () => {
     );
 };
 
-AlterarSenha = reduxForm({form: 'alterarSenha', enableReinitialize: true})(AlterarSenha)
+AlterarSenha = reduxForm({form: 'alterarSenha', enableReinitialize: true})(AlterarSenha);
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispatch => ({})
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlterarSenha);

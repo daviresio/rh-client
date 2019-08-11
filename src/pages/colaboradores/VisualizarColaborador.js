@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import PageEmpty from "../../layout/PageEmpty";
 import Buttom from "../../components/Buttom";
 import CardSimples from "../../components/card/CardSimples";
 import CardBorda from "../../components/card/CardBorda";
@@ -7,7 +6,7 @@ import Edit from "../../components/util/Edit";
 import UploadPhoto from "../../components/UploadPhoto";
 import Divided from "../../components/util/Divided";
 import {connect} from "react-redux";
-import {removeAndReload, search, remove, update} from "../../store/actions/serverActions";
+import {remove, removeAndReload, search, update} from "../../store/actions/serverActions";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import Salario from "../../modais/Salario";
 import Banco from "../../modais/Banco";
@@ -30,22 +29,22 @@ import ModalInformacoesGeraisColaborador from "../../modais/ModalInformacoesGera
 import ModalDocumentoColaborador from "../../modais/ModalDocumentoColaborador";
 import ModalDadosPrincipaisColaborador from "../../modais/ModalDadosPrincipaisColaborador";
 
-const VizualizarColaborador = ({serverValues, match, search, openModal, modal, removeAndReload, remove, update, ...props}) => {
+const VisualizarColaborador = ({serverValues, match, search, openModal, modal, removeAndReload, remove, update, ...props}) => {
 
     const {
         departamento, centroDeCusto, sindicato, banco, vinculo, formaPagamento, contatos, dependentes,
         endereco, periodoExperiencia, escolaridade, copiaDocumentos, ...colaborador
-    } = serverValues.colaborador
-    const emptyValue = '-'
+    } = serverValues.colaborador;
+    const emptyValue = '-';
 
     useEffect(() => {
         if (match.params.id) search(match.params.id)
-    }, [])
+    }, []);
 
     const modalOptions = {
         data: {colaborador: match.params.id},
         reload: {entity: 'colaboradores', value: match.params.id, field: 'colaborador'}
-    }
+    };
 
     return (
         <>
@@ -73,12 +72,12 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, r
                         {colaborador.status === "ATIVO" ?
                             <Buttom color={'red'} label={'Desligar colaborador'}
                                     onClick={() => update({...colaborador, status: "DESLIGAMENTO_PENDENTE"}, {redirect: {route: '/colaboradores'}, field: 'colaborador'})}/>
-                            :  <Buttom color={'blue'} label={'Reativar colaborador'}
-                                       onClick={() => update({...colaborador, status: "ATIVO"}, {redirect: {route: '/colaboradores'}, field: 'colaborador'})}/>
+                            : <Buttom color={'blue'} label={'Reativar colaborador'}
+                                      onClick={() => update({...colaborador, status: "ATIVO"}, {redirect: {route: '/colaboradores'}, field: 'colaborador'})}/>
                         }
                     </div>
                     <CardSimples start>
-                        <Edit className={'editar'} onClick={()=> openModal('dadosPrincipaisColaborador', colaborador)}/>
+                        <Edit className={'editar'} onClick={() => openModal('dadosPrincipaisColaborador', colaborador)}/>
                         <div className={'informacoes-principais'}>
                             <div className={'foto'}>
                                 <UploadPhoto image={colaborador.foto}/>
@@ -114,7 +113,7 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, r
                         <div className={'corpo'}>
                             <div className={'title-edit'}>
                                 <div className={'title'}>Informacoes gerais</div>
-                                <Edit onClick={()=> openModal('informacoesGeraisColaborador', colaborador)}/>
+                                <Edit onClick={() => openModal('informacoesGeraisColaborador', colaborador)}/>
                             </div>
                             <div className={'conteudo'}>
                                 <div className={'campo'}>Nome completo</div>
@@ -267,7 +266,7 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, r
                             <Divided/>
                             <div className={'title-edit'}>
                                 <div className={'title'}>Documentos pessoais</div>
-                                <Edit onClick={()=> openModal('documentoColaborador', colaborador)}/>
+                                <Edit onClick={() => openModal('documentoColaborador', colaborador)}/>
                             </div>
 
                             <div className={'conteudo'}>
@@ -390,9 +389,9 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, r
                             <Divided/>
 
                             <div className={'title-edit'}>
-                            <div className={'title'}>Formacao academica</div>
-                            <Edit onClick={() => openModal('escolaridade', escolaridade)}/>
-                        </div>
+                                <div className={'title'}>Formacao academica</div>
+                                <Edit onClick={() => openModal('escolaridade', escolaridade)}/>
+                            </div>
                             <div className={'conteudo'}>
                                 <div className={'campo'}>Escolaridade</div>
                                 <div className={'valor'}>{escolaridade ? escolaridade.escolaridade : emptyValue}</div>
@@ -593,7 +592,7 @@ const VizualizarColaborador = ({serverValues, match, search, openModal, modal, r
 const mapStateToProps = state => ({
     serverValues: state.serverValues,
     modal: state.modal
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
@@ -605,12 +604,12 @@ const mapDispatchToProps = dispatch => ({
     })),
     remove: (entity, value, target, options) => dispatch(remove(entity, value, target, options)),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(VizualizarColaborador);
+export default connect(mapStateToProps, mapDispatchToProps)(VisualizarColaborador);
 
 const CenterButton = styled.div`
 width: 100%;
 display: flex;
 justify-content: center;
-`
+`;

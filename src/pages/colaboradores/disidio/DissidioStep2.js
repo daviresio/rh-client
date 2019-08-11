@@ -9,13 +9,15 @@ import {formateDateFull} from "../../../util/metodosUteis";
 const DissidioStep2 = ({loadData, cargos, departamentos, vinculos, colaboradores, }) => {
 
     useEffect(()=> {
-        loadData('cargos')
-        loadData('departamentos')
-        loadData('vinculos')
+        loadData('cargos');
+        loadData('departamentos');
+        loadData('vinculos');
         loadData('colaboradores')
-    }, [])
+    }, []);
 
-    const checkboxChange = (v, i) => {console.log(v,i)}
+    const checkboxChange = (v, i) => {
+        console.log(v, i)
+    };
 
     return (
         <CardBorda title={'Colaboradores'}>
@@ -39,13 +41,13 @@ const mapStateToProps = state => ({
     departamentos: state.serverValues.departamentos,
     vinculos: state.serverValues.vinculos,
     colaboradores: state.serverValues.colaboradores,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     loadData: (entity, target) => dispatch(loadList(entity, target)),
     save: (value, redirect) => dispatch(save('dissidios', value, redirect)),
     update: (value, redirect) => dispatch(update('dissidios', value, redirect)),
     search: id => dispatch(search('dissidios', id, 'dissidios')),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DissidioStep2);

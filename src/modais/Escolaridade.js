@@ -8,9 +8,9 @@ import Buttom from "../components/Buttom";
 import InputRow from "../components/form/InputRow";
 
 let Escolaridade = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown, reload, data} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown, reload, data} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown)
+    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Formacao academica'}>
@@ -28,20 +28,20 @@ let Escolaridade = props => {
     )
 };
 
-Escolaridade = reduxForm({form: 'escolaridade', enableReinitialize: true})(Escolaridade)
+Escolaridade = reduxForm({form: 'escolaridade', enableReinitialize: true})(Escolaridade);
 
 const mapStateToProps = state => {
     return {
         initialValues: state.modal.escolaridade.value,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('escolaridade', false)),
     save: (value, reload, updateDropdown ) => dispatch(save('escolaridades', value, {modal: 'escolaridade', updateDropdown, reload})),
     update: (value, reload) => dispatch(update('escolaridades', value, {modal: 'escolaridade', reload})),
     uploadFile: (event, type, form, urlExistente) => dispatch(uploadFile(event, type, form)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Escolaridade);

@@ -10,9 +10,9 @@ import SelectRow from "../components/form/SelectRow";
 import {tiposRelacaoContato} from "../config/defaultValues";
 
 let Contato = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props
+    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload)
+    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload);
 
     return (
         <Modal border visible={visible} title={'Adicionar contato'}>
@@ -31,18 +31,18 @@ let Contato = props => {
         </Modal>
     )
 
-}
+};
 
 const mapStateToProps = state => ({
     initialValues: state.modal.contato.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('contato', false)),
     save: (value, updateForm, reload) => dispatch(save('contatos', value, {modal: 'contato', updateForm, reload})),
     update: (value, updateForm, reload) => dispatch(update('contatos', value, {modal: 'contato', list: true, updateForm, reload})),
-})
+});
 
-Contato = reduxForm({form: 'contato', enableReinitialize: true})(Contato)
+Contato = reduxForm({form: 'contato', enableReinitialize: true})(Contato);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contato)

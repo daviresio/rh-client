@@ -18,6 +18,7 @@ body {
   line-height: 1.7;
   color: #000;
   background-color: #F7F8FA;
+    overflow-x: hidden;
 }
 
 ul,

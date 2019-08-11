@@ -16,7 +16,7 @@ let AdicionarEvento = ({router, handleSubmit, changeRoute, save}) => {
 
     const submit = values => {
         save(values, {redirect: {route: '/folha/configuracao'}})
-    }
+    };
 
     return (
         <>
@@ -51,15 +51,15 @@ let AdicionarEvento = ({router, handleSubmit, changeRoute, save}) => {
     );
 };
 
-AdicionarEvento = reduxForm({form: "adicionarEvento"})(AdicionarEvento)
+AdicionarEvento = reduxForm({form: "adicionarEvento"})(AdicionarEvento);
 
 const mapStateToProps = state => ({
     router: state.router,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     save: (value, redirect) => dispatch(save('eventos', value, redirect)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdicionarEvento);

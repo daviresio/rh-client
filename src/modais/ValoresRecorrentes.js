@@ -6,13 +6,12 @@ import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
 import SelectRow from "../components/form/SelectRow";
-import {simNaoOptions} from "../config/defaultValues";
 import InputRow from "../components/form/InputRow";
 
 let ValoresRecorrentes = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={' Adicionar Valores Recorrentes '}>
@@ -30,14 +29,14 @@ let ValoresRecorrentes = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.valoresRecorrentes.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('valoresRecorrentes', false)),
     save: (value, updateDropdown) => dispatch(save('valoresRecorrentes', value, {modal: 'valoresRecorrentes', updateDropdown})),
     update: value => dispatch(update('valoresRecorrentes', value, {modal: 'valoresRecorrentes', list: true})),
-})
+});
 
-ValoresRecorrentes = reduxForm({form: 'valoresRecorrentes', enableReinitialize: true})(ValoresRecorrentes)
+ValoresRecorrentes = reduxForm({form: 'valoresRecorrentes', enableReinitialize: true})(ValoresRecorrentes);
 
 export default connect(mapStateToProps, mapDispatchToProps)(ValoresRecorrentes);

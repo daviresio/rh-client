@@ -19,10 +19,10 @@ const Contabilidade = ({modal, openModal}) => {
 
 const mapStateToProps = state => ({
     modal: state.modal,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contabilidade);

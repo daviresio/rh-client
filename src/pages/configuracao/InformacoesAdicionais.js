@@ -12,15 +12,15 @@ import {loadList, remove} from "../../store/actions/serverActions";
 
 const InformacoesAdicionais = props => {
 
-    const {cargo, departamento, centroDeCusto} = props.modal
-    const {openModal, loadData, remove} = props
-    const {cargos, departamentos, centroDeCustos} = props.serverValues
+    const {cargo, departamento, centroDeCusto} = props.modal;
+    const {openModal, loadData, remove} = props;
+    const {cargos, departamentos, centroDeCustos} = props.serverValues;
 
     useEffect(() => {
-        loadData('departamentos')
-        loadData('cargos')
+        loadData('departamentos');
+        loadData('cargos');
         loadData('centrodecustos')
-    }, [])
+    }, []);
 
     const renderItem = (item, modal) => item && item.length ?
         item.map((x, i) =>
@@ -30,7 +30,7 @@ const InformacoesAdicionais = props => {
                     <Edit onClick={() => openModal(modal, x)}/>
                     <Delete onClick={() => remove(modal + 's', x.id)}/>
                 </div>
-            </div>) : null
+            </div>) : null;
 
     return (
         <>
@@ -56,13 +56,13 @@ const InformacoesAdicionais = props => {
     );
 };
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
     openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
     loadData: entity => dispatch(loadList(entity)),
     remove: (entity, value) => dispatch(remove(entity, value))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(InformacoesAdicionais);
 

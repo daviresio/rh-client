@@ -17,7 +17,7 @@ let LembretesCadastro = ({changeRoute, router, handleSubmit, save}) => {
 
     const submit = values => {
         save(values, {redirect: {route: '/comunicacao/lembretes'}})
-    }
+    };
 
     return (
         <>
@@ -52,18 +52,18 @@ let LembretesCadastro = ({changeRoute, router, handleSubmit, save}) => {
     );
 };
 
-LembretesCadastro = reduxForm({form: 'lembrete', enableReinitialize: true})(LembretesCadastro)
+LembretesCadastro = reduxForm({form: 'lembrete', enableReinitialize: true})(LembretesCadastro);
 
 const mapStateToProps = state => ({
     router: state.router,
     initialValues: {
         enviaParaTodosColaboradores: true,
     }
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     save: (value, options) => dispatch(save('lembretes', value, options)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LembretesCadastro);

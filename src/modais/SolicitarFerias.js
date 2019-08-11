@@ -10,9 +10,9 @@ import InputRow from "../components/form/InputRow";
 import Checkbox from "../components/form/Checkbox";
 
 let SolicitarFerias = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Solicitar ferias'}>
@@ -33,14 +33,14 @@ let SolicitarFerias = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.solicitarFerias.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('solicitarFerias', false)),
     save: (value, updateDropdown) => dispatch(save('ferias', value, {modal: 'solicitarFerias', updateDropdown})),
     update: value => dispatch(update('ferias', value, {modal: 'solicitarFerias', list: true})),
-})
+});
 
-SolicitarFerias = reduxForm({form: 'solicitarFerias', enableReinitialize: true})(SolicitarFerias)
+SolicitarFerias = reduxForm({form: 'solicitarFerias', enableReinitialize: true})(SolicitarFerias);
 
 export default connect(mapStateToProps, mapDispatchToProps)(SolicitarFerias);

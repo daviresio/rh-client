@@ -11,9 +11,9 @@ import Lembretes from "./comunicacao/Lembretes";
 import FaleComRh from "./comunicacao/FaleComRh";
 
 const Comunicacao = props => {
-    const path = '/comunicacao/'
-    const currentPath = props.router.location.pathname
-    const {changeRoute} = props
+    const path = '/comunicacao/';
+    const currentPath = props.router.location.pathname;
+    const {changeRoute} = props;
 
     return (
         <PageEmpty className={'comunicacao'}>
@@ -37,10 +37,10 @@ const Comunicacao = props => {
     );
 };
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comunicacao);

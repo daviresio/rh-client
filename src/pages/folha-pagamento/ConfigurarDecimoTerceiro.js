@@ -11,7 +11,7 @@ let ConfigurarDecimoTerceiro = ({router, handleSubmit, changeRoute}) => {
 
     const submit = values => {
 
-    }
+    };
 
     return (
         <>
@@ -30,6 +30,6 @@ let ConfigurarDecimoTerceiro = ({router, handleSubmit, changeRoute}) => {
     );
 };
 
-ConfigurarDecimoTerceiro = reduxForm({form: "configurarDecimoTerceiro"})(ConfigurarDecimoTerceiro)
+ConfigurarDecimoTerceiro = reduxForm({form: "configurarDecimoTerceiro"})(ConfigurarDecimoTerceiro);
 
 export default connect(state => ({router: state.router}), dispatch => ({changeRoute: route => dispatch(changeRoute(route))}))(ConfigurarDecimoTerceiro);

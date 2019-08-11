@@ -8,9 +8,9 @@ import Buttom from "../components/Buttom";
 import InputRow from "../components/form/InputRow";
 
 let Endereco = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown, reload, data} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown, reload, data} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown)
+    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Endereco'}>
@@ -31,20 +31,20 @@ let Endereco = props => {
     )
 };
 
-Endereco = reduxForm({form: 'endereco', enableReinitialize: true})(Endereco)
+Endereco = reduxForm({form: 'endereco', enableReinitialize: true})(Endereco);
 
 const mapStateToProps = state => {
     return {
         initialValues: state.modal.endereco.value,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('endereco', false)),
     save: (value, reload, updateDropdown ) => dispatch(save('enderecos', value, {modal: 'endereco', updateDropdown, reload})),
     update: (value, reload) => dispatch(update('enderecos', value, {modal: 'endereco', reload})),
     uploadFile: (event, type, form, urlExistente) => dispatch(uploadFile(event, type, form)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Endereco);

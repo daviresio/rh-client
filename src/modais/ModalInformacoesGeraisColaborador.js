@@ -12,9 +12,9 @@ import DatePicker from "../components/form/DatePicker";
 import {simNaoOptions, tiposCorRaca, tiposEstadoCivil, tiposSexo} from "../config/defaultValues";
 
 let ModalInformacoesGeraisColaborador = props => {
-    const {closeModal, visible, handleSubmit, update, reload, data} = props
+    const {closeModal, visible, handleSubmit, update, reload, data} = props;
 
-    const submit = value => update({...value, ...data}, reload)
+    const submit = value => update({...value, ...data}, reload);
 
     return (
         <Modal border visible={visible} title={'Informacoes gerais'}>
@@ -49,18 +49,18 @@ let ModalInformacoesGeraisColaborador = props => {
     )
 };
 
-ModalInformacoesGeraisColaborador = reduxForm({form: 'informacoesGeraisColaborador', enableReinitialize: true})(ModalInformacoesGeraisColaborador)
+ModalInformacoesGeraisColaborador = reduxForm({form: 'informacoesGeraisColaborador', enableReinitialize: true})(ModalInformacoesGeraisColaborador);
 
 const mapStateToProps = state => {
     return {
         initialValues: state.modal.informacoesGeraisColaborador.value,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('informacoesGeraisColaborador', false)),
     update: (value, reload) => dispatch(update('colaboradores', value, {modal: 'informacoesGeraisColaborador', reload})),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalInformacoesGeraisColaborador);

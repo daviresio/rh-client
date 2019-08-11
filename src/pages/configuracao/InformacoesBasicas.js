@@ -1,23 +1,44 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import CardSimples from "../../components/card/CardSimples";
 import Buttom from "../../components/Buttom";
 import Divided from "../../components/util/Divided";
 import Sindicato from "../../modais/Sindicato";
 import {connect} from "react-redux";
 import {changeModalVisible} from "../../store/actions/modalActions";
-import {loadList, remove} from "../../store/actions/serverActions";
+import {loadList, remove, uploadFileUpdateWihoutFormAndReload} from "../../store/actions/serverActions";
 import Edit from "../../components/util/Edit";
 import Configuracoes from "../../components/util/Configuracoes";
+import CenterContent from "../../components/util/CenterContent";
+import ButtomAdicionar from "../../components/ButtomAdicionar";
+import Delete from "../../components/util/Delete";
+import DadosEmpresa from "../../modais/DadosEmpresa";
+import DadosCobranca from "../../modais/DadosCobranca";
+import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
 
 const InformacoesBasicas = props => {
 
-    const {sindicatos} = props.serverValues
-    const {openModal, loadData, remove} = props
-    const {sindicato} = props.modal
+    const {sindicatos, empresa} = props.serverValues;
+    const {cobranca} = empresa;
+    const {openModal, loadData, remove, uploadFileUpdateWihoutFormAndReload} = props;
+    const {sindicato, dadosEmpresa, dadosCobranca} = props.modal;
+
+    const uploadLogoRef = useRef(null);
 
     useEffect(() => {
         loadData('sindicatos')
-    }, [])
+    }, []);
+
+    const uploadLogo = event => {
+        const type = event.target.files[0].type;
+        const reader = new FileReader();
+        reader.onload = e => {
+            if (e.target.result.length > MAX_IMAGE_SIZE) {
+                return alert('Imagem muito gramde, o tamanho maximo e de 2mb')
+            }
+            uploadFileUpdateWihoutFormAndReload(e.target.result, type, {entity: 'empresas', field: 'logo', currentValue: empresa, target: 'empresa'})
+        };
+        reader.readAsDataURL(event.target.files[0])
+    };
 
     const renderSindicatos = () => sindicatos.length ?
         sindicatos.map((x, i) =>
@@ -38,15 +59,24 @@ const InformacoesBasicas = props => {
                         </div>
                     </div>
                     <div>
-                    <Edit onClick={() => openModal('sindicato', x)}/>
-                    <Configuracoes />
+                        <Edit onClick={() => openModal('sindicato', x)}/>
+                        <Configuracoes/>
+                        <Delete onClick={() => remove('sindicatos', x.id)}/>
                     </div>
                 </div>
             </div>
-        ) : null
+        ) : null;
+
+    //TODO colocar o id real da empresa
+    const modalOptions = {
+        data: {empresa: 1},
+        reload: {entity: 'empresas', value: 1, field: 'empresa'}
+    };
 
     return (
         <>
+            <DadosEmpresa visible={dadosEmpresa.visible} {...modalOptions}/>
+            <DadosCobranca visible={dadosCobranca.visible} {...modalOptions}/>
             <Sindicato visible={sindicato.visible}/>
             <div className={'configuracao-informacoes-basicas page-divided'}>
                 <CardSimples start>
@@ -54,7 +84,8 @@ const InformacoesBasicas = props => {
                         <div className={'logo-image'}/>
 
                         <div className={'logo-button'}>
-                            <Buttom color={'blue'} label={'Alterar logo'}/>
+                            <input onChange={uploadLogo} type="file" ref={uploadLogoRef} style={{position: 'absolute', top: -500, left: -500, fontSize: '10rem', opacity: 0}}/>
+                            <Buttom color={'blue'} label={'Alterar logo'} onClick={() => uploadLogoRef.current.click()}/>
                             <span className={'info'}>{'Tipos de arquivos suportados: gif, jpg, jpeg, png'}</span>
                             <span className={'info'}>{'Tamanho maximo 2mb'}</span>
                         </div>
@@ -71,7 +102,7 @@ const InformacoesBasicas = props => {
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Nome da empresa'}</div>
-                                    <div className={'valor'}>{'Teste'}</div>
+                                    <div className={'valor'}>{'Hero'}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Razao social'}</div>
@@ -90,7 +121,7 @@ const InformacoesBasicas = props => {
                                     <div className={'valor'}>{''}</div>
                                 </div>
                             </div>
-                            <Edit/>
+                            <Edit onClick={() => openModal('dadosEmpresa', empresa)}/>
                         </div>
                     </div>
 
@@ -117,7 +148,7 @@ const InformacoesBasicas = props => {
                                     <div className={'valor'}>{''}</div>
                                 </div>
                             </div>
-                            <Edit/>
+                            <Edit onClick={() => openModal('dadosCobranca', cobranca)}/>
                         </div>
                     </div>
 
@@ -126,8 +157,10 @@ const InformacoesBasicas = props => {
                     <div className={'group'}>
                         <div className={'title'}>{'Sindicatos'}</div>
                         {renderSindicatos()}
+                        {sindicatos && sindicatos.length > 0 &&
+                        <CenterContent><ButtomAdicionar label={'Adicionar sindicato'} onClick={() => openModal('sindicato')}/></CenterContent>}
+                        {(!sindicatos || sindicatos.length === 0) && <Buttom color={'green'} label={'Adicionar sindicato'} onClick={() => openModal('sindicato')}/>}
                         <Divided/>
-                        <Buttom color={'green'} label={'Adicionar sindicato'} onClick={() => openModal('sindicato')}/>
                     </div>
 
                 </CardSimples>
@@ -141,11 +174,15 @@ const InformacoesBasicas = props => {
     );
 };
 
-const mapStateToProps = state => state
+const mapStateToProps = state => ({
+    modal: state.modal,
+    serverValues: state.serverValues,
+});
 const mapDispatchToProps = dispatch => ({
     openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
     loadData: entity => dispatch(loadList(entity)),
-    remove: (entity, value) => dispatch(remove(entity, value))
-})
+    remove: (entity, value) => dispatch(remove(entity, value)),
+    uploadFileUpdateWihoutFormAndReload: (image, type, options) => dispatch(uploadFileUpdateWihoutFormAndReload(image, type, options)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(InformacoesBasicas);

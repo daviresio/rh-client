@@ -1,6 +1,4 @@
 import React from 'react';
-import Page from "../../../layout/Page";
-import DatePicker from "../../../components/form/DatePicker";
 import Buttom from "../../../components/Buttom";
 import CardBorda from "../../../components/card/CardBorda";
 import Table from "../../../components/table/Table";

@@ -5,7 +5,7 @@ import CardIcon from "../../components/card/CardIcon";
 
 const FolhaLancamentoStep1Body = ({changeRoute, router}) => {
 
-    const path = '/folha/lancamento/tipo-lancamento/'
+    const path = '/folha/lancamento/tipo-lancamento/';
 
     return (
         <div className={'folha'}>

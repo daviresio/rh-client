@@ -3,7 +3,6 @@ import PageEmpty from "../layout/PageEmpty";
 import {connect} from "react-redux";
 import TabPainel from "../components/TabPainel";
 import TabItem from "../components/TabItem";
-import {changeConfiguracaoTab} from "../store/actions/configuracaoActions";
 import TabContent from "../components/TabContent";
 import InformacoesBasicas from "./configuracao/InformacoesBasicas";
 import InformacoesAdicionais from "./configuracao/InformacoesAdicionais";
@@ -17,10 +16,10 @@ import {changeRoute} from "../store/actions/routerActions";
 import {Redirect, Route, Switch} from "react-router";
 
 const Configuracao = props => {
-    const {changeRoute} = props
-    const path = '/configuracao/'
-    const currentPath = props.router.location.pathname
-    
+    const {changeRoute} = props;
+    const path = '/configuracao/';
+    const currentPath = props.router.location.pathname;
+
     return (
         <PageEmpty>
             <TabPainel title={'Nome da empresa'}>
@@ -49,8 +48,8 @@ const Configuracao = props => {
         </PageEmpty>
     );
 };
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
 changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Configuracao);

@@ -4,7 +4,7 @@ import {Bar} from "react-chartjs-2";
 class Chart extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             chartData: {

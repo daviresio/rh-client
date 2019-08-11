@@ -14,16 +14,16 @@ const EditTextTable = ({entity, data, obj, field, update, ...props}) => {
             }
         }
         return data[field] || ''
-    }
+    };
 
-    const [visible, setVisible] = useState(false)
-    const [value, setValue] = useState(setInitialvalue())
-    const [valueToSend, setValueToSend] = useState(null)
+    const [visible, setVisible] = useState(false);
+    const [value, setValue] = useState(setInitialvalue());
+    const [valueToSend, setValueToSend] = useState(null);
 
     const onChange = e => {
         if(obj) {
             if(!data[obj]) {
-                data = {...data, [obj]: {[field]: e}}
+                data = {...data, [obj]: {[field]: e}};
                 setValueToSend({...data, [obj]: {[field]: e}})
             } else {
             data[obj][field] = e
@@ -32,14 +32,14 @@ const EditTextTable = ({entity, data, obj, field, update, ...props}) => {
             data[field] = e
         }
         setValue(e)
-    }
+    };
 
     const handleSave = () => {
-        update(entity, valueToSend ? valueToSend : data)
+        update(entity, valueToSend ? valueToSend : data);
         setVisible(false)
-    }
+    };
 
-    const input = {input: {value, onChange}}
+    const input = {input: {value, onChange}};
 
     return (
         visible ?
@@ -52,11 +52,11 @@ const EditTextTable = ({entity, data, obj, field, update, ...props}) => {
     );
 };
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
     save: (entity, value, options) => dispatch(save(entity, value, options)),
     update: (entity, value, options) => dispatch(update(entity, value, options)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditTextTable);

@@ -1,5 +1,4 @@
 import React from 'react';
-import PageEmpty from "../../layout/PageEmpty";
 import CardBorda from "../../components/card/CardBorda";
 import Checkbox from "../../components/form/Checkbox";
 import Buttom from "../../components/Buttom";

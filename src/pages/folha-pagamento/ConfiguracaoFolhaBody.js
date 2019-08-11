@@ -11,12 +11,12 @@ import {loadList} from "../../store/actions/serverActions";
 
 const ConfiguracaoFolhaBody = ({changeRoute, router, loadData, serverValues}) => {
 
-    const {eventos} = serverValues
-    const path = '/folha/configuracao/'
+    const {eventos} = serverValues;
+    const path = '/folha/configuracao/';
 
     useEffect(()=> {
         loadData('eventos')
-    }, [])
+    }, []);
 
     return (
         <div className={'folha-configuracao page-divided'}>

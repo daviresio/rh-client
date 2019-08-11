@@ -10,9 +10,9 @@ import Checkbox from "../components/form/Checkbox";
 import CenterContent from "../components/util/CenterContent";
 
 let Contador = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props
+    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload)
+    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload);
 
     return (
         <Modal border visible={visible} title={'Adicionar Contador'}>
@@ -33,18 +33,18 @@ let Contador = props => {
         </Modal>
     )
 
-}
+};
 
 const mapStateToProps = state => ({
     initialValues: state.modal.contador.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('contador', false)),
     save: (value, updateForm, reload) => dispatch(save('contadores', value, {modal: 'contador', updateForm, reload})),
     update: (value, updateForm, reload) => dispatch(update('contadores', value, {modal: 'contador', list: true, updateForm, reload})),
-})
+});
 
-Contador = reduxForm({form: 'contador', enableReinitialize: true})(Contador)
+Contador = reduxForm({form: 'contador', enableReinitialize: true})(Contador);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contador)

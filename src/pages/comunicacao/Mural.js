@@ -1,5 +1,4 @@
 import React from 'react';
-import InputRow from "../../components/form/InputRow";
 import Select from "../../components/form/Select";
 import Buttom from "../../components/Buttom";
 import Message from "../../components/util/Message";

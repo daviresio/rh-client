@@ -4,7 +4,7 @@ import {changeRoute} from "../../store/actions/routerActions";
 
 const LancamentoHolerite = () => {
 
-    const path = '/folha/holerites/lancamento/'
+    const path = '/folha/holerites/lancamento/';
 
     return (
         <div className={'lancamento-holerite'}>
@@ -30,4 +30,4 @@ const CardLancamentoHolerite = ({icon, title, subtitle, onClick}) => {
             <div className={'subtitle'}>{subtitle}</div>
         </div>
     );
-}
+};

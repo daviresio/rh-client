@@ -17,11 +17,11 @@ import FaltasEAfastamentos from "./notificacoes/FaltasEAfastamentos";
 import CardSimples from "../components/card/CardSimples";
 
 const Notificacoes = props => {
-    const path = '/notificacoes/'
-    const currentPath = props.router.location.pathname
-    const {changeRoute} = props
+    const path = '/notificacoes/';
+    const currentPath = props.router.location.pathname;
+    const {changeRoute} = props;
 
-    const activeClass = v => currentPath === path + v ? 'active' : null
+    const activeClass = v => currentPath === path + v ? 'active' : null;
 
     return (
         <PageEmpty>
@@ -61,8 +61,8 @@ const Notificacoes = props => {
     );
 };
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Notificacoes);

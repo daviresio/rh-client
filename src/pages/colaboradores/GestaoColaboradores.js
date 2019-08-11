@@ -11,19 +11,19 @@ import ColaboradorComFoto from "../../components/util/ColaboradorComFoto";
 const GestaoColaboradores = ({changeRoute, loadData, qtd, colaboradoresAtivos, colaboradoresEmAdimissao, colaboradoresEmDemissao, ...props}) => {
 
     useEffect(()=> {
-        loadData('colaboradores?status=ATIVO', 'colaboradoresAtivos')
-        loadData('colaboradores?status=ADMISSAO_PENDENTE', 'colaboradoresEmAdimissao')
-        loadData('colaboradores?status=DESLIGAMENTO_PENDENTE', 'colaboradoresEmDemissao')
+        loadData('colaboradores?status=ATIVO', 'colaboradoresAtivos');
+        loadData('colaboradores?status=ADMISSAO_PENDENTE', 'colaboradoresEmAdimissao');
+        loadData('colaboradores?status=DESLIGAMENTO_PENDENTE', 'colaboradoresEmDemissao');
         loadData('colaboradores/quantidade', 'qtdColaboradores')
-    }, [])
+    }, []);
 
     const configOptions = <ConfigOptions options={[
         {nome: 'Editar em massa', onClick: ()=> changeRoute('/colaboradores/editar-em-massa')},
         {nome: 'Atualizacao de dissidio', onClick: ()=>  changeRoute('/colaboradores/dissidio')},
         {nome: 'Gerenciar acesso dos colaboradores', onClick: ()=>  changeRoute('/colaboradores/gerenciar-acesso')},
-        ]} />
+    ]}/>;
 
-        const renderIfExists = value => value ? value.map(v => ({...v, nome: <ColaboradorComFoto nome={v.nome} foto={v.foto} />})) : []
+    const renderIfExists = value => value ? value.map(v => ({...v, nome: <ColaboradorComFoto nome={v.nome} foto={v.foto}/>})) : [];
 
     return (
         <React.Fragment>
@@ -63,10 +63,10 @@ const mapStateToProps = state => ({
     colaboradoresAtivos: state.serverValues.colaboradoresAtivos,
     colaboradoresEmAdimissao: state.serverValues.colaboradoresEmAdimissao,
     colaboradoresEmDemissao: state.serverValues.colaboradoresEmDemissao,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(GestaoColaboradores)

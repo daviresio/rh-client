@@ -4,16 +4,40 @@ import CardHome from "../components/card/CardHome";
 import Calendar from "../components/Calendar";
 import CardBorda from "../components/card/CardBorda";
 import Buttom from "../components/Buttom";
-import Chart from "../components/Chart";
 import CardSimples from "../components/card/CardSimples";
 import {connect} from "react-redux";
 import {loadList} from "../store/actions/serverActions";
+import BarChart from "../components/BarChart";
+
+const randomValue = () => Math.floor(Math.random() * 50) + 1;
+
+const TEMP_DATA = [
+    {
+        label: 'Jan',
+        value: randomValue(),
+    }, {
+        label: 'Feb',
+        value: randomValue(),
+    }, {
+        label: 'Mar',
+        value: randomValue(),
+    }, {
+        label: 'Abr',
+        value: randomValue(),
+    }, {
+        label: 'Mai',
+        value: randomValue(),
+    }, {
+        label: 'Jun',
+        value: randomValue(),
+    },
+];
 
 const Home = ({loadData, qtd}) => {
 
     useEffect(()=> {
         loadData('colaboradores/quantidade', 'qtdColaboradores')
-    }, [])
+    }, []);
 
     return (
         <Page title={'Painel'}>
@@ -27,8 +51,8 @@ const Home = ({loadData, qtd}) => {
                           message={'Colaboradores nesse estagio'} route={'/ferias'}/>
             </div>
             <div className={'home-center'}>
-                <CardSimples style={{marginTop: '2rem'}}>
-                <Chart />
+                <CardSimples style={{marginTop: '2rem', height: '92%'}}>
+                    <BarChart data={TEMP_DATA} title={'Headcount por mes'}/>
                 </CardSimples>
 
             <CardBorda title={'Lembretes'} color={'dark'}>
@@ -49,9 +73,9 @@ const Home = ({loadData, qtd}) => {
 
 const mapStateToProps = state => ({
     qtd: state.serverValues.qtdColaboradores,
-})
+});
 const mapDispatchToProps = dispatch => ({
     loadData: (entity, target) => dispatch(loadList(entity, target)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

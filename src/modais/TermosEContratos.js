@@ -6,12 +6,11 @@ import {reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
 import Message from "../components/util/Message";
-import CardSimples from "../components/card/CardSimples";
 
 let TermosEContratos = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Adicionar termos e contratos.'}>
@@ -28,14 +27,14 @@ let TermosEContratos = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.termosEContratos.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('termosEContratos', false)),
     save: (value, updateDropdown) => dispatch(save('termosEContratos', value, {modal: 'termosEContratos', updateDropdown})),
     update: value => dispatch(update('termosEContratos', value, {modal: 'termosEContratos', list: true})),
-})
+});
 
-TermosEContratos = reduxForm({form: 'termosEContratos', enableReinitialize: true})(TermosEContratos)
+TermosEContratos = reduxForm({form: 'termosEContratos', enableReinitialize: true})(TermosEContratos);
 
 export default connect(mapStateToProps, mapDispatchToProps)(TermosEContratos);

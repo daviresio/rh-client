@@ -9,12 +9,12 @@ import InputRow from "../components/form/InputRow";
 import SelectRow from "../components/form/SelectRow";
 import {getEstados} from "../config/localidades";
 import DatePicker from "../components/form/DatePicker";
-import {simNaoOptions, tiposEstadoCivil} from "../config/defaultValues";
+import {simNaoOptions} from "../config/defaultValues";
 
 let ModalDocumentoColaborador = props => {
-    const {closeModal, visible, handleSubmit, update, reload, data} = props
+    const {closeModal, visible, handleSubmit, update, reload, data} = props;
 
-    const submit = value => update({...value, ...data}, reload)
+    const submit = value => update({...value, ...data}, reload);
 
     return (
         <Modal border visible={visible} title={'Documentos pessoais'}>
@@ -47,18 +47,18 @@ let ModalDocumentoColaborador = props => {
     )
 };
 
-ModalDocumentoColaborador = reduxForm({form: 'documentoColaborador', enableReinitialize: true})(ModalDocumentoColaborador)
+ModalDocumentoColaborador = reduxForm({form: 'documentoColaborador', enableReinitialize: true})(ModalDocumentoColaborador);
 
 const mapStateToProps = state => {
     return {
         initialValues: state.modal.documentoColaborador.value,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('documentoColaborador', false)),
     update: (value, reload) => dispatch(update('colaboradores', value, {modal: 'documentoColaborador', reload})),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalDocumentoColaborador);

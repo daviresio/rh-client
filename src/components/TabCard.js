@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const TabCard = ({tabTitle, color, content, start}) => {
 
-    const [tabActive, changeTab] = useState(0)
+    const [tabActive, changeTab] = useState(0);
 
     return (
         <div className={'card-borda'}>

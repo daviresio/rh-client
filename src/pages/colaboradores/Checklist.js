@@ -8,9 +8,9 @@ import {clearList, loadList, update} from "../../store/actions/serverActions";
 let Checklist = ({id, loadData, update, values, clearList, ...props}) => {
 
     useEffect(() => {
-        clearList('checkLists')
+        clearList('checkLists');
         loadData(`checklists/colaborador/${id}`, 'checkLists')
-    }, [])
+    }, []);
 
     const renderCheckList = () => {
         return values && values.length ?
@@ -21,7 +21,7 @@ let Checklist = ({id, loadData, update, values, clearList, ...props}) => {
                     </div>
                 }
             ) : null
-    }
+    };
 
 
     return (
@@ -33,13 +33,13 @@ let Checklist = ({id, loadData, update, values, clearList, ...props}) => {
 
 const mapStateToProps = state => ({
     values: state.serverValues.checkLists
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     loadData: (entity, target) => dispatch(loadList(entity, target)),
     update: value => dispatch(update('checklists', value, {list: true})),
     clearList: target => dispatch(clearList(target)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Checklist);

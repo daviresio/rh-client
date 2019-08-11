@@ -2,11 +2,9 @@ import React from 'react';
 import {changeRoute} from "../store/actions/routerActions";
 import {connect} from "react-redux";
 
-import backgroundImage from '../assets/sidebar-bg.svg'
-
 const Navbar = ({changeRoute, pathname}) => {
 
-    const classeCss = path => pathname.includes(path) ? 'item active' : 'item'
+    const classeCss = path => pathname.includes(path) ? 'item active' : 'item';
 
     return (
         <div className={'navbar'}>
@@ -53,8 +51,8 @@ const Navbar = ({changeRoute, pathname}) => {
         </div>
     );
 };
-const mapStateToProps = ({router}) => router.location
+const mapStateToProps = ({router}) => router.location;
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

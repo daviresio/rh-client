@@ -1,7 +1,5 @@
 import React, {useEffect} from 'react';
-import {search, update} from "../../store/actions/serverActions";
-import {changeModalVisible} from "../../store/actions/modalActions";
-import {reduxForm} from "redux-form";
+import {search} from "../../store/actions/serverActions";
 import {connect} from "react-redux";
 import Page from "../../layout/Page";
 import CardSimples from "../../components/card/CardSimples";
@@ -17,7 +15,7 @@ let BeneficioDetalhe = ({match, search, changeRoute, beneficio}) => {
 
     useEffect(() => {
         search(match.params.id)
-    }, [])
+    }, []);
 
     return (
         <Page title={`Informacoes do beneficio ${beneficio.nome || ''}`}>
@@ -76,11 +74,11 @@ let BeneficioDetalhe = ({match, search, changeRoute, beneficio}) => {
 
 const mapStateToProps = state => ({
     beneficio: state.serverValues.beneficio,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('beneficios', id, 'beneficio')),
     changeRoute: route => dispatch(changeRoute(route)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeneficioDetalhe);

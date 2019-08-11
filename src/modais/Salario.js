@@ -10,10 +10,10 @@ import SelectRow from "../components/form/SelectRow";
 import DatePicker from "../components/form/DatePicker";
 
 let Salario = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown, serverValues} = props
-    const {cargos, departamentos} = serverValues
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown, serverValues} = props;
+    const {cargos, departamentos} = serverValues;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Definir vinculo e salario'}>
@@ -40,14 +40,14 @@ let Salario = props => {
 const mapStateToProps = state => ({
     initialValues: state.modal.salario.value,
     serverValues: state.serverValues,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('salario', false)),
     save: (value, updateDropdown) => dispatch(save('salarios', value, {modal: 'salario', updateDropdown})),
     update: value => dispatch(update('salarios', value, {modal: 'salario', list: true})),
-})
+});
 
-Salario = reduxForm({form: 'salario', enableReinitialize: true})(Salario)
+Salario = reduxForm({form: 'salario', enableReinitialize: true})(Salario);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Salario);

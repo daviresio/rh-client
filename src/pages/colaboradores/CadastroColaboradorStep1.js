@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Field, reduxForm, formValueSelector} from "redux-form";
+import {Field, formValueSelector, reduxForm} from "redux-form";
 import InputRow from "../../components/form/InputRow";
 import SelectRow from "../../components/form/SelectRow";
 import CardSimples from "../../components/card/CardSimples";
@@ -17,22 +17,22 @@ import CentroDeCusto from "../../modais/CentroDeCusto";
 import {loadList, save, search, update, uploadFile} from "../../store/actions/serverActions";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import * as defaultValues from "../../config/defaultValues";
+import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
 import DatePicker from "../../components/form/DatePicker";
 import Checklist from "./Checklist";
-import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
 import {getValue} from "../../util/metodosUteis";
 
 let CadastroColaboradorStep1 = props => {
 
-    const [saveOnly, setSaveOnly] = useState(true)
-    const [opcaoAvancada, setOpcaoAvancada] = useState(false)
-    const [horarioPersonalizado, setHorarioPersonalizado] = useState(false)
-    const {jornadaTrabalho, foto} = props.formValues
-    const {cargos, departamentos, centrodecustos, sindicatos, periodoExperiencias, jornadasTrabalho, vinculos, formaPagamentos} = props.serverValues
-    const {cargo, departamento, centroDeCusto} = props.modal
-    const {loadData, openModal, handleSubmit, save, update, uploadFile} = props
+    const [saveOnly, setSaveOnly] = useState(true);
+    const [opcaoAvancada, setOpcaoAvancada] = useState(false);
+    const [horarioPersonalizado, setHorarioPersonalizado] = useState(false);
+    const {jornadaTrabalho, foto} = props.formValues;
+    const {cargos, departamentos, centrodecustos, sindicatos, periodoExperiencias, jornadasTrabalho, vinculos, formaPagamentos} = props.serverValues;
+    const {cargo, departamento, centroDeCusto} = props.modal;
+    const {loadData, openModal, handleSubmit, save, update, uploadFile} = props;
 
-    const buttonSubmit = useRef(null)
+    const buttonSubmit = useRef(null);
 
     const showButtonOpcoes = () => jornadaTrabalho === 2 ?
         <>
@@ -40,14 +40,14 @@ let CadastroColaboradorStep1 = props => {
                     label={'Opcao simplificada'}/>
             <Buttom color={opcaoAvancada ? 'blue' : 'gray'} onClick={() => setOpcaoAvancada(true)}
                     label={'Opcao avancada'}/>
-        </> : null
+        </> : null;
 
     const showButtonHorarioPersonalizado = () => (jornadaTrabalho === 2 && opcaoAvancada) || jornadaTrabalho === 4 ?
         <Buttom color={'blue'} label={'Adicionar horario personalizado'}
-                onClick={() => setHorarioPersonalizado(true)}/> : null
+                onClick={() => setHorarioPersonalizado(true)}/> : null;
 
     const showLabelHorarioPersonalizado = () => (jornadaTrabalho === 2 && opcaoAvancada) || jornadaTrabalho === 4 ?
-        <p>* Antes de incluir um novo horário de trabalho, verifique se já não existe o mesmo cadastrado. </p> : null
+        <p>* Antes de incluir um novo horário de trabalho, verifique se já não existe o mesmo cadastrado. </p> : null;
 
     const showTableJornadaSemanalSimplificada = () =>
         <Table header={['Dia de trabalho', 'Horario de trabalho']} keys={['dia', 'horario']} data={[
@@ -79,7 +79,7 @@ let CadastroColaboradorStep1 = props => {
                 dia: 'Domingo',
                 horario: <Select/>
             },
-        ]}/>
+        ]}/>;
 
     const showTableJornadaSemanalAvancada = () =>
         <Table addAndRemove add={() => {
@@ -113,7 +113,7 @@ let CadastroColaboradorStep1 = props => {
                 dia: 'Domingo',
                 horario: <Select/>
             },
-        ]}/>
+        ]}/>;
 
     const showHorarioPersonalizado = () => (jornadaTrabalho === 2 || jornadaTrabalho === 4) && horarioPersonalizado ?
         <div className={'horario-personalizado'}>
@@ -133,7 +133,7 @@ let CadastroColaboradorStep1 = props => {
                         style={{marginRight: '2rem'}}/>
                 <Buttom color={'green'} label={'Salvar'}/>
             </div>
-        </div> : null
+        </div> : null;
 
     const showInputsJornada = () => jornadaTrabalho !== 1 ?
         <>
@@ -142,11 +142,11 @@ let CadastroColaboradorStep1 = props => {
             {jornadaTrabalho !== "3" ?
                 <Field name={'descricaoJornada'} label={'Descrição da jornada'} required component={InputRow}
                        detail={'Este dado será utilizado em suas minutas de documento.'}/> : null}
-        </> : null
+        </> : null;
 
     const prepareToUpload = event => {
-        const type = event.target.files[0].type
-        const reader = new FileReader()
+        const type = event.target.files[0].type;
+        const reader = new FileReader();
         reader.onload = e => {
             if (!e.target.result.includes('data:image/')) {
                 return alert('Selecione um arquivo que seja uma imagem')
@@ -155,28 +155,28 @@ let CadastroColaboradorStep1 = props => {
                 return alert('Imagem muito gramde, o tamanho maximo e de 2mb')
             }
             uploadFile(e.target.result, type, {form: 'colaborador', campo: 'foto'}, foto)
-        }
+        };
         reader.readAsDataURL(event.target.files[0])
-    }
+    };
 
     useEffect(() => {
-        props.dispatch({type: 'DELETAR_COLABORADOR'})
-        const {match, setId, search} = props
-        const id = match.params.id
+        props.dispatch({type: 'DELETAR_COLABORADOR'});
+        const {match, setId, search} = props;
+        const id = match.params.id;
         if (id) {
-            setId(id)
+            setId(id);
             search(id)
         }
-        loadData('cargos')
-        loadData('departamentos')
-        loadData('centrodecustos')
-        loadData('sindicatos')
-        loadData('jornadas-trabalho', 'jornadasTrabalho')
-        loadData('periodo-experiencias', 'periodoExperiencias')
-        loadData('vinculos')
+        loadData('cargos');
+        loadData('departamentos');
+        loadData('centrodecustos');
+        loadData('sindicatos');
+        loadData('jornadas-trabalho', 'jornadasTrabalho');
+        loadData('periodo-experiencias', 'periodoExperiencias');
+        loadData('vinculos');
         loadData('forma-pagamentos', 'formaPagamentos')
 
-    }, [])
+    }, []);
 
     const submit = values => {
             if(props.match.params.id) {
@@ -186,7 +186,7 @@ let CadastroColaboradorStep1 = props => {
                 saveOnly ? save(values, {redirect: {route: '/colaboradores'}, field: 'colaborador'}) :
                     save(values, {redirect: {route: '/colaboradores/cadastro/dados-pessoais/', id: true}, field: 'colaborador'})
             }
-    }
+    };
 
     return (
         <>
@@ -315,7 +315,7 @@ let CadastroColaboradorStep1 = props => {
                                     ref={buttonSubmit}/>
                             <Buttom color={'green'} label={'Salvar e continuar'} onClick={() => {
                                 new Promise((resolve => {
-                                    setSaveOnly(false)
+                                    setSaveOnly(false);
                                     setTimeout(() => resolve(), 500)
                                 })).then(() => buttonSubmit.current.click())
                             }}/>
@@ -329,11 +329,11 @@ let CadastroColaboradorStep1 = props => {
 };
 CadastroColaboradorStep1 = reduxForm({form: "colaborador", enableReinitialize: true})(CadastroColaboradorStep1);
 
-const selector = formValueSelector('colaborador')
+const selector = formValueSelector('colaborador');
 
 const mapStateToProps = state => {
 
-    const {colaborador} = state.serverValues
+    const {colaborador} = state.serverValues;
 
     return {
         initialValues: {
@@ -363,7 +363,7 @@ const mapStateToProps = state => {
         serverValues: state.serverValues,
         modal: state.modal,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     loadData: (entity, target) => dispatch(loadList(entity, target)),
@@ -372,7 +372,7 @@ const mapDispatchToProps = dispatch => ({
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     uploadFile: (event, type, form, urlExistente) => dispatch(uploadFile(event, type, form, urlExistente)),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CadastroColaboradorStep1);

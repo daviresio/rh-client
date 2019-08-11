@@ -10,18 +10,17 @@ import AlignRight from "../../components/util/AlignRight";
 import {connect} from "react-redux";
 import {loadList, update} from "../../store/actions/serverActions";
 import {arrayToObj} from "../../util/metodosUteis";
-import CardSimples from "../../components/card/CardSimples";
 
 
 const LancamentoManual = ({loadData, cargos, departamentos, vinculos, eventos, update, colaboradores}) => {
 
     useEffect(() => {
-        loadData('cargos')
-        loadData('departamentos')
-        loadData('vinculos')
-        loadData('eventos')
+        loadData('cargos');
+        loadData('departamentos');
+        loadData('vinculos');
+        loadData('eventos');
         loadData('colaboradores')
-    }, [])
+    }, []);
 
     const renderRowValue = v =>
         eventos && Object.assign({nome: <ColaboradorComFoto nome={v.nome} foto={v.foto} style={{minWidth: '25rem'}}/>}, arrayToObj(eventos.filter(v => v.campoAtivo).map(v => ({
@@ -29,11 +28,11 @@ const LancamentoManual = ({loadData, cargos, departamentos, vinculos, eventos, u
                 <Input placeholder={'0,00'} style={{maxWidth: '15rem',}}/>
                 <i className="far fa-trash-alt"/>
             </div>
-        }))))
+        }))));
 
     const eventoHandleChange = (v, {obj}) => {
         update('eventos', {...obj, campoAtivo: v})
-    }
+    };
 
     return (
         <>
@@ -66,12 +65,12 @@ const mapStateToProps = state => ({
     vinculos: state.serverValues.vinculos,
     eventos: state.serverValues.eventos,
     colaboradores: state.serverValues.colaboradores,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     loadData: (entity, target) => dispatch(loadList(entity, target)),
     update: (value, entity) => dispatch(update(value, entity, {list: true})),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(LancamentoManual);
 

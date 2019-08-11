@@ -13,12 +13,12 @@ import {Redirect, Route, Switch} from "react-router";
 
 const CadastroColaborador = props => {
 
-    const {changeRoute} = props
-    const path = '/colaboradores/cadastro/'
-    const currentPath = props.router.location.pathname
-    const [id, setId] = useState('')
+    const {changeRoute} = props;
+    const path = '/colaboradores/cadastro/';
+    const currentPath = props.router.location.pathname;
+    const [id, setId] = useState('');
 
-    const mudarRota = rota => id ? changeRoute(`${path}${rota}/${id}`) : null
+    const mudarRota = rota => id ? changeRoute(`${path}${rota}/${id}`) : null;
 
     return (
                 <PageEmpty>
@@ -42,15 +42,15 @@ const CadastroColaborador = props => {
 
                 </PageEmpty>
         );
-}
+};
 
 const mapStateToProps = state => ({
     colaborador: state.colaborador,
     router: state.router,
-})
+});
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(CadastroColaborador);
 
 

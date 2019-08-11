@@ -8,9 +8,9 @@ import Buttom from "../components/Buttom";
 import SelectRow from "../components/form/SelectRow";
 
 let HoleriteModal = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown)
+    const submit = value => value.id ? update(value) : save(value, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Adicionar novo holerite'}>
@@ -30,14 +30,14 @@ let HoleriteModal = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.holerite.value,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('holerite', false)),
     save: (value, updateDropdown) => dispatch(save('holerites', value, {modal: 'holerite', updateDropdown})),
     update: value => dispatch(update('holerites', value, {modal: 'holerite', list: true})),
-})
+});
 
-HoleriteModal = reduxForm({form: 'holerite', enableReinitialize: true})(HoleriteModal)
+HoleriteModal = reduxForm({form: 'holerite', enableReinitialize: true})(HoleriteModal);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HoleriteModal);

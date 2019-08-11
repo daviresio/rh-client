@@ -1,28 +1,27 @@
 import React, {useState} from 'react';
 import Select from "../form/Select";
-import Input from "../form/Input";
 import {connect} from "react-redux";
 import {save, update} from "../../store/actions/serverActions";
 
 const EditSelectTable = ({obj = '', options = [], update, data = {}, entity = ''}) => {
 
-    const [visible, setVisible] = useState(false)
-    const [value, setValue] = useState(data[obj] && data[obj].id ? data[obj].id : null)
+    const [visible, setVisible] = useState(false);
+    const [value, setValue] = useState(data[obj] && data[obj].id ? data[obj].id : null);
 
     const onChange = e => {
-        data[obj] = {id:e}
-        setValue(e)
+        data[obj] = {id: e};
+        setValue(e);
         console.log(e)
-    }
+    };
 
     const handleSave = () => {
-        update(entity, data)
+        update(entity, data);
         setVisible(false)
-    }
+    };
 
-    const input = {input: {value, onChange}}
+    const input = {input: {value, onChange}};
 
-    const label = () => value ? options.filter(x => x.id === value)[0].nome : 'Sem informacao'
+    const label = () => value ? options.filter(x => x.id === value)[0].nome : 'Sem informacao';
 
     return (
         visible ?
@@ -35,11 +34,11 @@ const EditSelectTable = ({obj = '', options = [], update, data = {}, entity = ''
     );
 };
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
     save: (entity, value, options) => dispatch(save(entity, value, options)),
     update: (entity, value, options) => dispatch(update(entity, value, options)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditSelectTable);

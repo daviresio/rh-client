@@ -5,20 +5,20 @@ const Select = ({options = [], inputLabel = 'nome', valueLabel = 'id', input = {
 
     const [listOpen, setListVisibility] = useState(false);
     const selectItem = o => {
-        setListVisibility(false)
-        input.onChange(o[valueLabel])
+        setListVisibility(false);
+        input.onChange(o[valueLabel]);
         input.value = o[valueLabel]
-    }
+    };
     const itens = options.map(o => <li key={o[valueLabel]} onClick={() => selectItem(o)}
-                                       className={'select-list-item'}>{o[inputLabel]}</li>)
+                                       className={'select-list-item'}>{o[inputLabel]}</li>);
     const getValue = () => {
-        const opt = options.filter(v => v[valueLabel] === input.value)[0]
+        const opt = options.filter(v => v[valueLabel] === input.value)[0];
         if (opt) return opt[inputLabel]
-    }
+    };
 
-    const renderLabel = <label className={'input-label'}>{label}{requiredLabel}label</label> ? label : null
-    let containerClass = 'select-container'
-    containerClass = className === undefined || className === null ? containerClass + ' input-width-1' : containerClass + className
+    const renderLabel = <label className={'input-label'}>{label}{requiredLabel}label</label> ? label : null;
+    let containerClass = 'select-container';
+    containerClass = className === undefined || className === null ? containerClass + ' input-width-1' : containerClass + className;
     return (
         <ClickOutside clickOutside={() => setListVisibility(false)}>
             <div className={containerClass}>
@@ -31,5 +31,5 @@ const Select = ({options = [], inputLabel = 'nome', valueLabel = 'id', input = {
             </div>
         </ClickOutside>
     );
-}
+};
 export default Select;

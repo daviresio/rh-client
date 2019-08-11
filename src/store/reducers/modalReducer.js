@@ -99,13 +99,21 @@ const INITIAL_STATE = {
         visible: false,
         value: null,
     },
-}
+    dadosEmpresa: {
+        visible: false,
+        value: null,
+    },
+    dadosCobranca: {
+        visible: false,
+        value: null,
+    },
+};
 
 export const modal = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case CHANGE_MODAL_VISIBILITY:
-            return {...state, [action.payload.target]: {visible: action.payload.visible, value: action.payload.value, index: action.payload.index}}
+            return {...state, [action.payload.target]: {visible: action.payload.visible, value: action.payload.value, index: action.payload.index}};
         default:
             return state
     }
-}
+};

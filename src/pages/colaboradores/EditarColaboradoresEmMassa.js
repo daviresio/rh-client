@@ -12,9 +12,9 @@ import EditSelectTable from "../../components/table/EditSelectTable";
 const EditarColaboradoresEmMassa = ({changeRoute, loadData, colaboradores, departamentos}) => {
 
     useEffect(() => {
-        loadData('colaboradores')
+        loadData('colaboradores');
         loadData('departamentos')
-    }, [])
+    }, []);
 
     return (
         <Page title={'Edicao em massa de colaboradores'}>
@@ -48,11 +48,11 @@ const EditarColaboradoresEmMassa = ({changeRoute, loadData, colaboradores, depar
 const mapStateToProps = state => ({
     colaboradores: state.serverValues.colaboradores,
     departamentos: state.serverValues.departamentos,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     loadData: (entity, target) => dispatch(loadList(entity, target)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditarColaboradoresEmMassa);

@@ -13,9 +13,9 @@ import {downloadFile} from "../util/metodosUteis";
 import Delete from "../components/util/Delete";
 
 let CopiaDocumento = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown, data, reload, formValues, uploadDocumento} = props
+    const {closeModal, visible, handleSubmit, save, update, updateDropdown, data, reload, formValues, uploadDocumento} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown)
+    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown);
 
     return (
         <Modal border visible={visible} title={'Adicionar documento'}>
@@ -43,22 +43,22 @@ let CopiaDocumento = props => {
     )
 };
 
-CopiaDocumento = reduxForm({form: 'copiaDocumento', enableReinitialize: true})(CopiaDocumento)
+CopiaDocumento = reduxForm({form: 'copiaDocumento', enableReinitialize: true})(CopiaDocumento);
 
 const mapStateToProps = state => {
-    const selector = formValueSelector('copiaDocumento')
+    const selector = formValueSelector('copiaDocumento');
     return {
         initialValues: state.modal.copiaDocumento.value,
         formValues: selector(state, 'url'),
     }
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('copiaDocumento', false)),
     save: (value, reload, updateDropdown) => dispatch(save('copia-documentos', value, {modal: 'copiaDocumento', updateDropdown, reload, target: 'copiaDocumentos'})),
     update: (value, reload) => dispatch(update('copia-documentos', value, {modal: 'copiaDocumento', list: true, reload})),
     uploadDocumento: event => dispatch(uploadDocumento(event, {form: 'copiaDocumento', campo: 'url'})),
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CopiaDocumento);

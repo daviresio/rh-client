@@ -7,7 +7,8 @@ import {connect} from "react-redux";
 
 let MuralCadastro = ({handleSubmit, match, router, setId, search, update, ...props}) => {
 
-    const submit = values => {}
+    const submit = values => {
+    };
 
     return (
         <div className={'mural-cadastro'}>
@@ -26,11 +27,11 @@ MuralCadastro = reduxForm({form: 'recado', enableReinitialize: true})(MuralCadas
 
 const mapStateToProps = state => {
 
-}
+};
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(MuralCadastro);

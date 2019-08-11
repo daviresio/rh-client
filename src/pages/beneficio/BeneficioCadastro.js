@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {save, search, update} from "../../store/actions/serverActions";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import {Field, reduxForm} from "redux-form";
@@ -20,9 +20,14 @@ let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update
 
     useEffect(()=> {
         if(match.params.id) search(match.params.id)
-    }, [])
+    }, []);
 
-    const submit = values => match.params.id ? update(values, {redirect: {route: '/beneficios', field: 'beneficio'}}) : save(values, {redirect: {route: '/beneficios', field: 'beneficio'}})
+    const submit = values => match.params.id ? update(values, {redirect: {route: '/beneficios', field: 'beneficio'}}) : save(values, {
+        redirect: {
+            route: '/beneficios',
+            field: 'beneficio'
+        }
+    });
 
     return (
         <Page title={'Cadastrar beneficio'}>
@@ -67,13 +72,13 @@ let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update
 };
 
 
-BeneficioCadastro = reduxForm({form: 'beneficio', enableReinitialize: true})(BeneficioCadastro)
+BeneficioCadastro = reduxForm({form: 'beneficio', enableReinitialize: true})(BeneficioCadastro);
 
 const mapStateToProps = state => ({
     router: state.router,
     modal: state.modal,
     initialValues: state.serverValues.beneficio,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('beneficios', id, 'beneficio')),
@@ -81,6 +86,6 @@ const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     save: (value, redirect) => dispatch(save('beneficios', value, redirect)),
     update: (value, redirect) => dispatch(update('beneficios', value, redirect)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeneficioCadastro);

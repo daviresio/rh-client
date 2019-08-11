@@ -33,11 +33,11 @@ const Holerites = ({modal, openModal, changeRoute}) => {
 const mapStateToProps = state => ({
     folhaPagamento: state.folhaPagamento,
     modal: state.modal,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
     openModal: modal => dispatch(changeModalVisible(modal, true)),
     changeRoute: route => dispatch(changeRoute(route)),
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Holerites);
