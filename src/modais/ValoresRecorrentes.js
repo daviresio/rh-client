@@ -1,26 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {save, update} from "../store/actions/serverActions";
+import {closeModal, saveModalAndReloadOtherEntity, updateModalAndReloadOtherEntity} from "../store/actions/modalActions";
+import {loadList} from "../store/actions/serverActions";
 import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
 import SelectRow from "../components/form/SelectRow";
 import InputRow from "../components/form/InputRow";
+import {getValue} from "../util/metodosUteis";
 
-let ValoresRecorrentes = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
+let ValoresRecorrentes = ({closeModal, visible, handleSubmit, save, update, idReload, loadData, eventos, data}) => {
 
-    const submit = value => value.id ? update(value) : save(value, updateDropdown);
+    useEffect(() => {
+        loadData('eventos')
+    }, []);
+
+    const submit = value => value.id ? update({...value, ...data}, idReload) : save({...value, ...data}, idReload);
 
     return (
-        <Modal border visible={visible} title={' Adicionar Valores Recorrentes '}>
+        <Modal border visible={visible} title={' Adicionar Valores Recorrentes '} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
-                <Field component={SelectRow} name={'item'} label={'Item'} options={[]} />
+                <Field component={SelectRow} name={'item'} label={'Item'} options={eventos}/>
                 <Field component={InputRow} name={'valor'} label={'Valor'} />
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -28,13 +32,30 @@ let ValoresRecorrentes = props => {
 };
 
 const mapStateToProps = state => ({
-    initialValues: state.modal.valoresRecorrentes.value,
+    initialValues: {
+        id: getValue('id', state.modal.valoresRecorrentes.value),
+        item: Number(getValue('item', state.modal.valoresRecorrentes.value)),
+        valor: getValue('valor', state.modal.valoresRecorrentes.value),
+    },
+    visible: state.modal.valoresRecorrentes.visible,
+    idReload: state.modal.valoresRecorrentes.idReload,
+    data: state.modal.valoresRecorrentes.data,
+    eventos: state.serverValues.eventos,
 });
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('valoresRecorrentes', false)),
-    save: (value, updateDropdown) => dispatch(save('valoresRecorrentes', value, {modal: 'valoresRecorrentes', updateDropdown})),
-    update: value => dispatch(update('valoresRecorrentes', value, {modal: 'valoresRecorrentes', list: true})),
+    closeModal: () => dispatch(closeModal('valoresRecorrentes')),
+    save: (value, idReload) => dispatch(saveModalAndReloadOtherEntity('valores-recorrentes', value, 'valoresRecorrentes', {
+        entity: 'colaboradores',
+        id: idReload,
+        target: 'colaborador'
+    })),
+    update: (value, idReload) => dispatch(updateModalAndReloadOtherEntity('valores-recorrentes', value, 'valoresRecorrentes', {
+        entity: 'colaboradores',
+        id: idReload,
+        target: 'colaborador'
+    })),
+    loadData: entity => dispatch(loadList(entity)),
 });
 
 ValoresRecorrentes = reduxForm({form: 'valoresRecorrentes', enableReinitialize: true})(ValoresRecorrentes);

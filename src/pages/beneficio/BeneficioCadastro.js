@@ -14,12 +14,13 @@ import Checkbox from "../../components/form/Checkbox";
 import Divided from "../../components/util/Divided";
 import {changeRoute} from "../../store/actions/routerActions";
 import CenterContent from "../../components/util/CenterContent";
+import AlignRight from "../../components/util/AlignRight";
 
 
 let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update}) => {
 
-    useEffect(()=> {
-        if(match.params.id) search(match.params.id)
+    useEffect(() => {
+        if (match.params.id) search(match.params.id)
     }, []);
 
     const submit = values => match.params.id ? update(values, {redirect: {route: '/beneficios', field: 'beneficio'}}) : save(values, {
@@ -64,7 +65,9 @@ let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update
                            label={'Data de vencimento do contrato'}
                            detail={'Caso o benefício possua um contrato, informe a data final do mesmo.'}/>
                     <Field component={InputRow} name={'descricao'} label={'Descricao'}/>
-                    <Buttom color={'green'} label={'salvar'} type={'submit'} style={{marginTop: '2rem'}}/>
+                    <AlignRight>
+                        <Buttom color={'blue'} label={'salvar'} type={'submit'} style={{marginTop: '2rem'}}/>
+                    </AlignRight>
                 </form>
             </CardSimples>
         </Page>

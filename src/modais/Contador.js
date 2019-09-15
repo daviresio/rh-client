@@ -3,19 +3,17 @@ import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import InputRow from "../components/form/InputRow";
 import Buttom from "../components/Buttom";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {save, update} from "../store/actions/serverActions";
+import {changeModalVisible, saveModal, updateModalAndList} from "../store/actions/modalActions";
 import {connect} from "react-redux";
 import Checkbox from "../components/form/Checkbox";
 import CenterContent from "../components/util/CenterContent";
 
-let Contador = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props;
+let Contador = ({closeModal, visible, handleSubmit, save, update}) => {
 
-    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload);
+    const submit = value => value.id ? update(value) : save(value);
 
     return (
-        <Modal border visible={visible} title={'Adicionar Contador'}>
+        <Modal border visible={visible} title={'Adicionar Contador'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={InputRow} name={'nome'} label={'Nome'} required/>
                 <Field component={InputRow} name={'email'} label={'Email'}/>
@@ -27,7 +25,7 @@ let Contador = props => {
                 </CenterContent>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -37,12 +35,13 @@ let Contador = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.contador.value,
+    visible: state.modal.contador.visible,
 });
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(changeModalVisible('contador', false)),
-    save: (value, updateForm, reload) => dispatch(save('contadores', value, {modal: 'contador', updateForm, reload})),
-    update: (value, updateForm, reload) => dispatch(update('contadores', value, {modal: 'contador', list: true, updateForm, reload})),
+    save: value => dispatch(saveModal('contadores', value, 'contador')),
+    update: value => dispatch(updateModalAndList('contadores', value, 'contador')),
 });
 
 Contador = reduxForm({form: 'contador', enableReinitialize: true})(Contador);

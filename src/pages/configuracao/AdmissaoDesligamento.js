@@ -1,11 +1,21 @@
 import React from 'react';
 import CardBorda from "../../components/card/CardBorda";
 import Divided from "../../components/util/Divided";
-import Checkbox from "../../components/form/Checkbox";
 import Edit from "../../components/util/Edit";
 import Delete from "../../components/util/Delete";
+import TableManual from "../../components/table/TableManual";
+import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import AlignRight from "../../components/util/AlignRight";
+import Buttom from "../../components/Buttom";
+import Checkbox from "../../components/form/Checkbox";
 
-const AdmissaoDesligamento = () => {
+let AdmissaoDesligamento = ({handleSubmit}) => {
+
+    const submit = value => {
+        console.log(value)
+    };
+
     return (
         <div className={'configuracao-admissao page-divided'}>
             <div>
@@ -13,6 +23,24 @@ const AdmissaoDesligamento = () => {
                     <div className={'configuracao-admissao-subtitle'}>
                         {'Precisa de alguma informação dos seus colaboradores que não tem no sistema? Crie um campo personalizado e todos os colaboradores poderão preenchê-lo para você manter em seus registros.'}
                     </div>
+                    <TableManual tableHeader={
+                        <tr>
+                            <th>Nome do campo</th>
+                            <th>Passo</th>
+                            <th>Tipo</th>
+                            <th style={{width: '10rem'}}></th>
+                        </tr>
+                    }
+                                 tableBody={
+                                     <tr>
+                                         <td>{}</td>
+                                         <td>{}</td>
+                                         <td>{}</td>
+                                         <td>{}</td>
+                                     </tr>
+                                 }
+                    />
+
                 </CardBorda>
                 <CardBorda start title={'E-mail de boas vindas'}>
                     <div className={'configuracao-admissao-subtitle'}>
@@ -42,25 +70,73 @@ const AdmissaoDesligamento = () => {
                     <span className={'negrito'}><span
                         className={'clique-aqui'}>{'Clique aqui '}</span>{'para cadastrar um e-mail personalizado.'}</span>
                 </CardBorda>
-                <CardBorda start title={'Campos obrigatorios de admissao'}>
-                    <div className={'configuracao-admissao-subtitle'}>
-                        {'Ao fazer um processo de admissão pelo Convenia, você pode escolher quais campos serão de preenchimento obrigatório pelo colaborador.'}
-                    </div>
-                    <Divided/>
-                    <div className={'configuracao-admissao-title'}>{'Informacoes pessoais'}</div>
-                    <Checkbox label={'item one'}/>
-                    <div className={'configuracao-admissao-title'}>{'Contatos e enderecos'}</div>
-                    <div className={'configuracao-admissao-title'}>{'Formacao academica'}</div>
-                    <div className={'configuracao-admissao-title'}>{'Documentos'}</div>
-                    <div className={'configuracao-admissao-title'}>{'Dados bancarios'}</div>
-                </CardBorda>
-                <CardBorda start title={'Documentos obrigatorios de admissao'}>
-                    <div className={'configuracao-admissao-subtitle'}>
-                        {'Ao fazer um processo de admissão pelo Convenia, você pode escolher quais documentos serão de envio obrigatório pelo colaborador.'}
-                    </div>
-                    <Divided/>
-                    <div className={'configuracao-admissao-title'}>{'Documentos'}</div>
-                </CardBorda>
+                <form onSubmit={handleSubmit(submit)}>
+                    <CardBorda start title={'Campos obrigatorios de admissao'}>
+                        <div className={'configuracao-admissao-subtitle'}>
+                            {'Ao fazer um processo de admissão pelo Convenia, você pode escolher quais campos serão de preenchimento obrigatório pelo colaborador.'}
+                        </div>
+                        <Divided/>
+                        <div className={'configuracao-admissao-title'}>{'Informacoes pessoais'}</div>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Data de Nascimento'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Nacionalidade'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Natural do estado'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Estado civil'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Nome da mae'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Nome do pai'}/>
+                        <div className={'configuracao-admissao-title'}>{'Contatos e enderecos'}</div>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Telefone'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Celular'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'CEP'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Endereco'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Numero'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Bairro'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Estado'}/>
+                        <div className={'configuracao-admissao-title'}>{'Formacao academica'}</div>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Escolaridade'}/>
+                        <div className={'configuracao-admissao-title'}>{'Documentos'}</div>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'RG'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Data de expedicao do RG'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Orgao emissor do RG'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'UF emissor do RG'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Carteira de trabalho'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'N de serie da CTPS'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Data de emissao da CTPS'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'UF da CTPS'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'PIS'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Titulo eleitor'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Zona eleitoral'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Secao eleitoral'}/>
+                        <div className={'configuracao-admissao-title'}>{'Dados bancarios'}</div>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Banco'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Agencia'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Conta'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Digito'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Comprovante'}/>
+                        <AlignRight>
+                            <Buttom color={'blue'} label={'Salvar'}/>
+                        </AlignRight>
+                    </CardBorda>
+
+                    <CardBorda start title={'Documentos obrigatorios de admissao'}>
+                        <div className={'configuracao-admissao-subtitle'}>
+                            {'Ao fazer um processo de admissão pelo Convenia, você pode escolher quais documentos serão de envio obrigatório pelo colaborador.'}
+                        </div>
+                        <Divided/>
+                        <div className={'configuracao-admissao-title'}>{'Documentos'}</div>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Carteira de trabalho'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Comprovante de residencia'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'CPF (frente)'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'CPF (verso)'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'RG (frente)'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'RG (verso)'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Titulo de eleitor (frente)'}/>
+                        <Field name={'aaaaaa'} component={Checkbox} label={'Titulo de eleitor (verso)'}/>
+                        <AlignRight>
+                            <Buttom color={'blue'} label={'Salvar'}/>
+                        </AlignRight>
+                    </CardBorda>
+
+                </form>
             </div>
 
             <div>
@@ -102,4 +178,10 @@ const AdmissaoDesligamento = () => {
     );
 };
 
-export default AdmissaoDesligamento;
+AdmissaoDesligamento = reduxForm({form: 'admissaoDesligamento', enableReinitialize: true})(AdmissaoDesligamento);
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdmissaoDesligamento);

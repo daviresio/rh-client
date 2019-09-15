@@ -40,7 +40,7 @@ export const meses = [
     {nome: 'Dezembro', id: 12},
 ];
 
-export const tiposLancamentoHolerite = [
+export const tiposHolerite = [
     {nome: 'HoleriteModal', id: 1},
     {nome: 'Bonus', id: 2},
     {nome: 'Comissao', id: 3},
@@ -157,15 +157,15 @@ export const tiposRelacaoDependente = [
 export const tiposCalculoSaldoBeneficio = [
     {
         nome: 'Fixo mensal',
-        id: 1,
+        id: 'Fixo mensal',
     },
     {
         nome: 'Dias uteis do mes seguinte',
-        id: 2,
+        id: 'Fixo mensal',
     },
     {
         nome: 'Fixo',
-        id: 3,
+        id: 'Fixo mensal',
     },
 ];
 
@@ -191,3 +191,136 @@ export const fechamentoFolhaMesAno = [
     },
 ];
 
+export const motivosAlteracaoSalario = [
+    {nome: 'Promocao', id: 'Promocao'},
+    {nome: 'Merito', id: 'Merito'},
+    {nome: 'Alteracao de funcao', id: 'Alteracao de funcao'},
+    {nome: 'Enquadramento salarial', id: 'Enquadramento salarial'},
+    {nome: 'Ajuste de bolsa auxilio', id: 'Ajuste de bolsa auxilio'},
+    {nome: 'Reducao de jornada de trabalho', id: 'Reducao de jornada de trabalho'},
+    {nome: 'Ajuste de pro labore', id: 'Ajuste de pro labore'},
+    {nome: 'Dissidio', id: 'Dissidio'},
+    {nome: 'Acordo coletivo', id: 'Acordo coletivo'},
+    {nome: 'Expontaneo', id: 'Expontaneo'},
+    {nome: 'Admissao', id: 'Admissao'},
+    {nome: 'Enquadramento de funcao', id: 'Enquadramento de funcao'},
+];
+
+export const motivosFaltaAfastamento = [
+    {nome: 'Falta', id: 'Falta'},
+    {nome: 'Afastamento por doenca', id: 'Afastamento por doenca'},
+    {nome: 'Afastamento por acidente', id: 'Afastamento por acidente'},
+    {nome: 'Licenca maternidade', id: 'Licenca maternidade'},
+    {nome: 'Licenca paternidade', id: 'Licenca paternidade'},
+    {nome: 'Outros', id: 'Outros'},
+    {nome: 'Afastamento por suspensao', id: 'Afastamento por suspensao'},
+    {nome: 'Licenca casamento', id: 'Licenca casamento'},
+    {nome: 'Falecimento familiar', id: 'Falecimento familiar'},
+];
+
+export const tipoFaltaAfastamento = [
+    {nome: 'Justificada', id: 'Justificada'},
+    {nome: 'Nao justificada', id: 'Nao justificada'},
+    {nome: 'Atestado medico', id: 'Atestado medico'},
+    {nome: 'Superior a 15 dias', id: 'Superior a 15 dias'},
+    {nome: 'Igual ou inferior a 15 dias', id: 'Igual ou inferior a 15 dias'},
+    {nome: 'Novo afastamento - Mesmo acidednte de trabalho', id: 'Novo afastamento - Mesmo acidednte de trabalho'},
+    {nome: 'Novo afastamento - Mesma doenca 60 dias', id: 'Novo afastamento - Mesma doenca 60 dias'},
+    {nome: 'Prorrogacao da licenca maternidade', id: 'Prorrogacao da licenca maternidade'},
+    {nome: 'Aborto nao criminoso', id: 'Aborto nao criminoso'},
+    {nome: 'Adocao (ate 1 ano de idade)', id: 'Adocao (ate 1 ano de idade)'},
+    {nome: 'Adocao (de 1 ate 4 anos de idade)', id: 'Adocao (de 1 ate 4 anos de idade)'},
+    {nome: 'Adocao (a partir de 4 anos de idade)', id: 'Adocao (a partir de 4 anos de idade)'},
+    {nome: 'Servico militar', id: 'Servico militar'},
+    {nome: 'Mandato judicial', id: 'Mandato judicial'},
+    {nome: 'Licenca sem vencimento', id: 'Licenca sem vencimento'},
+    {nome: 'Outros motivos de vencimento temporario', id: 'Outros motivos de vencimento temporario'},
+    {nome: '5 dias de licenca paternidade', id: '5 dias de licenca paternidade'},
+    {nome: 'Nascimento natutal 180 dias', id: 'Nascimento natutal 180 dias'},
+    {nome: 'Licenca remunerada', id: 'Licenca remunerada'},
+    {nome: 'Licenca nao remunerada', id: 'Licenca nao remunerada'},
+    {nome: 'Aposentadoria por invalidez', id: 'Aposentadoria por invalidez'},
+    {nome: 'Licenca maternidade', id: 'Licenca maternidade'},
+];
+
+export const tiposEscolaridade = [
+    {nome: 'Analfabeto, inclusive o que, embora tenha recebido instrucao, nao se alfabetizou', id: 1},
+    {nome: 'Ate o 5 ano incompleto do ensino fundamental (antiga 4 serie), ou que tenha se alfabetizado sem ter frequentado escola regular', id: 2},
+    {nome: '5 ano completo do ensino fundamental', id: 3},
+    {nome: 'Do 6 ao 9 ano do ensino fundamental incompleto (antiga 5 e 8 serie)', id: 4},
+    {nome: 'Ensino fundamental completo', id: 5},
+    {nome: 'Ensino medio incompleto', id: 6},
+    {nome: 'Ensino medio completo', id: 7},
+    {nome: 'Tecnico incompleto', id: 8},
+    {nome: 'Tecnico completo', id: 9},
+    {nome: 'Tegnologo incompleto', id: 10},
+    {nome: 'Tegnologo completo', id: 11},
+    {nome: 'Educacao superior incompleta', id: 12},
+    {nome: 'Educacao superior completa', id: 13},
+    {nome: 'Pos graduacao incompleta', id: 14},
+    {nome: 'Pos graduacao completa', id: 15},
+    {nome: 'Mestrado incompleto', id: 16},
+    {nome: 'Mestrado completo', id: 17},
+    {nome: 'Doutorado incompleto', id: 18},
+    {nome: 'Doutorado completo', id: 19},
+];
+
+export const categoriaAnotacao = [
+    {nome: 'Outros', id: 1},
+    {nome: 'Treinamento', id: 2},
+    {nome: 'Passado', id: 3},
+];
+
+
+export const tiposStatusFerias = [
+    {nome: 'Pendente', id: 'PENDENTE'},
+    {nome: 'Aprovado', id: 'APROVADA'},
+    {nome: 'Reprovado', id: 'REPROVADA'},
+];
+
+
+export const tiposConfiguracaoSindicato = [
+    {nome: 'Hora extra', id: 1},
+    {nome: 'Adicional', id: 2},
+    {nome: 'Hora extra com adicional noturno', id: 3},
+];
+
+export const tiposDocumentosAssinados = [
+    {nome: 'Pendente', id: false},
+    {nome: 'Assinado', id: true},
+];
+
+export const tiposTipoDesligamento = [
+    {nome: 'Antecipado pelo empregado (tempo determinado)', id: 1},
+    {nome: 'Antecipado pelo empregador (tempo indeterminado)', id: 2},
+    {nome: 'Culpa reciproca', id: 3},
+    {nome: 'Demissao COM justa causa fora do periodo de experiencia - Pedido da empresa', id: 4},
+    {nome: 'Demissao fora do contrato de experiencia - Pedido do empregado', id: 5},
+    {nome: 'Demissao SEM justa causa fora do contrato de experiencia - Pedido da empresa', id: 6},
+    {nome: 'Extincao da empresa', id: 7},
+    {nome: 'Extincao da empresa por forca maior', id: 8},
+    {nome: 'Falecimento empregador individual por opcao do empregado', id: 9},
+    {nome: 'Falecimento empregador individual s/cont. da atividade da empresa', id: 10},
+    {nome: 'Morte', id: 11},
+    {nome: 'Morte por acidente de trabalho', id: 12},
+    {nome: 'Morte por acidente de trabalho de trajeto', id: 13},
+    {nome: 'Morte por doenca profissional', id: 14},
+    {nome: 'Outros', id: 15},
+    {nome: 'Quebra de contrato de experiencia - Pedido da empresa', id: 16},
+    {nome: 'Quebra de contrato de experiencia - Pedido do empregado', id: 17},
+    {nome: 'Quebra do contrato de estagio por parte do empregado', id: 18},
+    {nome: 'Quebra do contrato de estagio por parte da empresa', id: 19},
+    {nome: 'Rescisao contratual por acordo entre as partes', id: 20},
+    {nome: 'Termino do contrato de estagio', id: 21},
+    {nome: 'Termino do contrato de experiencia - Pedido da empresa', id: 22},
+    {nome: 'Termino do contrato de experiencia - Pedido do empregado', id: 23},
+    {nome: 'Termino do contrato de trabalho por tempo indeterminado', id: 24},
+    {nome: 'Termino do contrato por falecimento', id: 25},
+];
+
+
+export const tiposAvisoPrevio = [
+    {nome: 'Trabalhado', id: 1},
+    {nome: 'Indenizado', id: 2},
+    {nome: 'Nao aplicavel', id: 3},
+];

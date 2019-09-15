@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {update} from "../store/actions/serverActions";
+import {closeModal, updateModalAndReloadOtherEntity} from "../store/actions/modalActions";
 import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
@@ -11,13 +10,12 @@ import {getEstados} from "../config/localidades";
 import DatePicker from "../components/form/DatePicker";
 import {simNaoOptions} from "../config/defaultValues";
 
-let ModalDocumentoColaborador = props => {
-    const {closeModal, visible, handleSubmit, update, reload, data} = props;
+let ModalDocumentoColaborador = ({closeModal, visible, handleSubmit, update, idReload, data}) => {
 
-    const submit = value => update({...value, ...data}, reload);
+    const submit = value => update({...value, ...data}, idReload);
 
     return (
-        <Modal border visible={visible} title={'Documentos pessoais'}>
+        <Modal border visible={visible} title={'Documentos pessoais'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={InputRow} name={'cpf'} label={'CPF'}/>
                 <Field component={InputRow} name={'rg'} label={'RG'}/>
@@ -40,7 +38,7 @@ let ModalDocumentoColaborador = props => {
 
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -52,12 +50,18 @@ ModalDocumentoColaborador = reduxForm({form: 'documentoColaborador', enableReini
 const mapStateToProps = state => {
     return {
         initialValues: state.modal.documentoColaborador.value,
+        visible: state.modal.documentoColaborador.visible,
+        idReload: state.modal.documentoColaborador.idReload,
     }
 };
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('documentoColaborador', false)),
-    update: (value, reload) => dispatch(update('colaboradores', value, {modal: 'documentoColaborador', reload})),
+    closeModal: () => dispatch(closeModal('documentoColaborador')),
+    update: (value, idReload) => dispatch(updateModalAndReloadOtherEntity('colaboradores', value, 'documentoColaborador', {
+        entity: 'colaboradores',
+        id: idReload,
+        target: 'colaborador'
+    })),
 });
 
 

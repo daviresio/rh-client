@@ -6,16 +6,16 @@ import LancamentoAutomatico from "./LancamentoAutomatico";
 import FolhaLancamentoStep1Body from "./FolhaLancamentoStep1Body";
 import LancamentoManual from "./LancamentoManual";
 
-const FolhaLancamentoStep1 = ({changeRoute, router}) => {
+const FolhaLancamentoStep1 = ({changeRoute, router, match}) => {
 
     const path = '/folha/lancamento/tipo-lancamento/';
     const currentPath = router.location.pathname;
 
     return (
               <Switch>
-                  <Route path={path} exact={true} component={FolhaLancamentoStep1Body} />
-                  <Route path={path + 'importar'} component={LancamentoAutomatico} />
-                  <Route path={path + 'manual'} component={LancamentoManual} />
+                  <Route path={path + ':id'} exact={true} component={FolhaLancamentoStep1Body}/>
+                  <Route path={path + 'importar/:id'} component={LancamentoAutomatico}/>
+                  <Route path={path + 'manual/:id'} component={LancamentoManual}/>
               </Switch>
     )
 };

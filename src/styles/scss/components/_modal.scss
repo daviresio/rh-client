@@ -1,12 +1,25 @@
+.blur-body {
+  filter: blur(.2rem);
+  position: fixed;
+  transform: translateZ(0) scale(1.0, 1.0);;
+
+  &-none {
+    transition: all .6s;
+  }
+
+}
+
 
 .modal-container {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   background-color: rgba($color-black, .5);
   z-index: 5;
+  transition: all .6s;
+  overflow: auto;
 }
 
 
@@ -14,28 +27,38 @@
   background-color: $color-white;
   width: 80rem;
   position: absolute;
-  left: 40%;
-  transform: translateX(-50%) ;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
   border-radius: .4rem;
+  margin-bottom: 10%;
+
+  box-shadow: 0 0 3rem 0 rgba(0, 0, 0, 0.75);
+  z-index: 10;
 
   &-visible {
-    top: 20%;
-    transition: all .8s;
+    animation: showModal ease-in-out .6s;
   }
 
   &-hidden {
-    top: -150rem;
-    transition: all 1s;
+    transform: scale(.4);
+    transform-origin: left center;
+    opacity: 0;
+    transition: all .6s;
+    pointer-events: none;
   }
 
   &-header {
     height: 5rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-size: 2.5rem;
-    margin: 1rem 0;
-    color: rgba($color-black, .8);
-    border-bottom: .1rem solid rgba($color-black, .1);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    margin-left: 4rem;
+    /// border-bottom: .1rem solid rgba($color-black, .1);
+    width: 100%;
+
   }
 
   &-body {
@@ -52,11 +75,58 @@
   }
 
   &-footer {
+    margin-top: 4rem;
     height: 7rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding-right: 2rem;
     border-top: .1rem solid rgba($color-black, .1);
+  }
+}
+
+
+.close-modal {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: .1rem solid rgba($color-gray, .5);
+  cursor: pointer;
+  position: relative;
+  transition: all .3s;
+  margin-right: 7rem;
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3rem;
+    color: rgba(81, 81, 81, 0.71);
+  }
+
+  &:hover {
+    border: .1rem solid $color-blue-light;
+    box-shadow: 0 0 .3rem $color-blue;
+    transition: all .3s;
+
+    i {
+      color: $color-black;
+    }
+  }
+}
+
+
+@keyframes showModal {
+  0% {
+    transform: translateX(-50%) scale(.4);
+    transform-origin: center center;
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(-50%) scale(1);
+    transform-origin: center center;
+    opacity: 1;
   }
 }

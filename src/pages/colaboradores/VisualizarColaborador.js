@@ -6,65 +6,39 @@ import Edit from "../../components/util/Edit";
 import UploadPhoto from "../../components/UploadPhoto";
 import Divided from "../../components/util/Divided";
 import {connect} from "react-redux";
-import {remove, removeAndReload, search, update} from "../../store/actions/serverActions";
-import {changeModalVisible} from "../../store/actions/modalActions";
-import Salario from "../../modais/Salario";
-import Banco from "../../modais/Banco";
-import Documento from "../../modais/CopiaDocumento";
-import HoleriteModal from "../../modais/HoleriteModal";
-import SolicitarFerias from "../../modais/SolicitarFerias";
-import ConfiguracaoFolha from "../../modais/ConfiguracaoFolha";
-import ValoresRecorrentes from "../../modais/ValoresRecorrentes";
-import TermosEContratos from "../../modais/TermosEContratos";
-import FaltasEAfastamentos from "../../modais/FaltasEAfastamentos";
+import {loadList, remove, removeAndReload, search, update} from "../../store/actions/serverActions";
+import {changeModalVisible, openModalAndReloadOtherEntity} from "../../store/actions/modalActions";
 import {downloadFile, formateDate, formateDateFull, parseDate} from "../../util/metodosUteis";
 import styled from "styled-components";
 import ButtomAdicionar from "../../components/ButtomAdicionar";
 import Delete from "../../components/util/Delete";
-import Contato from "../../modais/Contato";
-import Dependente from "../../modais/Dependente";
-import Endereco from "../../modais/Endereco";
-import Escolaridade from "../../modais/Escolaridade";
-import ModalInformacoesGeraisColaborador from "../../modais/ModalInformacoesGeraisColaborador";
-import ModalDocumentoColaborador from "../../modais/ModalDocumentoColaborador";
-import ModalDadosPrincipaisColaborador from "../../modais/ModalDadosPrincipaisColaborador";
+import {changeRoute} from "../../store/actions/routerActions";
 
-const VisualizarColaborador = ({serverValues, match, search, openModal, modal, removeAndReload, remove, update, ...props}) => {
+const VisualizarColaborador = ({serverValues, match, search, openModal, modal, removeAndReload, remove, update, openModalAndReload, changeRoute, loadData, ...props}) => {
 
     const {
         departamento, centroDeCusto, sindicato, banco, vinculo, formaPagamento, contatos, dependentes,
-        endereco, periodoExperiencia, escolaridade, copiaDocumentos, ...colaborador
+        endereco, periodoExperiencia, escolaridade, copiaDocumentos, beneficios, ferias, faltas, salarios, anotacoes, valoresRecorrentes, ...colaborador
     } = serverValues.colaborador;
+
+    const {eventos} = serverValues;
+
     const emptyValue = '-';
 
     useEffect(() => {
-        if (match.params.id) search(match.params.id)
+        if (match.params.id) {
+            search(match.params.id);
+            loadData('eventos')
+        } else {
+            changeRoute('/colaboradores')
+        }
+
     }, []);
 
-    const modalOptions = {
-        data: {colaborador: match.params.id},
-        reload: {entity: 'colaboradores', value: match.params.id, field: 'colaborador'}
-    };
+    const modalData = {colaborador: match.params.id};
 
     return (
         <>
-            <Contato visible={modal.contato.visible} {...modalOptions}/>
-            <Dependente visible={modal.dependente.visible} {...modalOptions}/>
-            <Endereco visible={modal.endereco.visible} {...modalOptions}/>
-            <Escolaridade visible={modal.escolaridade.visible} {...modalOptions}/>
-            <ModalInformacoesGeraisColaborador visible={modal.informacoesGeraisColaborador.visible} {...modalOptions}/>
-            <ModalDocumentoColaborador visible={modal.documentoColaborador.visible} {...modalOptions}/>
-            //TODO incluir departamento e centro de custo no valor que esta sendo passado e atualizar foto ao ser trocada
-            <ModalDadosPrincipaisColaborador visible={modal.dadosPrincipaisColaborador.visible} {...modalOptions}/>
-            <Salario visible={modal.salario.visible}/>
-            <Banco visible={modal.banco.visible} {...modalOptions}/>
-            <Documento visible={modal.copiaDocumento.visible} {...modalOptions}/>
-            <HoleriteModal visible={modal.holerite.visible}/>
-            <SolicitarFerias visible={modal.solicitarFerias.visible}/>
-            <ConfiguracaoFolha visible={modal.configuracaoFolha.visible}/>
-            <ValoresRecorrentes visible={modal.valoresRecorrentes.visible}/>
-            <TermosEContratos visible={modal.termosEContratos.visible}/>
-            <FaltasEAfastamentos visible={modal.faltasEAfastamentos.visible}/>
             <div className={'page-divided visualizar-colaborador'}>
                 <div className={'principal'}>
                     <div className={'header'}>
@@ -77,7 +51,7 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                         }
                     </div>
                     <CardSimples start>
-                        <Edit className={'editar'} onClick={() => openModal('dadosPrincipaisColaborador', colaborador)}/>
+                        <Edit className={'editar'} onClick={() => openModalAndReload('dadosPrincipaisColaborador', serverValues.colaborador, match.params.id, modalData)}/>
                         <div className={'informacoes-principais'}>
                             <div className={'foto'}>
                                 <UploadPhoto image={colaborador.foto}/>
@@ -113,7 +87,7 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                         <div className={'corpo'}>
                             <div className={'title-edit'}>
                                 <div className={'title'}>Informacoes gerais</div>
-                                <Edit onClick={() => openModal('informacoesGeraisColaborador', colaborador)}/>
+                                <Edit onClick={() => openModalAndReload('informacoesGeraisColaborador', colaborador, match.params.id, modalData)}/>
                             </div>
                             <div className={'conteudo'}>
                                 <div className={'campo'}>Nome completo</div>
@@ -224,14 +198,13 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                             </div>
                             <div className={'conteudo'}>
                                 <div className={'campo'}>Periodo de experiencia</div>
-                                <div
-                                    className={'valor'}>{periodoExperiencia ? periodoExperiencia.nome : emptyValue}</div>
+                                <div className={'valor'}>{periodoExperiencia ? periodoExperiencia.nome : emptyValue}</div>
                             </div>
 
                             <Divided/>
                             <div className={'title-edit'}>
                                 <div className={'title'}>Endereco</div>
-                                <Edit onClick={() => openModal('endereco', endereco)}/>
+                                <Edit onClick={() => openModalAndReload('endereco', endereco, match.params.id, modalData)}/>
                             </div>
                             <div className={'conteudo'}>
                                 <div className={'campo'}>Cep</div>
@@ -266,7 +239,7 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                             <Divided/>
                             <div className={'title-edit'}>
                                 <div className={'title'}>Documentos pessoais</div>
-                                <Edit onClick={() => openModal('documentoColaborador', colaborador)}/>
+                                <Edit onClick={() => openModalAndReload('documentoColaborador', colaborador, match.params.id, modalData)}/>
                             </div>
 
                             <div className={'conteudo'}>
@@ -377,20 +350,20 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                                         </div>
                                     </div>
                                     <div className={'opcoes'}>
-                                        <Edit onClick={() => openModal('contato', v)}/>
+                                        <Edit onClick={() => openModalAndReload('contato', v, match.params.id, modalData)}/>
                                         <Delete onClick={() => removeAndReload('contatos', v.id, match.params.id)}/>
                                     </div>
                                 </div>
                             )}
                             <CenterButton>
-                                <ButtomAdicionar label={'Adicionar contato'} onClick={() => openModal('contato')}/>
+                                <ButtomAdicionar label={'Adicionar contato'} onClick={() => openModalAndReload('contato', null, match.params.id, modalData)}/>
                             </CenterButton>
 
                             <Divided/>
 
                             <div className={'title-edit'}>
                                 <div className={'title'}>Formacao academica</div>
-                                <Edit onClick={() => openModal('escolaridade', escolaridade)}/>
+                                <Edit onClick={() => openModalAndReload('escolaridade', escolaridade, match.params.id, modalData)}/>
                             </div>
                             <div className={'conteudo'}>
                                 <div className={'campo'}>Escolaridade</div>
@@ -411,24 +384,95 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                             <Divided/>
 
                             <div className={'title'}>Beneficios</div>
+                            {beneficios && beneficios.length > 0 && beneficios.map((v, i) =>
+                                <div
+                                    className={i === 0 ? 'item-cadastro-colaborador remove-border' : 'item-cadastro-colaborador'}
+                                    key={v.id}>
+                                    <div className={'dados'}>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Categoria: </span> <span
+                                            className={'value'}>{v.categoria}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Nome: </span> <span
+                                            className={'value'}>{v.nome}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Colaborador: </span> <span
+                                            className={'value'}>{v.ColaboradorBeneficio.custoColaborador}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Empresa: </span> <span
+                                            className={'value'}>{v.ColaboradorBeneficio.custoEmpresa}</span>
+                                        </div>
+                                    </div>
+                                    <div className={'opcoes'}>
+                                        <Edit onClick={() => openModalAndReload('beneficio', v, match.params.id, modalData)}/>
+                                    </div>
+                                </div>
+                            )}
                             <CenterButton>
-                                <ButtomAdicionar label={'Adicionar beneficio'} onClick={() => openModal('')}/>
+                                <ButtomAdicionar label={'Adicionar beneficio'} onClick={() => openModalAndReload('beneficio', null, match.params.id, modalData)}/>
                             </CenterButton>
                             <Divided/>
 
                             <div className={'title'}>Atualizacao de vinculo e salario</div>
+                            {salarios && salarios.length > 0 && salarios.map((v, i) =>
+                                <div
+                                    className={i === 0 ? 'item-cadastro-colaborador remove-border' : 'item-cadastro-colaborador'}
+                                    key={v.id}>
+                                    <div className={'dados'}>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Motivo: </span> <span
+                                            className={'value'}>{v.motivo}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Data: </span> <span
+                                            className={'value'}>{formateDateFull(v.dataInicial)}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Salario: </span> <span
+                                            className={'value'}>{v.salario}</span>
+                                        </div>
+                                    </div>
+                                    <div className={'opcoes'}>
+                                        <Edit onClick={() => openModalAndReload('salario', v, match.params.id, modalData)}/>
+                                        <Delete onClick={() => removeAndReload('salarios', v.id, match.params.id)}/>
+                                    </div>
+                                </div>
+                            )}
                             <CenterButton>
-                                <ButtomAdicionar label={'Atualizar vinculo ou salario'} onClick={() => openModal('')}/>
+                                <ButtomAdicionar label={'Atualizar vinculo ou salario'} onClick={() => openModalAndReload('salario', null, match.params.id, modalData)}/>
                             </CenterButton>
                             <Divided/>
-
 
                             <div className={'title'}>Anotacoes gerais</div>
+                            {anotacoes && anotacoes.length > 0 && anotacoes.map((v, i) =>
+                                <div className={i === 0 ? 'item-cadastro-colaborador remove-border' : 'item-cadastro-colaborador'} key={v.id}>
+                                    <div className={'dados'}>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Titulo: </span>
+                                            <span className={'value'}>{v.titulo}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Categoria: </span>
+                                            <span className={'value'}>{v.categoria}</span>
+                                        </div>
+                                        <div className={'item'}>
+                                            <span className={'key'}>Data de Nascimento: </span>
+                                            <span className={'value'}>{v.anotacao}</span>
+                                        </div>
+                                    </div>
+                                    <div className={'opcoes'}>
+                                        <Edit onClick={() => openModalAndReload('anotacao', v, match.params.id, modalData)}/>
+                                        <Delete onClick={() => removeAndReload('anotacoes', v.id, match.params.id)}/>
+                                    </div>
+                                </div>
+                            )}
                             <CenterButton>
-                                <ButtomAdicionar label={'Adicionar anotacao'} onClick={() => openModal('')}/>
+                                <ButtomAdicionar label={'Adicionar anotacao'} onClick={() => openModalAndReload('anotacao', null, match.params.id, modalData)}/>
                             </CenterButton>
                             <Divided/>
-
 
                             <div className={'title'}>Dependentes</div>
                             {dependentes && dependentes.length > 0 && dependentes.map((v, i) =>
@@ -466,14 +510,14 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                                         </div>
                                     </div>
                                     <div className={'opcoes'}>
-                                        <Edit onClick={() => openModal('dependente', v)}/>
+                                        <Edit onClick={() => openModalAndReload('dependente', v, match.params.id, modalData)}/>
                                         <Delete onClick={() => removeAndReload('dependentes', v.id, match.params.id)}/>
                                     </div>
                                 </div>
                             )}
                             <CenterButton>
                                 <ButtomAdicionar label={'Adicionar dependente'}
-                                                 onClick={() => openModal('dependente')}/>
+                                                 onClick={() => openModalAndReload('dependente', null, match.params.id, modalData)}/>
                             </CenterButton>
 
                         </div>
@@ -482,14 +526,14 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
 
                 <div className={'secundario'} style={{marginTop: '6.5rem'}}>
                     <CardBorda icon={'money-bill-alt'} style={{marginTop: '0'}} title={'Salario'}
-                               iconAction={'novo-edit'} onClick={() => openModal('salario')}>
+                               iconAction={'novo-edit'} onClick={() => openModalAndReload('salario', null, match.params.id, modalData)}>
                         <div className={'conteudo'}>
                             <div className={'campo'}>Salario</div>
                             <div className={'valor'}>{colaborador.salario}</div>
                         </div>
                     </CardBorda>
                     <CardBorda icon={'info'} title={'Informacoes bancarias'} iconAction={'edit'}
-                               onClick={() => openModal('banco', banco ? banco : null)}>
+                               onClick={() => openModalAndReload('banco', banco, match.params.id, modalData)}>
                         <div className={'conteudo'}>
                             <div className={'campo'}>Banco</div>
                             <div className={'valor'}>{banco ? banco.banco : emptyValue}</div>
@@ -511,7 +555,7 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                         </div>
                     </CardBorda>
                     <CardBorda icon={'plane-departure'} title={'Ferias'} iconAction={'solicitar-ferias'}
-                               onClick={() => openModal('solicitarFerias')}>
+                               onClick={() => openModalAndReload('ferias', null, match.params.id, modalData)}>
                         <div className={'conteudo'}>
                             <div className={'campo'}>Saldo de ferias</div>
                             <div className={'valor'}>{emptyValue}</div>
@@ -524,6 +568,43 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                             <div className={'campo'}>Proxima data de vencimento</div>
                             <div className={'valor'}>{emptyValue}</div>
                         </div>
+                        {ferias && ferias.length && ferias.map((v, i) =>
+                            <>
+                                {i === 0 ? <h1 className={'title'} style={{color: '#16acdc'}}>Historico de ferias</h1> : null}
+                                <div key={v.id} className={i === 0 ? 'item-cadastro-colaborador remove-border' : 'item-cadastro-colaborador'}>
+
+                                    <div className={'dados'}>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>De:</div>
+                                            <div className={'campo-light'}>{formateDateFull(v.inicioPeriodoAquisitivo)}</div>
+                                        </div>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Ate:</div>
+                                            <div className={'campo-light'}>{formateDateFull(v.finalPeriodoAquisitivo)}</div>
+                                        </div>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Dias de ferias:</div>
+                                            <div className={'campo-light'}>{v.diasDeFerias}</div>
+                                        </div>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Dias de abono:</div>
+                                            <div className={'campo-light'}>{v.diasDeAbono}</div>
+                                        </div>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Total:</div>
+                                            <div className={'campo-light'}>{v.totalDias}</div>
+                                        </div>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Justificativa:</div>
+                                            <div className={'campo-light'}>{v.justificativa}</div>
+                                        </div>
+                                    </div>
+                                    <div className={'opcoes'}>
+                                        <Delete onClick={() => removeAndReload('ferias', v.id, match.params.id)}/>
+                                    </div>
+                                </div>
+                            </>
+                        )}
                     </CardBorda>
                     <CardBorda icon={'info'} title={'Configuracoes de folha'} iconAction={'edit'}
                                onClick={() => openModal('configuracaoFolha')}>
@@ -537,11 +618,32 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                         </div>
                     </CardBorda>
                     <CardBorda icon={'sync'} title={'Valores recorrentes'} iconAction={'adicionar'}
-                               onClick={() => openModal('valoresRecorrentes')}>
+                               onClick={() => openModalAndReload('valoresRecorrentes', null, match.params.id, modalData)}>
+                        {valoresRecorrentes && valoresRecorrentes.length > 0 ? valoresRecorrentes.map((v, i) =>
+                                <div key={v.id} className={i === 0 ? 'item-cadastro-colaborador remove-border' : 'item-cadastro-colaborador'}>
+                                    <div className={'dados'}>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Item:</div>
+                                            <div className={'campo-light'}>{eventos && valoresRecorrentes && eventos.filter(x => x.id === Number(v.item))[0].nome}</div>
+                                        </div>
+                                        <div className={'campos-inline'}>
+                                            <div className={'campo-bold'}>Valor:</div>
+                                            <div className={'campo-light'}>{v.valor}</div>
+                                        </div>
+                                    </div>
+                                    <div className={'opcoes'}>
+                                        <Edit onClick={() => openModalAndReload('valoresRecorrentes', v, match.params.id, modalData)}/>
+                                        <Delete onClick={() => removeAndReload('valores-recorrentes', v.id, match.params.id)}/>
+                                    </div>
+                                </div>
+                            )
+                            : <span className={'campo-light'}>Nenhum valor vinculado</span>
+                        }
+
 
                     </CardBorda>
                     <CardBorda icon={'sticky-note'} title={'Documentos'} iconAction={'adicionar'}
-                               onClick={() => openModal('copiaDocumento')}>
+                               onClick={() => openModalAndReload('copiaDocumento', null, match.params.id, modalData)}>
                         {copiaDocumentos && copiaDocumentos.length > 0 ? copiaDocumentos.map(v =>
                                 <div className={'copia-documento-item'} key={v.id}>
                                     <div className={'campo'}>{v.nome}</div>
@@ -558,21 +660,36 @@ const VisualizarColaborador = ({serverValues, match, search, openModal, modal, r
                                     })}/>
                                 </div>
                             )
-                            : <span>{'Nenhum documento vinculado'}</span>
+                            : <span className={'campo-light'}>Nenhum documento vinculado</span>
                         }
 
                     </CardBorda>
                     <CardBorda icon={'sticky-note'} title={'Holerites'} iconAction={'adicionar'}
                                onClick={() => openModal('holerite')}>
-
+                        <span className={'campo-light'}>Nenhum holerite encontrado</span>
                     </CardBorda>
                     <CardBorda icon={'sticky-note'} title={'Termos e contratos'} iconAction={'adicionar'}
                                onClick={() => openModal('termosEContratos')}>
-                        {'Nenhum termo ou contrato vinculado'}
+                        <span className={'campo-light'}>Nenhum termo ou contrato vinculado</span>
                     </CardBorda>
-                    <CardBorda icon={'exclamation-triangle'} title={'Faltas e afastamentos'} iconAction={'adicionar'}
-                               onClick={() => openModal('faltasEAfastamentos')}>
-                        {'Nenhuma falta ou afastamento encontrada'}
+                    <CardBorda start icon={'exclamation-triangle'} title={'Faltas e afastamentos'} iconAction={'adicionar'}
+                               onClick={() => openModalAndReload('falta', null, match.params.id, modalData)}>
+                        {faltas && faltas.length ?
+                            faltas.map((v, i) =>
+                                <div key={v.id} className={i === 0 ? 'item-cadastro-colaborador remove-border' : 'item-cadastro-colaborador'}>
+                                    <div className={'dados'}>
+                                        <div className={'campo-bold'}>{v.motivo}</div>
+                                        <div className={'campo-light'}>{v.tipo}</div>
+                                        <div className={'campo-light'}>{`${formateDateFull(v.dataInicial)} ate ${formateDateFull(v.dataFinal)}`}</div>
+                                        <div className={'campo-light'}>{`Total de dia(s): ${'10'}`}</div>
+                                    </div>
+                                    <div className={'opcoes'}>
+                                        <Edit onClick={() => openModalAndReload('falta', v, match.params.id, modalData)}/>
+                                        <Delete onClick={() => removeAndReload('faltas', v.id, match.params.id)}/>
+                                    </div>
+                                </div>
+                            )
+                            : <span className={'campo-light'}>Nenhuma falta ou afastamento encontrada</span>}
                     </CardBorda>
 
                     <Buttom color={'gray'} label={'Historico de alteracoes'} full className={'margin-btn'}/>
@@ -597,6 +714,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
     openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
+    openModalAndReload: (modal, value, idReload, data) => dispatch(openModalAndReloadOtherEntity(modal, value, idReload, data)),
     removeAndReload: (entity, value, idParent) => dispatch(removeAndReload(entity, value, {
         entity: 'colaboradores',
         value: idParent,
@@ -604,6 +722,8 @@ const mapDispatchToProps = dispatch => ({
     })),
     remove: (entity, value, target, options) => dispatch(remove(entity, value, target, options)),
     update: (value, redirect) => dispatch(update('colaboradores', value, redirect)),
+    changeRoute: route => dispatch(changeRoute(route)),
+    loadData: entity => dispatch(loadList(entity)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VisualizarColaborador);

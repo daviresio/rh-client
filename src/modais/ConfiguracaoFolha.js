@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
+import {closeModal} from "../store/actions/modalActions";
 import {save, update} from "../store/actions/serverActions";
 import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
@@ -29,12 +29,13 @@ let ConfiguracaoFolha = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.configuracaoFolha.value,
+    visible: state.modal.configuracaoFolha.visible,
 });
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('configuracaoFolha', false)),
-    save: (value, updateDropdown) => dispatch(save('folha', value, {modal: 'configuracaoFolha', updateDropdown})),
-    update: value => dispatch(update('folha', value, {modal: 'configuracaoFolha', list: true})),
+    closeModal: () => dispatch(closeModal('configuracaoFolha')),
+    save: (value, updateDropdown) => dispatch(save('folhas', value, {modal: 'configuracaoFolha', updateDropdown})),
+    update: value => dispatch(update('folhas', value, {modal: 'configuracaoFolha', list: true})),
 });
 
 ConfiguracaoFolha = reduxForm({form: 'configuracaoFolha', enableReinitialize: true})(ConfiguracaoFolha);

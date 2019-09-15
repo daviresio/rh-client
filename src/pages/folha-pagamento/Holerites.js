@@ -4,7 +4,6 @@ import CardBorda from "../../components/card/CardBorda";
 import Table from "../../components/table/Table";
 import Select from "../../components/form/Select";
 import {connect} from "react-redux";
-import LancamentoHoleriteModal from "../../modais/LancamentoHoleriteModal";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import {changeRoute} from "../../store/actions/routerActions";
 
@@ -25,8 +24,6 @@ const Holerites = ({modal, openModal, changeRoute}) => {
                 <Table header={['Mes', 'Ano', 'Tipo', 'Acoes']}/>
 
             </CardBorda>
-
-            <LancamentoHoleriteModal visible={modal.lancamentoHolerite.visible} />
         </>
     );
 };

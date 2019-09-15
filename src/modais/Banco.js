@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {save, update, uploadFile} from "../store/actions/serverActions";
+import {closeModal, saveModalAndReloadOtherEntity, updateModalAndReloadOtherEntity} from "../store/actions/modalActions";
+import {uploadFile} from "../store/actions/serverActions";
 import {change, Field, formValueSelector, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
@@ -13,11 +13,12 @@ import Delete from "../components/util/Delete";
 import UploadFile from "../components/UploadFile";
 import {MAX_IMAGE_SIZE} from "../config/defaultValues";
 import styled from "styled-components";
+import AlignContentOnGrid from "../components/util/AlignContentOnGrid";
 
 let Banco = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown, formValues, uploadFile, reload, data} = props;
+    const {closeModal, visible, handleSubmit, save, update, formValues, uploadFile, idReload, data} = props;
 
-    const submit = value => value.id ? update({...value, ...data}, reload) : save({...value, ...data}, reload, updateDropdown);
+    const submit = value => value.id ? update({...value, ...data}, idReload) : save({...value, ...data}, idReload);
 
     const uploadComprovanteBanco = event => {
         const type = event.target.files[0].type;
@@ -32,14 +33,14 @@ let Banco = props => {
     };
 
     return (
-        <Modal border visible={visible} title={'Informacoes bancarias'}>
+        <Modal border visible={visible} title={'Informacoes bancarias'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={InputRow} name={'banco'} label={'Banco'}/>
                 <Field component={InputRow} name={'agencia'} label={'Agencia'}/>
                 <Field component={InputRow} name={'conta'} label={'Conta'}/>
-                <CenterButton>
+                <AlignContentOnGrid style={{marginLeft: '1.5rem'}}>
                     <Field component={Checkbox} name={'poupanca'} label={'E poupanca?'}/>
-                </CenterButton>
+                </AlignContentOnGrid>
                 {formValues ?
                     <CardSimples>
                         <div className={'item-colaborador-documento'}>
@@ -68,15 +69,17 @@ const mapStateToProps = state => {
     const selector = formValueSelector('banco');
     return {
         initialValues: state.modal.banco.value,
+        visible: state.modal.banco.visible,
+        idReload: state.modal.banco.idReload,
         formValues: selector(state, 'comprovante')
     }
 };
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('banco', false)),
-    save: (value, reload, updateDropdown ) => dispatch(save('bancos', value, {modal: 'banco', updateDropdown, reload})),
-    update: (value, reload) => dispatch(update('bancos', value, {modal: 'banco', reload})),
-    uploadFile: (event, type, form, urlExistente) => dispatch(uploadFile(event, type, form)),
+    closeModal: () => dispatch(closeModal('banco')),
+    save: (value, idReload) => dispatch(saveModalAndReloadOtherEntity('bancos', value, 'banco', {entity: 'colaboradores', target: 'colaborador', id: idReload})),
+    update: (value, idReload) => dispatch(updateModalAndReloadOtherEntity('bancos', value, 'banco', {entity: 'colaboradores', target: 'colaborador', id: idReload})),
+    uploadFile: (event, type, form) => dispatch(uploadFile(event, type, form)),
 });
 
 

@@ -3,19 +3,27 @@ import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import InputRow from "../components/form/InputRow";
 import Buttom from "../components/Buttom";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {save, update} from "../store/actions/serverActions";
+import {
+    closeModal,
+    saveModalAndReloadOtherEntity,
+    saveModalAndUpdateFormArray,
+    updateModalAndReloadOtherEntity,
+    updateModalAndUpdateFormArray
+} from "../store/actions/modalActions";
 import {connect} from "react-redux";
 import SelectRow from "../components/form/SelectRow";
 import {tiposRelacaoContato} from "../config/defaultValues";
 
-let Contato = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateForm, data, reload} = props;
+let Contato = ({closeModal, visible, handleSubmit, save, saveAndReload, update, updateAndReload, updateFormArray, data, idReload}) => {
 
-    const submit = value => value.id ? update({...value, ...data}, updateForm, reload) : save({...value, ...data}, updateForm, reload);
+    const submit = value => {
+        if (updateFormArray) value.id ? update({...value, ...data}, updateFormArray) : save({...value, ...data}, updateFormArray);
+
+        if (idReload) value.id ? updateAndReload({...value, ...data}, idReload) : saveAndReload({...value, ...data}, idReload);
+    };
 
     return (
-        <Modal border visible={visible} title={'Adicionar contato'}>
+        <Modal border visible={visible} title={'Adicionar contato'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={InputRow} name={'nome'} label={'Nome'} required/>
                 <Field component={InputRow} name={'email'} label={'Email'}/>
@@ -25,7 +33,7 @@ let Contato = props => {
                 <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={tiposRelacaoContato} required/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -35,12 +43,18 @@ let Contato = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.contato.value,
+    visible: state.modal.contato.visible,
+    data: state.modal.contato.data,
+    idReload: state.modal.contato.idReload,
+    updateFormArray: state.modal.contato.updateFormArray,
 });
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('contato', false)),
-    save: (value, updateForm, reload) => dispatch(save('contatos', value, {modal: 'contato', updateForm, reload})),
-    update: (value, updateForm, reload) => dispatch(update('contatos', value, {modal: 'contato', list: true, updateForm, reload})),
+    closeModal: () => dispatch(closeModal('contato')),
+    save: (value, updateFormArray) => dispatch(saveModalAndUpdateFormArray('contatos', value, 'contato', updateFormArray,)),
+    update: (value, updateFormArray) => dispatch(updateModalAndUpdateFormArray('contatos', value, 'contato', updateFormArray)),
+    saveAndReload: (value, idReload) => dispatch(saveModalAndReloadOtherEntity('contatos', value, 'contato', {entity: 'colaboradores', id: idReload, target: 'colaborador'},)),
+    updateAndReload: (value, idReload) => dispatch(updateModalAndReloadOtherEntity('contatos', value, 'contato', {entity: 'colaboradores', id: idReload, target: 'colaborador'})),
 });
 
 Contato = reduxForm({form: 'contato', enableReinitialize: true})(Contato);

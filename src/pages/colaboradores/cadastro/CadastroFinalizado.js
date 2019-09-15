@@ -1,9 +1,9 @@
 import React from 'react';
-import CardSimples from "../../components/card/CardSimples";
-import Buttom from "../../components/Buttom";
-import PageEmpty from "../../layout/PageEmpty";
+import CardSimples from "../../../components/card/CardSimples";
+import Buttom from "../../../components/Buttom";
+import PageEmpty from "../../../layout/PageEmpty";
 import {connect} from "react-redux";
-import {changeRoute} from "../../store/actions/routerActions";
+import {changeRoute} from "../../../store/actions/routerActions";
 
 const CadastroFinalizado = ({match, changeRoute}) => {
     return (

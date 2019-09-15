@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {formateDate} from "../../util/metodosUteis";
+import {formateDate, formateDateFull} from "../../util/metodosUteis";
 
 class DatePicker extends Component {
 
@@ -92,7 +92,6 @@ class DatePicker extends Component {
         let totalDays = monthDays - ((6 - firstDay) + (6 - lastDay));
         if (firstDay === 6 && lastDay === 0) totalDays = totalDays + 7;
         const arr = Array.apply(0, Array(totalDays)).map((_, i) => (8 - firstDay) + i);
-        console.log(lastDay);
         while (arr.length >= 7) {
             days.push(<div className={'linha'}>
                 {arr.splice(0, 7).map((v, i) =>
@@ -121,7 +120,7 @@ class DatePicker extends Component {
     next = () => this.setState({dateController: new Date(this.state.dateController.getFullYear(), this.state.dateController.getMonth() + 1, 20)});
 
     render() {
-        const v = this.state.value ? formateDate(this.state.value) : '';
+        const v = this.state.value && this.state.value instanceof Date ? formateDate(this.state.value) : this.state.value ? formateDateFull(this.state.value) : '';
         if (this.state.formateDate !== v)
             this.setState({formateDate: v});
         return (

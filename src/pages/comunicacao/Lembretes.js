@@ -12,6 +12,7 @@ const Lembretes = ({changeRoute, router}) => {
     return (
         <Switch>
             <Route path={path} exact={true} component={LembretesLista} />
+            <Route path={path + 'cadastro/:id'} component={LembretesCadastro}/>
             <Route path={path + 'cadastro'} component={LembretesCadastro} />
         </Switch>
     )

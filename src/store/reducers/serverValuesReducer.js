@@ -5,6 +5,7 @@ import {
     LOADING_FALIED,
     LOADING_SUCESS,
     OK_NO_UPDATE,
+    RELOAD_IMAGE_CACHE,
     SAVE_SUCESS,
     SEARCH_SUCESS,
     UPDATE_LIST_SUCESS,
@@ -20,8 +21,9 @@ const INITIAL_STATE = {
     qtdColaboradores: {},
     cargos: [],
     departamentos: [],
-    centrodecustos: [],
+    centroDeCustos: [],
     sindicatos: [],
+    sindicato: {},
     loading: [],
     eventos: [],
     evento: {},
@@ -60,6 +62,24 @@ const INITIAL_STATE = {
     empresa: {},
     cobrancas: [],
     cobranca: {},
+    contadores: [],
+    imageCache: null,
+    anotacoes: [],
+    anotacao: {},
+    faltas: [],
+    falta: {},
+    feriasParaAprovacao: [],
+    feriasAprovadas: [],
+    feriasColetivas: [],
+    feriasReprovadas: [],
+    ferias: [],
+    feria: {},
+    valoresRecorrentes: [],
+    valorRecorrente: {},
+    minutas: [],
+    minuta: {},
+    desligamentos: [],
+    desligamento: {},
 };
 
 export const serverValues = (state = INITIAL_STATE, action) => {
@@ -71,7 +91,6 @@ export const serverValues = (state = INITIAL_STATE, action) => {
         case LOADING_FALIED:
             return {...state, loading: state.loading.filter(v => v !== action.payload.target)};
         case SAVE_SUCESS:
-            console.log(action);
             return {...state, [action.payload.target]: state[action.payload.target].concat(action.payload.value)};
         case UPDATE_SUCESS:
             return {...state, [action.payload.target]: action.payload.value};
@@ -86,6 +105,8 @@ export const serverValues = (state = INITIAL_STATE, action) => {
             return {...state, colaborador: {}};
         case CLEAR_LIST:
             return {...state, [action.payload.target]: []};
+        case RELOAD_IMAGE_CACHE:
+            return {...state, imageCache: new Date()};
         case OK_NO_UPDATE:
             return {...state};
         default:

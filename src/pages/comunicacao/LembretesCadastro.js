@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import Buttom from "../../components/Buttom";
 import CardSimples from "../../components/card/CardSimples";
@@ -10,13 +10,20 @@ import RadioButton from "../../components/form/RadioButton";
 import DatePicker from "../../components/form/DatePicker";
 import {changeRoute} from "../../store/actions/routerActions";
 import CenterContent from "../../components/util/CenterContent";
-import {save} from "../../store/actions/serverActions";
+import {save, search, update} from "../../store/actions/serverActions";
 import AlignRight from "../../components/util/AlignRight";
 
-let LembretesCadastro = ({changeRoute, router, handleSubmit, save}) => {
+let LembretesCadastro = ({changeRoute, router, handleSubmit, save, update, match, search}) => {
+
+
+    useEffect(() => {
+        if (match.params.id) {
+            search(match.params.id)
+        }
+    }, []);
 
     const submit = values => {
-        save(values, {redirect: {route: '/comunicacao/lembretes'}})
+        values.id ? update(values, {redirect: {route: '/comunicacao/lembretes'}}) : save(values, {redirect: {route: '/comunicacao/lembretes'}})
     };
 
     return (
@@ -56,14 +63,14 @@ LembretesCadastro = reduxForm({form: 'lembrete', enableReinitialize: true})(Lemb
 
 const mapStateToProps = state => ({
     router: state.router,
-    initialValues: {
-        enviaParaTodosColaboradores: true,
-    }
+    initialValues: state.serverValues.lembrete
 });
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     save: (value, options) => dispatch(save('lembretes', value, options)),
+    update: (value, options) => dispatch(update('lembretes', value, options)),
+    search: id => dispatch(search('lembretes', id, 'lembrete')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LembretesCadastro);

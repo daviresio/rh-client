@@ -22,14 +22,16 @@ const CardBorda = props => {
                 break;
             default:
                 action = props.iconAction;
-                break
+                break;
         }
     }
     return (
         <div className={'card-borda'} style={props.style}>
             <div className={`card-borda-header ${color}`}>
-                <div><i className={`fas fa-${props.icon}`}/> <span>{props.title}</span></div>
-                {action}
+                {props.customHeader ? props.customHeader : <>
+                    <div><i className={`fas fa-${props.icon}`}/> <span>{props.title}</span></div>
+                    {action}
+                </>}
             </div>
 
             <div className={props.start ? 'card-borda-body card-borda-body-start' : 'card-borda-body'}>

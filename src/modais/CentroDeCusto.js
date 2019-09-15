@@ -2,21 +2,21 @@ import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import InputRow from "../components/form/InputRow";
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
+import {closeModal, saveModal, saveModalAndUpdateDropdown, updateModalAndList} from "../store/actions/modalActions";
 import React from "react";
-import {save, update} from "../store/actions/serverActions";
 import Buttom from "../components/Buttom";
 
-let CentroDeCusto = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
-    const submit = value => value.id ? update(value) : save(value, updateDropdown);
+let CentroDeCusto = ({closeModal, visible, handleSubmit, save, update, saveAndUpdateDropdown, updateDropdown}) => {
+
+    const submit = value => value.id ? update(value) : updateDropdown ? saveAndUpdateDropdown(value, updateDropdown) : save(value);
+
     return (
-        <Modal border visible={visible} title={'Adicionar centro de custo'}>
+        <Modal border visible={visible} title={'Adicionar centro de custo'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={InputRow} name={'nome'} label={'Nome'}/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -24,14 +24,17 @@ let CentroDeCusto = props => {
 
 };
 
-const mapStateToProps = ({modal}) => ({
-    initialValues: modal.centroDeCusto.value
+const mapStateToProps = state => ({
+    initialValues: state.modal.centroDeCusto.value,
+    visible: state.modal.centroDeCusto.visible,
+    updateDropdown: state.modal.centroDeCusto.updateDropdown,
 });
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('centroDeCusto', false)),
-    save: (value, updateDropdown) => dispatch(save('centrodecustos', value, {modal: 'centroDeCusto', updateDropdown})),
-    update: value => dispatch(update('centrodecustos', value, {modal: 'centroDeCusto', list: true})),
+    closeModal: () => dispatch(closeModal('centroDeCusto')),
+    saveAndUpdateDropdown: (value, updateDropdown) => dispatch(saveModalAndUpdateDropdown('centrodecustos', value, 'centroDeCusto', updateDropdown)),
+    save: value => dispatch(saveModal('centrodecustos', value, 'centroDeCusto', 'centroDeCustos')),
+    update: value => dispatch(updateModalAndList('centrodecustos', value, 'centroDeCusto', 'centroDeCustos')),
 });
 
 CentroDeCusto = reduxForm({form: 'centroDeCusto', enableReinitialize: true})(CentroDeCusto);

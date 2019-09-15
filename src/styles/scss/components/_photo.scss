@@ -48,5 +48,18 @@
   align-self: center;
   justify-self: center;
   margin-bottom: 2rem;
-  cursor: pointer;
+
+  .file-selected {
+    font-size: 1.4rem;
+    color: $color-blue;
+
+    i {
+      color: $color-red;
+      font-size: 1.4rem;
+      cursor: pointer;
+      margin-left: 2rem;
+    }
+
+  }
+
 }

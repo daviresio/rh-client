@@ -14,6 +14,7 @@ import Ferias from "./configuracao/Ferias";
 import AdmissaoDesligamento from "./configuracao/AdmissaoDesligamento";
 import {changeRoute} from "../store/actions/routerActions";
 import {Redirect, Route, Switch} from "react-router";
+import DocumentoCadastro from "./configuracao/DocumentoCadastro";
 
 const Configuracao = props => {
     const {changeRoute} = props;
@@ -39,6 +40,8 @@ const Configuracao = props => {
                     <Route path={path + 'permissoes'} component={Permissoes} />
                     <Route path={path + 'integracoes'} component={Integracoes} />
                     <Route path={path + 'contabilidade'} component={Contabilidade} />
+                    <Route path={path + 'documentos-minutas/cadastro/:id'} component={DocumentoCadastro}/>
+                    <Route path={path + 'documentos-minutas/cadastro'} component={DocumentoCadastro}/>
                     <Route path={path + 'documentos-minutas'} component={Documentos} />
                     <Route path={path + 'ferias'} component={Ferias} />
                     <Route path={path + 'admissao-desligamento'} component={AdmissaoDesligamento} />

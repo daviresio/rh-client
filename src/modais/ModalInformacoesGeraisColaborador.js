@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {update} from "../store/actions/serverActions";
+import {closeModal, updateModalAndReloadOtherEntity} from "../store/actions/modalActions";
 import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
@@ -11,13 +10,12 @@ import {getEstados} from "../config/localidades";
 import DatePicker from "../components/form/DatePicker";
 import {simNaoOptions, tiposCorRaca, tiposEstadoCivil, tiposSexo} from "../config/defaultValues";
 
-let ModalInformacoesGeraisColaborador = props => {
-    const {closeModal, visible, handleSubmit, update, reload, data} = props;
+let ModalInformacoesGeraisColaborador = ({closeModal, visible, handleSubmit, update, data, idReload}) => {
 
-    const submit = value => update({...value, ...data}, reload);
+    const submit = value => update({...value, ...data}, idReload);
 
     return (
-        <Modal border visible={visible} title={'Informacoes gerais'}>
+        <Modal border visible={visible} title={'Informacoes gerais'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={InputRow} name={'nome'} label={'Nome'}/>
                 <Field component={DatePicker} name={'dataAdmissao'} label={'Data da admissao'}/>
@@ -42,7 +40,7 @@ let ModalInformacoesGeraisColaborador = props => {
                 <Field component={InputRow} name={'nomePai'} label={'Nome do pai'}/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Salvar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -54,12 +52,18 @@ ModalInformacoesGeraisColaborador = reduxForm({form: 'informacoesGeraisColaborad
 const mapStateToProps = state => {
     return {
         initialValues: state.modal.informacoesGeraisColaborador.value,
+        visible: state.modal.informacoesGeraisColaborador.visible,
+        idReload: state.modal.informacoesGeraisColaborador.idReload,
     }
 };
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('informacoesGeraisColaborador', false)),
-    update: (value, reload) => dispatch(update('colaboradores', value, {modal: 'informacoesGeraisColaborador', reload})),
+    closeModal: () => dispatch(closeModal('informacoesGeraisColaborador')),
+    update: (value, idReload) => dispatch(updateModalAndReloadOtherEntity('colaboradores', value, 'informacoesGeraisColaborador', {
+        entity: 'colaboradores',
+        id: idReload,
+        target: 'colaborador'
+    })),
 });
 
 

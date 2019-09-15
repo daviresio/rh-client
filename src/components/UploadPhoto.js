@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {connect} from "react-redux";
 
-const UploadPhoto = ({label, onChange, image}) => {
+const UploadPhoto = ({label, onChange, image, imageCache}) => {
 
-    const showImage = image == null ? <i className={'fas fa-camera photo-icon'}/>
+    const [imageReload, forceReload] = useState(image);
+
+    useEffect(() => {
+        forceReload(image)
+    }, [image]);
+
+    useEffect(() => {
+        forceReload(null);
+        setTimeout(() => forceReload(image), 10)
+    }, [imageCache]);
+
+    const showImage = imageReload == null ? <i className={'fas fa-camera photo-icon'}/>
         : <img src={image} alt="" className={'image-upload'}/>;
 
     const showLabel = <div className={'input-label'}>{label}</div>;
@@ -19,4 +31,4 @@ const UploadPhoto = ({label, onChange, image}) => {
     );
 };
 
-export default UploadPhoto;
+export default connect(state => ({imageCache: state.serverValues.imageCache}))(UploadPhoto);

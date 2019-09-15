@@ -9,9 +9,15 @@ const Select = ({options = [], inputLabel = 'nome', valueLabel = 'id', input = {
         input.onChange(o[valueLabel]);
         input.value = o[valueLabel]
     };
-    const itens = options.map(o => <li key={o[valueLabel]} onClick={() => selectItem(o)}
-                                       className={'select-list-item'}>{o[inputLabel]}</li>);
+
+    const itens = options === undefined ? [] : options.map(o => {
+        if (o !== undefined) {
+            return <li key={o[valueLabel]} onClick={() => selectItem(o)} className={'select-list-item'}>{o[inputLabel]}</li>
+        }
+    });
+
     const getValue = () => {
+        if (options[0] === undefined) return [];
         const opt = options.filter(v => v[valueLabel] === input.value)[0];
         if (opt) return opt[inputLabel]
     };

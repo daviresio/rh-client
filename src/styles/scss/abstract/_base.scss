@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=ABeeZee:400,400i&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
+
+
 *,
 *::after,
 *::before {
@@ -12,12 +16,21 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'ABeeZee', sans-serif;
   font-weight: 400;
   line-height: 1.7;
-  color: $color-black;
+  color: rgba($color-black, .8);
   background-color: $color-body;
   overflow-x: hidden;
+
+  button, input, textarea {
+    font-family: inherit;
+    color: inherit;
+  }
+
+  i {
+    font-family: "Font Awesome 5 Free";
+  }
 }
 
 ul,

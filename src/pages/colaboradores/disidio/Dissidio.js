@@ -1,7 +1,7 @@
 import React from 'react';
-import Stepper from "../../../components/Stepper";
-import StepperItem from "../../../components/StepperItem";
-import StepperContent from "../../../components/StepperContent";
+import Stepper from "../../../components/stepper/Stepper";
+import StepperItem from "../../../components/stepper/StepperItem";
+import StepperContent from "../../../components/stepper/StepperContent";
 import {Redirect, Route, Switch} from "react-router";
 import PageEmpty from "../../../layout/PageEmpty";
 import {changeRoute} from "../../../store/actions/routerActions";

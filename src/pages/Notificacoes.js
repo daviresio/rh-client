@@ -16,10 +16,9 @@ import AtividadesDaSemana from "./notificacoes/AtividadesDaSemana";
 import FaltasEAfastamentos from "./notificacoes/FaltasEAfastamentos";
 import CardSimples from "../components/card/CardSimples";
 
-const Notificacoes = props => {
+const Notificacoes = ({changeRoute, ...props}) => {
     const path = '/notificacoes/';
     const currentPath = props.router.location.pathname;
-    const {changeRoute} = props;
 
     const activeClass = v => currentPath === path + v ? 'active' : null;
 

@@ -13,6 +13,12 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    font-size: $font-size-2;
+
+    i {
+      position: relative;
+      margin-top: .3rem;
+    }
   }
 
   .principal {
@@ -171,6 +177,7 @@
     .item {
       display: grid;
       grid-template-columns: 25rem 1fr;
+      margin: .5rem 0;
 
       .key {
         color: rgba($color-black, .6);
@@ -243,4 +250,12 @@
   grid-gap: 5rem;
   width: 100%;
   margin-top: 5rem;
+}
+
+
+.desligamento {
+
+  .info-header {
+
+  }
 }

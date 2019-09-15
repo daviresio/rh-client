@@ -2,31 +2,31 @@ import React, {useEffect, useRef} from 'react';
 import CardSimples from "../../components/card/CardSimples";
 import Buttom from "../../components/Buttom";
 import Divided from "../../components/util/Divided";
-import Sindicato from "../../modais/Sindicato";
 import {connect} from "react-redux";
-import {changeModalVisible} from "../../store/actions/modalActions";
-import {loadList, remove, uploadFileUpdateWihoutFormAndReload} from "../../store/actions/serverActions";
+import {openModal, openModalAndReloadOtherEntity} from "../../store/actions/modalActions";
+import {loadList, remove, search, uploadFileUpdateWihoutFormAndReload} from "../../store/actions/serverActions";
 import Edit from "../../components/util/Edit";
 import Configuracoes from "../../components/util/Configuracoes";
 import CenterContent from "../../components/util/CenterContent";
 import ButtomAdicionar from "../../components/ButtomAdicionar";
 import Delete from "../../components/util/Delete";
-import DadosEmpresa from "../../modais/DadosEmpresa";
-import DadosCobranca from "../../modais/DadosCobranca";
 import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
+import {getValue} from "../../util/metodosUteis";
 
-const InformacoesBasicas = props => {
+const InformacoesBasicas = ({openModal, loadData, remove, uploadFileUpdateWihoutFormAndReload, idEmpresa, search, openModalAndReload, ...props}) => {
 
     const {sindicatos, empresa} = props.serverValues;
-    const {cobranca} = empresa;
-    const {openModal, loadData, remove, uploadFileUpdateWihoutFormAndReload} = props;
-    const {sindicato, dadosEmpresa, dadosCobranca} = props.modal;
 
     const uploadLogoRef = useRef(null);
 
     useEffect(() => {
-        loadData('sindicatos')
+        loadData('sindicatos');
+        if (idEmpresa != null) search(idEmpresa)
     }, []);
+
+    useEffect(() => {
+        if (idEmpresa != null) search(idEmpresa)
+    }, [idEmpresa]);
 
     const uploadLogo = event => {
         const type = event.target.files[0].type;
@@ -60,23 +60,15 @@ const InformacoesBasicas = props => {
                     </div>
                     <div>
                         <Edit onClick={() => openModal('sindicato', x)}/>
-                        <Configuracoes/>
+                        <Configuracoes onClick={() => openModalAndReload('configuracaoSindicato', x.configuracoes, empresa.id, {sindicato: x.id})}/>
                         <Delete onClick={() => remove('sindicatos', x.id)}/>
                     </div>
                 </div>
             </div>
         ) : null;
 
-    //TODO colocar o id real da empresa
-    const modalOptions = {
-        reload: {entity: 'empresas', value: 1, field: 'empresa'}
-    };
-
     return (
         <>
-            <DadosEmpresa visible={dadosEmpresa.visible} {...modalOptions}/>
-            <DadosCobranca visible={dadosCobranca.visible} {...modalOptions}/>
-            <Sindicato visible={sindicato.visible}/>
             <div className={'configuracao-informacoes-basicas page-divided'}>
                 <CardSimples start>
                     <div className={'edit-logo'}>
@@ -97,30 +89,26 @@ const InformacoesBasicas = props => {
                             <div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Identificador'}</div>
-                                    <div className={'valor'}>{'16979'}</div>
+                                    <div className={'valor'}>{empresa.id}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Nome da empresa'}</div>
-                                    <div className={'valor'}>{'Hero'}</div>
+                                    <div className={'valor'}>{empresa.nome}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Razao social'}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{empresa.razaoSocial}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'CNPJ'}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{empresa.cnpj}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Telefone'}</div>
-                                    <div className={'valor'}>{'(62) 99838-7464'}</div>
-                                </div>
-                                <div className={'item'}>
-                                    <div className={'propriedade'}>{''}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{empresa.telefone}</div>
                                 </div>
                             </div>
-                            <Edit onClick={() => openModal('dadosEmpresa', empresa)}/>
+                            <Edit onClick={() => openModalAndReload('dadosEmpresa', empresa, empresa.id)}/>
                         </div>
                     </div>
 
@@ -132,22 +120,22 @@ const InformacoesBasicas = props => {
                             <div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Razao social'}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{getValue('cobranca.razaoSocial', empresa)}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'CNPJ'}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{getValue('cobranca.cnpj', empresa)}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'E-mail'}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{getValue('cobranca.email', empresa)}</div>
                                 </div>
                                 <div className={'item'}>
                                     <div className={'propriedade'}>{'Endereco'}</div>
-                                    <div className={'valor'}>{''}</div>
+                                    <div className={'valor'}>{getValue('cobranca.endereco', empresa)}</div>
                                 </div>
                             </div>
-                            <Edit onClick={() => openModal('dadosCobranca', cobranca)}/>
+                            <Edit onClick={() => openModalAndReload('dadosCobranca', getValue('cobranca', empresa), empresa.id)}/>
                         </div>
                     </div>
 
@@ -176,12 +164,15 @@ const InformacoesBasicas = props => {
 const mapStateToProps = state => ({
     modal: state.modal,
     serverValues: state.serverValues,
+    idEmpresa: getValue('usuario.empresa.id', state),
 });
 const mapDispatchToProps = dispatch => ({
-    openModal: (modal, value, options) => dispatch(changeModalVisible(modal, true, value, options)),
+    openModal: (modal, value) => dispatch(openModal(modal, value)),
+    openModalAndReload: (modal, value, idReload, data) => dispatch(openModalAndReloadOtherEntity(modal, value, idReload, data)),
     loadData: entity => dispatch(loadList(entity)),
     remove: (entity, value) => dispatch(remove(entity, value)),
     uploadFileUpdateWihoutFormAndReload: (image, type, options) => dispatch(uploadFileUpdateWihoutFormAndReload(image, type, options)),
+    search: id => dispatch(search('empresas', id, 'empresa')),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(InformacoesBasicas);

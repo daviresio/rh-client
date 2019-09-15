@@ -2,30 +2,28 @@ import React from 'react';
 import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import Buttom from "../components/Buttom";
-import {changeModalVisible} from "../store/actions/modalActions";
-import {save, update} from "../store/actions/serverActions";
+import {closeModal, saveModal} from "../store/actions/modalActions";
 import {connect} from "react-redux";
 import SelectRow from "../components/form/SelectRow";
-import {meses, tiposLancamentoHolerite} from "../config/defaultValues";
+import {meses, tiposHolerite} from "../config/defaultValues";
 import {changeRoute} from "../store/actions/routerActions";
 
-let LancamentoHoleriteModal = props => {
-    const {closeModal, visible, handleSubmit, save, update, updateDropdown} = props;
+let LancamentoHoleriteModal = ({closeModal, visible, handleSubmit, changeRoute,}) => {
 
     const submit = value => {
         //value.id ? update(value) : save(value, updateDropdown)
-        props.changeRoute('/folha/tipo-lancamento-holerite')
+        changeRoute('/folha/tipo-lancamento-holerite')
     };
 
     return (
-        <Modal border visible={visible} title={'Adicionar holerite'}>
+        <Modal border visible={visible} title={'Adicionar holerite'} close={closeModal}>
             <form onSubmit={handleSubmit(submit)}>
                 <Field component={SelectRow} name={'ano'} label={'Ano'} options={[{nome: '2019', id: '2019'}]}/>
                 <Field component={SelectRow} name={'mes'} label={'Mes'} options={meses}/>
-                <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tiposLancamentoHolerite}/>
+                <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tiposHolerite}/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
-                    <Buttom color={'green'} label={'Criar'} type={'submit'}/>
+                    <Buttom color={'blue'} label={'Criar'} type={'submit'}/>
                 </div>
             </form>
         </Modal>
@@ -34,13 +32,13 @@ let LancamentoHoleriteModal = props => {
 };
 
 const mapStateToProps = state => ({
-    initialValues: state.modal.cargo.value,
+    initialValues: state.modal.lancamentoHolerite.value,
+    visible: state.modal.lancamentoHolerite.visible,
 });
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('lancamentoHolerite', false)),
-    save: (value, updateDropdown) => dispatch(save('lancamentoHolerite', value, {modal: 'lancamentoHolerite', updateDropdown})),
-    update: value => dispatch(update('lancamentoHolerite', value, {modal: 'cargo', list: true})),
+    closeModal: () => dispatch(closeModal('lancamentoHolerite')),
+    save: value => dispatch(saveModal('holerites', value, 'lancamentoHolerite', 'lancamentoHolerite')),
     changeRoute: route => dispatch(changeRoute(route)),
 });
 

@@ -1,16 +1,16 @@
 import React from 'react';
 import PageEmpty from "../../layout/PageEmpty";
-import Stepper from "../../components/Stepper";
-import StepperItem from "../../components/StepperItem";
-import StepperContent from "../../components/StepperContent";
-import {Redirect, Route, Switch} from "react-router";
+import Stepper from "../../components/stepper/Stepper";
+import StepperItem from "../../components/stepper/StepperItem";
+import StepperContent from "../../components/stepper/StepperContent";
+import {Route, Switch} from "react-router";
 import FolhaLancamentoStep1 from "./FolhaLancamentoStep1";
 import FolhaLancamentoStep2 from "./FolhaLancamentoStep2";
 import FolhaLancamentoStep3 from "./FolhaLancamentoStep3";
 import {connect} from "react-redux";
 import {changeRoute} from "../../store/actions/routerActions";
 
-const FolhaLancamento = ({changeRoute, router, ...props}) => {
+const FolhaLancamento = ({changeRoute, router, match, ...props}) => {
 
     const path = '/folha/lancamento/';
     const currentPath = router.location.pathname;
@@ -28,10 +28,9 @@ const FolhaLancamento = ({changeRoute, router, ...props}) => {
 
             <StepperContent>
                 <Switch>
-                    <Route path={path + 'tipo-lancamento'} component={FolhaLancamentoStep1}/>
+                    <Route path={path + 'tipo-lancamento/:id'} component={FolhaLancamentoStep1}/>
                     <Route path={path + 'conferencia'} component={FolhaLancamentoStep2}/>} />
                     <Route path={path + 'guia'} component={FolhaLancamentoStep3}/>} />
-                    <Redirect from={path} to={path + 'tipo-lancamento'} exact={true}/>
                 </Switch>
             </StepperContent>
         </PageEmpty>

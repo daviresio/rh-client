@@ -3,11 +3,11 @@ import {
     CLEAR_LIST,
     DELETE_FALIED,
     DELETE_SUCESS,
-    LOAD_USER_LOGGED_DATA,
     LOADING,
     LOADING_FALIED,
     LOADING_SUCESS,
     OK_NO_UPDATE,
+    RELOAD_IMAGE_CACHE,
     SAVE_FALIED,
     SAVE_SUCESS,
     SEARCH_FALIED,
@@ -17,26 +17,27 @@ import {
     UPDATE_SUCESS
 } from "./actionsTypes";
 import {changeModalVisible} from "./modalActions";
-import {arrayPush, arrayRemove, change} from "redux-form";
+import {arrayPush, arrayRemove, change, reset} from "redux-form";
 import {changeRoute} from "./routerActions";
 import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
 import * as axios from "axios";
 
+export const saveSuccess = (target, value) => ({type: SAVE_SUCESS, payload: {target, value}});
 
-export const loadList = (entity, target = entity) => async dispatch => [
-    dispatch({type: LOADING, payload: {target}}),
+export const loadList = (entity, target = entity) => async dispatch => {
+    dispatch({type: LOADING, payload: {target}});
     await api.get(`/${entity}`).then(result => dispatch({
         type: LOADING_SUCESS,
         payload: {target, value: result.data}
     })).catch(e => dispatch({type: LOADING_FALIED, payload: {target}}))
-];
+};
 
-export const search = (entity, value, field) => async dispatch => [
-    await api.get(`/${entity}/${value}`).then(result => dispatch({
+export const search = (entity, value, field) => dispatch => {
+    api.get(`/${entity}/${value}`).then(result => dispatch({
         type: SEARCH_SUCESS,
         payload: {target: field, value: result.data}
     })).catch(e => dispatch({type: SEARCH_FALIED}))
-];
+};
 
 export const save = (entity, value, options) => async dispatch => {
     console.log(value);
@@ -47,9 +48,11 @@ export const save = (entity, value, options) => async dispatch => {
 
         if (options && options.modal) {
             dispatch(changeModalVisible(options.modal, false));
+
             if (options.updateDropdown) {
                 dispatch(change(options.updateDropdown.form, options.updateDropdown.field, result.data.id))
             }
+
             if (options.updateForm) {
                 dispatch(arrayPush(options.updateForm.form, options.updateForm.field, result.data))
             }
@@ -77,12 +80,10 @@ export const update = (entity, value, options) => async dispatch => {
     await api.put(`/${entity}`, value).then(async result => {
 
         if (options && options.list) {
-            console.log('entrei');
             dispatch({type: UPDATE_LIST_SUCESS, payload: {target: entity, value: result.data}})
         } else {
             dispatch({type: UPDATE_SUCESS, payload: {target: options.field, value: result.data}})
         }
-        console.log('fui chamado', options);
 
         if (options && options.modal) {
             dispatch(changeModalVisible(options.modal, false));
@@ -145,8 +146,10 @@ export const uploadFile = (image, type, form, urlExistente) => async dispatch =>
     if (form.array) {
         dispatch(arrayPush(form.form, form.field, {...form.data, [form.subField]: result.url}))
     } else {
-        dispatch(change(form.form, form.campo, result.url))
+        dispatch(change(form.form, form.campo, result.url));
+        dispatch(reloadImageCache())
     }
+
 };
 
 export const uploadFileUpdateWihoutFormAndReload = (image, type, options) => async dispatch => {
@@ -175,8 +178,8 @@ export const removeEntytyFromForm = (entity, value, index) => async dispatch => 
         .catch(e => dispatch({type: DELETE_FALIED}))
 ];
 
-export const uploadDocumento = (event, form) => dispatch => {
-    const type = event.target.files[0].type;
+export const uploadDocumento = (file, form) => dispatch => {
+    const type = file.type;
     const reader = new FileReader();
     reader.onload = e => {
         if (e.target.result.length > MAX_IMAGE_SIZE) {
@@ -184,7 +187,39 @@ export const uploadDocumento = (event, form) => dispatch => {
         }
         dispatch(uploadFile(e.target.result, type, {form: form.form, campo: form.campo}))
     };
-    reader.readAsDataURL(event.target.files[0])
+    reader.readAsDataURL(file)
 };
 
 export const clearList = target => ({type: CLEAR_LIST, payload: {target}});
+
+export const reloadImageCache = () => ({type: RELOAD_IMAGE_CACHE});
+
+
+export const updateAndRedirect = (entity, value, redirect) => async dispatch => {
+    await api.put(`/${entity}`, value).then(async result => {
+
+        dispatch({type: UPDATE_SUCESS, payload: {target: redirect.field, value: result.data}});
+
+        const route = redirect.id ? redirect.route + result.data.id : redirect.route;
+        dispatch(changeRoute(route))
+
+    })
+
+};
+
+export const saveAndReloadWihoutDoMoreAndResetForm = (entity, value, reload, formName) => dispatch => {
+    api.post(`${entity}`, value).then(async result => {
+        dispatch(search(reload.entity, reload.value, reload.field));
+
+        dispatch(reset(formName))
+    })
+};
+
+
+export const removeAndReloadWihoutDoMore = (entity, value, reload) => dispatch => {
+    api.delete(`${entity}/${value}`).then(() => {
+        dispatch(search(reload.entity, reload.value, reload.field))
+    })
+};
+
+

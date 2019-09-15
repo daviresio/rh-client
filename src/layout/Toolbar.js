@@ -64,11 +64,11 @@ const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, ...props}) => {
                         </div>
                         <i style={{position: "absolute", right: '1rem'}} className="fas fa-angle-down"/>
                         <div className={empresaPesquisaVisible ? 'empresa-pesquisa empresa-pesquisa-visible' : 'empresa-pesquisa empresa-pesquisa-hidden'}>
-                            <div className={'item adicionar'}>
+                            <div className={'item adicionar'} onClick={() => changeRoute('/nova-empresa')}>
                                 <i className="fas fa-plus"/>
                                 <span>{'Adicionar empresa'}</span>
                             </div>
-                            {empresas && empresas.map(v => <div className={'item empresas'}>{v.nome}</div>)}
+                            {empresas && empresas.map((v, i) => <div key={i} className={'item empresas'}>{v.nome}</div>)}
                         </div>
                     </div>
                 </ClickOutside>

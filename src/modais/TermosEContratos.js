@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {changeModalVisible} from "../store/actions/modalActions";
+import {closeModal} from "../store/actions/modalActions";
 import {save, update} from "../store/actions/serverActions";
 import {reduxForm} from "redux-form";
 import Modal from "../components/Modal";
@@ -27,10 +27,11 @@ let TermosEContratos = props => {
 
 const mapStateToProps = state => ({
     initialValues: state.modal.termosEContratos.value,
+    visible: state.modal.termosEContratos.visible,
 });
 
 const mapDispatchToProps = dispatch => ({
-    closeModal: () => dispatch(changeModalVisible('termosEContratos', false)),
+    closeModal: () => dispatch(closeModal('termosEContratos')),
     save: (value, updateDropdown) => dispatch(save('termosEContratos', value, {modal: 'termosEContratos', updateDropdown})),
     update: value => dispatch(update('termosEContratos', value, {modal: 'termosEContratos', list: true})),
 });

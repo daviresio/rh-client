@@ -1,0 +1,37 @@
+.sub-page-ferias {
+  width: 100%;
+  background-color: #f3fafa;
+  padding: 2rem;
+}
+
+
+.ferias-para-aprovacao {
+  font-size: 1.2rem;
+  display: flex;
+  width: 100%;
+  border-bottom: .1rem solid rgba($color-gray, .6);
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+
+  img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .content {
+    flex: 1;
+    margin-left: 1rem;
+
+    .acoes {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: .5rem;
+
+      *:last-child {
+        margin-right: 1rem;
+      }
+    }
+
+  }
+
+}

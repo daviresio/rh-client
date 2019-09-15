@@ -46,12 +46,12 @@ const GestaoColaboradores = ({changeRoute, loadData, qtd, colaboradoresAtivos, c
                     <CardBorda color={'red'} icon={'power-off'} title={`Desligamentos pendentes (${qtd.desligamentoPendente || 0})`}>
                         {colaboradoresEmDemissao && colaboradoresEmDemissao.length ?
                             <Table header={['nome']} data={renderIfExists(colaboradoresEmDemissao)} keys={['nome']}
-                                   clicable smallPadding removeReader onClick={v=> changeRoute(`/colaboradores/visualizar/${v.id}`)}/>
+                                   clicable smallPadding removeReader onClick={v => changeRoute(`/colaboradores/desligamento/envio-contabilidade/${v.id}`)}/>
                             : <span>Nenhum colaborador em admissao</span>}
                     </CardBorda>
 
                     <Buttom click={() => {
-                    }} color={'black'} full label={'Todos os colaboradores desligados'}/>
+                    }} color={'black'} full label={'Todos os colaboradores desligados'} onClick={() => changeRoute('/colaboradores/desligados')}/>
                 </div>
             </div>
         </React.Fragment>

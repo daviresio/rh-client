@@ -31,3 +31,10 @@ export const downloadFile = async fileUrl => {
 
 export const arrayToObj = arr =>
     arr.length > 0 ? arr.reduce((obj, item) => Object.assign(obj, item)) : null;
+
+export const mapAndGetId = v => {
+    if (Array.isArray(v) && v.length) {
+        return v.map(v => v.id)
+    }
+    return v
+};

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import CardBorda from "../../components/card/CardBorda";
+import CardBorda from "../../../components/card/CardBorda";
 import {connect} from "react-redux";
-import Checkbox from "../../components/form/Checkbox";
-import Divided from "../../components/util/Divided";
-import {clearList, loadList, update} from "../../store/actions/serverActions";
+import Checkbox from "../../../components/form/Checkbox";
+import Divided from "../../../components/util/Divided";
+import {clearList, loadList, update} from "../../../store/actions/serverActions";
 
 let Checklist = ({id, loadData, update, values, clearList, ...props}) => {
 

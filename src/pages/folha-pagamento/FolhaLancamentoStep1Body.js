@@ -3,7 +3,7 @@ import {changeRoute} from "../../store/actions/routerActions";
 import {connect} from "react-redux";
 import CardIcon from "../../components/card/CardIcon";
 
-const FolhaLancamentoStep1Body = ({changeRoute, router}) => {
+const FolhaLancamentoStep1Body = ({changeRoute, router, match}) => {
 
     const path = '/folha/lancamento/tipo-lancamento/';
 
@@ -12,9 +12,9 @@ const FolhaLancamentoStep1Body = ({changeRoute, router}) => {
             <div className={'cards'}>
                 <CardIcon icon={<i className="fas fa-cloud-upload-alt" />} title={'Enviar horas extras'} subtitle={'arquivo ACJEF para cálculo de horas extras'}/>
                 <CardIcon icon={<i className="fas fa-magic" />} title={'Automagico'} subtitle={'Lancamentos a partir de um unico arquivo de excel'}
-                           onClick={()=> changeRoute(path + 'importar')}/>
+                          onClick={() => changeRoute(path + 'importar/' + match.params.id)}/>
                 <CardIcon icon={<i className="fas fa-wrench" />} title={'Manual'} subtitle={'Lancamentos atraves da plataforma'}
-                           onClick={()=> changeRoute(path + 'manual')}/>
+                          onClick={() => changeRoute(path + 'manual/' + match.params.id)}/>
             </div>
         </div>
     );

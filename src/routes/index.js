@@ -3,7 +3,7 @@ import Navbar from "../layout/Navbar";
 import Home from "../pages/Home";
 import {Route, Switch} from 'react-router-dom'
 import Colaboradores from "../pages/Colaboradores";
-import NovoColaborador from "../pages/colaboradores/CadastroColaborador";
+import NovoColaborador from "../pages/colaboradores/cadastro/CadastroColaborador";
 import {ConnectedRouter} from "connected-react-router";
 import history from './history'
 import Ferias from "../pages/Ferias";
@@ -19,7 +19,7 @@ import Notificacoes from "../pages/Notificacoes";
 import AlterarSenha from "../pages/configuracao/AlterarSenha";
 import Financeiro from "../pages/Financeiro";
 import VizualizarColaborador from "../pages/colaboradores/VisualizarColaborador";
-import CadastroFinalizado from "../pages/colaboradores/CadastroFinalizado";
+import CadastroFinalizado from "../pages/colaboradores/cadastro/CadastroFinalizado";
 import FolhaLancamento from "../pages/folha-pagamento/FolhaLancamento";
 import BeneficioCadastro from "../pages/beneficio/BeneficioCadastro";
 import BeneficioDetalhe from "../pages/beneficio/BeneficioDetalhe";
@@ -35,47 +35,64 @@ import LancamentoHoleriteAutomatico from "../pages/folha-pagamento/LancamentoHol
 import LancamentoHoleriteModal from "../modais/LancamentoHoleriteModal";
 import LogarUsuario from "../pages/LogarUsuario";
 import ProtectedRoute from "./ProtectedRoute";
+import {connect} from "react-redux";
+import NovaEmpresa from "../pages/NovaEmpresa";
+import ProcessoFerias from "../pages/ferias/ProcessoFerias";
+import DesligamentoColaborador from "../pages/colaboradores/desligamento/DesligamentoColaborador";
+import BeneficioEditarEmMassa from "../pages/beneficio/BeneficioEditarEmMassa";
+import ColaboradoresDesligados from "../pages/colaboradores/ColaboradoresDesligados";
 
-export default () =>
-    (
-        <ConnectedRouter history={history}>
-            <React.Fragment>
-                <Toolbar/>
-                <Navbar/>
-                <Switch>
-                    <ProtectedRoute path={'/'} exact={true} component={Home}/>
-                    <ProtectedRoute path={'/colaboradores/visualizar/:id'} component={VizualizarColaborador}/>
-                    <ProtectedRoute path={'/colaboradores/cadastro-finalizado/:id'} component={CadastroFinalizado}/>
-                    <ProtectedRoute path={'/colaboradores/cadastro'} component={NovoColaborador}/>
-                    <ProtectedRoute path={'/colaboradores/dissidio'} component={Dissidio}/>
-                    <ProtectedRoute path={'/colaboradores/editar-em-massa'} component={EditarColaboradoresEmMassa}/>
-                    <ProtectedRoute path={'/colaboradores/gerenciar-acesso'} component={GerenciarAcesso}/>
-                    <ProtectedRoute path={'/colaboradores/boas-vindas'} component={BoasVindas}/>
-                    <ProtectedRoute path={'/colaboradores/recuperar-senha'} component={RecuperarSenha}/>
-                    <ProtectedRoute path={'/colaboradores'} component={Colaboradores}/>
-                    <ProtectedRoute path={'/ferias/cadastro-ferias-coletivas'} component={CadastroFeriasColetivas}/>
-                    <ProtectedRoute path={'/ferias/cadastro-ferias-individuais'} component={GerenciarFeriasIndividuais}/>
-                    <ProtectedRoute path={'/ferias'} exact={true} component={Ferias}/>
-                    <ProtectedRoute path={'/beneficios/detalhe/:id'} component={BeneficioDetalhe}/>
-                    <ProtectedRoute path={'/beneficios/cadastro/:id'} component={BeneficioCadastro}/>
-                    <ProtectedRoute path={'/beneficios/cadastro'} component={BeneficioCadastro}/>
-                    <ProtectedRoute path={'/beneficios'} component={Beneficios}/>
-                    <ProtectedRoute path={'/folha/lancamento/:id'} component={FolhaLancamento}/>
-                    <ProtectedRoute path={'/folha/lancamento'} component={FolhaLancamento}/>
-                    <ProtectedRoute path={'/folha/tipo-lancamento-holerite'} component={EscolhaGerarHolerite}/>
-                    <ProtectedRoute path={'/folha/holerite/importar'} component={LancamentoHoleriteAutomatico}/>
-                    <ProtectedRoute path={'/folha/holerite/manual'} component={LancamentoHoleriteModal}/>
-                    <ProtectedRoute path={'/folha'} component={FolhaPagamento}/>
-                    <ProtectedRoute path={'/comunicacao'} component={Comunicacao}/>
-                    <ProtectedRoute path={'/ponto'} exact={true} component={Ponto}/>
-                    <ProtectedRoute path={'/relatorios'} exact={true} component={Relatorios}/>
-                    <ProtectedRoute path={'/ajuda'} exact={true} component={Ajuda}/>
-                    <ProtectedRoute path={'/configuracao/alterar-senha'} exact={true} component={AlterarSenha}/>
-                    <ProtectedRoute path={'/configuracao'} component={Configuracao}/>
-                    <ProtectedRoute path={'/notificacoes'} component={Notificacoes}/>
-                    <ProtectedRoute path={'/financeiro'} component={Financeiro}/>
-                    <Route path={'/logar-usuario/:token'} component={LogarUsuario}/>
-                </Switch>
-            </React.Fragment>
-        </ConnectedRouter>
-    )
+const Routes = (modal) => {
+
+    let blurEffect;
+
+    if (modal) blurEffect = Object.values(modal).some(v => v.visible) ? 'blur-body' : 'blur-body-none';
+
+    return <ConnectedRouter history={history}>
+        <div className={blurEffect}>
+            <Toolbar/>
+            <Navbar/>
+            <Switch>
+                <ProtectedRoute path={'/'} exact={true} component={Home}/>
+                <ProtectedRoute path={'/colaboradores/visualizar/:id'} component={VizualizarColaborador}/>
+                <ProtectedRoute path={'/colaboradores/cadastro-finalizado/:id'} component={CadastroFinalizado}/>
+                <ProtectedRoute path={'/colaboradores/cadastro'} component={NovoColaborador}/>
+                <ProtectedRoute path={'/colaboradores/desligamento/:id'} component={DesligamentoColaborador}/>
+                <ProtectedRoute path={'/colaboradores/dissidio'} component={Dissidio}/>
+                <ProtectedRoute path={'/colaboradores/editar-em-massa'} component={EditarColaboradoresEmMassa}/>
+                <ProtectedRoute path={'/colaboradores/gerenciar-acesso'} component={GerenciarAcesso}/>
+                <ProtectedRoute path={'/colaboradores/boas-vindas'} component={BoasVindas}/>
+                <ProtectedRoute path={'/colaboradores/recuperar-senha'} component={RecuperarSenha}/>
+                <ProtectedRoute path={'/colaboradores/desligados'} component={ColaboradoresDesligados}/>
+                <ProtectedRoute path={'/colaboradores'} component={Colaboradores}/>
+                <ProtectedRoute path={'/ferias/cadastro-ferias-coletivas'} component={CadastroFeriasColetivas}/>
+                <ProtectedRoute path={'/ferias/cadastro-ferias-individuais'} component={GerenciarFeriasIndividuais}/>
+                <ProtectedRoute path={'/ferias/processo'} component={ProcessoFerias}/>
+                <ProtectedRoute path={'/ferias'} exact={true} component={Ferias}/>
+                <ProtectedRoute path={'/beneficios/editar-em-massa/:id'} component={BeneficioEditarEmMassa}/>
+                <ProtectedRoute path={'/beneficios/detalhe/:id'} component={BeneficioDetalhe}/>
+                <ProtectedRoute path={'/beneficios/cadastro/:id'} component={BeneficioCadastro}/>
+                <ProtectedRoute path={'/beneficios/cadastro'} component={BeneficioCadastro}/>
+                <ProtectedRoute path={'/beneficios'} component={Beneficios}/>
+                <ProtectedRoute path={'/folha/lancamento'} component={FolhaLancamento}/>
+                <ProtectedRoute path={'/folha/tipo-lancamento-holerite'} component={EscolhaGerarHolerite}/>
+                <ProtectedRoute path={'/folha/holerite/importar'} component={LancamentoHoleriteAutomatico}/>
+                <ProtectedRoute path={'/folha/holerite/manual'} component={LancamentoHoleriteModal}/>
+                <ProtectedRoute path={'/folha'} component={FolhaPagamento}/>
+                <ProtectedRoute path={'/comunicacao'} component={Comunicacao}/>
+                <ProtectedRoute path={'/ponto'} exact={true} component={Ponto}/>
+                <ProtectedRoute path={'/relatorios'} exact={true} component={Relatorios}/>
+                <ProtectedRoute path={'/ajuda'} exact={true} component={Ajuda}/>
+                <ProtectedRoute path={'/configuracao/alterar-senha'} exact={true} component={AlterarSenha}/>
+                <ProtectedRoute path={'/configuracao'} component={Configuracao}/>
+                <ProtectedRoute path={'/notificacoes'} component={Notificacoes}/>
+                <ProtectedRoute path={'/financeiro'} component={Financeiro}/>
+                <Route path={'/logar-usuario/:token'} component={LogarUsuario}/>
+                <Route path={'/nova-empresa'} component={NovaEmpresa}/>
+            </Switch>
+        </div>
+    </ConnectedRouter>
+};
+
+export default connect(({modal}) => modal)(Routes)
+
