@@ -238,3 +238,9 @@
     font-weight: $font-weigth-bold;
   }
 }
+
+
+.container-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
