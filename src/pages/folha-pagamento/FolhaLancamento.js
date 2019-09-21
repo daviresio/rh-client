@@ -14,23 +14,24 @@ const FolhaLancamento = ({changeRoute, router, match, ...props}) => {
 
     const path = '/folha/lancamento/';
     const currentPath = router.location.pathname;
+    const id = currentPath.match(/\d+$/)[0]
 
     return (
         <PageEmpty>
             <Stepper>
-                <StepperItem number={1} onClick={() => changeRoute(`${path}tipo-lancamento`)}
+                <StepperItem number={1} onClick={() => changeRoute(`${path}tipo-lancamento/${id}`)}
                              selected={currentPath.includes('tipo-lancamento')} label={'Lancamento'}/>
-                <StepperItem number={2} onClick={() => changeRoute(`${path}conferencia`)}
+                <StepperItem number={2} onClick={() => changeRoute(`${path}conferencia/${id}`)}
                              selected={currentPath.includes('conferencia')} label={'Conferencia'}/>
-                <StepperItem number={3} onClick={() => changeRoute(`${path}guia`)}
+                <StepperItem number={3} onClick={() => changeRoute(`${path}guia/${id}`)}
                              selected={currentPath.includes('guia')} label={'Guias'}/>
             </Stepper>
 
             <StepperContent>
                 <Switch>
                     <Route path={path + 'tipo-lancamento/:id'} component={FolhaLancamentoStep1}/>
-                    <Route path={path + 'conferencia'} component={FolhaLancamentoStep2}/>} />
-                    <Route path={path + 'guia'} component={FolhaLancamentoStep3}/>} />
+                    <Route path={path + 'conferencia/:id'} component={FolhaLancamentoStep2}/>} />
+                    <Route path={path + 'guia/:id'} component={FolhaLancamentoStep3}/>} />
                 </Switch>
             </StepperContent>
         </PageEmpty>

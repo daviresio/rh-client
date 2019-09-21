@@ -1232,6 +1232,8 @@ a {
   padding: 2rem;
   margin-bottom: 1rem;
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
 }
 .button-select-container .list-container ul li:not(:first-child) {
   margin-top: 0.5rem;
@@ -2315,16 +2317,17 @@ a {
   align-items: center;
 }
 
-.linha-valor {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.linha-valor-table {
   padding-right: 2rem;
+  position: relative;
 }
-.linha-valor i {
+.linha-valor-table i {
   font-size: 2rem;
   color: #E54042;
   cursor: pointer;
+  position: absolute;
+  right: -0.5rem;
+  top: 3rem;
 }
 
 .form-adicionar-evento {

@@ -25,16 +25,17 @@
 
 }
 
-.linha-valor {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.linha-valor-table {
   padding-right: 2rem;
+  position: relative;
 
   i {
     font-size: 2rem;
     color: $color-red;
     cursor: pointer;
+    position: absolute;
+    right: -.5rem;
+    top: 3rem;
   }
 }
 

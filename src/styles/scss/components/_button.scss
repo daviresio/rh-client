@@ -103,6 +103,8 @@
       padding: 2rem;
       margin-bottom: 1rem;
       border-bottom: .1rem solid rgba($color-black, .1);
+      position: relative;
+      z-index: 1000;
 
       li:not(:first-child) {
         margin-top: .5rem;
