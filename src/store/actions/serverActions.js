@@ -16,7 +16,7 @@ import {
     UPDATE_LIST_SUCESS,
     UPDATE_SUCESS
 } from "./actionsTypes";
-import {changeModalVisible} from "./modalActions";
+import {changeModalVisible, closeModal} from "./modalActions";
 import {arrayPush, arrayRemove, change, reset} from "redux-form";
 import {changeRoute} from "./routerActions";
 import {MAX_IMAGE_SIZE} from "../../config/defaultValues";
@@ -196,6 +196,7 @@ export const reloadImageCache = () => ({type: RELOAD_IMAGE_CACHE});
 
 
 export const updateAndRedirect = (entity, value, redirect) => async dispatch => {
+
     await api.put(`/${entity}`, value).then(async result => {
 
         dispatch({type: UPDATE_SUCESS, payload: {target: redirect.field, value: result.data}});
@@ -223,3 +224,14 @@ export const removeAndReloadWihoutDoMore = (entity, value, reload) => dispatch =
 };
 
 
+export const updateAndReloadOtherEntity = (entity, value, reload) => dispatch => {
+    api.put(`/${entity}`, value).then(() => {
+        console.log(reload);
+
+        dispatch({type: 'CLEAR_DATA', payload: {target: 'fechamentoFolha'}})
+
+        dispatch(search(reload.entity, reload.id, reload.target));
+
+    })
+
+};

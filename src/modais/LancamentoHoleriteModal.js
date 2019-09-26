@@ -2,17 +2,16 @@ import React from 'react';
 import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import Buttom from "../components/Buttom";
-import {closeModal, saveModal} from "../store/actions/modalActions";
+import {closeModal, saveModal, saveModalAndRedirect} from "../store/actions/modalActions";
 import {connect} from "react-redux";
 import SelectRow from "../components/form/SelectRow";
 import {meses, tiposHolerite} from "../config/defaultValues";
 import {changeRoute} from "../store/actions/routerActions";
 
-let LancamentoHoleriteModal = ({closeModal, visible, handleSubmit, changeRoute,}) => {
+let LancamentoHoleriteModal = ({closeModal, visible, handleSubmit, save}) => {
 
     const submit = value => {
-        //value.id ? update(value) : save(value, updateDropdown)
-        changeRoute('/folha/tipo-lancamento-holerite')
+        save(value, {route: `/folha/holerites/lancamento/`, id: true, target: 'holerites'})
     };
 
     return (
@@ -31,6 +30,8 @@ let LancamentoHoleriteModal = ({closeModal, visible, handleSubmit, changeRoute,}
 
 };
 
+LancamentoHoleriteModal = reduxForm({form: 'lancamentoHolerite', enableReinitialize: true})(LancamentoHoleriteModal);
+
 const mapStateToProps = state => ({
     initialValues: state.modal.lancamentoHolerite.value,
     visible: state.modal.lancamentoHolerite.visible,
@@ -38,10 +39,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     closeModal: () => dispatch(closeModal('lancamentoHolerite')),
-    save: value => dispatch(saveModal('holerites', value, 'lancamentoHolerite', 'lancamentoHolerite')),
+    save: (value, redirect) => dispatch(saveModalAndRedirect('holerites', value, 'lancamentoHolerite', redirect)),
     changeRoute: route => dispatch(changeRoute(route)),
 });
-
-LancamentoHoleriteModal = reduxForm({form: 'lancamentoHolerite', enableReinitialize: true})(LancamentoHoleriteModal);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LancamentoHoleriteModal);

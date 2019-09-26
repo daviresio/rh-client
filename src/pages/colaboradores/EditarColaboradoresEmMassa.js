@@ -9,11 +9,13 @@ import EditTable from "../../components/table/EditTable";
 import EditTextTable from "../../components/table/EditTextTable";
 import EditSelectTable from "../../components/table/EditSelectTable";
 
-const EditarColaboradoresEmMassa = ({changeRoute, loadData, colaboradores, departamentos}) => {
+const EditarColaboradoresEmMassa = ({changeRoute, loadData, colaboradores, departamentos, centroDeCustos, vinculos}) => {
 
     useEffect(() => {
         loadData('colaboradores');
         loadData('departamentos')
+        loadData('vinculos')
+        loadData('centrodecustos', 'centroDeCustos')
     }, []);
 
     return (
@@ -29,9 +31,9 @@ const EditarColaboradoresEmMassa = ({changeRoute, loadData, colaboradores, depar
                            keys={['nome', 'vinculo', 'departamento', 'centroDeCusto', 'gestor', 'banco', 'agencia', 'conta', 'digito']}
                            data={colaboradores.map(v => ({
                                nome: <EditTextTable entity={'colaboradores'} data={v} field={'nome'} />,
-                               vinculo: <EditSelectTable/>,
+                               vinculo: <EditSelectTable entity={'colaboradores'} data={v} obj={'vinculo'} options={vinculos}/>,
                                departamento: <EditSelectTable entity={'colaboradores'} data={v} obj={'departamento'} options={departamentos} />,
-                               centroDeCusto: <EditSelectTable/>,
+                               centroDeCusto: <EditSelectTable entity={'colaboradores'} data={v} obj={'centroDeCusto'} options={centroDeCustos}/>,
                                banco: <EditTextTable entity={'colaboradores'} data={v} obj={'banco'} field={'banco'}/>,
                                agencia: <EditTextTable entity={'colaboradores'} data={v} obj={'banco'} field={'agencia'}/>,
                                conta: <EditTextTable entity={'colaboradores'} data={v} obj={'banco'} field={'conta'}/>,
@@ -48,6 +50,8 @@ const EditarColaboradoresEmMassa = ({changeRoute, loadData, colaboradores, depar
 const mapStateToProps = state => ({
     colaboradores: state.serverValues.colaboradores,
     departamentos: state.serverValues.departamentos,
+    vinculos: state.serverValues.vinculos,
+    centroDeCustos: state.serverValues.centroDeCustos,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -8,9 +8,11 @@ const LogarUsuario = ({match, changeRoute, loadUser}) => {
 
     useEffect(() => {
         if (match.params.token) {
-            loadUser();
+            console.log('entrei')
             login(match.params.token);
+            loadUser();
             changeRoute('/')
+            console.log('passei')
         }
     }, []);
 

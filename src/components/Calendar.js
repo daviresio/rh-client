@@ -59,7 +59,7 @@ class Calendar extends Component {
         const daysPreviousMonth = new Date(year, month, 0).getDate();
         daysRendered.push(<div className={'linha'} key={1}>{this.generatePreviousDaysCalendar(daysPreviousMonth, firstDay, year, month)}</div>);
         this.genetareCenterDaysCalendar(daysInMonth, firstDay, lastDay).forEach((v, i) => daysRendered.push(React.cloneElement(v, {key: i + 2})));
-        if (lastDay !== 6) daysRendered.push(<div className={'linha'} key={5}>{this.generateLastDaysCalendar(daysInMonth, lastDay)}</div>);
+        if(lastDay !== 6) daysRendered.push(<div className={'linha'} key={5}>{this.generateLastDaysCalendar(daysInMonth, lastDay)}</div>);
         return daysRendered
     };
 
@@ -93,13 +93,6 @@ class Calendar extends Component {
         return days
     };
 
-
-    /*changeDate = day => this.setState({value: new Date(this.state.dateController.getFullYear(), this.state.dateController.getMonth(), day)}, () => {
-        this.props.input.value = this.state.value;
-        this.props.input.onChange(this.state.value);
-        setTimeout(() => this.setState({visible: false}), 200)
-    });*/
-
     changeDate = day => {
     };
 
@@ -110,29 +103,34 @@ class Calendar extends Component {
     genetareCenterDaysCalendar = (monthDays, firstDay, lastDay) => {
         let days = [];
         const totalDays = monthDays - ((6 - firstDay) + (6 - lastDay));
-        const arr = Array.apply(0, Array(totalDays)).map((_, i) => (8 - firstDay) + i);
+        let arr = Array.apply(0, Array(totalDays)).map((_, i) => (8 - firstDay) + i);
 
-        while (arr.length >= 7) {
+        while (arr.length >= 3) {
+            if(arr.length >= 7) {
             days.push(<div className={'linha'}>
                 {arr.splice(0, 7).map((v, i) =>
                     <div className={'dia ' + this.activeClass(v)} key={v} onClick={() => this.changeDate(v)}>{v}</div>)}
             </div>)
-        }
-        if (arr.length && arr[arr.length - 1] < 29) {
-
-            let restArr = [];
-            let lastValue = 0;
-            for (let i = 0; i < 7; i++) {
-                if (arr[i]) {
-                    lastValue = arr[i];
-                    restArr.push(React.cloneElement(<div className={'dia ' + this.activeClass(arr[i])} key={arr[i]} onClick={() => this.changeDate(arr[i])}>{arr[i]}</div>))
-                } else {
-                    lastValue++;
-                    restArr.push(<div className={'dia ' + this.activeClass(lastValue)} key={lastValue} onClick={() => this.changeDate(lastValue)}>{lastValue}</div>)
+            } else if (arr[arr.length - 1] < 29 && firstDay === 0) {
+                let restArr = [];
+                let lastValue = 0;
+                for (let i = 0; i < 7; i++) {
+                    if (arr[i]) {
+                        lastValue = arr[i];
+                        restArr.push(arr[i])
+                    } else {
+                        lastValue++;
+                        restArr.push(lastValue)
+                    }
                 }
+                days.push(<div className={'linha'}>
+                    {restArr.map((v, i) =>
+                        <div className={'dia ' + this.activeClass(v)} key={v} onClick={() => this.changeDate(v)}>{v}</div>)}
+                </div>)
+                arr = []
+            } else {
+                arr = []
             }
-            console.log(restArr);
-            days = days.concat(restArr)
         }
         return days
     };

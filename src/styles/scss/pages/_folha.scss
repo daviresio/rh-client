@@ -34,7 +34,7 @@
     color: $color-red;
     cursor: pointer;
     position: absolute;
-    right: -.5rem;
+    left: 21rem;
     top: 3rem;
   }
 }
@@ -104,25 +104,13 @@
       }
     }
 
-    .informacoes {
-      font-size: $font-size-2;
-      margin-top: 2rem;
-
-      .dados {
-        font-weight: $font-weigth-bold;
-
-        .label {
-          margin-right: 20rem;
-        }
-      }
-    }
-
     .informacoes-financeiras {
       font-size: $font-size-2;
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(4, 1fr) 12rem 6rem;
       align-items: center;
+      justify-items: start;
       justify-content: center;
 
       .item {
@@ -141,6 +129,7 @@
         }
 
         .red {
+          align-self: self-end;
           color: $color-red;
         }
       }
@@ -244,4 +233,31 @@
 .container-scroll {
   width: 100%;
   overflow-x: auto;
+}
+
+
+.table-adicionais {
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    font-size: $font-size-2;
+    font-weight: $font-weigth-bold;
+    td {
+      padding-bottom: 1rem;
+    }
+  }
+
+  tbody {
+
+    tr:nth-child(odd) {
+      background-color: $color-body;
+    }
+
+    td {
+      padding: .5rem;
+      font-size: 1.1rem;
+    }
+
+  }
+
 }

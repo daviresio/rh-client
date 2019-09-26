@@ -80,6 +80,8 @@ const INITIAL_STATE = {
     minuta: {},
     desligamentos: [],
     desligamento: {},
+    holerites: [],
+    holerite: {},
 };
 
 export const serverValues = (state = INITIAL_STATE, action) => {
@@ -109,6 +111,8 @@ export const serverValues = (state = INITIAL_STATE, action) => {
             return {...state, imageCache: new Date()};
         case OK_NO_UPDATE:
             return {...state};
+        case 'CLEAR_DATA':
+            return {...state, [action.payload.target]: {}};
         default:
             return state;
     }

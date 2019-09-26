@@ -4,13 +4,26 @@
     <list default="true" id="18b0214e-12f5-4daf-aef0-2d28ba4c815c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ButtomSelectOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ButtomSelectOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/DatePicker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/table/EditSelectTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/EditSelectTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layout/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Toolbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LogarUsuario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LogarUsuario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/NovaEmpresa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/NovaEmpresa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/EditarColaboradoresEmMassa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/EditarColaboradoresEmMassa.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoManual.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoManual.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/modalActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/modalActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/serverActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/serverActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/usuarioActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/usuarioActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/css/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/css/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/css/index.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_button.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_button.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_calendar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_calendar.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/scss/pages/_folha.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/pages/_folha.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/metodosUteis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/metodosUteis.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +63,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/form" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rh-contador" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -129,7 +142,9 @@
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
-        <settings />
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
       </deployment>
       <method v="2" />
     </configuration>
@@ -166,18 +181,7 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@3474341c" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@3474341c" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@44fa8b73" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@3474341c" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@44fa8b73" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@305f2367" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@481f60d3" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -451,6 +455,14 @@
       <workItem from="1568996535644" duration="1632000" />
       <workItem from="1569023719588" duration="11000" />
       <workItem from="1569023739944" duration="14240000" />
+      <workItem from="1569066783029" duration="15000" />
+      <workItem from="1569079556743" duration="20215000" />
+      <workItem from="1569115621247" duration="6238000" />
+      <workItem from="1569154567896" duration="26168000" />
+      <workItem from="1569236808703" duration="288000" />
+      <workItem from="1569282964247" duration="4285000" />
+      <workItem from="1569324590241" duration="7000" />
+      <workItem from="1569456180976" duration="4437000" />
     </task>
     <task id="LOCAL-00001" summary="salvando alteracoes">
       <created>1565539254757</created>

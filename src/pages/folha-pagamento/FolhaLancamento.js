@@ -14,7 +14,12 @@ const FolhaLancamento = ({changeRoute, router, match, ...props}) => {
 
     const path = '/folha/lancamento/';
     const currentPath = router.location.pathname;
-    const id = currentPath.match(/\d+$/)[0]
+    let id
+    try {
+    id = currentPath.match(/\d+$/)[0]
+    } catch (e) {
+
+    }
 
     return (
         <PageEmpty>

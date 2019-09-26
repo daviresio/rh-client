@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {changeEmpresaPesquisaVisibility, changeUsuarioOpcoesVisibility} from "../store/actions/toolbarActions";
 import ClickOutside from "../components/ClickOutside";
 import {changeRoute} from "../store/actions/routerActions";
 import {logout} from "../config/auth";
+import {carregarInformacoesUsuario, trocarEmpresa} from "../store/actions/usuarioActions";
 
-const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, ...props}) => {
+const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, loadUser, trocarEmpresa, ...props}) => {
     const {empresaPesquisaVisible, usuarioOpcoesVisible} = toolbar;
     const {changeEmpresaPesquisaVisibility, changeUsuarioOpcoesVisibility, changeRoute} = props;
+
+    useEffect(()=> {
+        loadUser()
+    }, [])
+
 
     let icon = null;
     let title = null;
@@ -56,7 +62,9 @@ const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, ...props}) => {
             </div>
 
             <div className={'opcoes'}>
-                <ClickOutside clickOutside={() => changeEmpresaPesquisaVisibility(false)}>
+                <ClickOutside clickOutside={() => {
+                    if(empresaPesquisaVisible) changeEmpresaPesquisaVisibility(false)
+                }}>
                     <div onClick={() => changeEmpresaPesquisaVisibility(!empresaPesquisaVisible)} className={'empresa'}>
                         <div className={'empresa-selecionada'}>
                             <i className="fas fa-building"/>
@@ -68,12 +76,14 @@ const Toolbar = ({usuario, empresa, empresas, pathname, toolbar, ...props}) => {
                                 <i className="fas fa-plus"/>
                                 <span>{'Adicionar empresa'}</span>
                             </div>
-                            {empresas && empresas.map((v, i) => <div key={i} className={'item empresas'}>{v.nome}</div>)}
+                            {empresas && empresas.map((v, i) => <div key={i} className={'item empresas'} onClick={()=> trocarEmpresa({empresa: v.id, usuario: usuario.id})}>{v.nome}</div>)}
                         </div>
                     </div>
                 </ClickOutside>
                 <div className={'usuario'}>
-                    <ClickOutside clickOutside={() => changeUsuarioOpcoesVisibility(false)}>
+                    <ClickOutside clickOutside={() => {
+                        if(usuarioOpcoesVisible) changeUsuarioOpcoesVisibility(false)
+                    }}>
                         <div onClick={() => changeUsuarioOpcoesVisibility(!usuarioOpcoesVisible)} className={'nome'}>{getIconName()}</div>
                         <div className={usuarioOpcoesVisible ? 'opcoes opcoes-visible' : 'opcoes opcoes-hidden'}>
                             <div className={'item'} onClick={() => changeRoute('/configuracao/alterar-senha')}><i className="fas fa-key"/> <span>{'Alterar senha'}</span></div>
@@ -101,7 +111,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     changeEmpresaPesquisaVisibility: value => dispatch(changeEmpresaPesquisaVisibility(value)),
     changeUsuarioOpcoesVisibility: value => dispatch(changeUsuarioOpcoesVisibility(value)),
-    changeRoute: route => dispatch(changeRoute(route))
+    changeRoute: route => dispatch(changeRoute(route)),
+    loadUser: () => dispatch(carregarInformacoesUsuario()),
+    trocarEmpresa: value => dispatch(trocarEmpresa(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Toolbar);

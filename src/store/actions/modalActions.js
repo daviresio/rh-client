@@ -11,6 +11,7 @@ import {
 import api from "../../config/api";
 import {loadList, saveSuccess, search} from "./serverActions";
 import {arrayPush, change} from "redux-form";
+import {changeRoute} from "./routerActions";
 
 export const changeModalVisible = (target, visible, value, index, updateDropdown, updateFormArray, data) => {
     console.log(target, visible, value, index, updateDropdown, updateFormArray, data);
@@ -36,6 +37,22 @@ export const saveModal = (entity, value, modal, target = entity) => dispatch => 
         dispatch(saveSuccess(target, result.data));
 
         dispatch(closeModal(modal));
+
+    })
+
+};
+
+export const saveModalAndRedirect = (entity, value, modal, redirect) => dispatch => {
+
+    api.post(`/${entity}`, value).then(result => {
+
+        dispatch(saveSuccess(redirect.target, result.data));
+
+        dispatch(closeModal(modal));
+
+        const route = redirect.id ? redirect.route + result.data.id : redirect.route;
+
+        dispatch(changeRoute(route))
 
     })
 

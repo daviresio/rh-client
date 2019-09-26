@@ -22,7 +22,7 @@ const ButtomSelectOptions = React.forwardRef(({full, icon, style, color, classNa
     }, []);
 
     return (
-        <div ref={node} className={'button-select-container'}>
+        <div ref={node} className={'button-select-container'} style={{zIndex: '1'}}>
             <button ref={ref} onClick={() => setVisible(!visible)} style={style} type={type}
                     className={`button button-${color} ${fullSize} ${minWdth} ${className}`}>{label}</button>
             {visible && <div className={'list-container'}>

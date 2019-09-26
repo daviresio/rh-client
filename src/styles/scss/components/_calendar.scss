@@ -5,8 +5,9 @@
 
   .linha {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     border-left: .1rem solid rgba($color-gray, .6);
+    overflow: hidden;
 
     &:first-child {
       border-top: .1rem solid rgba($color-gray, .6);

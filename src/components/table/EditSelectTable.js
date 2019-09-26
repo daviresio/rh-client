@@ -11,7 +11,6 @@ const EditSelectTable = ({obj = '', options = [], update, data = {}, entity = ''
     const onChange = e => {
         data[obj] = {id: e};
         setValue(e);
-        console.log(e)
     };
 
     const handleSave = () => {
@@ -21,7 +20,14 @@ const EditSelectTable = ({obj = '', options = [], update, data = {}, entity = ''
 
     const input = {input: {value, onChange}};
 
-    const label = () => value ? options.filter(x => x.id === value)[0].nome : 'Sem informacao';
+    const label = () => {
+        if(value) {
+            const v = options.filter(x => x.id === value)[0]
+            if(v) return v.nome
+        }
+
+        return 'Sem informacao'
+    }
 
     return (
         visible ?

@@ -91,12 +91,35 @@ class DatePicker extends Component {
         const days = [];
         let totalDays = monthDays - ((6 - firstDay) + (6 - lastDay));
         if (firstDay === 6 && lastDay === 0) totalDays = totalDays + 7;
-        const arr = Array.apply(0, Array(totalDays)).map((_, i) => (8 - firstDay) + i);
-        while (arr.length >= 7) {
-            days.push(<div className={'linha'}>
-                {arr.splice(0, 7).map((v, i) =>
-                    <div className={'dia ' + this.activeClass(v)} key={v} onClick={() => this.changeDate(v)}>{v}</div>)}
-            </div>)
+
+        let arr = Array.apply(0, Array(totalDays)).map((_, i) => (8 - firstDay) + i);
+
+        while (arr.length >= 3) {
+            if(arr.length >= 7) {
+                days.push(<div className={'linha'}>
+                    {arr.splice(0, 7).map((v, i) =>
+                        <div className={'dia ' + this.activeClass(v)} key={v} onClick={() => this.changeDate(v)}>{v}</div>)}
+                </div>)
+            } else if (arr[arr.length - 1] < 29 && firstDay === 0) {
+                let restArr = [];
+                let lastValue = 0;
+                for (let i = 0; i < 7; i++) {
+                    if (arr[i]) {
+                        lastValue = arr[i];
+                        restArr.push(arr[i])
+                    } else {
+                        lastValue++;
+                        restArr.push(lastValue)
+                    }
+                }
+                days.push(<div className={'linha'}>
+                    {restArr.map((v, i) =>
+                        <div className={'dia ' + this.activeClass(v)} key={v} onClick={() => this.changeDate(v)}>{v}</div>)}
+                </div>)
+                arr = []
+            } else {
+                arr = []
+            }
         }
         return days
     };
