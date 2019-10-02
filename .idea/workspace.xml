@@ -3,27 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="18b0214e-12f5-4daf-aef0-2d28ba4c815c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ButtomSelectOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ButtomSelectOptions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/DatePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/DatePicker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/table/EditSelectTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/table/EditSelectTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/Toolbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/defaultValues.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Anotacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Anotacao.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/ConfiguracaoSindicato.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/ConfiguracaoSindicato.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Contato.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Contato.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Dependente.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Dependente.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Escolaridade.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Escolaridade.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/FaltasEAfastamentos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/FaltasEAfastamentos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/HoleriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/HoleriteModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/ModalInformacoesGeraisColaborador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/ModalInformacoesGeraisColaborador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Salario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Salario.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LogarUsuario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LogarUsuario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/NovaEmpresa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/NovaEmpresa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/EditarColaboradoresEmMassa.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/EditarColaboradoresEmMassa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamento.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/FolhaLancamentoStep2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoManual.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/LancamentoManual.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/modalActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/modalActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/serverActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/serverActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/usuarioActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/usuarioActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Relatorios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Relatorios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/cadastro/CadastroColaboradorStep2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/cadastro/CadastroColaboradorStep2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/desligamento/DesligamentoColaboradorStep1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/desligamento/DesligamentoColaboradorStep1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/comunicacao/LembretesCadastro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/comunicacao/LembretesCadastro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/comunicacao/Mural.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/comunicacao/Mural.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/AdicionarEvento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/AdicionarEvento.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfigurarDecimoTerceiro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfigurarDecimoTerceiro.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/EditarConfiguracoesGerais.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/EditarConfiguracoesGerais.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/notificacoes/AlteracaoDados.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notificacoes/AlteracaoDados.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/css/index.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/css/index.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/components/_calendar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/components/_calendar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/scss/pages/_folha.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/scss/pages/_folha.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/metodosUteis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/metodosUteis.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +185,18 @@
           <expand>
             <path>
               <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@481f60d3" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1f5a92f9" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1f5a92f9" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6906901f" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1f5a92f9" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6906901f" type="9fbbdea:ServiceModel$ServiceNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4e4796f5" type="9fbbdea:ServiceModel$ServiceNode" />
             </path>
           </expand>
           <select />
@@ -462,7 +477,16 @@
       <workItem from="1569236808703" duration="288000" />
       <workItem from="1569282964247" duration="4285000" />
       <workItem from="1569324590241" duration="7000" />
-      <workItem from="1569456180976" duration="4437000" />
+      <workItem from="1569456180976" duration="4743000" />
+      <workItem from="1569589542175" duration="240000" />
+      <workItem from="1569714529543" duration="5279000" />
+      <workItem from="1569759648769" duration="3097000" />
+      <workItem from="1569786473251" duration="2170000" />
+      <workItem from="1569856929247" duration="5481000" />
+      <workItem from="1569890491154" duration="6775000" />
+      <workItem from="1569928119563" duration="45000" />
+      <workItem from="1569946735947" duration="3201000" />
+      <workItem from="1569972050960" duration="6800000" />
     </task>
     <task id="LOCAL-00001" summary="salvando alteracoes">
       <created>1565539254757</created>

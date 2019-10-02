@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
 import {Field, reduxForm} from "redux-form";
@@ -6,13 +6,19 @@ import {connect} from "react-redux";
 import {changeRoute} from "../../store/actions/routerActions";
 import SelectRow from "../../components/form/SelectRow";
 import InputRow from "../../components/form/InputRow";
-import {calculoProporcionalidade, simNaoOptions, tipoCalculoHorasExtras} from "../../config/defaultValues";
+import {simNaoOptions} from "../../config/defaultValues";
+import {loadList} from "../../store/actions/serverActions";
 
-let EditarConfiguracoesGerais = ({router, handleSubmit, changeRoute}) => {
+let EditarConfiguracoesGerais = ({router, handleSubmit, changeRoute, loadData, calculosProporcionalidades, tiposCalculosHorasExtras}) => {
 
     const submit = values => {
 
     };
+
+    useEffect(() => {
+        loadData('calculos-proporcionalidades', 'calculosProporcionalidades');
+        loadData('tipos-calculos-horas-extras', 'tiposCalculosHorasExtras')
+    }, []);
 
     return (
         <>
@@ -29,11 +35,11 @@ let EditarConfiguracoesGerais = ({router, handleSubmit, changeRoute}) => {
                     </div>
                     <div>
                         <Field component={SelectRow} name={'calculoDeProporcionalidade'}
-                               label={'Cálculo de Proporcionalidade'} options={calculoProporcionalidade}/>
+                               label={'Cálculo de Proporcionalidade'} options={calculosProporcionalidades}/>
                         <Field component={InputRow} name={'fap'} label={'FAP'}/>
                         <Field component={InputRow} name={'porcentagemEmpresa'} label={'% Empresa'}/>
                         <Field component={SelectRow} name={'tipoDeCalculoHorasExtras'}
-                               label={'Tipo de cálculo de horas extras'} options={tipoCalculoHorasExtras}/>
+                               label={'Tipo de cálculo de horas extras'} options={tiposCalculosHorasExtras}/>
                     </div>
                 </form>
                 <div className={'botao-direita'}>
@@ -46,4 +52,15 @@ let EditarConfiguracoesGerais = ({router, handleSubmit, changeRoute}) => {
 
 EditarConfiguracoesGerais = reduxForm({form: "editarConfiguracoesGerais"})(EditarConfiguracoesGerais);
 
-export default connect(state => ({router: state.router}), dispatch => ({changeRoute: route => dispatch(changeRoute(route))}))(EditarConfiguracoesGerais);
+const mapStateToProps = state => ({
+    router: state.router,
+    calculosProporcionalidades: state.serverValues.calculosProporcionalidades,
+    tiposCalculosHorasExtras: state.serverValues.tiposCalculosHorasExtras,
+});
+
+const mapDispatchToProps = dispatch => ({
+    changeRoute: route => dispatch(changeRoute(route)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditarConfiguracoesGerais);

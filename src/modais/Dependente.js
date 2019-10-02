@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import InputRow from "../components/form/InputRow";
@@ -13,11 +13,17 @@ import {
 import {connect} from "react-redux";
 import DatePicker from "../components/form/DatePicker";
 import SelectRow from "../components/form/SelectRow";
-import {simNaoOptions, tiposRelacaoDependente} from "../config/defaultValues";
+import {simNaoOptions} from "../config/defaultValues";
 import Checkbox from "../components/form/Checkbox";
 import AlignContentOnGrid from "../components/util/AlignContentOnGrid";
+import {loadList} from "../store/actions/serverActions";
+import {getValue} from "../util/metodosUteis";
 
-let Dependente = ({closeModal, visible, handleSubmit, save, saveAndReload, update, updateAndReload, updateFormArray, data, idReload}) => {
+let Dependente = ({closeModal, visible, handleSubmit, save, saveAndReload, update, updateAndReload, updateFormArray, data, idReload, loadData, relacoesDependentes}) => {
+
+    useEffect(() => {
+        loadData('relacoes-dependentes', 'relacoesDependentes')
+    }, []);
 
     const submit = value => {
         if (updateFormArray) value.id ? update({...value, ...data}, updateFormArray) : save({...value, ...data}, updateFormArray);
@@ -33,7 +39,7 @@ let Dependente = ({closeModal, visible, handleSubmit, save, saveAndReload, updat
                 <Field component={SelectRow} options={simNaoOptions} name={'estrangeiro'} label={'E estrangeiro?'}/>
                 <Field component={InputRow} name={'cpf'} label={'Cpf'}/>
                 <Field component={InputRow} name={'nomeMae'} label={'Nome da mae'}/>
-                <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={tiposRelacaoDependente}/>
+                <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={relacoesDependentes}/>
                 <AlignContentOnGrid margen style={{marginTop: '2rem'}}>
                     <Field component={Checkbox} name={'incluirParaFinsDeImpostoRenda'} label={'Incluir para fins de imposto de renda'}/>
                 </AlignContentOnGrid>
@@ -47,11 +53,14 @@ let Dependente = ({closeModal, visible, handleSubmit, save, saveAndReload, updat
 };
 
 const mapStateToProps = state => ({
-    initialValues: state.modal.dependente.value,
+    initialValues: {
+        ...state.modal.dependente.value, relacao: getValue('relacao.id', state.modal.dependente.value)
+    },
     visible: state.modal.dependente.visible,
     data: state.modal.dependente.data,
     idReload: state.modal.dependente.idReload,
     updateFormArray: state.modal.dependente.updateFormArray,
+    relacoesDependentes: state.serverValues.relacoesDependentes,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -68,6 +77,7 @@ const mapDispatchToProps = dispatch => ({
         id: idReload,
         target: 'colaborador'
     })),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
 });
 
 Dependente = reduxForm({form: 'dependente', enableReinitialize: true})(Dependente);

@@ -1,13 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Buttom from "../../components/Buttom";
 import CardBorda from "../../components/card/CardBorda";
 import {Field, reduxForm} from "redux-form";
 import SelectRow from "../../components/form/SelectRow";
-import {meses, quantidadeParcelasDecimoTerceiro,} from "../../config/defaultValues";
+import {meses} from "../../config/defaultValues";
 import {connect} from "react-redux";
 import {changeRoute} from "../../store/actions/routerActions";
+import {loadList} from "../../store/actions/serverActions";
 
-let ConfigurarDecimoTerceiro = ({router, handleSubmit, changeRoute}) => {
+let ConfigurarDecimoTerceiro = ({router, handleSubmit, changeRoute, parcelasDecimosTerceiros, loadData}) => {
+
+    useEffect(() => {
+        loadData('parcelas-decimos-terceiros', 'parcelasDecimosTerceiros')
+    }, []);
 
     const submit = values => {
 
@@ -19,7 +24,7 @@ let ConfigurarDecimoTerceiro = ({router, handleSubmit, changeRoute}) => {
             <CardBorda title={'Configurar 13 salario'} style={{marginTop: '.5rem'}}>
                 <form onSubmit={handleSubmit(submit)} style={{width: '100%'}} >
                         <Field component={SelectRow} name={'parcelas'} label={'Parcelas'}
-                               options={quantidadeParcelasDecimoTerceiro} />
+                               options={parcelasDecimosTerceiros}/>
                         <Field component={SelectRow} name={'mesPrimeiraParcela'} label={'Mes da primeira parcela'} options={meses} />
                     <div className={'botao-direita'}>
                         <Buttom color={'green'} label={'Salvar'} type={'submit'} />
@@ -32,4 +37,14 @@ let ConfigurarDecimoTerceiro = ({router, handleSubmit, changeRoute}) => {
 
 ConfigurarDecimoTerceiro = reduxForm({form: "configurarDecimoTerceiro"})(ConfigurarDecimoTerceiro);
 
-export default connect(state => ({router: state.router}), dispatch => ({changeRoute: route => dispatch(changeRoute(route))}))(ConfigurarDecimoTerceiro);
+const mapStateToProps = state => ({
+    router: state.router,
+    parcelasDecimosTerceiros: state.serverValues.parcelasDecimosTerceiros,
+});
+
+const mapDispatchToProps = dispatch => ({
+    changeRoute: route => dispatch(changeRoute(route)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConfigurarDecimoTerceiro);

@@ -2,6 +2,11 @@ import React from 'react';
 import Page from "../layout/Page";
 import CardExpanded from "../components/card/CardExpanded";
 import Buttom from "../components/Buttom";
+import {connect} from "react-redux";
+import {downloadExcelFile} from "../util/metodosUteis";
+import {apiUrl} from "../config/api";
+
+const url = apiUrl + '/relatorios/';
 
 const Relatorios = () => {
     return (
@@ -13,53 +18,54 @@ const Relatorios = () => {
 
             <div className={'page-relatorios'}>
                 <CardExpanded title={'Colaboradores - Dados cadastrais'}>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'aniversarios')}>
                         <i className="fas fa-download" />
                         <span>{'Aniversarios'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'dados-bancarios')}>
                         <i className="fas fa-download" />
                         <span>{'Dados bancarios'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'contatos')}>
                         <i className="fas fa-download" />
                         <span>{'Dados de emergencia'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'dependentes')}>
                         <i className="fas fa-download" />
                         <span>{'Dependentes'}</span>
                     </div>
                 </CardExpanded>
 
                 <CardExpanded title={'Colaboradores - Dados de registro'}>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'colaboradoes-vinculos')}>
                         <i className="fas fa-download" />
                         <span>{'Colaboradores por vinculo'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'gestores')}>
                         <i className="fas fa-download" />
                         <span>{'Gestores'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'tempos-casas')}>
                         <i className="fas fa-download" />
                         <span>{'Tempo de casa'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'anotacoes')}>
                         <i className="fas fa-download" />
                         <span>{'Anotacoes'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'}
+                         onClick={() => downloadExcelFile(url + 'atualizacoes-cargos-salarios')}>
                         <i className="fas fa-download" />
                         <span>{'Cargos e salarios'}</span>
                     </div>
                 </CardExpanded>
 
                 <CardExpanded title={'Movimentacao de colaboradores'}>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'admissoes')}>
                         <i className="fas fa-download" />
                         <span>{'Admissoes'}</span>
                     </div>
-                    <div className={'gerar-relatorio'}>
+                    <div className={'gerar-relatorio'} onClick={() => downloadExcelFile(url + 'desligamentos')}>
                         <i className="fas fa-download" />
                         <span>{'Desligamentos'}</span>
                     </div>
@@ -130,4 +136,8 @@ const Relatorios = () => {
     );
 };
 
-export default Relatorios;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Relatorios);

@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
-import {save, search, update} from "../../store/actions/serverActions";
+import {loadList, save, search, update} from "../../store/actions/serverActions";
 import {changeModalVisible} from "../../store/actions/modalActions";
 import {Field, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import Buttom from "../../components/Buttom";
 import CardSimples from "../../components/card/CardSimples";
 import SelectRow from "../../components/form/SelectRow";
-import {simNaoOptions, tiposCalculoSaldoBeneficio, tiposCategoriaBeneficio} from "../../config/defaultValues";
+import {simNaoOptions} from "../../config/defaultValues";
 import InputRow from "../../components/form/InputRow";
 import DatePicker from "../../components/form/DatePicker";
 import Page from "../../layout/Page";
@@ -15,12 +15,15 @@ import Divided from "../../components/util/Divided";
 import {changeRoute} from "../../store/actions/routerActions";
 import CenterContent from "../../components/util/CenterContent";
 import AlignRight from "../../components/util/AlignRight";
+import {getValue} from "../../util/metodosUteis";
 
 
-let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update}) => {
+let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update, calculosSaldoBeneficios, categoriasBeneficios, loadData}) => {
 
     useEffect(() => {
-        if (match.params.id) search(match.params.id)
+        if (match.params.id) search(match.params.id);
+        loadData('calculos-saldos-beneficios', 'calculosSaldoBeneficios');
+        loadData('categorias-beneficios', 'categoriasBeneficios')
     }, []);
 
     const submit = values => match.params.id ? update(values, {redirect: {route: '/beneficios', field: 'beneficio'}}) : save(values, {
@@ -39,7 +42,8 @@ let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update
                     <Field component={InputRow} name={'nome'} label={'Nome'} required/>
                     <Field component={InputRow} name={'operador'} label={'Operador'} required/>
                     <Field component={InputRow} name={'cnpjOperador'} label={'CNPJ do operador'}/>
-                    <Field component={SelectRow} name={'categoria'} label={'Categoria'} options={tiposCategoriaBeneficio} required/>
+                    <Field component={SelectRow} name={'categoria'} label={'Categoria'} options={categoriasBeneficios}
+                           required/>
                     <Divided/>
                     <CenterContent>
                         <div>
@@ -54,7 +58,8 @@ let BeneficioCadastro = ({changeRoute, handleSubmit, save, match, search, update
                         </div>
                     </CenterContent>
                     <Divided/>
-                    <Field component={SelectRow} name={'tipoCalculoSaldo'} label={'Como e calculado o saldo?'} options={tiposCalculoSaldoBeneficio} required/>
+                    <Field component={SelectRow} name={'tipoCalculoSaldo'} label={'Como e calculado o saldo?'}
+                           options={calculosSaldoBeneficios} required/>
                     <Field component={SelectRow} name={'custoDaEmpresaPagoPeloColaborador'}
                            label={' O custo da empresa é pago para o colaborador na folha? '} options={simNaoOptions}
                            detail={' Se marcar como “Sim” neste campo, os valores definidos futuramente para cada colaborador' +
@@ -80,7 +85,13 @@ BeneficioCadastro = reduxForm({form: 'beneficio', enableReinitialize: true})(Ben
 const mapStateToProps = state => ({
     router: state.router,
     modal: state.modal,
-    initialValues: state.serverValues.beneficio,
+    initialValues: {
+        ...state.serverValues.beneficio,
+        tipoCalculoSaldo: getValue('tipoCalculoSaldo.id', state.serverValues.beneficio),
+        categoria: getValue('categoria.id', state.serverValues.beneficio),
+    },
+    calculosSaldoBeneficios: state.serverValues.calculosSaldoBeneficios,
+    categoriasBeneficios: state.serverValues.categoriasBeneficios,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -89,6 +100,7 @@ const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     save: (value, redirect) => dispatch(save('beneficios', value, redirect)),
     update: (value, redirect) => dispatch(update('beneficios', value, redirect)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BeneficioCadastro);

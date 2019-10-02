@@ -6,7 +6,6 @@ import Buttom from "../../components/Buttom";
 import {Field, reduxForm} from "redux-form";
 import {connect} from "react-redux";
 import MultipleSelectRow from "../../components/form/MultipleSelectRow";
-import {tiposRelacaoContato} from "../../config/defaultValues";
 
 let AlteracaoDados = ({handleSubmit}) => {
 
@@ -43,7 +42,7 @@ let AlteracaoDados = ({handleSubmit}) => {
                     <Divided/>
                     <Field name={'gestor'} component={Checkbox} label={'Gestor que alterou seus dados'} type={'checkbox'} normalize={v => v === 'true'}/>
                     <Divided/>
-                    <Field label={'Contadores'} name={'contadores'} component={MultipleSelectRow} options={tiposRelacaoContato}/>
+                    <Field label={'Contadores'} name={'contadores'} component={MultipleSelectRow} options={[]}/>
                     <Divided/>
                     <InputRow label={'Outros e-mails'}/>
 

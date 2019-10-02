@@ -10,14 +10,16 @@ import Checklist from "./Checklist";
 import Message from "../../../components/util/Message";
 import {openModalAndUpdateFormArray} from "../../../store/actions/modalActions";
 import DatePicker from "../../../components/form/DatePicker";
-import {tiposCorRaca, tiposEstadoCivil, tiposSexo} from "../../../config/defaultValues";
 import {formateDate, getValue, parseDate} from "../../../util/metodosUteis";
 import Edit from "../../../components/util/Edit";
 import Delete from "../../../components/util/Delete";
 import ButtomAdicionar from "../../../components/ButtomAdicionar";
 
 
-let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, search, update, modal, openModal, formValues, removeEntytyFromForm, ...props}) => {
+let CadastroColaboradorStep2 = ({
+                                    loadData, handleSubmit, match, router, setId, search, update, modal, openModal, formValues,
+                                    removeEntytyFromForm, coresRacas, sexos, estadosCivis, ...props
+                                }) => {
 
     const buttonSubmit = useRef(null);
     const [saveOnly, setSaveOnly] = useState(true);
@@ -28,7 +30,10 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
         setId(id);
         search(id);
         loadData('contatos');
-        loadData('dependentes')
+        loadData('dependentes');
+        loadData('cores-racas', 'coresRacas');
+        loadData('sexos', 'sexos');
+        loadData('estados-civis', 'estadosCivis')
     }, []);
 
     const submit = values => saveOnly ? update({...values, id: match.params.id}, {
@@ -145,12 +150,12 @@ let CadastroColaboradorStep2 = ({loadData, handleSubmit, match, router, setId, s
                     <CardSimples>
                         <Field component={DatePicker} name={'dataNascimento'} label={'Data de nascimento'}/>
                         <Field component={InputRow} name={'nacionalidade'} label={'Nacionalidade'}/>
-                        <Field component={SelectRow} name={'corRaca'} label={'Cor/Raca'} options={tiposCorRaca}/>
+                        <Field component={SelectRow} name={'corRaca'} label={'Cor/Raca'} options={coresRacas}/>
                         <Field component={InputRow} name={'naturalEstado'} label={'Natural do estado'}/>
                         <Field component={InputRow} name={'naturalCidade'} label={'Natural da cidade'}/>
-                        <Field component={SelectRow} name={'sexo'} label={'Sexo'} options={tiposSexo}/>
+                        <Field component={SelectRow} name={'sexo'} label={'Sexo'} options={sexos}/>
                         <Field component={SelectRow} name={'estadoCivil'} label={'Estado civil'}
-                               options={tiposEstadoCivil}/>
+                               options={estadosCivis}/>
                         <Field component={InputRow} name={'nomeMae'} label={'Nome da mae'}/>
                         <Field component={InputRow} name={'nomePai'} label={'Nome do pai'}/>
                     </CardSimples>
@@ -213,14 +218,17 @@ const mapStateToProps = state => {
     return {
         router: state.router,
         modal: state.modal,
+        coresRacas: state.serverValues.coresRacas,
+        sexos: state.serverValues.sexos,
+        estadosCivis: state.serverValues.estadosCivis,
         initialValues: {
             dataNascimento: colaborador.dataNascimento,
             nacionalidade: colaborador.nacionalidade,
-            corRaca: colaborador.corRaca,
+            corRaca: getValue('corRaca.id', colaborador),
             naturalEstado: colaborador.naturalEstado,
             naturalCidade: colaborador.naturalCidade,
-            sexo: colaborador.sexo,
-            estadoCivil: colaborador.estadoCivil,
+            sexo: getValue('sexo.id', colaborador),
+            estadoCivil: getValue('estadoCivil.id', colaborador),
             nomeMae: colaborador.nomeMae,
             nomePai: colaborador.nomePai,
             telefone: colaborador.telefone,

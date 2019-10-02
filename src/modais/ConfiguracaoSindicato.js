@@ -1,7 +1,12 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
 import {closeModal} from "../store/actions/modalActions";
-import {loadList, removeAndReloadWihoutDoMore, saveAndReloadWihoutDoMoreAndResetForm, search} from "../store/actions/serverActions";
+import {
+    loadList,
+    removeAndReloadWihoutDoMore,
+    saveAndReloadWihoutDoMoreAndResetForm,
+    search
+} from "../store/actions/serverActions";
 import {Field, formValueSelector, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
 import Buttom from "../components/Buttom";
@@ -10,15 +15,15 @@ import SelectRow from "../components/form/SelectRow";
 import TableManual from "../components/table/TableManual";
 import Delete from "../components/util/Delete";
 import CenterContent from "../components/util/CenterContent";
-import {tiposConfiguracaoSindicato} from "../config/defaultValues";
 
-let ConfiguracaoSindicato = ({closeModal, visible, handleSubmit, save, idReload, data, remove, tipoSelected, sindicato, search}) => {
+let ConfiguracaoSindicato = ({closeModal, visible, handleSubmit, save, idReload, loadData, data, remove, tipoSelected, sindicato, search, tiposAdicionaisSindicato}) => {
 
 
     const submit = v => save({...v, ...data}, idReload);
 
     useEffect(() => {
-        if (idReload) search(idReload)
+        if (idReload) search(idReload);
+        loadData('tipos-adicionais-sindicatos', 'tiposAdicionaisSindicato')
     }, [idReload]);
 
     const getValue = v => v && v !== 0 ? v + '%' : '-';
@@ -28,7 +33,7 @@ let ConfiguracaoSindicato = ({closeModal, visible, handleSubmit, save, idReload,
             <form onSubmit={handleSubmit(submit)}>
 
                 <Field component={InputRow} name={'nome'} label={'Nome'} required/>
-                <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tiposConfiguracaoSindicato} required/>
+                <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tiposAdicionaisSindicato} required/>
                 {tipoSelected === 1 || tipoSelected === 3 ? <Field component={InputRow} name={'horaExtra'} label={'% de hora extra'} required/> : null}
                 {tipoSelected === 2 || tipoSelected === 3 ? <Field component={InputRow} name={'adicional'} label={'% de adicional'} required/> : null}
 
@@ -74,7 +79,8 @@ const mapStateToProps = state => {
         idReload: state.modal.configuracaoSindicato.idReload,
         data: state.modal.configuracaoSindicato.data,
         sindicato: state.serverValues.sindicato,
-        tipoSelected: selector(state, 'tipo')
+        tipoSelected: selector(state, 'tipo'),
+        tiposAdicionaisSindicato: state.serverValues.tiposAdicionaisSindicato,
     }
 
 };

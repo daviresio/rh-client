@@ -1,4 +1,5 @@
 import * as axios from "axios";
+import {getToken} from "../config/auth";
 
 export const isEmpty = v => v === undefined || v === null || Object.keys(v).length === 0;
 
@@ -29,6 +30,29 @@ export const downloadFile = async fileUrl => {
     })
 };
 
+export const downloadExcelFile = async fileUrl => {
+
+    let params = {
+        url: fileUrl, method: 'GET', responseType: 'blob', headers: {
+            authorization: `Bearer ${getToken()}`,
+            'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        }
+    };
+
+    return await axios(params).then((response) => {
+        const blob = new Blob([response.data], {
+            type: 'application/octet-stream'
+        });
+        console.log(response);
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = response.headers['content-disposition'].replace(/.+filename=/, '');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link)
+    })
+};
+
 export const arrayToObj = arr =>
     arr.length > 0 ? arr.reduce((obj, item) => Object.assign(obj, item)) : null;
 
@@ -44,4 +68,4 @@ export const randomId = () => {
     const S4 = () => (((1+Math.random())*0x10000)|0).toString(16).substring(1);
 
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-}
+};

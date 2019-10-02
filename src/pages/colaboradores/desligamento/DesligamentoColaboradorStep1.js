@@ -13,15 +13,20 @@ import TextAreaRow from "../../../components/form/TextAreaRow";
 import MultipleSelectRow from "../../../components/form/MultipleSelectRow";
 import Buttom from "../../../components/Buttom";
 import {formateDateFull, getValue, mapAndGetId} from "../../../util/metodosUteis";
-import {simNaoOptions, tiposAvisoPrevio, tiposTipoDesligamento} from "../../../config/defaultValues";
+import {simNaoOptions} from "../../../config/defaultValues";
 
-let DesligamentoColaboradorStep1 = ({handleSubmit, match, router, setId, search, update, save, colaborador, loadData, contadores, ...props}) => {
+let DesligamentoColaboradorStep1 = ({
+                                        handleSubmit, match, router, setId, search, update, save, colaborador, loadData, contadores,
+                                        tiposAvisosPrevios, tiposDesligamentos, ...props
+                                    }) => {
 
     useEffect(() => {
         props.dispatch({type: 'DELETAR_COLABORADOR'});
         setId(match.params.id);
         search(match.params.id);
-        loadData('contadores')
+        loadData('contadores');
+        loadData('tipos-avisos-previos', 'tiposAvisosPrevios');
+        loadData('tipos-desligamentos', 'tiposDesligamentos')
     }, []);
 
 
@@ -92,8 +97,10 @@ let DesligamentoColaboradorStep1 = ({handleSubmit, match, router, setId, search,
             </DividedHeader>
 
             <form onSubmit={handleSubmit(submit)}>
-                <Field name={'tipo'} component={SelectRow} label={'Tipo de desligamento'} options={tiposTipoDesligamento} required/>
-                <Field name={'aviso'} component={SelectRow} label={'Aviso previo'} options={tiposAvisoPrevio} required/>
+                <Field name={'tipo'} component={SelectRow} label={'Tipo de desligamento'} options={tiposDesligamentos}
+                       required/>
+                <Field name={'aviso'} component={SelectRow} label={'Aviso previo'} options={tiposAvisosPrevios}
+                       required/>
                 <Field name={'dataAviso'} component={DatePicker} label={'Data do aviso previo'}/>
                 <Field name={'dataDesligamento'} component={DatePicker} label={'Data do desligamento (considerando ultimo dia de trabalho efetivo)'} required/>
                 <Field name={'exameDemissional'} component={SelectRow} label={'Exame demissional realizado'} options={simNaoOptions} required/>
@@ -119,13 +126,20 @@ DesligamentoColaboradorStep1 = reduxForm({form: 'desligarColaborador', enableRei
 const mapStateToProps = state => ({
     router: state.router,
     colaborador: state.serverValues.colaborador,
-    initialValues: {...getValue('desligamento', state.serverValues.colaborador), contadores: mapAndGetId(getValue('desligamento.contadores', state.serverValues.colaborador))},
+    initialValues: {
+        ...getValue('desligamento', state.serverValues.colaborador),
+        contadores: mapAndGetId(getValue('desligamento.contadores', state.serverValues.colaborador)),
+        aviso: getValue('desligamento.aviso.id', state.serverValues.colaborador),
+        tipo: getValue('desligamento.tipo.id', state.serverValues.colaborador)
+    },
     contadores: state.serverValues.contadores,
+    tiposAvisosPrevios: state.serverValues.tiposAvisosPrevios,
+    tiposDesligamentos: state.serverValues.tiposDesligamentos,
 });
 
 const mapDispatchToProps = dispatch => ({
     search: id => dispatch(search('colaboradores', id, 'colaborador')),
-    loadData: entity => dispatch(loadList(entity)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
     save: (value, redirect) => dispatch(save('desligamentos', value, redirect)),
     update: (value, redirect) => dispatch(update('desligamentos', value, redirect)),
 });

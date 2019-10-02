@@ -1,7 +1,9 @@
 import axios from "axios";
 import {getToken, logoutAndRedirectToLogin} from "./auth";
 
-const api = axios.create({baseURL: 'http://localhost:4000'});
+export const apiUrl = 'http://localhost:4000';
+
+const api = axios.create({baseURL: apiUrl});
 
 api.interceptors.request.use(config => {
     const token = getToken();

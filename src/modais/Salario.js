@@ -1,6 +1,10 @@
 import React, {useEffect} from 'react';
 import {connect} from "react-redux";
-import {closeModal, saveModalAndReloadOtherEntity, updateModalAndReloadOtherEntity} from "../store/actions/modalActions";
+import {
+    closeModal,
+    saveModalAndReloadOtherEntity,
+    updateModalAndReloadOtherEntity
+} from "../store/actions/modalActions";
 import {loadList} from "../store/actions/serverActions";
 import {Field, reduxForm} from "redux-form";
 import Modal from "../components/Modal";
@@ -8,18 +12,19 @@ import Buttom from "../components/Buttom";
 import InputRow from "../components/form/InputRow";
 import SelectRow from "../components/form/SelectRow";
 import DatePicker from "../components/form/DatePicker";
-import {motivosAlteracaoSalario} from "../config/defaultValues";
 import TextAreaRow from "../components/form/TextAreaRow";
 import Checkbox from "../components/form/Checkbox";
 import AlignContentOnGrid from "../components/util/AlignContentOnGrid";
+import {getValue} from "../util/metodosUteis";
 
-let Salario = ({closeModal, visible, handleSubmit, save, update, idReload, serverValues, loadData, data}) => {
+let Salario = ({closeModal, visible, handleSubmit, save, update, idReload, serverValues, loadData, data, motivosAlteracoesSalario}) => {
     const {cargos, departamentos, vinculos} = serverValues;
 
     useEffect(() => {
         loadData('cargos');
         loadData('departamentos');
-        loadData('vinculos')
+        loadData('vinculos');
+        loadData('motivos-alteracoes-salarios', 'motivosAlteracoesSalario')
     }, []);
 
     const submit = value => value.id ? update({...value, ...data}, idReload) : save({...value, ...data}, idReload);
@@ -35,7 +40,7 @@ let Salario = ({closeModal, visible, handleSubmit, save, update, idReload, serve
                 <Field component={SelectRow} name={'departamento'} label={'Departamento'} options={departamentos}/>
                 <Field component={SelectRow} name={'vinculo'} label={'Vinculo'} options={vinculos}/>
                 <Field component={InputRow} name={'salario'} label={'Salário (R$)'}/>
-                <Field component={SelectRow} name={'motivo'} label={'Motivo'} options={motivosAlteracaoSalario}/>
+                <Field component={SelectRow} name={'motivo'} label={'Motivo'} options={motivosAlteracoesSalario}/>
                 <Field component={TextAreaRow} name={'justificativa'} label={'Justificativa'}/>
                 <AlignContentOnGrid style={{marginBottom: '2rem', marginLeft: '1.5rem'}}>
                     <Field component={Checkbox} name={'atualizar'} label={'Atualizar funcionario?'} type={'checkbox'}/>
@@ -52,11 +57,14 @@ let Salario = ({closeModal, visible, handleSubmit, save, update, idReload, serve
 Salario = reduxForm({form: 'salario', enableReinitialize: true})(Salario);
 
 const mapStateToProps = state => ({
-    initialValues: state.modal.salario.value,
+    initialValues: {
+        ...state.modal.salario.value, motivo: getValue('motivo.id', state.modal.salario.value),
+    },
     visible: state.modal.salario.visible,
     idReload: state.modal.salario.idReload,
     data: state.modal.salario.data,
     serverValues: state.serverValues,
+    motivosAlteracoesSalario: state.serverValues.motivosAlteracoesSalario,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Buttom from "../../components/Buttom";
 import {connect} from "react-redux";
 import CardBorda from "../../components/card/CardBorda";
@@ -9,10 +9,14 @@ import Divided from "../../components/util/Divided";
 import Checkbox from "../../components/form/Checkbox";
 import RadioButton from "../../components/form/RadioButton";
 import {changeRoute} from "../../store/actions/routerActions";
-import {tipoProvento} from "../../config/defaultValues";
-import {save} from "../../store/actions/serverActions";
+import {loadList, save} from "../../store/actions/serverActions";
+import {getValue} from "../../util/metodosUteis";
 
-let AdicionarEvento = ({router, handleSubmit, changeRoute, save}) => {
+let AdicionarEvento = ({router, handleSubmit, changeRoute, save, loadData, tiposProventos}) => {
+
+    useEffect(() => {
+        loadData('tipos-proventos', 'tiposProventos')
+    }, []);
 
     const submit = values => {
         save(values, {redirect: {route: '/folha/configuracao'}})
@@ -26,7 +30,7 @@ let AdicionarEvento = ({router, handleSubmit, changeRoute, save}) => {
                     <Field component={InputRow} name={'nome'} label={'Nome'} required/>
                     <Field component={InputRow} name={'codigo'} label={'Codigo'} required/>
                     <Field component={InputRow} name={'eSocial'} label={'eSocial'}/>
-                    <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tipoProvento} required/>
+                    <Field component={SelectRow} name={'tipo'} label={'Tipo'} options={tiposProventos} required/>
 
                     <Divided/>
                         <h2>Tibutar para</h2> <br/>
@@ -55,11 +59,14 @@ AdicionarEvento = reduxForm({form: "adicionarEvento"})(AdicionarEvento);
 
 const mapStateToProps = state => ({
     router: state.router,
+    tiposProventos: state.serverValues.tiposProventos,
+    initialValues: {...state.serverValues.evento, tipo: getValue('tipo.id', state.serverValues.evento)},
 });
 
 const mapDispatchToProps = dispatch => ({
     changeRoute: route => dispatch(changeRoute(route)),
     save: (value, redirect) => dispatch(save('eventos', value, redirect)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdicionarEvento);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Modal from "../components/Modal";
 import {Field, reduxForm} from "redux-form";
 import InputRow from "../components/form/InputRow";
@@ -12,9 +12,14 @@ import {
 } from "../store/actions/modalActions";
 import {connect} from "react-redux";
 import SelectRow from "../components/form/SelectRow";
-import {tiposRelacaoContato} from "../config/defaultValues";
+import {loadList} from "../store/actions/serverActions";
+import {getValue} from "../util/metodosUteis";
 
-let Contato = ({closeModal, visible, handleSubmit, save, saveAndReload, update, updateAndReload, updateFormArray, data, idReload}) => {
+let Contato = ({closeModal, visible, handleSubmit, save, saveAndReload, update, updateAndReload, updateFormArray, data, idReload, loadData, relacoesContatos}) => {
+
+    useEffect(() => {
+        loadData('relacoes-contatos', 'relacoesContatos')
+    }, []);
 
     const submit = value => {
         if (updateFormArray) value.id ? update({...value, ...data}, updateFormArray) : save({...value, ...data}, updateFormArray);
@@ -30,7 +35,7 @@ let Contato = ({closeModal, visible, handleSubmit, save, saveAndReload, update, 
                 <Field component={InputRow} name={'telefone'} label={'Telefone'}/>
                 <Field component={InputRow} name={'celular'} label={'Celular'}/>
                 <Field component={InputRow} name={'telefoneTrabalho'} label={'Telefone de trabalho'}/>
-                <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={tiposRelacaoContato} required/>
+                <Field component={SelectRow} name={'relacao'} label={'Relacao'} options={relacoesContatos} required/>
                 <div className={'modal-footer'}>
                     <Buttom style={{marginRight: '2rem'}} color={'red'} label={'Cancelar'} onClick={closeModal}/>
                     <Buttom color={'blue'} label={'Salvar'} type={'submit'}/>
@@ -42,11 +47,14 @@ let Contato = ({closeModal, visible, handleSubmit, save, saveAndReload, update, 
 };
 
 const mapStateToProps = state => ({
-    initialValues: state.modal.contato.value,
+    initialValues: {
+        ...state.modal.contato.value, relacao: getValue('relacao.id', state.modal.contato.value)
+    },
     visible: state.modal.contato.visible,
     data: state.modal.contato.data,
     idReload: state.modal.contato.idReload,
     updateFormArray: state.modal.contato.updateFormArray,
+    relacoesContatos: state.serverValues.relacoesContatos,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -55,6 +63,7 @@ const mapDispatchToProps = dispatch => ({
     update: (value, updateFormArray) => dispatch(updateModalAndUpdateFormArray('contatos', value, 'contato', updateFormArray)),
     saveAndReload: (value, idReload) => dispatch(saveModalAndReloadOtherEntity('contatos', value, 'contato', {entity: 'colaboradores', id: idReload, target: 'colaborador'},)),
     updateAndReload: (value, idReload) => dispatch(updateModalAndReloadOtherEntity('contatos', value, 'contato', {entity: 'colaboradores', id: idReload, target: 'colaborador'})),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
 });
 
 Contato = reduxForm({form: 'contato', enableReinitialize: true})(Contato);
