@@ -40,9 +40,7 @@ export const search = (entity, value, field) => dispatch => {
 };
 
 export const save = (entity, value, options) => async dispatch => {
-    console.log(value);
     await api.post(`/${entity}`, value).then(result => {
-        console.log(options);
         const target = options && options.target ? options.target : entity;
         dispatch({type: SAVE_SUCESS, payload: {target: target, value: result.data}});
 
@@ -68,15 +66,11 @@ export const save = (entity, value, options) => async dispatch => {
             dispatch(changeRoute(route))
         }
     }).catch(e => {
-        console.log(e);
         dispatch({type: SAVE_FALIED})
     })
 };
 
 export const update = (entity, value, options) => async dispatch => {
-    console.log(entity);
-    console.log(value);
-    console.log(options);
     await api.put(`/${entity}`, value).then(async result => {
 
         if (options && options.list) {
@@ -90,7 +84,6 @@ export const update = (entity, value, options) => async dispatch => {
 
             if (options.updateForm) {
                 await api.get(`/${entity}/${options.updateForm.parentRoute}/${options.updateForm.parent}`).then(({data}) => {
-                    console.log(result);
                     dispatch(change(options.updateForm.form, options.updateForm.field, data))
                 })
             }
@@ -226,7 +219,6 @@ export const removeAndReloadWihoutDoMore = (entity, value, reload) => dispatch =
 
 export const updateAndReloadOtherEntity = (entity, value, reload) => dispatch => {
     api.put(`/${entity}`, value).then(() => {
-        console.log(reload);
 
         dispatch({type: 'CLEAR_DATA', payload: {target: 'fechamentoFolha'}})
 

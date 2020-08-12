@@ -19,4 +19,12 @@ caso queira rodar a aplicacao em sua maquina execute primeiro as 2 apis e os 2 c
 
 depois acesse a pagina statica do gatsby em http://localhost:8000 e faca um cadastro (ou logue, caso ja exista um) 
 para ser redirecionado para o cliente web, pois `e necessario estar logado para acessa-lo visto que a api na api os registros
-sao baseados nao apenas no usuario, mas tambem a empresa selecionada
+sao baseados nao apenas no usuario, mas tambem a empresa selecionada<br /><br />
+
+![](printscrenns/printscreen_beneficios.png)<br /><br />
+![](printscrenns/printscreen_colaboradores.png)<br /><br />
+![](printscrenns/printscreen_configuracoes.png)<br /><br />
+![](printscrenns/printscreen_ferias.png)<br /><br />
+![](printscrenns/printscreen_folha_pagamento.png)<br /><br />
+![](printscrenns/printscreen_home.png)<br /><br />
+![](printscrenns/printscreen_notificacoes.png)

@@ -18,7 +18,7 @@ const Beneficios = ({changeRoute, loadData, beneficios}) => {
                 {nome}
             </div>
             <div className={'tipo'}>
-                {categoria}
+                {categoria ? categoria.nome : '-'}
             </div>
             <div className={'operador'}>
                 Operador: &nbsp; {operador}

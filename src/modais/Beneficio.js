@@ -13,7 +13,10 @@ import {getValue} from "../util/metodosUteis";
 import Input from "../components/form/Input";
 import Message from "../components/util/Message";
 
-const ShowLabelValue = ({input}) => <div className={'valor'}>{input.value}</div>;
+const ShowLabelValue = ({input}) => {
+    console.log(input.value)
+    return <div className={'valor'}>{typeof input.value === 'object' ? input.value.nome : input.value}</div>;
+}
 
 let Beneficio = ({closeModal, visible, saveAndReload, updateAndReload, data, idReload, loadData, beneficios, colaborador, handleSubmit, beneficioSelecionado}) => {
 

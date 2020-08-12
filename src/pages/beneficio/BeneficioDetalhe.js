@@ -84,7 +84,7 @@ let BeneficioDetalhe = ({match, search, changeRoute, beneficio, loadData, qtdCol
                         </div>
                         <div className={'beneficio-detalhe-item'}>
                             <div className={'chave'}>Categoria</div>
-                            <div className={'valor'}>{beneficio.categoria}</div>
+                            <div className={'valor'}>{beneficio.categoria ? beneficio.categoria.nome : '-'}</div>
                         </div>
                         <div className={'beneficio-detalhe-item'}>
                             <div className={'chave'}>Operador</div>

@@ -3,33 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="18b0214e-12f5-4daf-aef0-2d28ba4c815c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/defaultValues.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/defaultValues.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Anotacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Anotacao.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/ConfiguracaoSindicato.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/ConfiguracaoSindicato.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Contato.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Contato.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Dependente.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Dependente.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Escolaridade.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Escolaridade.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/FaltasEAfastamentos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/FaltasEAfastamentos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/HoleriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/HoleriteModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/LancamentoHoleriteModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/ModalInformacoesGeraisColaborador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/ModalInformacoesGeraisColaborador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Salario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Salario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LogarUsuario.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LogarUsuario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Relatorios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Relatorios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/beneficio/BeneficioCadastro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/cadastro/CadastroColaboradorStep2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/cadastro/CadastroColaboradorStep2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/desligamento/DesligamentoColaboradorStep1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/desligamento/DesligamentoColaboradorStep1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/comunicacao/LembretesCadastro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/comunicacao/LembretesCadastro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/comunicacao/Mural.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/comunicacao/Mural.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/AdicionarEvento.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/AdicionarEvento.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfigurarDecimoTerceiro.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/ConfigurarDecimoTerceiro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/folha-pagamento/EditarConfiguracoesGerais.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/folha-pagamento/EditarConfiguracoesGerais.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/notificacoes/AlteracaoDados.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/notificacoes/AlteracaoDados.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/serverValuesReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/metodosUteis.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/metodosUteis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/form/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Checkbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modais/Beneficio.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Beneficio.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Beneficios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Beneficios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/beneficio/BeneficioDetalhe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/beneficio/BeneficioDetalhe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/VisualizarColaborador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/VisualizarColaborador.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/serverActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/serverActions.js" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,25 +45,39 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rh-contador" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.4.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rh-server-relatorio" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
     <property name="node.js.selected.package.standard" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
-    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_interpreter_path" value="/usr/local/lib/node-v14.4.0-linux-x64/bin/node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
@@ -101,19 +96,7 @@
       <recent name="$PROJECT_DIR$/src/components/util" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="renders without crashing" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -133,11 +116,11 @@
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
+          <option name="imageTag" value="" />
           <option name="buildCliOptions" value="" />
           <option name="command" value="" />
           <option name="containerName" value="" />
           <option name="entrypoint" value="" />
-          <option name="imageTag" value="" />
           <option name="commandLineOptions" value="" />
           <option name="sourceFilePath" value="Dockerfile" />
         </settings>
@@ -159,7 +142,7 @@
         <script value="dev" />
       </scripts>
       <node-interpreter value="project" />
-      <package-manager value="yarn" />
+      <package-manager value="npm" />
       <envs />
       <method v="2" />
     </configuration>
@@ -177,32 +160,6 @@
         <item itemvalue="Docker.Dockerfile" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1f5a92f9" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1f5a92f9" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6906901f" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-            <path>
-              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@1f5a92f9" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@6906901f" type="9fbbdea:ServiceModel$ServiceNode" />
-              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@4e4796f5" type="9fbbdea:ServiceModel$ServiceNode" />
-            </path>
-          </expand>
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -487,6 +444,9 @@
       <workItem from="1569928119563" duration="45000" />
       <workItem from="1569946735947" duration="3201000" />
       <workItem from="1569972050960" duration="6800000" />
+      <workItem from="1596513615569" duration="105000" />
+      <workItem from="1596585757301" duration="11000" />
+      <workItem from="1597190682928" duration="3914000" />
     </task>
     <task id="LOCAL-00001" summary="salvando alteracoes">
       <created>1565539254757</created>
@@ -517,16 +477,14 @@
     </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -545,6 +503,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -556,6 +515,40 @@
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2429" y="174" key="#dev" timestamp="1597190747453">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state x="2429" y="174" key="#dev/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190747453" />
+    <state x="2522" y="247" key="FileChooserDialogImpl" timestamp="1597190777016">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state x="2522" y="247" key="FileChooserDialogImpl/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190777016" />
+    <state width="2537" height="253" key="GridCell.Tab.0.bottom" timestamp="1597190808346">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2537" height="253" key="GridCell.Tab.0.bottom/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190808346" />
+    <state width="2537" height="253" key="GridCell.Tab.0.center" timestamp="1597190808346">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2537" height="253" key="GridCell.Tab.0.center/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190808346" />
+    <state width="2537" height="253" key="GridCell.Tab.0.left" timestamp="1597190808346">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2537" height="253" key="GridCell.Tab.0.left/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190808346" />
+    <state width="2537" height="253" key="GridCell.Tab.0.right" timestamp="1597190808346">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state width="2537" height="253" key="GridCell.Tab.0.right/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190808346" />
+    <state x="2235" y="124" key="SettingsEditor" timestamp="1597190730058">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state x="2235" y="124" key="SettingsEditor/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597190730058" />
+    <state x="2397" y="216" width="672" height="678" key="search.everywhere.popup" timestamp="1597196431627">
+      <screen x="1454" y="0" width="2560" height="1080" />
+    </state>
+    <state x="2397" y="216" width="672" height="678" key="search.everywhere.popup/1454.0.2560.1080/4022.55.1600.900/0.95.1440.900@1454.0.2560.1080" timestamp="1597196431627" />
   </component>
   <component name="masterDetails">
     <states>

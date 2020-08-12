@@ -10,10 +10,13 @@ const Checkbox = ({label, ...props}) => {
     return (
         <label className={'checkbox'}>
             <input type="checkbox" name={'check'} {...props} onChange={() => {
+
                 if (props.input) {
+                    if(props.input.onChange) {
                     props.input.onChange(!v);
                     setV(!v)
-                } else {
+                    }
+                } else if(props.onChange) {
                     props.onChange(!v);
                     setV(!v)
                 }
