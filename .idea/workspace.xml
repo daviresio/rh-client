@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:npm_and_yarn" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="18b0214e-12f5-4daf-aef0-2d28ba4c815c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/form/Checkbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/form/Checkbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modais/Beneficio.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/modais/Beneficio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Beneficios.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Beneficios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/beneficio/BeneficioDetalhe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/beneficio/BeneficioDetalhe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/colaboradores/VisualizarColaborador.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/colaboradores/VisualizarColaborador.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/serverActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/serverActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +80,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.4.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rh-server-relatorio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/printscrenns" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -81,19 +105,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/pages/configuracao" />
-      <recent name="$PROJECT_DIR$/src/pages/colaboradores/cadastro" />
-      <recent name="$PROJECT_DIR$/src/components/stepper" />
-      <recent name="$PROJECT_DIR$/src/components/table" />
-      <recent name="$PROJECT_DIR$/src/pages/colaboradores/disidio" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/printscrenns" />
       <recent name="$PROJECT_DIR$/src/components/form" />
       <recent name="$PROJECT_DIR$/src/pages/colaboradores" />
       <recent name="$PROJECT_DIR$/src/modais" />
       <recent name="$PROJECT_DIR$/src/components/table" />
-      <recent name="$PROJECT_DIR$/src/components/util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/pages/configuracao" />
+      <recent name="$PROJECT_DIR$/src/pages/colaboradores/cadastro" />
+      <recent name="$PROJECT_DIR$/src/components/stepper" />
+      <recent name="$PROJECT_DIR$/src/components/table" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
@@ -446,7 +470,7 @@
       <workItem from="1569972050960" duration="6800000" />
       <workItem from="1596513615569" duration="105000" />
       <workItem from="1596585757301" duration="11000" />
-      <workItem from="1597190682928" duration="3914000" />
+      <workItem from="1597190682928" duration="4862000" />
     </task>
     <task id="LOCAL-00001" summary="salvando alteracoes">
       <created>1565539254757</created>
