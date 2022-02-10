@@ -4,25 +4,21 @@ import Buttom from "../../components/Buttom";
 import Edit from "../../components/util/Edit";
 import Delete from "../../components/util/Delete";
 import {connect} from "react-redux";
-import {changeModalVisible} from "../../store/actions/modalActions";
-import Cargo from "./modais/Cargo";
-import Departamento from "./modais/Departamento";
-import CentroDeCusto from "./modais/CentroDeCusto";
+import {openModal} from "../../store/actions/modalActions";
 import {loadList, remove} from "../../store/actions/serverActions";
 
 const InformacoesAdicionais = props => {
 
-    const {cargo, departamento, centroDeCusto} = props.modal
-    const {openModal, loadData, remove} = props
-    const {cargos, departamentos, centroDeCustos} = props.serverValues
+    const {openModal, loadData, remove} = props;
+    const {cargos, departamentos, centroDeCustos} = props.serverValues;
 
     useEffect(() => {
-        loadData('departamentos')
-        loadData('cargos')
-        loadData('centroDeCustos')
-    }, [])
+        loadData('departamentos');
+        loadData('cargos');
+        loadData('centrodecustos', 'centroDeCustos')
+    }, []);
 
-    const renderItem = (item, modal) => item.length ?
+    const renderItem = (item, modal) => item && item.length ?
         item.map((x, i) =>
             <div key={x.id} className={'item'}>
                 <span className={'nome'}>{x.nome}</span>
@@ -30,14 +26,10 @@ const InformacoesAdicionais = props => {
                     <Edit onClick={() => openModal(modal, x)}/>
                     <Delete onClick={() => remove(modal + 's', x.id)}/>
                 </div>
-            </div>) : null
+            </div>) : null;
 
     return (
         <>
-            <Cargo visible={cargo.visible}/>
-            <Departamento visible={departamento.visible}/>
-            <CentroDeCusto visible={centroDeCusto.visible}/>
-
             <div className={'configuracao-informacoes-adicionais'}>
                 <CardBorda title={'Cargos'} color={'blue'}>
                     {renderItem(cargos, 'cargo')}
@@ -56,13 +48,13 @@ const InformacoesAdicionais = props => {
     );
 };
 
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-    openModal: (modal, value) => dispatch(changeModalVisible(modal, true, value)),
-    loadData: entity => dispatch(loadList(entity)),
+    openModal: (modal, value) => dispatch(openModal(modal, value)),
+    loadData: (entity, target) => dispatch(loadList(entity, target)),
     remove: (entity, value) => dispatch(remove(entity, value))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(InformacoesAdicionais);
 

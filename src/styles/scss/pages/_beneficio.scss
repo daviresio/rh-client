@@ -1,0 +1,88 @@
+.beneficios-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  grid-gap: 3rem;
+
+}
+
+.card-beneficio {
+  cursor: pointer;
+  transition: all .3s;
+
+  &:hover {
+    background-color: rgba($color-blue, 1);
+    color: $color-white;
+    transition: all .3s;
+  }
+
+  .tipo {
+    margin: 1rem 0;
+    font-size: $font-size-2;
+  }
+
+  .operador {
+    font-size: $font-size-2;
+  }
+}
+
+.body-informacoes-beneficios {
+  width: 100%;
+
+  .resumo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+
+
+    .card-informacoes-beneficios {
+      color: $color-white;
+      padding: 2rem;
+      border-radius: .2rem;
+      @include box-shadow-light;
+
+      span:first-child {
+        display: block;
+        text-align: center;
+        font-size: $font-size-big-2;
+        font-weight: $font-weigth-light;
+      }
+
+      span:last-child {
+        font-size: $font-size-2;
+        text-align: center;
+        display: block;
+      }
+
+      &-blue {
+        background-color: $color-blue;
+      }
+
+      &-red {
+        background-color: $color-red;
+      }
+
+    }
+  }
+}
+
+.beneficio-detalhe-editar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.beneficio-detalhe-item {
+  font-size: $font-size-2;
+  margin-bottom: 1rem;
+
+  .chave {
+    font-weight: $font-weigth-bold;
+  }
+}
+
+.beneficio-detalhe-btn-gerar-relatorio {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: flex-end;
+}

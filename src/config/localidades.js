@@ -1,4 +1,4 @@
-//export const getEstados = () => localidades.estados.map(v => ({label: v.nome, value: v.sigla}));
+export const getEstados = () => localidades.estados.map(v => ({nome: v.nome, id: v.sigla}));
 
 export const localidades = {
     "estados": [

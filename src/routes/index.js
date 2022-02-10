@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from "../layout/Navbar";
 import Home from "../pages/Home";
-import {Route, BrowserRouter as Router, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import Colaboradores from "../pages/Colaboradores";
-import NovoColaborador from "../pages/colaboradores/CadastroColaborador";
+import NovoColaborador from "../pages/colaboradores/cadastro/CadastroColaborador";
 import {ConnectedRouter} from "connected-react-router";
 import history from './history'
 import Ferias from "../pages/Ferias";
@@ -18,31 +18,81 @@ import Configuracao from "../pages/Configuracao";
 import Notificacoes from "../pages/Notificacoes";
 import AlterarSenha from "../pages/configuracao/AlterarSenha";
 import Financeiro from "../pages/Financeiro";
-import VizualizarColaborador from "../pages/colaboradores/VizualizarColaborador";
+import VizualizarColaborador from "../pages/colaboradores/VisualizarColaborador";
+import CadastroFinalizado from "../pages/colaboradores/cadastro/CadastroFinalizado";
+import FolhaLancamento from "../pages/folha-pagamento/FolhaLancamento";
+import BeneficioCadastro from "../pages/beneficio/BeneficioCadastro";
+import BeneficioDetalhe from "../pages/beneficio/BeneficioDetalhe";
+import Dissidio from "../pages/colaboradores/disidio/Dissidio";
+import EditarColaboradoresEmMassa from "../pages/colaboradores/EditarColaboradoresEmMassa";
+import GerenciarAcesso from "../pages/colaboradores/GerenciarAcesso";
+import BoasVindas from "../pages/configuracao/BoasVindas";
+import RecuperarSenha from "../pages/configuracao/RecuperarSenha";
+import CadastroFeriasColetivas from "../pages/ferias/CadastroFeriasColetivas";
+import GerenciarFeriasIndividuais from "../pages/ferias/GerenciarFeriasIndividuais";
+import EscolhaGerarHolerite from "../pages/folha-pagamento/EscolhaGerarHolerite";
+import LancamentoHoleriteAutomatico from "../pages/folha-pagamento/LancamentoHoleriteAutomatico";
+import LancamentoHoleriteModal from "../modais/LancamentoHoleriteModal";
+import LogarUsuario from "../pages/LogarUsuario";
+import ProtectedRoute from "./ProtectedRoute";
+import {connect} from "react-redux";
+import NovaEmpresa from "../pages/NovaEmpresa";
+import ProcessoFerias from "../pages/ferias/ProcessoFerias";
+import DesligamentoColaborador from "../pages/colaboradores/desligamento/DesligamentoColaborador";
+import BeneficioEditarEmMassa from "../pages/beneficio/BeneficioEditarEmMassa";
+import ColaboradoresDesligados from "../pages/colaboradores/ColaboradoresDesligados";
 
-export default () =>
-    (
-        <ConnectedRouter history={history}>
-            <React.Fragment>
-                <Toolbar/>
-                <Navbar/>
-                <Switch>
-                    <Route path={'/'} exact={true} component={Home}/>
-                    <Route path={'/colaboradores/cadastro'} component={NovoColaborador}/>
-                    <Route path={'/colaboradores'} component={Colaboradores}/>
-                    <Route path={'/colaboradores/:id'} component={VizualizarColaborador}/>
-                    <Route path={'/ferias'} exact={true} component={Ferias}/>
-                    <Route path={'/beneficios'} exact={true} component={Beneficios}/>
-                    <Route path={'/folha'} component={FolhaPagamento}/>
-                    <Route path={'/comunicacao'} component={Comunicacao}/>
-                    <Route path={'/ponto'} exact={true} component={Ponto}/>
-                    <Route path={'/relatorios'} exact={true} component={Relatorios}/>
-                    <Route path={'/ajuda'} exact={true} component={Ajuda}/>
-                    <Route path={'/configuracao/alterar-senha'} exact={true} component={AlterarSenha}/>
-                    <Route path={'/configuracao'} component={Configuracao}/>
-                    <Route path={'/notificacoes'} component={Notificacoes}/>
-                    <Route path={'/financeiro'} component={Financeiro}/>
-                </Switch>
-            </React.Fragment>
-        </ConnectedRouter>
-    )
+const Routes = (modal) => {
+
+    let blurEffect;
+
+    if (modal) blurEffect = Object.values(modal).some(v => v.visible) ? 'blur-body' : 'blur-body-none';
+
+    return <ConnectedRouter history={history}>
+        <div className={blurEffect}>
+            <Toolbar/>
+            <Navbar/>
+            <Switch>
+                <ProtectedRoute path={'/'} exact={true} component={Home}/>
+                <ProtectedRoute path={'/colaboradores/visualizar/:id'} component={VizualizarColaborador}/>
+                <ProtectedRoute path={'/colaboradores/cadastro-finalizado/:id'} component={CadastroFinalizado}/>
+                <ProtectedRoute path={'/colaboradores/cadastro'} component={NovoColaborador}/>
+                <ProtectedRoute path={'/colaboradores/desligamento/:id'} component={DesligamentoColaborador}/>
+                <ProtectedRoute path={'/colaboradores/dissidio'} component={Dissidio}/>
+                <ProtectedRoute path={'/colaboradores/editar-em-massa'} component={EditarColaboradoresEmMassa}/>
+                <ProtectedRoute path={'/colaboradores/gerenciar-acesso'} component={GerenciarAcesso}/>
+                <ProtectedRoute path={'/colaboradores/boas-vindas'} component={BoasVindas}/>
+                <ProtectedRoute path={'/colaboradores/recuperar-senha'} component={RecuperarSenha}/>
+                <ProtectedRoute path={'/colaboradores/desligados'} component={ColaboradoresDesligados}/>
+                <ProtectedRoute path={'/colaboradores'} component={Colaboradores}/>
+                <ProtectedRoute path={'/ferias/cadastro-ferias-coletivas'} component={CadastroFeriasColetivas}/>
+                <ProtectedRoute path={'/ferias/cadastro-ferias-individuais'} component={GerenciarFeriasIndividuais}/>
+                <ProtectedRoute path={'/ferias/processo'} component={ProcessoFerias}/>
+                <ProtectedRoute path={'/ferias'} exact={true} component={Ferias}/>
+                <ProtectedRoute path={'/beneficios/editar-em-massa/:id'} component={BeneficioEditarEmMassa}/>
+                <ProtectedRoute path={'/beneficios/detalhe/:id'} component={BeneficioDetalhe}/>
+                <ProtectedRoute path={'/beneficios/cadastro/:id'} component={BeneficioCadastro}/>
+                <ProtectedRoute path={'/beneficios/cadastro'} component={BeneficioCadastro}/>
+                <ProtectedRoute path={'/beneficios'} component={Beneficios}/>
+                <ProtectedRoute path={'/folha/lancamento'} component={FolhaLancamento}/>
+                <ProtectedRoute path={'/folha/tipo-lancamento-holerite'} component={EscolhaGerarHolerite}/>
+                <ProtectedRoute path={'/folha/holerite/importar'} component={LancamentoHoleriteAutomatico}/>
+                <ProtectedRoute path={'/folha/holerite/manual'} component={LancamentoHoleriteModal}/>
+                <ProtectedRoute path={'/folha'} component={FolhaPagamento}/>
+                <ProtectedRoute path={'/comunicacao'} component={Comunicacao}/>
+                <ProtectedRoute path={'/ponto'} exact={true} component={Ponto}/>
+                <ProtectedRoute path={'/relatorios'} exact={true} component={Relatorios}/>
+                <ProtectedRoute path={'/ajuda'} exact={true} component={Ajuda}/>
+                <ProtectedRoute path={'/configuracao/alterar-senha'} exact={true} component={AlterarSenha}/>
+                <ProtectedRoute path={'/configuracao'} component={Configuracao}/>
+                <ProtectedRoute path={'/notificacoes'} component={Notificacoes}/>
+                <ProtectedRoute path={'/financeiro'} component={Financeiro}/>
+                <Route path={'/logar-usuario/:token'} component={LogarUsuario}/>
+                <Route path={'/nova-empresa'} component={NovaEmpresa}/>
+            </Switch>
+        </div>
+    </ConnectedRouter>
+};
+
+export default connect(({modal}) => modal)(Routes)
+

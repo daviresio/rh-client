@@ -1,5 +1,4 @@
 import React from 'react';
-import GestaoColaboradores from "../pages/Colaboradores";
 
 const TabPainel = props => {
     return (

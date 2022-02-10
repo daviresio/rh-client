@@ -1,12 +1,10 @@
 .photo {
   &-container {
-    width: 10rem;
-    height: 10rem;
     position: relative;
     overflow: hidden;
     align-self: center;
     justify-self: center;
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
   }
 
   &-box {
@@ -16,13 +14,52 @@
     padding: .2rem;
     text-align: center;
   }
-
+  img {
+    width: 10rem;
+    height: 10rem;
+  }
 
   &-icon {
     color: $color-gray;
     font-size: $font-size-big-1;
     display: inline-block;
     margin-top: 2.5rem;
+  }
+
+}
+
+.default-size {
+  width: 10rem;
+  height: 10rem;
+}
+
+.image-upload {
+  display: block;
+  max-width: 10rem;
+  max-height: 10rem;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.upload-file {
+  position: relative;
+  overflow: hidden;
+  align-self: center;
+  justify-self: center;
+  margin-bottom: 2rem;
+
+  .file-selected {
+    font-size: 1.4rem;
+    color: $color-blue;
+
+    i {
+      color: $color-red;
+      font-size: 1.4rem;
+      cursor: pointer;
+      margin-left: 2rem;
+    }
+
   }
 
 }

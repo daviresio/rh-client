@@ -25,7 +25,8 @@
   }
 
   &-body {
-    tr {
+
+    .cursor + tr {
       cursor: pointer;
     }
 
@@ -36,10 +37,26 @@
     tr:nth-child(even) {
       background-color: $color-white;
     }
+
+
+  }
+
+
+  .clicable {
+    cursor: pointer;
+  }
+
+  .small-padding {
+    padding: .6rem 1rem;
   }
 
 }
 
+.table-borda {
+  td {
+    border: .1rem solid $color-gray-light;
+  }
+}
 
 .table-container {
   width: 100%;
@@ -63,4 +80,72 @@
   &-footer {
 
   }
+}
+
+
+.container-input-edit-table {
+  display: flex;
+
+  .botoes {
+    cursor: pointer;
+    color: $color-white;
+    min-width: 3rem;
+    min-height: 2.8rem;
+    border-radius: .2rem;
+    margin: auto .5rem auto auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .botao-salvar {
+    background-color: $color-green-light;
+
+    &:hover {
+      background-color: $color-green;
+    }
+  }
+
+  .botao-cancelar {
+    background-color: $color-red-light;
+
+    &:hover {
+      background-color: $color-red;
+    }
+  }
+
+}
+
+
+.sem-informacao {
+  color: $color-red-light;
+  font-style: italic;
+}
+
+.table-scrolable {
+
+  td {
+    min-width: 12rem;
+  }
+}
+
+.table-folha-totais {
+  height: 10rem;
+  background-color: $color-gray-light;
+
+  .label {
+    display: block;
+  }
+
+  .value {
+    display: block;
+    font-weight: $font-weigth-bold;
+  }
+}
+
+
+.title-grid-contailer {
+  width: 100%;
+  display: grid;
 }

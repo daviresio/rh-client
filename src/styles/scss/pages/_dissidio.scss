@@ -1,0 +1,29 @@
+.atualizacao-dissidio-header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20rem 13rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.selecionar-colaboradores-header {
+  display: flex;
+}
+
+.body-dissidio-step-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 20rem);
+}
+
+.header-dissidio-step-4 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .filtros {
+    display: grid;
+    grid-template-columns: repeat(3, 20rem);
+    grid-gap: 2rem;
+  }
+}

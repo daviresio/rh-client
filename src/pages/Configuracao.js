@@ -3,7 +3,6 @@ import PageEmpty from "../layout/PageEmpty";
 import {connect} from "react-redux";
 import TabPainel from "../components/TabPainel";
 import TabItem from "../components/TabItem";
-import {changeConfiguracaoTab} from "../store/actions/configuracaoActions";
 import TabContent from "../components/TabContent";
 import InformacoesBasicas from "./configuracao/InformacoesBasicas";
 import InformacoesAdicionais from "./configuracao/InformacoesAdicionais";
@@ -15,12 +14,13 @@ import Ferias from "./configuracao/Ferias";
 import AdmissaoDesligamento from "./configuracao/AdmissaoDesligamento";
 import {changeRoute} from "../store/actions/routerActions";
 import {Redirect, Route, Switch} from "react-router";
+import DocumentoCadastro from "./configuracao/DocumentoCadastro";
 
 const Configuracao = props => {
-    const {changeRoute} = props
-    const path = '/configuracao/'
-    const currentPath = props.router.location.pathname
-    
+    const {changeRoute} = props;
+    const path = '/configuracao/';
+    const currentPath = props.router.location.pathname;
+
     return (
         <PageEmpty>
             <TabPainel title={'Nome da empresa'}>
@@ -40,6 +40,8 @@ const Configuracao = props => {
                     <Route path={path + 'permissoes'} component={Permissoes} />
                     <Route path={path + 'integracoes'} component={Integracoes} />
                     <Route path={path + 'contabilidade'} component={Contabilidade} />
+                    <Route path={path + 'documentos-minutas/cadastro/:id'} component={DocumentoCadastro}/>
+                    <Route path={path + 'documentos-minutas/cadastro'} component={DocumentoCadastro}/>
                     <Route path={path + 'documentos-minutas'} component={Documentos} />
                     <Route path={path + 'ferias'} component={Ferias} />
                     <Route path={path + 'admissao-desligamento'} component={AdmissaoDesligamento} />
@@ -49,8 +51,8 @@ const Configuracao = props => {
         </PageEmpty>
     );
 };
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
 changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Configuracao);

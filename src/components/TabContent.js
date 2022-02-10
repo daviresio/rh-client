@@ -1,5 +1,4 @@
 import React from 'react';
-import Buttom from "./Buttom";
 
 const TabContent = props => {
     return (

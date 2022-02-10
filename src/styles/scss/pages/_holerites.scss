@@ -1,0 +1,12 @@
+.holerites-filtro {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+
+  h3 {
+    text-align: right;
+    margin-top: 2rem;
+    margin-right: 2rem;
+  }
+}

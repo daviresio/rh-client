@@ -2,13 +2,19 @@ import React from 'react';
 import Checkbox from "../../components/form/Checkbox";
 import Divided from "../../components/util/Divided";
 import InputRow from "../../components/form/InputRow";
-import Select from "../../components/form/Select";
-import SelectRow from "../../components/form/SelectRow";
 import Buttom from "../../components/Buttom";
+import {Field, reduxForm} from "redux-form";
+import {connect} from "react-redux";
+import MultipleSelectRow from "../../components/form/MultipleSelectRow";
 
-const AlteracaoDados = () => {
+let AlteracaoDados = ({handleSubmit}) => {
+
+    const submit = value => {
+
+    };
+
     return (
-        <>
+        <form onSubmit={handleSubmit(submit)}>
             <div className="title">{'Alteracao de dados'}</div>
             <div className="item">
                 <span className={'negrito'}>{'Oque `e?'}</span>
@@ -32,20 +38,27 @@ const AlteracaoDados = () => {
             <div className="item">
                 <span className={'negrito'}>{'Destinatarios'}</span>
                 <div className={'destinatarios'}>
-                    <Checkbox label={'Colaborador que alterou seus dados'} />
+                    <Field name={'colaborador'} component={Checkbox} label={'Colaborador que alterou seus dados'} type={'checkbox'} normalize={v => v === 'true'}/>
                     <Divided/>
-                    <Checkbox label={'Gestor que alterou seus dados'} />
+                    <Field name={'gestor'} component={Checkbox} label={'Gestor que alterou seus dados'} type={'checkbox'} normalize={v => v === 'true'}/>
                     <Divided/>
-                    <SelectRow label={'Contadores'} />
+                    <Field label={'Contadores'} name={'contadores'} component={MultipleSelectRow} options={[]}/>
                     <Divided/>
-                    <InputRow label={'Outros e-mails'} />
+                    <InputRow label={'Outros e-mails'}/>
+
                     <div className={'botao'}>
                         <Buttom color={'green'} label={'Salvar'}/>
                     </div>
                 </div>
             </div>
-        </>
+        </form>
     );
 };
 
-export default AlteracaoDados;
+AlteracaoDados = reduxForm({form: 'alteracaoDados', enableReinitialize: true})(AlteracaoDados);
+
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlteracaoDados);

@@ -4,7 +4,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-image: linear-gradient(to bottom, $color-navbar-light, $color-navbar);
+  background-image: url("../../assets/sidebar-bg.svg"),
+  linear-gradient(to bottom, $color-navbar-light, $color-navbar);
   padding: 2rem;
   font-size: 1.4rem;
   color: rgba($color-white,.8);

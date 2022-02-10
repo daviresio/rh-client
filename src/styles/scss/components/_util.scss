@@ -8,14 +8,18 @@
 .edit {
   margin-bottom: .5rem;
   color: $color-blue;
+  cursor: pointer;
 
   i {
     color: $color-green;
     margin-right: .5rem;
+
+    &:hover + span {
+      text-decoration: underline;
+    }
   }
 
   span {
-    cursor: pointer;
 
     &:hover {
       text-decoration: underline;
@@ -24,10 +28,9 @@
 }
 
 .remove {
-  color: $color-blue;
+  color: $color-red;
 
   i {
-    color: $color-red;
     margin-right: .5rem;
   }
 
@@ -60,4 +63,125 @@
 
 .required {
   color: $color-red;
+}
+
+
+.config-options {
+  position: relative;
+  cursor: pointer;
+
+  i {
+    font-size: $font-size-6;
+  }
+
+  ul {
+    color: $color-black;
+    font-size: $font-size-2;
+    position: absolute;
+    top: 2.5rem;
+    right: -.5rem;
+    background-color: $color-white;
+    width: 20rem;
+    border: .1rem solid rgba($color-gray, .5);
+    border-top: none;
+    border-radius: .2rem;
+    z-index: 1;
+    max-height: 16.6rem;
+
+    li {
+      padding: .6rem;
+      border-top: .1rem solid rgba($color-gray, .5);
+
+      &:hover {
+        background-color: rgba($color-gray-light, .5);
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+
+.colaborador-com-foto {
+  display: flex;
+  align-items: center;
+
+  .image-container {
+    background-color: $color-white;
+    display: flex;
+    justify-content: center;
+    margin-right: 1rem;
+
+    img {
+      width: 5.5rem;
+      height: 5.5rem;
+    }
+  }
+
+  span {
+    margin-left: 2rem;
+    font-size: $font-size-4;
+  }
+}
+
+.conteudo-chave-valor {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  grid-gap: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+
+  .campo {
+    display: flex;
+    justify-content: flex-end;
+    color: rgba($color-black, .4);
+  }
+
+  .valor {
+    color: rgba($color-black, .8);
+  }
+}
+
+
+.campos-inline {
+  display: flex;
+
+  *:first-child {
+    margin-right: 1rem;
+  }
+
+  margin-bottom: .5rem;
+}
+
+.campo-bold {
+  font-size: $font-size-2;
+  font-weight: bold;
+}
+
+.campo-light {
+  font-size: $font-size-2;
+}
+
+.ck-editor__editable {
+  min-height: 30rem !important;
+  font-size: 1.4rem;
+}
+
+
+.progress-bar {
+  background-color: rgba($color-gray-light, .4);
+  height: 1.8rem;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin: .5rem 0;
+
+  &-value {
+    background-color: $color-blue;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+  }
 }

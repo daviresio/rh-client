@@ -6,24 +6,23 @@ import TabContent from "../components/TabContent";
 import Fechamento from "./folha-pagamento/Fechamento";
 import Holerites from "./folha-pagamento/Holerites";
 import ConfiguracaoFolha from "./folha-pagamento/ConfiguracaoFolha";
-import {changeFolhaPagamentoTab} from "../store/actions/folhaActions";
 import {connect} from "react-redux";
 import {Redirect, Route, Switch} from "react-router";
 import {changeRoute} from "../store/actions/routerActions";
 
 const FolhaPagamento = props => {
-    const path = '/folha/'
-    const currentPath = props.router.location.pathname
+    const path = '/folha/';
+    const currentPath = props.router.location.pathname;
 
     return (
         <PageEmpty>
             <TabPainel title={'Folha de pagamento'}>
-                <TabItem selectTab={() => props.changeRoute('fechamento')}
-                         selected={currentPath === path + 'fechamento'} title={'Fechamento'}/>
-                <TabItem selectTab={() => props.changeRoute('holerites')}
-                         selected={currentPath === path + 'holerites'} title={'Holerites'}/>
-                <TabItem selectTab={() => props.changeRoute('configuracao')}
-                         selected={currentPath === path + 'configuracao'} title={'Configuracao da folha'}/>
+                <TabItem onClick={() => props.changeRoute('/folha/fechamento')}
+                         selected={currentPath.includes('fechamento')} title={'Fechamento'}/>
+                <TabItem onClick={() => props.changeRoute('/folha/holerites')}
+                         selected={currentPath.includes('holerites')} title={'Holerites'}/>
+                <TabItem onClick={() => props.changeRoute('/folha/configuracao')}
+                         selected={currentPath.includes('configuracao')} title={'Configuracao da folha'}/>
             </TabPainel>
             <TabContent>
                 <Switch>
@@ -36,10 +35,9 @@ const FolhaPagamento = props => {
         </PageEmpty>
     );
 };
-const mapStateToProps = state => state
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => ({
-    changeTab: tab => dispatch(changeFolhaPagamentoTab(tab)),
     changeRoute: route => dispatch(changeRoute(route))
-})
+});
 export default connect(mapStateToProps, mapDispatchToProps)(FolhaPagamento);

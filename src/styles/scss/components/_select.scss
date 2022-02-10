@@ -1,0 +1,143 @@
+.select {
+
+  &-container {
+    margin: 1rem;
+    font-size: $font-size-3;
+    position: relative;
+
+    input {
+      pointer-events: none;
+      display: none;
+    }
+  }
+
+  &-nopad {
+    margin: 0 1rem;
+  }
+
+  &-header {
+    cursor: pointer;
+    background-color: $color-white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+
+    &-title {
+      min-width: 4rem;
+      position: absolute;
+      margin-left: 1rem;
+      margin-right: 2rem;
+      left: 0;
+      top: .5rem;
+    }
+
+    .up {
+      transform: rotateZ(0deg);
+      transition: all .2s;
+    }
+
+    .down {
+      transform: rotateZ(180deg);
+      transition: all .2s;
+    }
+  }
+
+  &-list {
+    position: absolute;
+    top: 3.2rem;
+    left: 0;
+    background-color: $color-white;
+    min-width: 100%;
+    max-width: 40rem;
+    border: .1rem solid rgba($color-gray, .5);
+    border-top: none;
+    border-radius: .2rem;
+    z-index: 1;
+    max-height: 35rem;
+    overflow-y: auto;
+
+    &-item {
+      padding: .5rem;
+      border-top: .1rem solid rgba($color-gray, .5);
+
+      &:hover {
+        background-color: rgba($color-gray-light, .5);
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+.correcao-list.select-list {
+  top: 5.6rem;
+}
+
+
+.multi-select {
+  &-list {
+    position: absolute;
+    left: 0;
+    background-color: $color-white;
+    min-width: 100%;
+    max-width: 40rem;
+    border: .1rem solid rgba($color-gray, .5);
+    border-top: none;
+    border-radius: .2rem;
+    z-index: 1;
+    overflow-y: auto;
+    //min-height: 20rem;
+
+    &-item {
+      padding: .5rem;
+      border-top: .1rem solid rgba($color-gray, .5);
+
+      &:hover {
+        background-color: rgba($color-gray-light, .5);
+        cursor: pointer;
+      }
+    }
+  }
+
+
+  &-header-title {
+    width: 100%;
+    cursor: default;
+    background-color: $color-white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+
+    .up {
+      transform: rotateZ(0deg);
+      transition: all .2s;
+    }
+
+    .down {
+      transform: rotateZ(180deg);
+      transition: all .2s;
+    }
+  }
+
+  &-bagget {
+    background-color: $color-blue;
+    color: $color-white;
+    margin-right: .5rem;
+    border-radius: .5rem;
+    padding: .1rem 1.2rem .1rem .8rem;
+    position: relative;
+
+    i {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: .8rem;
+      padding-right: .4rem;
+      padding-top: .2rem;
+      cursor: pointer;
+    }
+  }
+}

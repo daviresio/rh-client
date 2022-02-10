@@ -1,0 +1,263 @@
+.folha {
+  width: calc(100vw - (#{$navbar-width} + 6rem));
+  transform: translateY($toolbar-height);
+  box-sizing: border-box;
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.75fr;
+    grid-gap: 5rem;
+  }
+
+}
+
+.lancamento-manual-filtros {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+
+  .botao-campos-lancamento {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+}
+
+.linha-valor-table {
+  padding-right: 2rem;
+  position: relative;
+
+  i {
+    font-size: 2rem;
+    color: $color-red;
+    cursor: pointer;
+    position: absolute;
+    left: 21rem;
+    top: 3rem;
+  }
+}
+
+.center-content {
+
+}
+
+.form-adicionar-evento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-editar-configuracoes-gerais {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.folha-lancamento-2-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.divided-inverse {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  grid-gap: 2rem;
+
+
+  .descricao {
+
+    .header {
+      display: flex;
+      margin-top: 2rem;
+
+      img {
+        width: 10rem;
+        height: 10rem;
+        margin-right: 3rem;
+      }
+
+      .dados-colaborador {
+        .nome {
+          font-weight: $font-weigth-bold;
+        }
+
+        i {
+          color: $color-green;
+          cursor: pointer;
+          margin-left: 1rem;
+          font-size: $font-size-4;
+        }
+
+        .detail {
+          grid-column-gap: 2rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          font-size: $font-size-2;
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    .informacoes-financeiras {
+      font-size: $font-size-2;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 12rem 6rem;
+      align-items: center;
+      justify-items: start;
+      justify-content: center;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 3rem;
+
+        .value {
+          font-weight: $font-weigth-bold;
+        }
+
+        .green {
+          color: $color-green;
+        }
+
+        .red {
+          align-self: self-end;
+          color: $color-red;
+        }
+      }
+    }
+
+    .resumo {
+      font-size: $font-size-2;
+      padding: 2rem;
+      background-color: $color-gray-light;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 3rem;
+
+      .value {
+        margin-right: 2rem;
+        margin-left: 8rem;
+        font-weight: $font-weigth-bold;
+        font-size: $font-size-4;
+      }
+
+      .green {
+        color: $color-green;
+      }
+    }
+
+  }
+
+}
+
+.colaborador-item {
+  background-color: $color-gray-light;
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  margin: .2rem 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-blue;
+    color: $color-white;
+  }
+
+  .img-container {
+    background-color: $color-white;
+    max-width: 4.5rem;
+    display: flex;
+    justify-content: center;
+    margin-right: 1rem;
+
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  .nome {
+    font-size: $font-size-2;
+  }
+}
+
+
+.folha-lancamento-guia {
+
+  i {
+    color: $color-gray;
+    font-size: 5rem;
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    max-width: 38rem;
+    text-align: center;
+    font-size: $font-size-2;
+    margin: 1rem 0;
+  }
+}
+
+.cards-escolher-envio-holerite {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5rem;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+
+.item-feriado {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr repeat(3, 1fr);
+  font-size: $font-size-2;
+  border-top: .1rem solid rgba($color-gray, .6);
+  padding: 1rem 0;
+
+  .item-title {
+    font-weight: $font-weigth-bold;
+  }
+}
+
+
+.container-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+
+.table-adicionais {
+  width: 100%;
+  border-collapse: collapse;
+  thead {
+    font-size: $font-size-2;
+    font-weight: $font-weigth-bold;
+    td {
+      padding-bottom: 1rem;
+    }
+  }
+
+  tbody {
+
+    tr:nth-child(odd) {
+      background-color: $color-body;
+    }
+
+    td {
+      padding: .5rem;
+      font-size: 1.1rem;
+    }
+
+  }
+
+}

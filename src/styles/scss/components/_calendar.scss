@@ -5,8 +5,9 @@
 
   .linha {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     border-left: .1rem solid rgba($color-gray, .6);
+    overflow: hidden;
 
     &:first-child {
       border-top: .1rem solid rgba($color-gray, .6);
@@ -23,18 +24,21 @@
     .dia {
       border-top: .1rem solid rgba($color-gray, .6);
       border-right: .1rem solid rgba($color-gray, .6);
-      min-height: 5rem;
+      min-height: 6rem;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       padding: .5rem;
-
 
       &-header {
         display: flex;
         justify-content: center;
         font-weight: $font-weigth-bold;
         font-size: $font-size-3;
+
+        &:last-child {
+          border-right: .1rem solid rgba($color-gray, .6);
+        }
       }
 
     }
@@ -48,6 +52,7 @@
     width: 100%;
     margin-bottom: 2rem;
     position: relative;
+    padding-bottom: 4rem;
 
     .data-actions {
       position: absolute;
@@ -66,6 +71,18 @@
       display: flex;
       justify-content: flex-end;
     }
+  }
+
+  .lembrete {
+    width: 95%;
+    padding: .2rem;
+    margin: .3rem;
+    text-align: left;
+    border-radius: .3rem;
+    color: $color-white;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
 }
